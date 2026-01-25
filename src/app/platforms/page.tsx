@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import PlatformCard from '@/components/ui/PlatformCard';
@@ -8,6 +9,7 @@ import { FiSearch, FiFilter } from 'react-icons/fi';
 import toast from 'react-hot-toast';
 
 export default function PlatformsPage() {
+    const router = useRouter();
     const [platforms, setPlatforms] = useState<any[]>([]);
     const [loading, setLoading] = useState(true);
     const [searchQuery, setSearchQuery] = useState('');
@@ -53,7 +55,7 @@ export default function PlatformsPage() {
     });
 
     const handlePlatformClick = (slug: string) => {
-        window.location.href = `/platforms/${slug}`;
+        router.push(`/platforms/${slug}`);
     };
 
     return (
@@ -93,8 +95,8 @@ export default function PlatformsPage() {
                                     key={category.value}
                                     onClick={() => setSelectedCategory(category.value)}
                                     className={`px-6 py-2 rounded-full font-semibold transition-all duration-300 ${selectedCategory === category.value
-                                            ? 'bg-gradient-to-r from-primary-500 to-secondary-500 text-white'
-                                            : 'glass-card hover:shadow-card-hover'
+                                        ? 'bg-gradient-to-r from-primary-500 to-secondary-500 text-white'
+                                        : 'glass-card hover:shadow-card-hover'
                                         }`}
                                 >
                                     {category.label}

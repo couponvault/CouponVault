@@ -7,6 +7,8 @@ import Footer from '@/components/Footer';
 import { FiGift, FiZap, FiShield, FiTrendingUp, FiArrowRight, FiStar, FiClock, FiCheck } from 'react-icons/fi';
 import toast from 'react-hot-toast';
 
+export const dynamic = 'force-dynamic';
+
 export default function HomePage() {
     const [stats, setStats] = useState({
         totalCoupons: 0,

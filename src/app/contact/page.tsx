@@ -25,12 +25,26 @@ export default function ContactPage() {
 
         setSending(true);
 
-        // Simulate sending (you can integrate with actual email service)
-        setTimeout(() => {
-            toast.success('Message sent successfully! We\'ll get back to you soon.');
-            setFormData({ name: '', email: '', subject: '', message: '' });
+        try {
+            const response = await fetch('/api/contact', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formData)
+            });
+
+            const data = await response.json();
+
+            if (data.success) {
+                toast.success('Message sent successfully! We\'ll get back to you soon.');
+                setFormData({ name: '', email: '', subject: '', message: '' });
+            } else {
+                toast.error(data.error || 'Failed to send message');
+            }
+        } catch (error) {
+            toast.error('Error connecting to Server');
+        } finally {
             setSending(false);
-        }, 1500);
+        }
     };
 
     return (

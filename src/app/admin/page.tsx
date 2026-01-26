@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { FiPackage, FiGift, FiUsers, FiTrendingUp, FiAlertCircle, FiActivity } from 'react-icons/fi';
+import { FiPackage, FiGift, FiUsers, FiTrendingUp, FiAlertCircle, FiActivity, FiMessageSquare } from 'react-icons/fi';
 import toast from 'react-hot-toast';
 
 export default function AdminDashboard() {
@@ -220,31 +220,69 @@ export default function AdminDashboard() {
                     </div>
                 </div>
 
-                {/* Recent Activity */}
-                <div className="glass-card p-6 rounded-xl">
-                    <h2 className="text-2xl font-bold mb-6 flex items-center space-x-2">
-                        <FiActivity className="w-6 h-6" />
-                        <span>Recent Activity</span>
-                    </h2>
-                    <div className="space-y-3">
-                        {stats?.recentActivity?.slice(0, 10).map((activity: any) => (
-                            <div key={activity._id} className="flex items-start space-x-3 p-3 bg-gray-50 dark:bg-dark-800 rounded-lg">
-                                <div className="flex-1">
-                                    <div className="font-medium capitalize">
-                                        {activity.type.replace(/_/g, ' ')}
+                {/* Recent Activity & Messages Grid */}
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    {/* Recent Activity */}
+                    <div className="glass-card p-6 rounded-xl">
+                        <h2 className="text-2xl font-bold mb-6 flex items-center space-x-2">
+                            <FiActivity className="w-6 h-6" />
+                            <span>Recent Activity</span>
+                        </h2>
+                        <div className="space-y-3">
+                            {stats?.recentActivity?.slice(0, 8).map((activity: any) => (
+                                <div key={activity._id} className="flex items-start space-x-3 p-3 bg-gray-50 dark:bg-dark-800 rounded-lg">
+                                    <div className="flex-1">
+                                        <div className="font-medium capitalize">
+                                            {activity.type.replace(/_/g, ' ')}
+                                        </div>
+                                        <div className="text-sm text-gray-500 dark:text-gray-400">
+                                            {new Date(activity.createdAt).toLocaleString()}
+                                        </div>
                                     </div>
-                                    <div className="text-sm text-gray-500 dark:text-gray-400">
-                                        {new Date(activity.createdAt).toLocaleString()}
+                                    <div className={`px-3 py-1 rounded-full text-xs font-semibold ${activity.severity === 'high' ? 'bg-red-100 text-red-700' :
+                                        activity.severity === 'medium' ? 'bg-yellow-100 text-yellow-700' :
+                                            'bg-green-100 text-green-700'
+                                        }`}>
+                                        {activity.severity}
                                     </div>
                                 </div>
-                                <div className={`px-3 py-1 rounded-full text-xs font-semibold ${activity.severity === 'high' ? 'bg-red-100 text-red-700' :
-                                    activity.severity === 'medium' ? 'bg-yellow-100 text-yellow-700' :
-                                        'bg-green-100 text-green-700'
-                                    }`}>
-                                    {activity.severity}
+                            ))}
+                        </div>
+                    </div>
+
+                    {/* Recent Messages */}
+                    <div className="glass-card p-6 rounded-xl">
+                        <h2 className="text-2xl font-bold mb-6 flex items-center space-x-2">
+                            <FiMessageSquare className="w-6 h-6 text-primary-500" />
+                            <span>User Messages</span>
+                        </h2>
+                        <div className="space-y-4">
+                            {stats?.recentMessages?.length > 0 ? (
+                                stats.recentMessages.map((msg: any) => (
+                                    <div key={msg._id} className="p-4 bg-gray-50 dark:bg-dark-800 rounded-lg border-l-4 border-primary-500">
+                                        <div className="flex justify-between items-start mb-2">
+                                            <div>
+                                                <div className="font-bold flex items-center gap-2">
+                                                    {msg.name}
+                                                    <span className="text-xs font-normal text-gray-400">({msg.email})</span>
+                                                </div>
+                                                <div className="text-xs text-primary-500 font-semibold uppercase">{msg.subject || 'No Subject'}</div>
+                                            </div>
+                                            <div className="text-[10px] text-gray-400 uppercase">
+                                                {new Date(msg.createdAt).toLocaleDateString()}
+                                            </div>
+                                        </div>
+                                        <p className="text-sm text-gray-600 dark:text-gray-300 italic line-clamp-2">
+                                            "{msg.message}"
+                                        </p>
+                                    </div>
+                                ))
+                            ) : (
+                                <div className="text-center py-12 text-gray-500 italic">
+                                    No messages received yet.
                                 </div>
-                            </div>
-                        ))}
+                            )}
+                        </div>
                     </div>
                 </div>
             </div>

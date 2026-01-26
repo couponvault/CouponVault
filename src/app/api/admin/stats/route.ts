@@ -4,6 +4,7 @@ import Platform from '@/models/Platform';
 import Coupon from '@/models/Coupon';
 import User from '@/models/User';
 import Activity from '@/models/Activity';
+import Contact from '@/models/Contact';
 import { getUserFromRequest, isAdmin } from '@/lib/auth';
 
 export const dynamic = 'force-dynamic';
@@ -31,7 +32,8 @@ export async function GET(request: NextRequest) {
             claimedCoupons,
             expiredCoupons,
             totalUsers,
-            recentActivity
+            recentActivity,
+            recentMessages
         ] = await Promise.all([
             Platform.countDocuments(),
             Platform.countDocuments({ isActive: true }),
@@ -44,7 +46,10 @@ export async function GET(request: NextRequest) {
                 .sort({ createdAt: -1 })
                 .limit(10)
                 .populate('userId', 'name email')
-                .populate('platformId', 'name')
+                .populate('platformId', 'name'),
+            Contact.find()
+                .sort({ createdAt: -1 })
+                .limit(10)
         ]);
 
         // Platform statistics
@@ -83,7 +88,8 @@ export async function GET(request: NextRequest) {
             },
             topPlatforms: platformStats,
             allPlatforms,
-            recentActivity
+            recentActivity,
+            recentMessages
         });
     } catch (error: any) {
         console.error('Get admin stats error:', error);

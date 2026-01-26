@@ -13,7 +13,7 @@ export default function PrivacyPage() {
                     </h1>
 
                     <div className="glass-card p-8 rounded-2xl prose prose-lg dark:prose-invert max-w-none">
-                        <p className="text-sm text-gray-500">Last updated: January 25, 2026</p>
+                        <p className="text-sm text-gray-500">Last updated: January 26, 2026</p>
 
                         <h2>Introduction</h2>
                         <p>

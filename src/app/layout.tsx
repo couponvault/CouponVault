@@ -3,6 +3,8 @@ import { Inter, Outfit } from 'next/font/google';
 import './globals.css';
 import { Toaster } from 'react-hot-toast';
 import JSONLD from '@/components/JSONLD';
+import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 const inter = Inter({
     subsets: ['latin'],
@@ -59,6 +61,8 @@ export default function RootLayout({
             <body className={`${inter.variable} ${outfit.variable} font-sans antialiased text-gray-900 bg-white dark:bg-dark-950 dark:text-gray-100 transition-colors duration-300`}>
                 <JSONLD />
                 {children}
+                <Analytics />
+                <SpeedInsights />
                 <Toaster position="top-right" />
             </body>
         </html>

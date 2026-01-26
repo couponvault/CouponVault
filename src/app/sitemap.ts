@@ -7,7 +7,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
     try {
         await connectDB();
-        const platforms = await Platform.find({ isActive: true }).select('slug updatedAt');
+        const platforms = await Platform.find({ isActive: true })
+            .select('slug updatedAt')
+            .maxTimeMS(5000);
 
         const platformUrls = platforms.map((p) => ({
             url: `${baseUrl}/platforms/${p.slug}`,
@@ -50,6 +52,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
             ...platformUrls,
         ];
     } catch (error) {
+        console.error('Sitemap generation error:', error);
         return [
             {
                 url: baseUrl,

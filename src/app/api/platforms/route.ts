@@ -3,6 +3,8 @@ import connectDB from '@/lib/mongodb';
 import Platform from '@/models/Platform';
 import { apiRateLimit, getClientIp } from '@/lib/rateLimit';
 
+export const dynamic = 'force-dynamic';
+
 // GET /api/platforms
 export async function GET(request: NextRequest) {
     try {

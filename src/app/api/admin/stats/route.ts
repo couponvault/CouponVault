@@ -6,6 +6,8 @@ import User from '@/models/User';
 import Activity from '@/models/Activity';
 import { getUserFromRequest, isAdmin } from '@/lib/auth';
 
+export const dynamic = 'force-dynamic';
+
 // GET /api/admin/stats
 export async function GET(request: NextRequest) {
     try {

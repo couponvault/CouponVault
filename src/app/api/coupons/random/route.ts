@@ -6,6 +6,8 @@ import Activity from '@/models/Activity';
 import { getUserFromRequest } from '@/lib/auth';
 import { dailyClaimLimit, getClientIp } from '@/lib/rateLimit';
 
+export const dynamic = 'force-dynamic';
+
 // GET /api/coupons/random
 export async function GET(request: NextRequest) {
     try {

@@ -8,6 +8,7 @@ import CouponCard from '@/components/ui/CouponCard';
 import { FiArrowLeft, FiTag, FiInfo, FiExternalLink } from 'react-icons/fi';
 import Link from 'next/link';
 import toast from 'react-hot-toast';
+import AdBanner from '@/components/ui/AdBanner';
 
 export default function PlatformDetailsPage() {
     const params = useParams();
@@ -160,6 +161,8 @@ export default function PlatformDetailsPage() {
                                     </div>
                                 </div>
                             </div>
+
+                            <AdBanner className="mb-6" />
 
                             <div className="glass-card p-6 rounded-2xl bg-gradient-to-br from-primary-500/5 to-secondary-500/5">
                                 <h3 className="font-bold mb-2">Instructions</h3>

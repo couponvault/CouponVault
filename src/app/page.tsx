@@ -6,6 +6,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { FiGift, FiZap, FiShield, FiTrendingUp, FiArrowRight, FiStar, FiClock, FiCheck } from 'react-icons/fi';
 import toast from 'react-hot-toast';
+import AdBanner from '@/components/ui/AdBanner';
 
 export const dynamic = 'force-dynamic';
 
@@ -138,6 +139,10 @@ export default function HomePage() {
                     </div>
                 </section>
 
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-10 mb-10">
+                    <AdBanner />
+                </div>
+
                 {/* Features Section */}
                 <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-100 dark:bg-dark-900">
                     <div className="max-w-7xl mx-auto">
@@ -171,6 +176,10 @@ export default function HomePage() {
                         </div>
                     </div>
                 </section>
+
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-16 -mb-10">
+                    <AdBanner />
+                </div>
 
                 {/* Platforms Section */}
                 <section className="py-20 px-4 sm:px-6 lg:px-8">

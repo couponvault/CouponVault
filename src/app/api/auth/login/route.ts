@@ -5,6 +5,8 @@ import Activity from '@/models/Activity';
 import { comparePassword, generateToken } from '@/lib/auth';
 import { strictRateLimit, getClientIp } from '@/lib/rateLimit';
 
+export const dynamic = 'force-dynamic';
+
 // POST /api/auth/login
 export async function POST(request: NextRequest) {
     try {

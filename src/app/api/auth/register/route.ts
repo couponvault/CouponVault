@@ -4,6 +4,8 @@ import User from '@/models/User';
 import { hashPassword, generateToken, isValidEmail, isStrongPassword } from '@/lib/auth';
 import { apiRateLimit, getClientIp } from '@/lib/rateLimit';
 
+export const dynamic = 'force-dynamic';
+
 // POST /api/auth/register
 export async function POST(request: NextRequest) {
     try {

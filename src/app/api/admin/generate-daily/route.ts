@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from 'next/server';
 import connectDB from '@/lib/mongodb';
 import { generateDailyBatch, markExpiredCoupons } from '@/utils/couponGenerator';
 
+export const dynamic = 'force-dynamic';
+
 // This API will be called by Vercel Cron every night
 export async function GET(request: NextRequest) {
     // Security: Check for Vercel Cron Secret (Optional but recommended)

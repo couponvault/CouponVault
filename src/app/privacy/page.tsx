@@ -73,13 +73,21 @@ export default function PrivacyPage() {
 
                         <h2>Cookies and Tracking</h2>
                         <p>
-                            We use cookies and similar technologies for:
+                            We use cookies and similar technologies for authentication, preferences, and analytics.
                         </p>
-                        <ul>
-                            <li>Authentication and session management</li>
-                            <li>Remembering your preferences</li>
-                            <li>Analytics and performance monitoring</li>
-                        </ul>
+
+                        <h3>Google AdSense and DoubleClick Cookie</h3>
+                        <p>
+                            Google, as a third-party vendor, uses cookies to serve ads on CouponVault. Google's use of the DoubleClick cookie enables it and its partners to serve ads to our users based on their visit to our site or other sites on the Internet.
+                        </p>
+                        <p>
+                            Users may opt out of the use of the DoubleClick cookie for interest-based advertising by visiting the <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer">Google Ads Settings</a> page.
+                        </p>
+
+                        <h3>Third-Party Advertising</h3>
+                        <p>
+                            We allow third-party companies to serve ads and/or collect certain anonymous information when you visit our web site. These companies may use non-personally identifiable information (e.g., click stream information, browser type, time and date, subject of advertisements clicked or scrolled over) during your visits to this and other web sites in order to provide advertisements about goods and services likely to be of greater interest to you.
+                        </p>
 
                         <h2>Your Rights</h2>
                         <p>You have the right to:</p>

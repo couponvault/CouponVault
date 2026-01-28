@@ -65,6 +65,12 @@ export function isAdmin(user: JWTPayload | null): boolean {
     return user?.role === 'admin';
 }
 
+// Security guard for API routes
+export async function verifyAdmin(request: NextRequest): Promise<boolean> {
+    const user = getUserFromRequest(request);
+    return user?.role === 'admin';
+}
+
 // Validate email format
 export function isValidEmail(email: string): boolean {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;

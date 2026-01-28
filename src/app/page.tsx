@@ -140,7 +140,7 @@ export default function HomePage() {
                 </section>
 
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-10 mb-10">
-                    <AdBanner />
+                    <AdBanner slotId="150c3903e11298ce18dfe86139a7f4e0" format="square" />
                 </div>
 
                 {/* Features Section */}

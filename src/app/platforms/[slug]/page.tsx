@@ -162,7 +162,7 @@ export default function PlatformDetailsPage() {
                                 </div>
                             </div>
 
-                            <AdBanner className="mb-6" />
+                            <AdBanner slotId="150c3903e11298ce18dfe86139a7f4e0" format="square" className="mb-6" />
 
                             <div className="glass-card p-6 rounded-2xl bg-gradient-to-br from-primary-500/5 to-secondary-500/5">
                                 <h3 className="font-bold mb-2">Instructions</h3>

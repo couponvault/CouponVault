@@ -1,9 +1,20 @@
 import { NextRequest, NextResponse } from 'next/server';
 import connectDB from '@/lib/mongodb';
 import Contact from '@/models/Contact';
+import { contactLimit, getClientIp } from '@/lib/rateLimit';
 
 export async function POST(request: NextRequest) {
     try {
+        const ip = getClientIp(request);
+        const rateLimitResult = contactLimit(ip); // Max 5 messages per day from one IP
+
+        if (!rateLimitResult.success) {
+            return NextResponse.json(
+                { error: 'Message limit reached for today. Please try again later.' },
+                { status: 429 }
+            );
+        }
+
         const { name, email, subject, message } = await request.json();
 
         if (!name || !email || !message) {

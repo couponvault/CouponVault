@@ -86,6 +86,12 @@ export const dailyClaimLimit = rateLimit({
     windowMs: 24 * 60 * 60 * 1000 // 24 hours
 });
 
+// Contact form rate limiter
+export const contactLimit = rateLimit({
+    maxRequests: 5,
+    windowMs: 24 * 60 * 60 * 1000 // 24 hours
+});
+
 // Clean up old rate limit entries periodically
 setInterval(() => {
     const now = Date.now();

@@ -436,11 +436,12 @@ export default function AdminDashboard() {
                                     onChange={(e) => setPlatformForm({ ...platformForm, category: e.target.value })}
                                     className="w-full px-4 py-2 rounded-lg border border-gray-200 dark:border-gray-800 bg-white dark:bg-dark-800 outline-none focus:ring-2 focus:ring-primary-500"
                                 >
-                                    <option value="Fashion">Fashion</option>
-                                    <option value="Food">Food</option>
-                                    <option value="Streaming">Streaming</option>
-                                    <option value="Tech">Tech</option>
-                                    <option value="Travel">Travel</option>
+                                    <option value="fashion">Fashion</option>
+                                    <option value="ecommerce">Ecommerce</option>
+                                    <option value="food">Food</option>
+                                    <option value="streaming">Streaming</option>
+                                    <option value="travel">Travel</option>
+                                    <option value="other">Other</option>
                                 </select>
                             </div>
 

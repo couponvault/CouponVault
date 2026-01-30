@@ -20,26 +20,32 @@ export default function AdBanner({ slotId, format = 'square', className = '' }: 
             // Clear any existing children
             containerRef.current.innerHTML = '';
 
-            // Create the options object
-            const script1 = document.createElement('script');
-            script1.type = 'text/javascript';
-            script1.innerHTML = `
-            atOptions = {
-                'key' : '${slotId}',
+            // Set the options directly on the window object to ensure they are available
+            // before the script loads.
+            // @ts-ignore
+            if (!window.atOptions) window.atOptions = {};
+            
+            // @ts-ignore
+            window.atOptions = {
+                'key' : slotId,
                 'format' : 'iframe',
-                'height' : ${format === 'square' ? 250 : 90},
-                'width' : ${format === 'square' ? 300 : 728},
+                'height' : format === 'square' ? 250 : 90,
+                'width' : format === 'square' ? 300 : 728,
                 'params' : {}
             };
-        `;
 
             // Create the invocation script
-            const script2 = document.createElement('script');
-            script2.type = 'text/javascript';
-            script2.src = `//www.highperformanceformat.com/${slotId}/invoke.js`;
+            const script = document.createElement('script');
+            script.type = 'text/javascript';
+            script.async = true; 
+            script.src = `//www.highperformanceformat.com/${slotId}/invoke.js`;
+            
+            // Error handling
+            script.onerror = () => {
+                console.error(`Adsterra script failed to load for slot ${slotId}`);
+            };
 
-            containerRef.current.appendChild(script1);
-            containerRef.current.appendChild(script2);
+            containerRef.current.appendChild(script);
         }
     }, [slotId, format]);
 

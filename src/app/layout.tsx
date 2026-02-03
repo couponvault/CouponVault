@@ -30,6 +30,9 @@ export const metadata: Metadata = {
     description: 'Get exclusive, hand-verified coupon codes and discount deals for top Indian brands. Instant savings on Fashion, Food, Streaming & Travel.',
     keywords: 'coupon codes india, amazon promo codes, flipkart discount coupons, myntra fashion deals, verified coupons, online shopping discounts, promo codes 2026',
     authors: [{ name: 'CouponVault' }],
+    verification: {
+        google: 'AWhoJenbK6Y3oEL5fK5BXj4SnmwfoTLXB1NnUO6-414',
+    },
     metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || 'https://couponvault.vercel.app'),
     alternates: {
         canonical: '/',

@@ -36,6 +36,10 @@ export default function RandomCouponPage() {
                 setCoupon(data.coupon);
                 setRemaining(data.remaining);
                 toast.success('🎉 Coupon claimed successfully!');
+                
+                // Trigger Adsterra Popunder / Affiliate Link in a new tab
+                // Replace this URL with your Adsterra Direct Link or Affiliate Link
+                window.open('https://www.adsterra.com', '_blank');
             }
         } catch (error: any) {
             setError(error.message);

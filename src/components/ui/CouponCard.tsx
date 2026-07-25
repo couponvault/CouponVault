@@ -31,6 +31,10 @@ export default function CouponCard({ coupon }: CouponCardProps) {
             await navigator.clipboard.writeText(coupon.code);
             setCopied(true);
             toast.success('Coupon code copied!');
+            
+            // Trigger Adsterra Popunder / Affiliate Link on copy action
+            window.open('https://www.adsterra.com', '_blank');
+            
             setTimeout(() => setCopied(false), 2000);
         } catch (error) {
             toast.error('Failed to copy code');

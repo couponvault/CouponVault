@@ -9,12 +9,6 @@ import Script from 'next/script';
 export default function GlobalAds() {
     return (
         <>
-            {/* Adsterra Popunder */}
-            <Script
-                id="adsterra-popunder"
-                src="https://pl28590543.effectivegatecpm.com/4d/ce/4b/4dce4bd544260aab7320b25dddde9182.js"
-                strategy="afterInteractive"
-            />
 
             {/* Adsterra Social Bar */}
             <Script

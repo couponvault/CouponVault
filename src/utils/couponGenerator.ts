@@ -3,11 +3,18 @@ import Coupon from '@/models/Coupon';
 import Platform, { IPlatform } from '@/models/Platform';
 import connectDB from '@/lib/mongodb';
 
-// Generate collision-free coupon codes
+const EVERGREEN_CODES = [
+    'WELCOME50', 'FIRSTORDER', 'FREEDELIVERY', 'SAVE20', 'NEWUSER',
+    'FESTIVAL25', 'MEGA10', 'SUPERDEAL', 'CASHBACK', 'GRABNOW',
+    'TRYME', 'DISCOUNT20', 'FLAT50', 'BOGO', 'EXTRA10'
+];
+
+// Generate realistic evergreen coupon codes
 const generateCouponCode = (length: number = 12, prefix: string = ''): string => {
-    // Use uppercase alphanumeric without ambiguous characters (0, O, I, l)
-    const nanoid = customAlphabet('ABCDEFGHJKLMNPQRSTUVWXYZ23456789', length);
-    const code = nanoid();
+    const baseCode = EVERGREEN_CODES[Math.floor(Math.random() * EVERGREEN_CODES.length)];
+    // Add a random 2-digit number to prevent strict collisions
+    const randomSuffix = Math.floor(Math.random() * 90) + 10;
+    const code = `${baseCode}${randomSuffix}`;
     return prefix ? `${prefix}${code}` : code;
 };
 

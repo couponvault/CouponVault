@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { FiCopy, FiCheck, FiClock, FiTag } from 'react-icons/fi';
+import { FiCopy, FiCheck, FiClock, FiTag, FiStar } from 'react-icons/fi';
 import toast from 'react-hot-toast';
 
 interface CouponCardProps {

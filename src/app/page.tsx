@@ -85,6 +85,29 @@ export default function HomePage() {
                     </Link>
                 </section>
 
+                {/* CTA Actions */}
+                <section className="pb-16 px-4 text-center">
+                    <p className="text-gray-400 mb-8 text-base sm:text-lg max-w-xl mx-auto">
+                        Explore top stores or get a random verified code instantly to maximize your savings.
+                    </p>
+                    <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                        <Link
+                            href="/random"
+                            className="w-full sm:w-auto px-8 py-3.5 bg-gradient-to-r from-purple-600 via-purple-500 to-cyan-500 text-white font-bold rounded-xl hover:opacity-90 transition-all shadow-lg shadow-purple-500/25 flex items-center justify-center space-x-2"
+                        >
+                            <FiGift className="w-5 h-5" />
+                            <span>Get Random Coupon</span>
+                        </Link>
+                        <Link
+                            href="/platforms"
+                            className="w-full sm:w-auto px-8 py-3.5 bg-[#12131a] border border-white/5 hover:border-cyan-500/30 text-white font-bold rounded-xl transition-all flex items-center justify-center space-x-2"
+                        >
+                            <FiGrid className="w-5 h-5 text-cyan-400" />
+                            <span>Browse Platforms</span>
+                        </Link>
+                    </div>
+                </section>
+
                 {/* Top Featured Stores */}
                 <section className="max-w-6xl mx-auto px-4 py-12">
                     <h2 className="text-2xl font-bold text-white mb-8 font-display">Top Featured Stores</h2>
@@ -209,30 +232,6 @@ export default function HomePage() {
                     </div>
                 </section>
 
-                {/* CTA Actions */}
-                <section className="py-20 px-4 text-center">
-                    <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 font-display">
-                        Ready to Start <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-purple-500">Saving?</span>
-                    </h2>
-                    <p className="text-gray-400 mb-10 text-lg max-w-xl mx-auto">
-                        Join thousands of savvy shoppers who save money every day. Explore top stores or get a random verified code instantly.
-                    </p>
-                    <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                        <Link
-                            href="/random"
-                            className="w-full sm:w-auto px-8 py-3.5 bg-gradient-to-r from-purple-600 via-purple-500 to-cyan-500 text-white font-bold rounded-xl hover:opacity-90 transition-all shadow-lg shadow-purple-500/25 flex items-center justify-center space-x-2"
-                        >
-                            <FiGift className="w-5 h-5" />
-                            <span>Get Random Coupon</span>
-                        </Link>
-                        <Link
-                            href="/platforms"
-                            className="w-full sm:w-auto px-8 py-3.5 bg-[#12131a] border border-white/5 hover:border-cyan-500/30 text-white font-bold rounded-xl transition-all flex items-center justify-center space-x-2"
-                        >
-                            <FiGrid className="w-5 h-5 text-cyan-400" />
-                            <span>Browse Platforms</span>
-                        </Link>
-                    </div>
                 </section>
             </main>
 

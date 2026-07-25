@@ -62,7 +62,7 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en" suppressHydrationWarning>
-            <body className={`${inter.variable} ${outfit.variable} font-sans antialiased text-gray-900 bg-white dark:bg-dark-950 dark:text-gray-100 transition-colors duration-300`}>
+            <body className={`${inter.variable} ${outfit.variable} font-sans antialiased`}>
                 <JSONLD />
                 <GlobalAds />
                 {children}

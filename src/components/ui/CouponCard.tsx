@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { FiCopy, FiCheck, FiClock, FiTag, FiStar } from 'react-icons/fi';
+import { FiCopy, FiCheck, FiStar } from 'react-icons/fi';
 import toast from 'react-hot-toast';
 
 interface CouponCardProps {
@@ -31,10 +31,7 @@ export default function CouponCard({ coupon }: CouponCardProps) {
             await navigator.clipboard.writeText(coupon.code);
             setCopied(true);
             toast.success('Coupon code copied!');
-            
-            // Trigger Adsterra Popunder / Affiliate Link on copy action
             window.open('https://www.adsterra.com', '_blank');
-            
             setTimeout(() => setCopied(false), 2000);
         } catch (error) {
             toast.error('Failed to copy code');
@@ -56,74 +53,67 @@ export default function CouponCard({ coupon }: CouponCardProps) {
         }
     };
 
-    const daysUntilExpiry = Math.ceil(
-        (new Date(coupon.expiresAt).getTime() - new Date().getTime()) / (1000 * 60 * 60 * 24)
-    );
-
     return (
-        <div className="glass-card bg-[#1a1c23] overflow-hidden p-5 flex flex-col group relative rounded-2xl hover:bg-[#20222b] transition-colors border-white/5">
-            {/* Top row: Logo, Brand Name, Active Badge */}
+        <div className="bg-[#12131a] border border-white/5 rounded-2xl p-5 flex flex-col hover:border-cyan-500/20 transition-colors">
+            {/* Header: Logo + Name + Active Badge */}
             <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center space-x-3">
-                    <div 
-                        className="w-10 h-10 rounded-full flex items-center justify-center font-bold text-lg shadow-inner"
+                    <div
+                        className="w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm shadow-md"
                         style={{ backgroundColor: coupon.platform.backgroundColor, color: coupon.platform.textColor }}
                     >
                         {coupon.platform.logo || coupon.platform.name.charAt(0)}
                     </div>
-                    <span className="font-semibold text-gray-200 tracking-wide uppercase text-sm">
+                    <span className="font-bold text-white text-sm tracking-wider uppercase">
                         {coupon.platform.name}
                     </span>
                 </div>
-                <div className="px-3 py-1 bg-primary-500/20 border border-primary-500/30 rounded-full">
-                    <span className="text-xs font-bold text-primary-400 tracking-wide">Active</span>
-                </div>
+                <span className="px-3 py-1 bg-cyan-500/15 border border-cyan-500/25 rounded-full text-[11px] font-bold text-cyan-400">
+                    Active
+                </span>
             </div>
 
-            {/* Discount Title */}
-            <h3 className="text-2xl font-bold text-white mb-2 leading-tight">
+            {/* Discount */}
+            <h3 className="text-lg font-bold text-white mb-3 leading-snug">
                 {formatDiscount()} Your Entire Purchase
             </h3>
 
-            {/* Code and Verified text */}
-            <div className="flex items-center justify-between mb-1 mt-2">
+            {/* Verified + Code */}
+            <div className="flex items-center justify-between mb-1">
                 <div className="flex items-center space-x-1.5 text-sm">
-                    <FiCheck className="text-primary-500 w-4 h-4" />
-                    <span className="text-primary-500 font-medium">Verified</span>
-                    <span className="text-gray-400 mx-1">•</span>
-                    <span className="text-gray-300">Code: <span className="font-mono text-white">{coupon.code}</span></span>
+                    <FiCheck className="text-cyan-400 w-3.5 h-3.5" />
+                    <span className="text-cyan-400 font-medium text-xs">Verified</span>
+                    <span className="text-gray-500 mx-0.5">•</span>
+                    <span className="text-gray-400 text-xs">Code: <span className="text-white font-mono font-medium">{coupon.code}</span></span>
                 </div>
-                <button onClick={handleCopy} className="p-1.5 bg-white/5 hover:bg-white/10 rounded-md transition-colors">
-                    {copied ? <FiCheck className="w-4 h-4 text-green-500" /> : <FiCopy className="w-4 h-4 text-gray-400" />}
+                <button onClick={handleCopy} className="p-1 hover:bg-white/5 rounded transition-colors">
+                    {copied ? <FiCheck className="w-3.5 h-3.5 text-green-400" /> : <FiCopy className="w-3.5 h-3.5 text-gray-500" />}
                 </button>
             </div>
 
-            {/* Expiry and Rating */}
-            <div className="flex items-center justify-between mb-6">
-                <div className="text-sm text-gray-400 flex items-center space-x-2">
-                    <span>Exp: {new Date(coupon.expiresAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}</span>
-                    <span>•</span>
-                    <button onClick={handleCopy} className="text-primary-400 hover:text-primary-300 underline underline-offset-2">Copy Code</button>
-                </div>
+            {/* Expiry */}
+            <div className="flex items-center text-xs text-gray-500 mb-4">
+                <span>Exp: {new Date(coupon.expiresAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}</span>
+                <span className="mx-1.5">•</span>
+                <button onClick={handleCopy} className="text-cyan-400 hover:text-cyan-300 underline underline-offset-2 font-medium">Copy Code</button>
             </div>
-            
-            <div className="flex items-center justify-between mb-6 text-sm text-gray-400">
+
+            {/* Rating */}
+            <div className="flex items-center justify-between mb-5 text-sm text-gray-500">
                 <span>User Rating</span>
                 <div className="flex items-center space-x-1">
                     <span className="font-bold text-white">4.9</span>
-                    <FiStar className="text-yellow-500 w-4 h-4 fill-current" />
+                    <FiStar className="text-yellow-500 w-3.5 h-3.5 fill-current" />
                 </div>
             </div>
 
             {/* Get Code Button */}
-            <div className="mt-auto">
-                <button
-                    onClick={handleCopy}
-                    className="w-full py-3 bg-gradient-to-r from-secondary-600 to-primary-500 text-white font-bold rounded-xl shadow-glow hover:shadow-glow-lg transition-all duration-300"
-                >
-                    Get Code
-                </button>
-            </div>
+            <button
+                onClick={handleCopy}
+                className="w-full py-2.5 bg-gradient-to-r from-purple-600 via-purple-500 to-cyan-500 text-white font-bold text-sm rounded-xl hover:opacity-90 transition-opacity"
+            >
+                Get Code
+            </button>
         </div>
     );
 }

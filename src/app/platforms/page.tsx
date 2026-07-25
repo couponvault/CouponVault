@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import PlatformCard from '@/components/ui/PlatformCard';
-import { FiSearch, FiFilter } from 'react-icons/fi';
+import { FiSearch } from 'react-icons/fi';
 import toast from 'react-hot-toast';
 
 export default function PlatformsPage() {
@@ -59,66 +59,63 @@ export default function PlatformsPage() {
     };
 
     return (
-        <div className="min-h-screen flex flex-col">
+        <div className="min-h-screen flex flex-col bg-[#0a0b0f]">
             <Navbar />
 
-            <main className="flex-1 py-12 px-4 sm:px-6 lg:px-8">
-                <div className="max-w-7xl mx-auto">
+            <main className="flex-1 py-12 px-4">
+                <div className="max-w-4xl mx-auto">
                     {/* Header */}
-                    <div className="text-center mb-12">
-                        <h1 className="text-4xl md:text-5xl font-bold font-display mb-4">
-                            Explore <span className="gradient-text">Platforms</span>
+                    <div className="text-center mb-10">
+                        <h1 className="text-3xl md:text-5xl font-bold text-white mb-3 font-display">
+                            Explore <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-purple-500">Top Stores</span>
                         </h1>
-                        <p className="text-xl text-gray-600 dark:text-gray-300">
-                            Choose your favorite platform and get exclusive coupons
+                        <p className="text-gray-400 text-base">
+                            Choose your favorite store and get exclusive coupons
                         </p>
                     </div>
 
-                    {/* Filters */}
-                    <div className="mb-8 space-y-4">
-                        {/* Search */}
-                        <div className="relative max-w-md mx-auto">
-                            <FiSearch className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
-                            <input
-                                type="text"
-                                placeholder="Search platforms..."
-                                value={searchQuery}
-                                onChange={(e) => setSearchQuery(e.target.value)}
-                                className="w-full pl-12 pr-4 py-3 glass-card rounded-xl focus:ring-2 focus:ring-primary-500 outline-none"
-                            />
-                        </div>
+                    {/* Search */}
+                    <div className="relative max-w-md mx-auto mb-8">
+                        <FiSearch className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500" />
+                        <input
+                            type="text"
+                            placeholder="Search stores..."
+                            value={searchQuery}
+                            onChange={(e) => setSearchQuery(e.target.value)}
+                            className="w-full bg-[#12131a] border border-white/5 text-white text-sm pl-11 pr-4 py-3 rounded-xl outline-none focus:border-cyan-500/30 transition-colors placeholder-gray-500"
+                        />
+                    </div>
 
-                        {/* Category Filter */}
-                        <div className="flex flex-wrap justify-center gap-2">
-                            {categories.map(category => (
-                                <button
-                                    key={category.value}
-                                    onClick={() => setSelectedCategory(category.value)}
-                                    className={`px-6 py-2 rounded-full font-semibold transition-all duration-300 ${selectedCategory === category.value
-                                        ? 'bg-gradient-to-r from-primary-500 to-secondary-500 text-white'
-                                        : 'glass-card hover:shadow-card-hover'
-                                        }`}
-                                >
-                                    {category.label}
-                                </button>
-                            ))}
-                        </div>
+                    {/* Category Filter */}
+                    <div className="flex flex-wrap justify-center gap-2 mb-8">
+                        {categories.map(cat => (
+                            <button
+                                key={cat.value}
+                                onClick={() => setSelectedCategory(cat.value)}
+                                className={`px-5 py-2 rounded-full font-medium text-sm transition-all duration-200 ${selectedCategory === cat.value
+                                    ? 'bg-gradient-to-r from-purple-600 to-cyan-500 text-white'
+                                    : 'bg-[#12131a] border border-white/5 text-gray-400 hover:text-white hover:border-cyan-500/20'
+                                    }`}
+                            >
+                                {cat.label}
+                            </button>
+                        ))}
                     </div>
 
                     {/* Results Count */}
-                    <div className="text-center mb-6 text-gray-600 dark:text-gray-400">
-                        Showing {filteredPlatforms.length} platform{filteredPlatforms.length !== 1 ? 's' : ''}
+                    <div className="text-center mb-6 text-gray-500 text-sm">
+                        Showing {filteredPlatforms.length} store{filteredPlatforms.length !== 1 ? 's' : ''}
                     </div>
 
                     {/* Platforms Grid */}
                     {loading ? (
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
                             {[...Array(6)].map((_, i) => (
-                                <div key={i} className="shimmer h-64 rounded-2xl"></div>
+                                <div key={i} className="h-48 rounded-2xl bg-[#12131a] border border-white/5 animate-pulse"></div>
                             ))}
                         </div>
                     ) : filteredPlatforms.length > 0 ? (
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
                             {filteredPlatforms.map(platform => (
                                 <PlatformCard
                                     key={platform._id}
@@ -129,10 +126,10 @@ export default function PlatformsPage() {
                         </div>
                     ) : (
                         <div className="text-center py-12">
-                            <div className="text-6xl mb-4">🔍</div>
-                            <h3 className="text-2xl font-bold mb-2">No platforms found</h3>
-                            <p className="text-gray-600 dark:text-gray-400">
-                                Try adjusting your search or filter criteria
+                            <div className="text-5xl mb-4">🔍</div>
+                            <h3 className="text-xl font-bold text-white mb-2">No stores found</h3>
+                            <p className="text-gray-500 text-sm">
+                                Try adjusting your search or filter
                             </p>
                         </div>
                     )}

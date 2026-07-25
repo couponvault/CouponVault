@@ -17,7 +17,7 @@ export default function Navbar() {
 
     return (
         <nav className="sticky top-0 z-50 bg-[#0a0b0f]/90 backdrop-blur-md border-b border-white/5">
-            <div className="max-w-4xl mx-auto px-4">
+            <div className="max-w-6xl mx-auto px-4">
                 <div className="flex justify-between items-center h-16">
                     {/* Logo */}
                     <Link href="/" className="flex items-center space-x-2.5 group">
@@ -41,9 +41,6 @@ export default function Navbar() {
                             </Link>
                         ))}
                     </div>
-
-                    {/* Empty spacer to balance layout (no login/signup) */}
-                    <div className="hidden md:block w-[80px]"></div>
 
                     {/* Mobile menu button */}
                     <button

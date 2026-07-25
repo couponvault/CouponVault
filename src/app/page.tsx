@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import { FiGift, FiZap, FiShield, FiTrendingUp, FiArrowRight, FiStar, FiClock, FiCheck } from 'react-icons/fi';
+import { FiGift, FiZap, FiShield, FiTrendingUp, FiArrowRight, FiStar, FiClock, FiCheck, FiCopy } from 'react-icons/fi';
 import toast from 'react-hot-toast';
 import AdBanner from '@/components/ui/AdBanner';
 
@@ -85,56 +85,66 @@ export default function HomePage() {
                 <section className="relative overflow-hidden py-20 px-4 sm:px-6 lg:px-8">
                     {/* Background Effects */}
                     <div className="absolute inset-0 -z-10">
-                        <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary-500/20 rounded-full blur-3xl"></div>
-                        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-secondary-500/20 rounded-full blur-3xl"></div>
+                        <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary-500/10 rounded-full blur-[100px]"></div>
+                        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-secondary-500/10 rounded-full blur-[100px]"></div>
                     </div>
 
-                    <div className="max-w-7xl mx-auto">
-                        <div className="text-center">
-                            <h1 className="text-5xl md:text-7xl font-bold font-display mb-6 animate-fade-in">
-                                <span className="gradient-text">Save Big</span> with
-                                <br />
-                                Exclusive Coupons
-                            </h1>
-                            <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8 max-w-3xl mx-auto animate-slide-up">
-                                Discover thousands of verified coupon codes for your favorite platforms.
-                                Save money on every purchase with CouponVault.
-                            </p>
-
-                            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-scale-in">
-                                <Link
-                                    href="/random"
-                                    className="group px-8 py-4 bg-gradient-to-r from-primary-500 to-secondary-500 text-white font-semibold rounded-xl hover:shadow-glow-lg transition-all duration-300 flex items-center space-x-2"
-                                >
-                                    <FiGift className="w-5 h-5" />
-                                    <span>Get Random Coupon</span>
-                                    <FiArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                                </Link>
-                                <Link
-                                    href="/platforms"
-                                    className="px-8 py-4 glass-card font-semibold rounded-xl hover:shadow-card-hover transition-all duration-300"
-                                >
-                                    Browse Platforms
-                                </Link>
+                    <div className="max-w-5xl mx-auto flex flex-col items-center">
+                        {/* Search Bar */}
+                        <div className="w-full max-w-2xl mb-16 relative group animate-fade-in">
+                            <div className="absolute -inset-0.5 bg-gradient-to-r from-primary-400 to-secondary-500 rounded-full blur opacity-50 group-hover:opacity-75 transition duration-500"></div>
+                            <div className="relative flex items-center bg-[#1a1c23] rounded-full p-1">
+                                <input 
+                                    type="text" 
+                                    placeholder="Search for brands, deals, codes..." 
+                                    className="w-full bg-transparent text-white px-6 py-3 outline-none placeholder-gray-500"
+                                />
+                                <button className="p-3 bg-transparent text-gray-400 hover:text-white transition-colors">
+                                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                                </button>
                             </div>
                         </div>
 
-                        {/* Stats */}
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-20">
-                            {[
-                                { label: 'Active Coupons', value: stats.totalCoupons, suffix: '+' },
-                                { label: 'Partner Platforms', value: stats.activePlatforms, suffix: '+' },
-                                { label: 'Happy Users', value: stats.happyUsers, suffix: '+' },
-                            ].map((stat, index) => (
-                                <div key={index} className="glass-card p-6 rounded-xl text-center animate-slide-up" style={{ animationDelay: `${index * 100}ms` }}>
-                                    <div className="text-4xl md:text-5xl font-bold gradient-text mb-2">
-                                        {stat.value.toLocaleString()}{stat.suffix}
+                        {/* Text Content */}
+                        <div className="text-center mb-12">
+                            <h1 className="text-5xl md:text-7xl font-bold font-display mb-6 text-white animate-fade-in tracking-tight">
+                                Save Smarter. Live Better.
+                            </h1>
+                            <p className="text-xl md:text-2xl text-gray-400 mb-10 max-w-3xl mx-auto animate-slide-up">
+                                Access thousands of verified coupons and promo codes for your favorite brands instantly.
+                            </p>
+
+                            <Link
+                                href="/platforms"
+                                className="inline-flex items-center space-x-2 px-8 py-3 bg-gradient-to-r from-secondary-600 to-secondary-500 text-white font-semibold rounded-full hover:shadow-glow-lg transition-all duration-300 animate-scale-in"
+                            >
+                                <FiZap className="w-5 h-5 text-yellow-300" />
+                                <span>Start Saving</span>
+                            </Link>
+                        </div>
+
+                        {/* Top Featured Stores */}
+                        <div className="w-full mt-24 text-left animate-slide-up">
+                            <h2 className="text-2xl font-bold text-white mb-6">Top Featured Stores</h2>
+                            <div className="flex flex-wrap gap-4">
+                                {[
+                                    { name: 'Nike', logo: 'N', bg: '#000000', text: '#ffffff' },
+                                    { name: 'Adidas', logo: 'A', bg: '#000000', text: '#ffffff' },
+                                    { name: 'Amazon', logo: 'a', bg: '#ffffff', text: '#ff9900' },
+                                    { name: 'Samsung', logo: 'S', bg: '#1428a0', text: '#ffffff' },
+                                    { name: 'Sephora', logo: 'S', bg: '#000000', text: '#ffffff' },
+                                    { name: 'Target', logo: 'O', bg: '#cc0000', text: '#ffffff' },
+                                ].map((store, index) => (
+                                    <div key={index} className="flex-1 min-w-[120px] max-w-[160px] glass-card rounded-2xl p-4 flex flex-col items-center justify-center hover:bg-white/10 transition-colors cursor-pointer">
+                                        <div className="w-16 h-16 rounded-full flex items-center justify-center text-3xl font-bold mb-4 shadow-lg" style={{ backgroundColor: store.bg, color: store.text }}>
+                                            {store.logo}
+                                        </div>
+                                        <div className="px-3 py-1 bg-primary-500/20 border border-primary-500/30 rounded-full">
+                                            <span className="text-xs font-bold text-primary-400 whitespace-nowrap">Up to 50% Off</span>
+                                        </div>
                                     </div>
-                                    <div className="text-gray-600 dark:text-gray-400 font-medium">
-                                        {stat.label}
-                                    </div>
-                                </div>
-                            ))}
+                                ))}
+                            </div>
                         </div>
                     </div>
                 </section>
@@ -143,36 +153,77 @@ export default function HomePage() {
                     <AdBanner slotId="150c3903e11298ce18dfe86139a7f4e0" format="square" />
                 </div>
 
-                {/* Features Section */}
-                <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-100 dark:bg-dark-900">
-                    <div className="max-w-7xl mx-auto">
-                        <div className="text-center mb-16">
-                            <h2 className="text-4xl md:text-5xl font-bold font-display mb-4">
-                                Why Choose <span className="gradient-text">CouponVault</span>?
-                            </h2>
-                            <p className="text-xl text-gray-600 dark:text-gray-300">
-                                The smartest way to save money on your favorite platforms
-                            </p>
-                        </div>
+                {/* Featured Deals & Codes */}
+                <section className="py-20 px-4 sm:px-6 lg:px-8 bg-[#0b0c10]">
+                    <div className="max-w-5xl mx-auto">
+                        <h2 className="text-2xl font-bold text-white mb-8">Featured Deals & Codes</h2>
 
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                            {features.map((feature, index) => {
-                                const Icon = feature.icon;
-                                return (
-                                    <div
-                                        key={index}
-                                        className="group glass-card p-6 rounded-xl hover:shadow-card-hover transition-all duration-300 cursor-pointer"
-                                    >
-                                        <div className={`w-14 h-14 bg-gradient-to-r ${feature.color} rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
-                                            <Icon className="w-7 h-7 text-white" />
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                            {[
+                                { name: 'Nike', bg: '#000000', text: '#ffffff' },
+                                { name: 'Amazon', bg: '#ffffff', text: '#ff9900' },
+                                { name: 'Sephora', bg: '#000000', text: '#ffffff' },
+                                { name: 'Adidas', bg: '#000000', text: '#ffffff' },
+                                { name: 'Dell', bg: '#0076ce', text: '#ffffff' },
+                                { name: 'Samsung', bg: '#1428a0', text: '#ffffff' },
+                            ].map((store, index) => (
+                                <div key={index} className="glass-card overflow-hidden p-5 flex flex-col group relative rounded-2xl hover:bg-white/10 transition-colors">
+                                    <div className="flex items-center justify-between mb-4">
+                                        <div className="flex items-center space-x-3">
+                                            <div className="w-10 h-10 rounded-full flex items-center justify-center font-bold text-lg shadow-inner" style={{ backgroundColor: store.bg, color: store.text }}>
+                                                {store.name.charAt(0)}
+                                            </div>
+                                            <span className="font-semibold text-gray-200 tracking-wide uppercase text-sm">
+                                                {store.name}
+                                            </span>
                                         </div>
-                                        <h3 className="text-xl font-bold mb-2">{feature.title}</h3>
-                                        <p className="text-gray-600 dark:text-gray-400">
-                                            {feature.description}
-                                        </p>
+                                        <div className="px-3 py-1 bg-primary-500/20 border border-primary-500/30 rounded-full">
+                                            <span className="text-xs font-bold text-primary-400 tracking-wide">Active</span>
+                                        </div>
                                     </div>
-                                );
-                            })}
+
+                                    <h3 className="text-2xl font-bold text-white mb-2 leading-tight">
+                                        {index % 2 === 0 ? '25%' : '15%'} OFF Your Entire Purchase
+                                    </h3>
+
+                                    <div className="flex items-center justify-between mb-1 mt-2">
+                                        <div className="flex items-center space-x-1.5 text-sm">
+                                            <FiCheck className="text-primary-500 w-4 h-4" />
+                                            <span className="text-primary-500 font-medium">Verified</span>
+                                            <span className="text-gray-400 mx-1">•</span>
+                                            <span className="text-gray-300">Code: <span className="font-mono text-white">SAVE{index % 2 === 0 ? '25' : '15'}NOW</span></span>
+                                        </div>
+                                        <button className="p-1.5 bg-white/5 hover:bg-white/10 rounded-md transition-colors">
+                                            <FiCopy className="w-4 h-4 text-gray-400" />
+                                        </button>
+                                    </div>
+
+                                    <div className="flex items-center justify-between mb-6">
+                                        <div className="text-sm text-gray-400 flex items-center space-x-2">
+                                            <span>Exp: Oct 31</span>
+                                            <span>•</span>
+                                            <button className="text-primary-400 hover:text-primary-300 underline underline-offset-2">Copy Code</button>
+                                        </div>
+                                    </div>
+                                    
+                                    <div className="flex items-center justify-between mb-6 text-sm text-gray-400">
+                                        <span>User Rating</span>
+                                        <div className="flex items-center space-x-1">
+                                            <span className="font-bold text-white">4.9</span>
+                                            <FiStar className="text-yellow-500 w-4 h-4 fill-current" />
+                                        </div>
+                                    </div>
+
+                                    <div className="mt-auto">
+                                        <Link
+                                            href="/random"
+                                            className="block text-center w-full py-3 bg-gradient-to-r from-secondary-600 to-primary-500 text-white font-bold rounded-xl shadow-glow hover:shadow-glow-lg transition-all duration-300"
+                                        >
+                                            Get Code
+                                        </Link>
+                                    </div>
+                                </div>
+                            ))}
                         </div>
                     </div>
                 </section>

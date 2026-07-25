@@ -61,29 +61,18 @@ export default function Navbar() {
 
             {/* Mobile menu */}
             {isOpen && (
-                <div className="md:hidden border-t border-gray-200 dark:border-dark-700 animate-slide-down">
+                <div className="md:hidden border-t border-white/5 bg-[#111317] animate-slide-down">
                     <div className="px-4 py-3 space-y-1">
-                        {navLinks.map((link) => {
-                            const Icon = link.icon;
-                            return (
-                                <Link
-                                    key={link.href}
-                                    href={link.href}
-                                    onClick={() => setIsOpen(false)}
-                                    className="flex items-center space-x-2 px-4 py-3 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-dark-700 transition-colors"
-                                >
-                                    <Icon className="w-5 h-5" />
-                                    <span>{link.label}</span>
-                                </Link>
-                            );
-                        })}
-                        <Link
-                            href="/random"
-                            onClick={() => setIsOpen(false)}
-                            className="block w-full text-center px-4 py-3 bg-gradient-to-r from-primary-500 to-secondary-500 text-white font-semibold rounded-lg hover:shadow-glow transition-all duration-300"
-                        >
-                            Get Random Coupon
-                        </Link>
+                        {navLinks.map((link) => (
+                            <Link
+                                key={link.href}
+                                href={link.href}
+                                onClick={() => setIsOpen(false)}
+                                className="block px-4 py-3 rounded-lg text-gray-300 hover:text-white hover:bg-white/5 transition-colors font-medium"
+                            >
+                                {link.label}
+                            </Link>
+                        ))}
                     </div>
                 </div>
             )}

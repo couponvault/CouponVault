@@ -14,12 +14,12 @@ export default function HomePage() {
     const [searchQuery, setSearchQuery] = useState('');
 
     const stores = [
-        { name: 'Nike', logo: '✓', bg: '#000', text: '#fff' },
-        { name: 'Adidas', logo: 'A', bg: '#000', text: '#fff' },
-        { name: 'Amazon', logo: 'a', bg: '#fff', text: '#ff9900' },
-        { name: 'Samsung', logo: 'S', bg: '#1428a0', text: '#fff' },
-        { name: 'Sephora', logo: 'S', bg: '#000', text: '#fff' },
-        { name: 'Target', logo: '◎', bg: '#cc0000', text: '#fff' },
+        { name: 'Nike', slug: 'nike', logo: '✓', bg: '#000', text: '#fff' },
+        { name: 'Adidas', slug: 'adidas', logo: 'A', bg: '#000', text: '#fff' },
+        { name: 'Amazon', slug: 'amazon', logo: 'a', bg: '#fff', text: '#ff9900' },
+        { name: 'Samsung', slug: 'samsung', logo: 'S', bg: '#1428a0', text: '#fff' },
+        { name: 'Sephora', slug: 'sephora', logo: 'S', bg: '#000', text: '#fff' },
+        { name: 'Target', slug: 'target', logo: '◎', bg: '#cc0000', text: '#fff' },
     ];
 
     const deals = [
@@ -90,7 +90,7 @@ export default function HomePage() {
                     <h2 className="text-2xl font-bold text-white mb-8 font-display">Top Featured Stores</h2>
                     <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-6">
                         {stores.map((store, i) => (
-                            <div key={i} className="flex flex-col items-center bg-[#12131a] border border-white/5 rounded-2xl p-6 hover:border-cyan-500/30 transition-all hover:-translate-y-1 shadow-lg cursor-pointer">
+                            <Link key={i} href={`/platforms/${store.slug}`} className="flex flex-col items-center bg-[#12131a] border border-white/5 rounded-2xl p-6 hover:border-cyan-500/30 transition-all hover:-translate-y-1 shadow-lg cursor-pointer">
                                 <div
                                     className="w-20 h-20 rounded-full flex items-center justify-center text-4xl font-bold mb-4 shadow-xl"
                                     style={{ backgroundColor: store.bg, color: store.text }}
@@ -100,7 +100,7 @@ export default function HomePage() {
                                 <span className="px-3 py-1.5 bg-cyan-500/10 border border-cyan-500/20 rounded-full text-xs font-semibold text-cyan-400 whitespace-nowrap">
                                     Up to 50% Off
                                 </span>
-                            </div>
+                            </Link>
                         ))}
                     </div>
                 </section>

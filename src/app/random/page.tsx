@@ -57,17 +57,17 @@ export default function RandomCouponPage() {
                 <div className="max-w-2xl mx-auto">
                     {/* Header */}
                     <div className="text-center mb-12">
-                        <div className="inline-block p-4 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-full mb-6 float">
+                        <div className="inline-block p-4 bg-gradient-to-r from-primary-400 to-secondary-500 rounded-full mb-6 float shadow-glow">
                             <FiGift className="w-12 h-12 text-white" />
                         </div>
-                        <h1 className="text-4xl md:text-5xl font-bold font-display mb-4">
+                        <h1 className="text-4xl md:text-5xl font-bold font-display mb-4 text-white">
                             Get a <span className="gradient-text">Random Coupon</span>
                         </h1>
-                        <p className="text-xl text-gray-600 dark:text-gray-300">
+                        <p className="text-xl text-gray-400">
                             Click the button below to receive a random verified coupon code
                         </p>
                         {remaining !== null && (
-                            <div className="mt-4 text-sm text-gray-500 dark:text-gray-400">
+                            <div className="mt-4 text-sm text-gray-500">
                                 {remaining} coupons remaining today
                             </div>
                         )}
@@ -79,11 +79,11 @@ export default function RandomCouponPage() {
                             <button
                                 onClick={fetchRandomCoupon}
                                 disabled={loading}
-                                className="group px-8 py-4 bg-gradient-to-r from-primary-500 to-secondary-500 text-white font-semibold rounded-xl hover:shadow-glow-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center space-x-3 mx-auto"
+                                className="group px-8 py-4 bg-gradient-to-r from-secondary-600 to-primary-500 text-white font-bold rounded-xl shadow-glow hover:shadow-glow-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center space-x-3 mx-auto"
                             >
                                 {loading ? (
                                     <>
-                                        <div className="spinner w-6 h-6"></div>
+                                        <div className="spinner w-6 h-6 border-white/20 border-t-white"></div>
                                         <span>Generating...</span>
                                     </>
                                 ) : (
@@ -98,14 +98,14 @@ export default function RandomCouponPage() {
 
                     {/* Error Message */}
                     {error && (
-                        <div className="glass-card p-6 rounded-xl bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 mb-8">
+                        <div className="glass-card bg-red-900/20 border-red-500/30 p-6 rounded-xl mb-8">
                             <div className="flex items-start space-x-3">
-                                <FiAlertCircle className="w-6 h-6 text-red-600 flex-shrink-0 mt-0.5" />
+                                <FiAlertCircle className="w-6 h-6 text-red-500 flex-shrink-0 mt-0.5" />
                                 <div>
-                                    <h3 className="font-semibold text-red-900 dark:text-red-200 mb-1">
+                                    <h3 className="font-semibold text-red-400 mb-1">
                                         Oops!
                                     </h3>
-                                    <p className="text-red-800 dark:text-red-300">{error}</p>
+                                    <p className="text-red-300/80">{error}</p>
                                 </div>
                             </div>
                         </div>
@@ -122,9 +122,9 @@ export default function RandomCouponPage() {
                                         setCoupon(null);
                                         setError(null);
                                     }}
-                                    className="inline-flex items-center space-x-2 px-6 py-3 glass-card hover:shadow-card-hover rounded-lg font-semibold transition-all duration-300"
+                                    className="inline-flex items-center space-x-2 px-6 py-3 glass-card bg-[#1a1c23] hover:bg-[#20222b] border-white/5 rounded-lg font-semibold transition-all duration-300 text-white"
                                 >
-                                    <FiRefreshCw className="w-5 h-5" />
+                                    <FiRefreshCw className="w-5 h-5 text-primary-400" />
                                     <span>Get Another Coupon</span>
                                 </button>
                             </div>
@@ -132,21 +132,21 @@ export default function RandomCouponPage() {
                     )}
 
                     {/* How it Works */}
-                    <div className="mt-16 glass-card p-8 rounded-2xl">
-                        <h2 className="text-2xl font-bold mb-6 text-center">How It Works</h2>
-                        <div className="space-y-4">
+                    <div className="mt-16 glass-card bg-[#1a1c23] border-white/5 p-8 rounded-2xl">
+                        <h2 className="text-2xl font-bold mb-6 text-center text-white">How It Works</h2>
+                        <div className="space-y-6">
                             {[
                                 { step: '1', title: 'Click Generate', description: 'Click the button to get a random coupon' },
                                 { step: '2', title: 'Copy Code', description: 'Copy the coupon code to your clipboard' },
                                 { step: '3', title: 'Apply & Save', description: 'Use the code at checkout and enjoy savings' },
                             ].map((item, index) => (
                                 <div key={index} className="flex items-start space-x-4">
-                                    <div className="flex-shrink-0 w-10 h-10 bg-gradient-to-r from-primary-500 to-secondary-500 text-white rounded-full flex items-center justify-center font-bold">
+                                    <div className="flex-shrink-0 w-10 h-10 bg-[#0b0c10] border border-white/10 text-primary-400 rounded-full flex items-center justify-center font-bold">
                                         {item.step}
                                     </div>
                                     <div>
-                                        <h3 className="font-semibold text-lg mb-1">{item.title}</h3>
-                                        <p className="text-gray-600 dark:text-gray-400">{item.description}</p>
+                                        <h3 className="font-semibold text-lg mb-1 text-white">{item.title}</h3>
+                                        <p className="text-gray-400 text-sm">{item.description}</p>
                                     </div>
                                 </div>
                             ))}
@@ -156,8 +156,8 @@ export default function RandomCouponPage() {
                     <AdBanner slotId="150c3903e11298ce18dfe86139a7f4e0" format="square" className="my-10" />
 
                     {/* Daily Limit Notice */}
-                    <div className="mt-6 p-4 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-xl">
-                        <p className="text-sm text-blue-900 dark:text-blue-200 text-center">
+                    <div className="mt-6 p-4 glass-card bg-primary-900/10 border border-primary-500/20 rounded-xl">
+                        <p className="text-sm text-primary-300 text-center">
                             <strong>Note:</strong> You can claim up to 10 coupons per day
                         </p>
                     </div>

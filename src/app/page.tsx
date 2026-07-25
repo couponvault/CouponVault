@@ -154,7 +154,7 @@ export default function HomePage() {
                 </div>
 
                 {/* Featured Deals & Codes */}
-                <section className="py-20 px-4 sm:px-6 lg:px-8 bg-[#0b0c10]">
+                <section className="py-20 px-4 sm:px-6 lg:px-8">
                     <div className="max-w-5xl mx-auto">
                         <h2 className="text-2xl font-bold text-white mb-8">Featured Deals & Codes</h2>
 
@@ -167,7 +167,7 @@ export default function HomePage() {
                                 { name: 'Dell', bg: '#0076ce', text: '#ffffff' },
                                 { name: 'Samsung', bg: '#1428a0', text: '#ffffff' },
                             ].map((store, index) => (
-                                <div key={index} className="glass-card overflow-hidden p-5 flex flex-col group relative rounded-2xl hover:bg-white/10 transition-colors">
+                                <div key={index} className="glass-card bg-[#1a1c23] overflow-hidden p-5 flex flex-col group relative rounded-2xl hover:bg-[#20222b] transition-colors border-white/5">
                                     <div className="flex items-center justify-between mb-4">
                                         <div className="flex items-center space-x-3">
                                             <div className="w-10 h-10 rounded-full flex items-center justify-center font-bold text-lg shadow-inner" style={{ backgroundColor: store.bg, color: store.text }}>

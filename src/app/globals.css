@@ -19,7 +19,7 @@
   }
 
   body {
-    @apply bg-[#111317] text-white;
+    @apply bg-[#0b0c10] text-white;
     font-family: 'Inter', sans-serif;
   }
 

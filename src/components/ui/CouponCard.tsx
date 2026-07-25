@@ -61,7 +61,7 @@ export default function CouponCard({ coupon }: CouponCardProps) {
     );
 
     return (
-        <div className="glass-card overflow-hidden p-5 flex flex-col group relative rounded-2xl hover:bg-white/10 transition-colors">
+        <div className="glass-card bg-[#1a1c23] overflow-hidden p-5 flex flex-col group relative rounded-2xl hover:bg-[#20222b] transition-colors border-white/5">
             {/* Top row: Logo, Brand Name, Active Badge */}
             <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center space-x-3">

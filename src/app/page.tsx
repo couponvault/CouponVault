@@ -24,11 +24,15 @@ export default function HomePage() {
 
     const deals = [
         { name: 'NIKE', bg: '#000', text: '#fff', discount: '25%', code: 'SAVE2SNOW' },
-        { name: 'AMAZON', bg: '#fff', text: '#ff9900', discount: '25%', code: 'SAVE2SNOW' },
-        { name: 'SEPHORA', bg: '#000', text: '#fff', discount: '25%', code: 'SAVE2SNOW' },
-        { name: 'ADIDAS', bg: '#000', text: '#fff', discount: '25%', code: 'SAVE2SNOW' },
-        { name: 'DELL', bg: '#0076ce', text: '#fff', discount: '25%', code: 'SAVE2SNOW' },
-        { name: 'SAMSUNG', bg: '#1428a0', text: '#fff', discount: '15%', code: 'SAVE2SNOW' },
+        { name: 'AMAZON', bg: '#fff', text: '#ff9900', discount: '25%', code: 'AMZN25' },
+        { name: 'SEPHORA', bg: '#000', text: '#fff', discount: '25%', code: 'BEAUTY25' },
+        { name: 'ADIDAS', bg: '#000', text: '#fff', discount: '25%', code: 'ADIFALL' },
+        { name: 'DELL', bg: '#0076ce', text: '#fff', discount: '25%', code: 'DELLSAVE' },
+        { name: 'SAMSUNG', bg: '#1428a0', text: '#fff', discount: '15%', code: 'GALAXY15' },
+        { name: 'TARGET', bg: '#cc0000', text: '#fff', discount: '20%', code: 'TGT20' },
+        { name: 'UBER', bg: '#000', text: '#fff', discount: '50%', code: 'UBER50' },
+        { name: 'DOMINOS', bg: '#006491', text: '#fff', discount: '30%', code: 'PIZZA30' },
+        { name: 'STEAM', bg: '#171a21', text: '#fff', discount: '10%', code: 'GAMER10' },
     ];
 
     const handleCopy = async (code: string) => {
@@ -133,9 +137,9 @@ export default function HomePage() {
                 </div>
 
                 {/* Featured Deals & Codes */}
-                <section className="max-w-6xl mx-auto px-4 py-12">
+                <section className="w-full px-4 md:px-8 py-12">
                     <h2 className="text-2xl font-bold text-white mb-8 font-display">Featured Deals & Codes</h2>
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-6">
                         {deals.map((deal, i) => (
                             <div key={i} className="bg-[#12131a] border border-white/5 rounded-2xl p-6 flex flex-col hover:border-cyan-500/20 transition-all hover:-translate-y-1 shadow-lg">
                                 {/* Header: Logo + Name + Active Badge */}

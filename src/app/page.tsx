@@ -49,67 +49,86 @@ export default function HomePage() {
             <Navbar />
 
             <main className="flex-1">
-                {/* Search Bar */}
-                <div className="max-w-2xl mx-auto px-4 pt-8 pb-4">
-                    <div className="relative group">
-                        <div className="absolute -inset-[1px] bg-gradient-to-r from-cyan-500 via-purple-500 to-cyan-500 rounded-full opacity-60 group-hover:opacity-80 transition duration-300"></div>
-                        <div className="relative flex items-center bg-[#12131a] rounded-full">
+                {/* Unified Hero Section */}
+                <section className="text-center py-16 px-4 max-w-5xl mx-auto">
+                    <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 font-display tracking-tight leading-tight">
+                        Verified Coupons & Deals That Actually Work
+                    </h1>
+                    
+                    <p className="text-[#94A3B8] text-lg md:text-xl max-w-3xl mx-auto mb-10 leading-relaxed">
+                        Save money with verified coupon codes, promo offers, cashback deals, and exclusive discounts from hundreds of trusted brands. Updated daily to ensure every deal is fresh and reliable.
+                    </p>
+
+                    {/* Trust Badges */}
+                    <div className="flex flex-wrap items-center justify-center gap-3 md:gap-4 mb-12">
+                        <div className="flex items-center space-x-2 px-4 py-2 bg-[#151922] border border-[#2563EB]/20 rounded-full shadow-sm">
+                            <FiCheck className="w-4 h-4 text-[#10B981]" />
+                            <span className="text-[#94A3B8] text-sm font-medium">15,000+ Verified Coupons</span>
+                        </div>
+                        <div className="flex items-center space-x-2 px-4 py-2 bg-[#151922] border border-[#2563EB]/20 rounded-full shadow-sm">
+                            <span className="text-[#10B981] text-sm">🏪</span>
+                            <span className="text-[#94A3B8] text-sm font-medium">500+ Trusted Stores</span>
+                        </div>
+                        <div className="flex items-center space-x-2 px-4 py-2 bg-[#151922] border border-[#2563EB]/20 rounded-full shadow-sm">
+                            <span className="text-[#10B981] text-sm">🔄</span>
+                            <span className="text-[#94A3B8] text-sm font-medium">Updated Daily</span>
+                        </div>
+                        <div className="flex items-center space-x-2 px-4 py-2 bg-[#151922] border border-[#2563EB]/20 rounded-full shadow-sm">
+                            <span className="text-[#10B981] text-sm">🆓</span>
+                            <span className="text-[#94A3B8] text-sm font-medium">100% Free to Use</span>
+                        </div>
+                    </div>
+
+                    {/* Search Bar */}
+                    <div className="max-w-3xl mx-auto mb-6 relative group">
+                        <div className="absolute -inset-[1px] bg-gradient-to-r from-[#2563EB] to-[#10B981] rounded-full opacity-0 group-focus-within:opacity-50 transition duration-500 blur-md"></div>
+                        <div className="relative flex items-center bg-[#151922] rounded-full border border-[#2A3445] focus-within:border-[#2563EB] focus-within:ring-2 focus-within:ring-[#2563EB]/50 transition-all duration-300 shadow-xl">
                             <input
                                 type="text"
-                                placeholder="Search for brands, deals, codes..."
+                                placeholder="Search Amazon, Flipkart, Myntra, Swiggy..."
                                 value={searchQuery}
                                 onChange={(e) => setSearchQuery(e.target.value)}
-                                className="w-full bg-transparent text-white text-sm px-6 py-3.5 outline-none placeholder-gray-500"
+                                className="w-full bg-transparent text-white text-base md:text-lg px-8 py-4 md:py-5 outline-none placeholder-[#94A3B8] rounded-l-full"
                             />
-                            <button className="pr-5 text-gray-400 hover:text-white transition-colors">
-                                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <button className="pr-8 pl-4 text-[#94A3B8] hover:text-[#2563EB] transition-colors">
+                                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                                 </svg>
                             </button>
                         </div>
                     </div>
-                </div>
 
-                {/* Hero */}
-                <section className="text-center py-12 px-4">
-                    <h1 className="text-4xl md:text-6xl font-bold text-white mb-4 font-display tracking-tight">
-                        Save Smarter. Live Better.
-                    </h1>
-                    <p className="text-gray-400 text-base md:text-lg max-w-xl mx-auto mb-8 leading-relaxed">
-                        Access thousands of verified coupons and promo codes
-                        <br className="hidden sm:block" />
-                        for your favorite brands instantly.
-                    </p>
-                    <Link
-                        href="/random"
-                        className="inline-flex items-center space-x-2 px-7 py-3 bg-gradient-to-r from-teal-600 to-teal-500 text-white font-semibold rounded-full hover:from-teal-500 hover:to-teal-400 transition-all duration-300 shadow-lg shadow-teal-500/20"
-                    >
-                        <FiZap className="w-4 h-4 text-yellow-300" />
-                        <span>Start Saving</span>
-                    </Link>
-                </section>
+                    {/* Trending Searches */}
+                    <div className="flex flex-wrap items-center justify-center gap-2 mb-12">
+                        <span className="text-[#94A3B8] text-sm mr-2 flex items-center font-medium">🔥 Trending Searches</span>
+                        {['Amazon', 'Flipkart', 'Myntra', 'Ajio', 'Nykaa', 'Swiggy', 'Zomato'].map((trend) => (
+                            <button key={trend} className="px-4 py-1.5 bg-[#151922] hover:bg-[#2A3445] border border-[#2A3445] rounded-full text-[#94A3B8] hover:text-white text-xs transition-colors">
+                                {trend}
+                            </button>
+                        ))}
+                    </div>
 
-                {/* CTA Actions */}
-                <section className="pb-16 px-4 text-center">
-                    <p className="text-gray-400 mb-8 text-base sm:text-lg max-w-xl mx-auto">
-                        Explore top stores or get a random verified code instantly to maximize your savings.
-                    </p>
-                    <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                    {/* CTA Actions */}
+                    <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6">
                         <Link
                             href="/random"
-                            className="w-full sm:w-auto px-8 py-3.5 bg-gradient-to-r from-purple-600 via-purple-500 to-cyan-500 text-white font-bold rounded-xl hover:opacity-90 transition-all shadow-lg shadow-purple-500/25 flex items-center justify-center space-x-2"
+                            className="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-[#2563EB] to-blue-500 text-white font-bold rounded-xl hover:opacity-90 transition-all shadow-lg shadow-[#2563EB]/25 flex items-center justify-center space-x-2 text-lg"
                         >
-                            <FiGift className="w-5 h-5" />
-                            <span>Get Random Coupon</span>
+                            <span>🔍</span>
+                            <span>Find Coupons</span>
                         </Link>
                         <Link
                             href="/platforms"
-                            className="w-full sm:w-auto px-8 py-3.5 bg-[#12131a] border border-white/5 hover:border-cyan-500/30 text-white font-bold rounded-xl transition-all flex items-center justify-center space-x-2"
+                            className="w-full sm:w-auto px-8 py-4 bg-[#151922] border border-[#2A3445] hover:border-[#2563EB] text-white font-bold rounded-xl transition-all flex items-center justify-center space-x-2 text-lg"
                         >
-                            <FiGrid className="w-5 h-5 text-cyan-400" />
-                            <span>Browse Platforms</span>
+                            <span>🏪</span>
+                            <span>Browse Stores</span>
                         </Link>
                     </div>
+                    
+                    <p className="text-[#94A3B8] text-sm">
+                        Trusted by thousands of shoppers looking for verified deals every day.
+                    </p>
                 </section>
 
                 {/* Top Featured Stores */}

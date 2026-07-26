@@ -263,6 +263,8 @@ async function seedDatabase() {
         console.log('🧹 Clearing existing data...');
         await Platform.deleteMany({});
         await User.deleteMany({});
+        const Coupon = mongoose.models.Coupon || mongoose.model('Coupon', new mongoose.Schema({}));
+        await Coupon.deleteMany({});
 
         // Insert platforms
         console.log('📦 Inserting platforms...');

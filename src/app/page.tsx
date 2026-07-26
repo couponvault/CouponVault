@@ -36,7 +36,8 @@ export default function HomePage() {
                 }
                 
                 if (couponsData.success) {
-                    setCoupons(couponsData.coupons);
+                    // Filter out any orphaned coupons that might have null platforms
+                    setCoupons(couponsData.coupons.filter((c: any) => c.platform));
                 }
             } catch (err) {
                 console.error('Error fetching data:', err);

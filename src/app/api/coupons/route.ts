@@ -27,7 +27,7 @@ export async function GET(request: NextRequest) {
         // Populate platform manually since aggregate doesn't populate directly
         const coupons = await Coupon.populate(couponsAggregation, {
             path: 'platform',
-            select: 'name logo slug backgroundColor textColor'
+            select: 'name logo slug backgroundColor textColor category'
         });
 
         return NextResponse.json({

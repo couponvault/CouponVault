@@ -55,6 +55,8 @@ async function fillVault() {
             for (let i = 0; i < count; i++) {
                 const code = nanoid();
                 const value = Math.floor(Math.random() * 40) + 10;
+                const minPurchases = [0, 20, 50, 100, 150];
+                const minPurchaseValue = minPurchases[Math.floor(Math.random() * minPurchases.length)];
 
                 coupons.push({
                     code: p.name.substring(0, 3).toUpperCase() + code,
@@ -62,7 +64,7 @@ async function fillVault() {
                     platformName: p.name,
                     discountType: 'percentage',
                     discountValue: value,
-                    minPurchase: 499,
+                    minPurchase: minPurchaseValue,
                     expiresAt: expiryDate,
                     description: `Get ${value}% off on all orders at ${p.name}`,
                     isActive: true,

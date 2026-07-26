@@ -79,9 +79,20 @@ export default function CouponModal({ isOpen, onClose, coupon, platform }: Coupo
                             {coupon.discountType === 'percentage' ? `${coupon.discountValue}% OFF` : `$${coupon.discountValue} OFF`}
                         </div>
                         
-                        <h2 className="text-xl font-bold text-white mb-6">
+                        <h2 className="text-xl font-bold text-white mb-4">
                             Copy this code and use it at checkout
                         </h2>
+
+                        <div className="flex justify-center gap-4 text-sm mb-6">
+                            <div className="bg-[#2A3445]/30 px-4 py-2 rounded-xl border border-[#2A3445]/50">
+                                <span className="block text-[10px] uppercase tracking-wider text-gray-500 mb-1">Category</span>
+                                <span className="font-semibold text-emerald-400 capitalize">{platform.category || 'Sitewide'}</span>
+                            </div>
+                            <div className="bg-[#2A3445]/30 px-4 py-2 rounded-xl border border-[#2A3445]/50">
+                                <span className="block text-[10px] uppercase tracking-wider text-gray-500 mb-1">Min. Order</span>
+                                <span className="font-semibold text-cyan-400">{coupon.minPurchase > 0 ? `$${coupon.minPurchase}` : 'None'}</span>
+                            </div>
+                        </div>
 
                         {/* Code Box */}
                         <div 

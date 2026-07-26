@@ -252,6 +252,18 @@ export default function HomePage() {
                                         <button onClick={() => handleCopy(deal.code)} className="text-cyan-400 hover:text-cyan-300 underline underline-offset-2 font-medium">Copy Code</button>
                                     </div>
 
+                                    {/* Terms Info */}
+                                    <div className="flex flex-col space-y-2 mb-6 p-3 bg-white/5 rounded-lg text-xs text-gray-400">
+                                        <div className="flex items-center justify-between">
+                                            <span>Category</span>
+                                            <span className="text-white capitalize font-medium">{deal.platform.category || 'Sitewide'}</span>
+                                        </div>
+                                        <div className="flex items-center justify-between">
+                                            <span>Min. Order</span>
+                                            <span className="text-white font-medium">{deal.minPurchase > 0 ? `$${deal.minPurchase}` : 'No Minimum'}</span>
+                                        </div>
+                                    </div>
+
                                     {/* Rating */}
                                     <div className="flex items-center justify-between mb-6 text-sm text-gray-500">
                                         <span>User Rating</span>

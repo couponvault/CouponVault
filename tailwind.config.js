@@ -9,14 +9,16 @@ module.exports = {
     theme: {
         extend: {
             colors: {
-                smokyBlack: '#11120D',
-                oliveDrab: '#565449',
-                bone: '#D8CFBC',
-                floralWhite: '#FFFBF4',
+                appleBg: '#FFFFFF',
+                appleCard: '#F5F5F7',
+                appleText: '#1D1D1F',
+                appleMuted: '#86868B',
+                appleBlue: '#007AFF',
+                appleBorder: '#E5E5EA',
                 // Keep some semantic colors for functionality but adapt them
-                success: '#84cc16', // lime-500
-                warning: '#f59e0b', // amber-500
-                error: '#ef4444',   // red-500
+                success: '#34C759', // Apple green
+                warning: '#FF9500', // Apple orange
+                error: '#FF3B30',   // Apple red
             },
             fontFamily: {
                 sans: ['Inter', 'system-ui', 'sans-serif'],

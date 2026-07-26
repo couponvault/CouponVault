@@ -6,15 +6,15 @@
 
 @layer base {
   :root {
-    color-scheme: dark;
+    color-scheme: light;
   }
 
   * {
-    @apply border-oliveDrab/30;
+    @apply border-appleBorder;
   }
 
   body {
-    @apply bg-smokyBlack text-floralWhite;
+    @apply bg-appleBg text-appleText;
     font-family: 'Inter', sans-serif;
   }
 
@@ -30,46 +30,38 @@
 
 @layer components {
 
-  /* Glowing button effect */
+  /* Glowing button effect - replaced with subtle shadow transition for light theme */
   .btn-glow {
-    @apply relative overflow-hidden;
+    @apply relative overflow-hidden transition-all duration-300;
+  }
+  .btn-glow:hover {
+    @apply shadow-lg transform -translate-y-0.5;
   }
 
-  .btn-glow::before {
-    content: '';
-    @apply absolute inset-0 bg-gradient-to-r from-transparent via-floralWhite to-transparent opacity-0 transition-opacity duration-500;
-    transform: translateX(-100%);
-  }
-
-  .btn-glow:hover::before {
-    @apply opacity-30;
-    animation: shimmer 1.5s infinite;
-  }
-
-  /* Glass morphism card */
+  /* Glass morphism card - light theme frosted glass */
   .glass-card {
-    @apply bg-oliveDrab/10 backdrop-blur-xl border border-oliveDrab/30;
+    @apply bg-white/70 backdrop-blur-xl border border-white shadow-sm;
   }
 
   /* Gradient text */
   .gradient-text {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-bone to-floralWhite;
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-appleBlue to-purple-500;
   }
 
-  /* Coupon card */
+  /* Coupon card - soft apple shadows */
   .coupon-card {
-    @apply relative overflow-hidden rounded-2xl shadow-card hover:shadow-card-hover transition-all duration-300 transform hover:-translate-y-1;
+    @apply relative overflow-hidden rounded-2xl bg-white shadow-[0_2px_10px_rgba(0,0,0,0.04)] hover:shadow-[0_10px_30px_rgba(0,0,0,0.08)] transition-all duration-300 transform hover:-translate-y-1;
   }
 
   /* Shimmer effect for skeletons */
   .shimmer {
-    @apply relative overflow-hidden bg-oliveDrab/20;
+    @apply relative overflow-hidden bg-gray-100;
   }
 
   .shimmer::after {
     content: '';
     @apply absolute inset-0;
-    background: linear-gradient(90deg, transparent, rgba(255, 251, 244, 0.1), transparent);
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
     animation: shimmer 2s infinite;
   }
 
@@ -79,15 +71,15 @@
   }
 
   .custom-scrollbar::-webkit-scrollbar-track {
-    @apply bg-smokyBlack;
+    @apply bg-transparent;
   }
 
   .custom-scrollbar::-webkit-scrollbar-thumb {
-    @apply bg-oliveDrab rounded-full;
+    @apply bg-gray-300 rounded-full;
   }
 
   .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-    @apply bg-bone;
+    @apply bg-gray-400;
   }
 
   /* Floating animation */
@@ -107,20 +99,20 @@
     }
   }
 
-  /* Pulse glow */
+  /* Pulse glow - replaced with soft ring pulse for light theme */
   .pulse-glow {
-    animation: pulse-glow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    animation: pulse-ring 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   }
 
-  @keyframes pulse-glow {
+  @keyframes pulse-ring {
 
     0%,
     100% {
-      box-shadow: 0 0 20px rgba(216, 207, 188, 0.2);
+      box-shadow: 0 0 0 0 rgba(0, 122, 255, 0.1);
     }
 
     50% {
-      box-shadow: 0 0 30px rgba(216, 207, 188, 0.5);
+      box-shadow: 0 0 0 10px rgba(0, 122, 255, 0);
     }
   }
 }
@@ -140,19 +132,19 @@
   }
 }
 
-/* Dark mode transitions */
+/* Transitions */
 * {
   transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 /* Selection color */
 ::selection {
-  @apply bg-oliveDrab text-floralWhite;
+  @apply bg-appleBlue/20 text-appleBlue;
 }
 
 /* Focus visible styles */
 :focus-visible {
-  @apply outline-none ring-2 ring-bone ring-offset-2 ring-offset-smokyBlack;
+  @apply outline-none ring-2 ring-appleBlue ring-offset-2 ring-offset-white;
 }
 
 /* Loading spinner */
@@ -163,8 +155,8 @@
 }
 
 .spinner {
-  border: 3px solid rgba(216, 207, 188, 0.1);
-  border-top-color: #D8CFBC;
+  border: 3px solid rgba(0, 122, 255, 0.1);
+  border-top-color: #007AFF;
   border-radius: 50%;
   animation: spin 1s linear infinite;
 }

@@ -54,63 +54,63 @@ export default function CouponCard({ coupon }: CouponCardProps) {
     };
 
     return (
-        <div className="bg-smokyBlack/90 border border-oliveDrab/30 rounded-2xl p-5 flex flex-col hover:border-bone/50 transition-colors">
+        <div className="coupon-card bg-white border border-appleBorder p-5 flex flex-col group">
             {/* Header: Logo + Name + Active Badge */}
             <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center space-x-3">
                     <div
-                        className="w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm shadow-md"
+                        className="w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm shadow-sm border border-appleBorder"
                         style={{ backgroundColor: coupon.platform.backgroundColor, color: coupon.platform.textColor }}
                     >
                         {coupon.platform.logo || coupon.platform.name.charAt(0)}
                     </div>
-                    <span className="font-bold text-white text-sm tracking-wider uppercase">
+                    <span className="font-bold text-appleText text-sm tracking-wider">
                         {coupon.platform.name}
                     </span>
                 </div>
-                <span className="px-3 py-1 bg-oliveDrab/20 border border-oliveDrab/40 rounded-full text-[11px] font-bold text-bone">
+                <span className="px-3 py-1 bg-success/10 border border-success/20 rounded-full text-[11px] font-bold text-success">
                     Active
                 </span>
             </div>
 
             {/* Discount */}
-            <h3 className="text-lg font-bold text-white mb-3 leading-snug">
+            <h3 className="text-lg font-bold text-appleText mb-3 leading-snug group-hover:text-appleBlue transition-colors">
                 {formatDiscount()} Your Entire Purchase
             </h3>
 
             {/* Verified + Code */}
             <div className="flex items-center justify-between mb-1">
                 <div className="flex items-center space-x-1.5 text-sm">
-                    <FiCheck className="text-bone w-3.5 h-3.5" />
-                    <span className="text-bone font-medium text-xs">Verified</span>
-                    <span className="text-gray-500 mx-0.5">•</span>
-                    <span className="text-gray-400 text-xs">Code: <span className="text-white font-mono font-medium">{coupon.code}</span></span>
+                    <FiCheck className="text-appleBlue w-3.5 h-3.5" />
+                    <span className="text-appleBlue font-medium text-xs">Verified</span>
+                    <span className="text-appleMuted mx-0.5">•</span>
+                    <span className="text-appleMuted text-xs">Code: <span className="text-appleText font-mono font-medium">{coupon.code}</span></span>
                 </div>
                 <button onClick={handleCopy} className="p-1 hover:bg-white/5 rounded transition-colors">
                     {copied ? <FiCheck className="w-3.5 h-3.5 text-green-400" /> : <FiCopy className="w-3.5 h-3.5 text-gray-500" />}
                 </button>
             </div>
 
-            {/* Expiry */}
-            <div className="flex items-center text-xs text-gray-500 mb-4">
+            {/* Expiry + Copy */}
+            <div className="flex items-center text-xs text-appleMuted mb-4">
                 <span>Exp: {new Date(coupon.expiresAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}</span>
                 <span className="mx-1.5">•</span>
-                <button onClick={handleCopy} className="text-bone hover:text-floralWhite underline underline-offset-2 font-medium">Copy Code</button>
+                <button onClick={handleCopy} className="text-appleBlue hover:text-blue-700 font-medium">Copy Code</button>
             </div>
 
             {/* Rating */}
-            <div className="flex items-center justify-between mb-5 text-sm text-gray-500">
+            <div className="flex items-center justify-between mt-auto mb-4 text-xs text-appleMuted border-t border-appleBorder/50 pt-3">
                 <span>User Rating</span>
                 <div className="flex items-center space-x-1">
-                    <span className="font-bold text-white">4.9</span>
-                    <FiStar className="text-yellow-500 w-3.5 h-3.5 fill-current" />
+                    <span className="font-bold text-appleText">4.9</span>
+                    <FiStar className="text-warning w-3.5 h-3.5 fill-current" />
                 </div>
             </div>
 
             {/* Get Code Button */}
             <button
                 onClick={handleCopy}
-                className="w-full py-2.5 bg-floralWhite text-smokyBlack font-bold text-sm rounded-xl hover:opacity-90 transition-opacity"
+                className="btn-glow w-full py-2.5 bg-appleBlue text-white font-semibold text-sm rounded-xl"
             >
                 Get Code
             </button>

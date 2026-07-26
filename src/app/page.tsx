@@ -63,7 +63,7 @@ export default function HomePage() {
     };
 
     return (
-        <div className="min-h-screen flex flex-col bg-smokyBlack">
+        <div className="min-h-screen flex flex-col bg-appleBg">
             <Navbar />
 
             <main className="flex-1">
@@ -112,36 +112,36 @@ export default function HomePage() {
                         ))}
                         
                         {/* Soft background glows to blend them */}
-                        <div className="absolute top-1/4 left-0 w-64 h-64 bg-oliveDrab/20 rounded-full blur-[100px]" />
-                        <div className="absolute bottom-1/4 right-0 w-64 h-64 bg-bone/10 rounded-full blur-[100px]" />
+                        <div className="absolute top-1/4 left-0 w-64 h-64 bg-appleBlue/5 rounded-full blur-[100px]" />
+                        <div className="absolute bottom-1/4 right-0 w-64 h-64 bg-purple-500/5 rounded-full blur-[100px]" />
                     </div>
 
                     <div className="max-w-5xl mx-auto relative z-10">
-                        <h1 className="text-4xl md:text-6xl font-bold text-floralWhite mb-6 font-display tracking-tight leading-tight">
+                        <h1 className="text-4xl md:text-6xl font-bold text-appleText mb-6 font-display tracking-tight leading-tight">
                             Verified Coupons & Deals That Actually Work
                         </h1>
                     
-                    <p className="text-bone/70 text-lg md:text-xl max-w-3xl mx-auto mb-10 leading-relaxed">
+                    <p className="text-appleMuted text-lg md:text-xl max-w-3xl mx-auto mb-10 leading-relaxed">
                         Save money with verified coupon codes, promo offers, cashback deals, and exclusive discounts from hundreds of trusted brands. Updated daily to ensure every deal is fresh and reliable.
                     </p>
 
                     {/* Trust Badges */}
                     <div className="flex flex-wrap items-center justify-center gap-3 md:gap-4 mb-12">
-                        <div className="flex items-center space-x-2 px-4 py-2 bg-oliveDrab/10 border border-oliveDrab/30 rounded-full shadow-sm">
-                            <FiCheck className="w-4 h-4 text-bone" />
-                            <span className="text-bone/70 text-sm font-medium">15,000+ Verified Coupons</span>
+                        <div className="flex items-center space-x-2 px-4 py-2 bg-white border border-appleBorder rounded-full shadow-sm">
+                            <FiCheck className="w-4 h-4 text-appleBlue" />
+                            <span className="text-appleMuted text-sm font-medium">15,000+ Verified Coupons</span>
                         </div>
-                        <div className="flex items-center space-x-2 px-4 py-2 bg-oliveDrab/10 border border-oliveDrab/30 rounded-full shadow-sm">
-                            <span className="text-bone text-sm">🏪</span>
-                            <span className="text-bone/70 text-sm font-medium">500+ Trusted Stores</span>
+                        <div className="flex items-center space-x-2 px-4 py-2 bg-white border border-appleBorder rounded-full shadow-sm">
+                            <span className="text-appleBlue text-sm">🏪</span>
+                            <span className="text-appleMuted text-sm font-medium">500+ Trusted Stores</span>
                         </div>
-                        <div className="flex items-center space-x-2 px-4 py-2 bg-oliveDrab/10 border border-oliveDrab/30 rounded-full shadow-sm">
-                            <span className="text-bone text-sm">🔄</span>
-                            <span className="text-bone/70 text-sm font-medium">Updated Daily</span>
+                        <div className="flex items-center space-x-2 px-4 py-2 bg-white border border-appleBorder rounded-full shadow-sm">
+                            <span className="text-appleBlue text-sm">🔄</span>
+                            <span className="text-appleMuted text-sm font-medium">Updated Daily</span>
                         </div>
-                        <div className="flex items-center space-x-2 px-4 py-2 bg-oliveDrab/10 border border-oliveDrab/30 rounded-full shadow-sm">
-                            <span className="text-bone text-sm">🆓</span>
-                            <span className="text-bone/70 text-sm font-medium">100% Free to Use</span>
+                        <div className="flex items-center space-x-2 px-4 py-2 bg-white border border-appleBorder rounded-full shadow-sm">
+                            <span className="text-appleBlue text-sm">🆓</span>
+                            <span className="text-appleMuted text-sm font-medium">100% Free to Use</span>
                         </div>
                     </div>
 
@@ -152,21 +152,21 @@ export default function HomePage() {
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6">
                         <Link
                             href="/random"
-                            className="w-full sm:w-auto px-8 py-4 bg-floralWhite text-smokyBlack font-bold rounded-xl hover:opacity-90 transition-all shadow-lg flex items-center justify-center space-x-2 text-lg"
+                            className="w-full sm:w-auto px-8 py-4 bg-appleBlue text-white font-semibold rounded-xl transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5 flex items-center justify-center space-x-2 text-lg"
                         >
                             <span>🔍</span>
                             <span>Find Coupons</span>
                         </Link>
                         <Link
                             href="/platforms"
-                            className="w-full sm:w-auto px-8 py-4 bg-oliveDrab/10 border border-oliveDrab hover:border-bone text-floralWhite font-bold rounded-xl transition-all flex items-center justify-center space-x-2 text-lg"
+                            className="w-full sm:w-auto px-8 py-4 bg-white border border-appleBorder hover:border-appleBlue text-appleText font-semibold rounded-xl transition-all flex items-center justify-center space-x-2 text-lg"
                         >
                             <span>🏪</span>
                             <span>Browse Stores</span>
                         </Link>
                     </div>
                     
-                    <p className="text-bone/70 text-sm">
+                    <p className="text-appleMuted text-sm">
                         Trusted by thousands of shoppers looking for verified deals every day.
                     </p>
                     </div>
@@ -174,20 +174,20 @@ export default function HomePage() {
 
                 {/* Top Featured Stores */}
                 <section className="max-w-6xl mx-auto px-4 py-12">
-                    <h2 className="text-2xl font-bold text-floralWhite mb-8 font-display">Top Featured Stores</h2>
+                    <h2 className="text-2xl font-bold text-appleText mb-8 font-display">Top Featured Stores</h2>
                     {loading ? (
-                        <div className="text-center py-10 text-bone/50">Loading stores...</div>
+                        <div className="text-center py-10 text-appleMuted">Loading stores...</div>
                     ) : (
                         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-6">
                             {platforms.map((store, i) => (
-                                <Link key={i} href={`/platforms/${store.slug}`} className="flex flex-col items-center bg-smokyBlack/90 border border-oliveDrab/30 rounded-2xl p-6 hover:border-bone/50 transition-all hover:-translate-y-1 shadow-lg cursor-pointer">
+                                <Link key={i} href={`/platforms/${store.slug}`} className="flex flex-col items-center bg-white border border-appleBorder rounded-2xl p-6 hover:shadow-lg transition-all hover:-translate-y-1 shadow-sm cursor-pointer">
                                     <div
-                                        className="w-20 h-20 rounded-full flex items-center justify-center text-4xl font-bold mb-4 shadow-xl border border-oliveDrab/20"
+                                        className="w-20 h-20 rounded-full flex items-center justify-center text-4xl font-bold mb-4 shadow-sm border border-appleBorder/50"
                                         style={{ backgroundColor: store.backgroundColor, color: store.textColor }}
                                     >
                                         {store.logo || store.name.charAt(0)}
                                     </div>
-                                    <span className="px-3 py-1.5 bg-oliveDrab/20 border border-oliveDrab/40 rounded-full text-xs font-semibold text-bone whitespace-nowrap">
+                                    <span className="px-3 py-1.5 bg-success/10 border border-success/20 rounded-full text-xs font-semibold text-success whitespace-nowrap">
                                         Up to 50% Off
                                     </span>
                                 </Link>
@@ -202,73 +202,73 @@ export default function HomePage() {
 
                 {/* Featured Deals & Codes */}
                 <section className="w-full px-4 md:px-8 py-12">
-                    <h2 className="text-2xl font-bold text-floralWhite mb-8 font-display">Featured Deals & Codes</h2>
+                    <h2 className="text-2xl font-bold text-appleText mb-8 font-display">Featured Deals & Codes</h2>
                     {loading ? (
-                        <div className="text-center py-10 text-bone/50">Loading deals...</div>
+                        <div className="text-center py-10 text-appleMuted">Loading deals...</div>
                     ) : (
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-6">
                             {coupons.map((deal, i) => (
-                                <div key={i} className="bg-smokyBlack/90 border border-oliveDrab/30 rounded-2xl p-6 flex flex-col hover:border-bone/50 transition-all hover:-translate-y-1 shadow-lg">
+                                <div key={i} className="coupon-card bg-white border border-appleBorder rounded-2xl p-6 flex flex-col hover:shadow-lg transition-all hover:-translate-y-1 shadow-sm group">
                                     {/* Header: Logo + Name + Active Badge */}
                                     <div className="flex items-center justify-between mb-5">
                                         <div className="flex items-center space-x-4">
                                             <div
-                                                className="w-12 h-12 rounded-full flex items-center justify-center font-bold text-base shadow-md border border-oliveDrab/20"
+                                                className="w-12 h-12 rounded-full flex items-center justify-center font-bold text-base shadow-sm border border-appleBorder/50"
                                                 style={{ backgroundColor: deal.platform.backgroundColor, color: deal.platform.textColor }}
                                             >
                                                 {deal.platform.logo || deal.platform.name.charAt(0)}
                                             </div>
-                                            <span className="font-bold text-floralWhite text-base tracking-wider">
+                                            <span className="font-bold text-appleText text-base tracking-wider">
                                                 {deal.platform.name}
                                             </span>
                                         </div>
-                                        <span className="px-4 py-1.5 bg-oliveDrab/20 border border-oliveDrab/40 rounded-full text-xs font-bold text-bone">
+                                        <span className="px-4 py-1.5 bg-success/10 border border-success/20 rounded-full text-xs font-bold text-success">
                                             Active
                                         </span>
                                     </div>
 
                                     {/* Discount */}
-                                    <h3 className="text-xl font-bold text-floralWhite mb-4 leading-snug">
+                                    <h3 className="text-xl font-bold text-appleText mb-4 leading-snug group-hover:text-appleBlue transition-colors">
                                         {deal.discountType === 'percentage' ? `${deal.discountValue}% OFF` : `$${deal.discountValue} OFF`} Your Purchase
                                     </h3>
 
                                     {/* Verified + Code */}
                                     <div className="flex items-center justify-between mb-2">
                                         <div className="flex items-center space-x-2 text-sm">
-                                            <FiCheck className="text-bone w-4 h-4" />
-                                            <span className="text-bone font-medium">Verified</span>
-                                            <span className="text-bone/50 mx-1">•</span>
-                                            <span className="text-bone/70">Code: <span className="text-floralWhite font-mono font-bold text-base bg-oliveDrab/20 px-2 py-0.5 rounded">{deal.code.slice(0, 4)}***</span></span>
+                                            <FiCheck className="text-appleBlue w-4 h-4" />
+                                            <span className="text-appleBlue font-medium">Verified</span>
+                                            <span className="text-appleMuted mx-1">•</span>
+                                            <span className="text-appleMuted">Code: <span className="text-appleText font-mono font-medium">{deal.code.slice(0, 4)}***</span></span>
                                         </div>
-                                        <button onClick={() => handleCopy(deal.code)} className="p-1.5 hover:bg-oliveDrab/20 rounded-md transition-colors">
-                                            <FiCopy className="w-4 h-4 text-bone/70 hover:text-floralWhite" />
+                                        <button onClick={() => handleCopy(deal.code)} className="p-1.5 hover:bg-gray-100 rounded-md transition-colors">
+                                            <FiCopy className="w-4 h-4 text-appleMuted hover:text-appleBlue" />
                                         </button>
                                     </div>
 
                                     {/* Expiry + Copy */}
-                                    <div className="flex items-center text-sm text-bone/60 mb-5">
+                                    <div className="flex items-center text-sm text-appleMuted mb-5">
                                         <span>Exp: {new Date(deal.expiresAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}</span>
                                         <span className="mx-2">•</span>
-                                        <button onClick={() => handleCopy(deal.code)} className="text-bone hover:text-floralWhite underline underline-offset-2 font-medium">Copy Code</button>
+                                        <button onClick={() => handleCopy(deal.code)} className="text-appleBlue hover:text-blue-700 font-medium">Copy Code</button>
                                     </div>
 
                                     {/* Terms Info */}
-                                    <div className="flex flex-col space-y-2 mb-6 p-3 bg-oliveDrab/10 rounded-lg text-xs text-bone/70 border border-oliveDrab/20">
+                                    <div className="flex flex-col space-y-2 mb-6 p-3 bg-appleCard rounded-lg text-xs text-appleMuted border border-appleBorder/50">
                                         <div className="flex items-center justify-between">
                                             <span>Category</span>
-                                            <span className="text-floralWhite capitalize font-medium">{deal.platform.category || 'Sitewide'}</span>
+                                            <span className="text-appleText capitalize font-medium">{deal.platform.category || 'Sitewide'}</span>
                                         </div>
                                         <div className="flex items-center justify-between">
                                             <span>Min. Order</span>
-                                            <span className="text-floralWhite font-medium">{deal.minPurchase > 0 ? `$${deal.minPurchase}` : 'No Minimum'}</span>
+                                            <span className="text-appleText font-medium">{deal.minPurchase > 0 ? `$${deal.minPurchase}` : 'No Minimum'}</span>
                                         </div>
                                     </div>
 
                                     {/* Rating */}
-                                    <div className="flex items-center justify-between mb-6 text-sm text-bone/70">
+                                    <div className="flex items-center justify-between mb-6 text-sm text-appleMuted">
                                         <span>User Rating</span>
                                         <div className="flex items-center space-x-1.5">
-                                            <span className="font-bold text-floralWhite text-base">4.9</span>
+                                            <span className="font-bold text-appleText text-base">4.9</span>
                                             <FiStar className="text-warning w-4 h-4 fill-current" />
                                         </div>
                                     </div>
@@ -276,7 +276,7 @@ export default function HomePage() {
                                     {/* Get Code Button */}
                                     <button
                                         onClick={() => handleOpenModal(deal)}
-                                        className="block text-center w-full py-3.5 bg-floralWhite text-smokyBlack font-bold rounded-xl hover:opacity-90 transition-all shadow-lg"
+                                        className="btn-glow block text-center w-full py-3.5 bg-appleBlue text-white font-semibold rounded-xl"
                                     >
                                         Get Code
                                     </button>
@@ -291,11 +291,11 @@ export default function HomePage() {
                 </div>
 
                 {/* Why Choose CouponVault */}
-                <section className="bg-smokyBlack border-t border-b border-oliveDrab/30 py-16 px-4">
+                <section className="bg-appleCard border-t border-b border-appleBorder py-16 px-4">
                     <div className="max-w-6xl mx-auto">
                         <div className="text-center mb-12">
-                            <h2 className="text-3xl font-bold text-floralWhite mb-4 font-display">Why Choose CouponVault?</h2>
-                            <p className="text-bone/70 max-w-2xl mx-auto">We make saving money effortless with verified deals and instant access to the best discounts online.</p>
+                            <h2 className="text-3xl font-bold text-appleText mb-4 font-display">Why Choose CouponVault?</h2>
+                            <p className="text-appleMuted max-w-2xl mx-auto">We make saving money effortless with verified deals and instant access to the best discounts online.</p>
                         </div>
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                             {[
@@ -304,12 +304,12 @@ export default function HomePage() {
                                 { icon: FiTrendingUp, title: 'Daily Updates', desc: 'Fresh coupons added daily for maximum savings' },
                                 { icon: FiGift, title: 'Top Brands', desc: 'Exclusive deals from Amazon, Walmart, Target & more' },
                             ].map((feature, i) => (
-                                <div key={i} className="flex flex-col items-center text-center p-6 bg-oliveDrab/5 rounded-2xl border border-oliveDrab/30 hover:border-bone/50 transition-all">
-                                    <div className="w-14 h-14 rounded-xl bg-oliveDrab/20 border border-oliveDrab/50 flex items-center justify-center mb-5">
-                                        <feature.icon className="w-6 h-6 text-bone" />
+                                <div key={i} className="flex flex-col items-center text-center p-6 bg-white rounded-2xl border border-appleBorder hover:shadow-md transition-all">
+                                    <div className="w-14 h-14 rounded-xl bg-appleBlue/10 border border-appleBlue/20 flex items-center justify-center mb-5">
+                                        <feature.icon className="w-6 h-6 text-appleBlue" />
                                     </div>
-                                    <h3 className="text-lg font-bold text-floralWhite mb-2">{feature.title}</h3>
-                                    <p className="text-sm text-bone/60 leading-relaxed">{feature.desc}</p>
+                                    <h3 className="text-lg font-bold text-appleText mb-2">{feature.title}</h3>
+                                    <p className="text-sm text-appleMuted leading-relaxed">{feature.desc}</p>
                                 </div>
                             ))}
                         </div>

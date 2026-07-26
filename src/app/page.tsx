@@ -7,7 +7,6 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import SearchBar from '@/components/SearchBar';
 import CouponModal from '@/components/CouponModal';
-import SearchBar from '@/components/SearchBar';
 import { FiZap, FiCheck, FiCopy, FiStar, FiArrowRight, FiShield, FiTrendingUp, FiGift, FiGrid } from 'react-icons/fi';
 import toast from 'react-hot-toast';
 import AdBanner from '@/components/ui/AdBanner';

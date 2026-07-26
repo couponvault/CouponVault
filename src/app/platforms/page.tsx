@@ -59,30 +59,30 @@ export default function PlatformsPage() {
     };
 
     return (
-        <div className="min-h-screen flex flex-col bg-[#0a0b0f]">
+        <div className="min-h-screen flex flex-col bg-appleBg">
             <Navbar />
 
             <main className="flex-1 py-12 px-4">
                 <div className="max-w-4xl mx-auto">
                     {/* Header */}
                     <div className="text-center mb-10">
-                        <h1 className="text-3xl md:text-5xl font-bold text-white mb-3 font-display">
-                            Explore <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-purple-500">Top Stores</span>
+                        <h1 className="text-3xl md:text-5xl font-bold text-appleText mb-3 font-display">
+                            Explore <span className="bg-clip-text text-transparent bg-gradient-to-r from-appleBlue to-purple-500">Top Stores</span>
                         </h1>
-                        <p className="text-gray-400 text-base">
+                        <p className="text-appleMuted text-base">
                             Choose your favorite store and get exclusive coupons
                         </p>
                     </div>
 
                     {/* Search */}
-                    <div className="relative max-w-md mx-auto mb-8">
-                        <FiSearch className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500" />
+                    <div className="relative max-w-md mx-auto mb-8 shadow-sm rounded-xl">
+                        <FiSearch className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-appleMuted" />
                         <input
                             type="text"
                             placeholder="Search stores..."
                             value={searchQuery}
                             onChange={(e) => setSearchQuery(e.target.value)}
-                            className="w-full bg-[#12131a] border border-white/5 text-white text-sm pl-11 pr-4 py-3 rounded-xl outline-none focus:border-cyan-500/30 transition-colors placeholder-gray-500"
+                            className="w-full bg-white border border-appleBorder text-appleText text-sm pl-11 pr-4 py-3 rounded-xl outline-none focus:border-appleBlue/50 transition-colors placeholder-appleMuted"
                         />
                     </div>
 
@@ -93,8 +93,8 @@ export default function PlatformsPage() {
                                 key={cat.value}
                                 onClick={() => setSelectedCategory(cat.value)}
                                 className={`px-5 py-2 rounded-full font-medium text-sm transition-all duration-200 ${selectedCategory === cat.value
-                                    ? 'bg-gradient-to-r from-purple-600 to-cyan-500 text-white'
-                                    : 'bg-[#12131a] border border-white/5 text-gray-400 hover:text-white hover:border-cyan-500/20'
+                                    ? 'bg-appleBlue text-white shadow-sm'
+                                    : 'bg-white border border-appleBorder text-appleMuted hover:text-appleText hover:border-appleBlue/30'
                                     }`}
                             >
                                 {cat.label}
@@ -103,7 +103,7 @@ export default function PlatformsPage() {
                     </div>
 
                     {/* Results Count */}
-                    <div className="text-center mb-6 text-gray-500 text-sm">
+                    <div className="text-center mb-6 text-appleMuted text-sm">
                         Showing {filteredPlatforms.length} store{filteredPlatforms.length !== 1 ? 's' : ''}
                     </div>
 
@@ -111,7 +111,7 @@ export default function PlatformsPage() {
                     {loading ? (
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
                             {[...Array(6)].map((_, i) => (
-                                <div key={i} className="h-48 rounded-2xl bg-[#12131a] border border-white/5 animate-pulse"></div>
+                                <div key={i} className="h-48 rounded-2xl bg-white border border-appleBorder animate-pulse"></div>
                             ))}
                         </div>
                     ) : filteredPlatforms.length > 0 ? (
@@ -125,10 +125,10 @@ export default function PlatformsPage() {
                             ))}
                         </div>
                     ) : (
-                        <div className="text-center py-12">
+                        <div className="text-center py-12 bg-white rounded-2xl border border-appleBorder">
                             <div className="text-5xl mb-4">🔍</div>
-                            <h3 className="text-xl font-bold text-white mb-2">No stores found</h3>
-                            <p className="text-gray-500 text-sm">
+                            <h3 className="text-xl font-bold text-appleText mb-2">No stores found</h3>
+                            <p className="text-appleMuted text-sm">
                                 Try adjusting your search or filter
                             </p>
                         </div>

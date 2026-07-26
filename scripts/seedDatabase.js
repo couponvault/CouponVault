@@ -10,9 +10,9 @@ const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/coupon
 // Platform data
 const platformsData = [
     {
-        name: 'Amazon',
+        name: 'Amazon US',
         slug: 'amazon',
-        description: 'Get exclusive discounts on millions of products from Amazon India',
+        description: 'Get exclusive discounts on millions of products from Amazon',
         logo: '🛒',
         category: 'ecommerce',
         backgroundColor: '#FF9900',
@@ -26,16 +26,16 @@ const platformsData = [
             prefix: 'AMZ',
             discountType: 'percentage',
             discountValue: { min: 10, max: 50 },
-            minPurchase: 500
+            minPurchase: 50
         }
     },
     {
-        name: 'Flipkart',
-        slug: 'flipkart',
-        description: 'Save big on electronics, fashion, and more with Flipkart coupons',
-        logo: '🛍️',
+        name: 'Walmart',
+        slug: 'walmart',
+        description: 'Save big on electronics, home goods, and more with Walmart coupons',
+        logo: '🏪',
         category: 'ecommerce',
-        backgroundColor: '#2874F0',
+        backgroundColor: '#0071CE',
         textColor: '#FFFFFF',
         couponConfig: {
             enabled: true,
@@ -43,16 +43,156 @@ const platformsData = [
             expiryDays: 30,
             usageLimit: 1,
             codeLength: 12,
-            prefix: 'FLK',
+            prefix: 'WMT',
             discountType: 'percentage',
-            discountValue: { min: 10, max: 60 },
-            minPurchase: 499
+            discountValue: { min: 10, max: 40 },
+            minPurchase: 35
         }
     },
     {
-        name: 'Netflix',
+        name: 'Target',
+        slug: 'target',
+        description: 'Exclusive Target Circle deals and promo codes',
+        logo: '🎯',
+        category: 'ecommerce',
+        backgroundColor: '#CC0000',
+        textColor: '#FFFFFF',
+        couponConfig: {
+            enabled: true,
+            dailyGeneration: 80,
+            expiryDays: 45,
+            usageLimit: 1,
+            codeLength: 10,
+            prefix: 'TGT',
+            discountType: 'fixed',
+            discountValue: { min: 5, max: 20 },
+            minPurchase: 50
+        }
+    },
+    {
+        name: 'Best Buy',
+        slug: 'bestbuy',
+        description: 'Top tech deals and appliance discounts',
+        logo: '💻',
+        category: 'electronics',
+        backgroundColor: '#0046BE',
+        textColor: '#FFFFFF',
+        couponConfig: {
+            enabled: true,
+            dailyGeneration: 50,
+            expiryDays: 14,
+            usageLimit: 1,
+            codeLength: 12,
+            prefix: 'BBY',
+            discountType: 'percentage',
+            discountValue: { min: 5, max: 25 },
+            minPurchase: 100
+        }
+    },
+    {
+        name: 'Sephora',
+        slug: 'sephora',
+        description: 'Beauty Insider discounts on top cosmetics',
+        logo: '💄',
+        category: 'fashion',
+        backgroundColor: '#000000',
+        textColor: '#FFFFFF',
+        couponConfig: {
+            enabled: true,
+            dailyGeneration: 70,
+            expiryDays: 30,
+            usageLimit: 1,
+            codeLength: 10,
+            prefix: 'SPH',
+            discountType: 'percentage',
+            discountValue: { min: 10, max: 20 },
+            minPurchase: 50
+        }
+    },
+    {
+        name: 'Macy\'s',
+        slug: 'macys',
+        description: 'Trendy fashion and accessories with exclusive coupons',
+        logo: '👗',
+        category: 'fashion',
+        backgroundColor: '#E11A2B',
+        textColor: '#FFFFFF',
+        couponConfig: {
+            enabled: true,
+            dailyGeneration: 70,
+            expiryDays: 30,
+            usageLimit: 1,
+            codeLength: 10,
+            prefix: 'MCY',
+            discountType: 'percentage',
+            discountValue: { min: 15, max: 60 },
+            minPurchase: 75
+        }
+    },
+    {
+        name: 'DoorDash',
+        slug: 'doordash',
+        description: 'Order food online and save with DoorDash coupons',
+        logo: '🍔',
+        category: 'food',
+        backgroundColor: '#FF3008',
+        textColor: '#FFFFFF',
+        couponConfig: {
+            enabled: true,
+            dailyGeneration: 150,
+            expiryDays: 7,
+            usageLimit: 1,
+            codeLength: 8,
+            prefix: 'DASH',
+            discountType: 'percentage',
+            discountValue: { min: 10, max: 30 },
+            minPurchase: 20
+        }
+    },
+    {
+        name: 'Uber Eats',
+        slug: 'ubereats',
+        description: 'Food delivery deals and restaurant discounts',
+        logo: '🍕',
+        category: 'food',
+        backgroundColor: '#06C167',
+        textColor: '#FFFFFF',
+        couponConfig: {
+            enabled: true,
+            dailyGeneration: 150,
+            expiryDays: 7,
+            usageLimit: 1,
+            codeLength: 8,
+            prefix: 'EATS',
+            discountType: 'fixed',
+            discountValue: { min: 5, max: 15 },
+            minPurchase: 25
+        }
+    },
+    {
+        name: 'Expedia',
+        slug: 'expedia',
+        description: 'Travel bookings with exclusive discounts on flights and hotels',
+        logo: '✈️',
+        category: 'travel',
+        backgroundColor: '#00008F',
+        textColor: '#FFFFFF',
+        couponConfig: {
+            enabled: true,
+            dailyGeneration: 60,
+            expiryDays: 45,
+            usageLimit: 1,
+            codeLength: 10,
+            prefix: 'EXP',
+            discountType: 'fixed',
+            discountValue: { min: 20, max: 100 },
+            minPurchase: 200
+        }
+    },
+    {
+        name: 'Netflix US',
         slug: 'netflix',
-        description: 'Stream unlimited movies and TV shows with Netflix discount codes',
+        description: 'Stream unlimited movies and TV shows',
         logo: '📺',
         category: 'streaming',
         backgroundColor: '#E50914',
@@ -66,144 +206,6 @@ const platformsData = [
             prefix: 'NFX',
             discountType: 'percentage',
             discountValue: { min: 10, max: 30 },
-        }
-    },
-    {
-        name: 'Amazon Prime',
-        slug: 'amazon-prime',
-        description: 'Get Prime membership discounts and exclusive deals',
-        logo: '🎬',
-        category: 'streaming',
-        backgroundColor: '#00A8E1',
-        textColor: '#FFFFFF',
-        couponConfig: {
-            enabled: true,
-            dailyGeneration: 50,
-            expiryDays: 45,
-            usageLimit: 1,
-            codeLength: 12,
-            prefix: 'PRIME',
-            discountType: 'percentage',
-            discountValue: { min: 15, max: 40 },
-        }
-    },
-    {
-        name: 'Myntra',
-        slug: 'myntra',
-        description: 'Fashion and lifestyle products at amazing discounts',
-        logo: '👗',
-        category: 'fashion',
-        backgroundColor: '#FF3F6C',
-        textColor: '#FFFFFF',
-        couponConfig: {
-            enabled: true,
-            dailyGeneration: 80,
-            expiryDays: 30,
-            usageLimit: 1,
-            codeLength: 10,
-            prefix: 'MYN',
-            discountType: 'percentage',
-            discountValue: { min: 20, max: 70 },
-            minPurchase: 799
-        }
-    },
-    {
-        name: 'Ajio',
-        slug: 'ajio',
-        description: 'Trendy fashion and accessories with exclusive coupons',
-        logo: '👔',
-        category: 'fashion',
-        backgroundColor: '#C1282D',
-        textColor: '#FFFFFF',
-        couponConfig: {
-            enabled: true,
-            dailyGeneration: 70,
-            expiryDays: 30,
-            usageLimit: 1,
-            codeLength: 10,
-            prefix: 'AJO',
-            discountType: 'percentage',
-            discountValue: { min: 15, max: 60 },
-            minPurchase: 999
-        }
-    },
-    {
-        name: 'Swiggy',
-        slug: 'swiggy',
-        description: 'Order food online and save with Swiggy coupons',
-        logo: '🍔',
-        category: 'food',
-        backgroundColor: '#FC8019',
-        textColor: '#FFFFFF',
-        couponConfig: {
-            enabled: true,
-            dailyGeneration: 150,
-            expiryDays: 7,
-            usageLimit: 1,
-            codeLength: 8,
-            prefix: 'SWG',
-            discountType: 'percentage',
-            discountValue: { min: 20, max: 50 },
-            minPurchase: 199
-        }
-    },
-    {
-        name: 'Zomato',
-        slug: 'zomato',
-        description: 'Food delivery deals and restaurant discounts',
-        logo: '🍕',
-        category: 'food',
-        backgroundColor: '#E23744',
-        textColor: '#FFFFFF',
-        couponConfig: {
-            enabled: true,
-            dailyGeneration: 150,
-            expiryDays: 7,
-            usageLimit: 1,
-            codeLength: 8,
-            prefix: 'ZOM',
-            discountType: 'percentage',
-            discountValue: { min: 20, max: 60 },
-            minPurchase: 199
-        }
-    },
-    {
-        name: 'MakeMyTrip',
-        slug: 'makemytrip',
-        description: 'Travel bookings with exclusive discounts on flights and hotels',
-        logo: '✈️',
-        category: 'travel',
-        backgroundColor: '#ED1944',
-        textColor: '#FFFFFF',
-        couponConfig: {
-            enabled: true,
-            dailyGeneration: 60,
-            expiryDays: 45,
-            usageLimit: 1,
-            codeLength: 10,
-            prefix: 'MMT',
-            discountType: 'fixed',
-            discountValue: { min: 500, max: 3000 },
-            minPurchase: 2000
-        }
-    },
-    {
-        name: 'Uber',
-        slug: 'uber',
-        description: 'Ride and food delivery discounts with Uber',
-        logo: '🚗',
-        category: 'travel',
-        backgroundColor: '#000000',
-        textColor: '#FFFFFF',
-        couponConfig: {
-            enabled: true,
-            dailyGeneration: 120,
-            expiryDays: 14,
-            usageLimit: 1,
-            codeLength: 8,
-            prefix: 'UBR',
-            discountType: 'percentage',
-            discountValue: { min: 15, max: 40 },
         }
     },
 ];

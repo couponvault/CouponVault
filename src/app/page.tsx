@@ -1,9 +1,12 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import SearchBar from '@/components/SearchBar';
+import CouponModal from '@/components/CouponModal';
 import SearchBar from '@/components/SearchBar';
 import { FiZap, FiCheck, FiCopy, FiStar, FiArrowRight, FiShield, FiTrendingUp, FiGift, FiGrid } from 'react-icons/fi';
 import toast from 'react-hot-toast';
@@ -12,29 +15,43 @@ import AdBanner from '@/components/ui/AdBanner';
 export const dynamic = 'force-dynamic';
 
 export default function HomePage() {
+    const [platforms, setPlatforms] = useState<any[]>([]);
+    const [coupons, setCoupons] = useState<any[]>([]);
+    const [loading, setLoading] = useState(true);
+    const [selectedCoupon, setSelectedCoupon] = useState<any>(null);
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const [platformsRes, couponsRes] = await Promise.all([
+                    fetch('/api/platforms?active=true'),
+                    fetch('/api/coupons')
+                ]);
+                
+                const platformsData = await platformsRes.json();
+                const couponsData = await couponsRes.json();
+                
+                if (platformsData.success) {
+                    setPlatforms(platformsData.platforms.slice(0, 6)); // Top 6 for featured
+                }
+                
+                if (couponsData.success) {
+                    setCoupons(couponsData.coupons);
+                }
+            } catch (err) {
+                console.error('Error fetching data:', err);
+            } finally {
+                setLoading(false);
+            }
+        };
+        fetchData();
+    }, []);
 
-    const stores = [
-        { name: 'Nike', slug: 'nike', logo: '✓', bg: '#000', text: '#fff' },
-        { name: 'Adidas', slug: 'adidas', logo: 'A', bg: '#000', text: '#fff' },
-        { name: 'Amazon', slug: 'amazon', logo: 'a', bg: '#fff', text: '#ff9900' },
-        { name: 'Samsung', slug: 'samsung', logo: 'S', bg: '#1428a0', text: '#fff' },
-        { name: 'Sephora', slug: 'sephora', logo: 'S', bg: '#000', text: '#fff' },
-        { name: 'Target', slug: 'target', logo: '◎', bg: '#cc0000', text: '#fff' },
-    ];
-
-    const deals = [
-        { name: 'NIKE', bg: '#000', text: '#fff', discount: '25%', code: 'SAVE2SNOW' },
-        { name: 'AMAZON', bg: '#fff', text: '#ff9900', discount: '25%', code: 'AMZN25' },
-        { name: 'SEPHORA', bg: '#000', text: '#fff', discount: '25%', code: 'BEAUTY25' },
-        { name: 'ADIDAS', bg: '#000', text: '#fff', discount: '25%', code: 'ADIFALL' },
-        { name: 'DELL', bg: '#0076ce', text: '#fff', discount: '25%', code: 'DELLSAVE' },
-        { name: 'SAMSUNG', bg: '#1428a0', text: '#fff', discount: '15%', code: 'GALAXY15' },
-        { name: 'TARGET', bg: '#cc0000', text: '#fff', discount: '20%', code: 'TGT20' },
-        { name: 'UBER', bg: '#000', text: '#fff', discount: '50%', code: 'UBER50' },
-        { name: 'DOMINOS', bg: '#006491', text: '#fff', discount: '30%', code: 'PIZZA30' },
-        { name: 'STEAM', bg: '#171a21', text: '#fff', discount: '10%', code: 'GAMER10' },
-    ];
+    const handleOpenModal = (coupon: any) => {
+        setSelectedCoupon(coupon);
+        setIsModalOpen(true);
+    };
 
     const handleCopy = async (code: string) => {
         try {
@@ -158,21 +175,25 @@ export default function HomePage() {
                 {/* Top Featured Stores */}
                 <section className="max-w-6xl mx-auto px-4 py-12">
                     <h2 className="text-2xl font-bold text-white mb-8 font-display">Top Featured Stores</h2>
-                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-6">
-                        {stores.map((store, i) => (
-                            <Link key={i} href={`/platforms/${store.slug}`} className="flex flex-col items-center bg-[#12131a] border border-white/5 rounded-2xl p-6 hover:border-cyan-500/30 transition-all hover:-translate-y-1 shadow-lg cursor-pointer">
-                                <div
-                                    className="w-20 h-20 rounded-full flex items-center justify-center text-4xl font-bold mb-4 shadow-xl"
-                                    style={{ backgroundColor: store.bg, color: store.text }}
-                                >
-                                    {store.logo}
-                                </div>
-                                <span className="px-3 py-1.5 bg-cyan-500/10 border border-cyan-500/20 rounded-full text-xs font-semibold text-cyan-400 whitespace-nowrap">
-                                    Up to 50% Off
-                                </span>
-                            </Link>
-                        ))}
-                    </div>
+                    {loading ? (
+                        <div className="text-center py-10 text-gray-500">Loading stores...</div>
+                    ) : (
+                        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-6">
+                            {platforms.map((store, i) => (
+                                <Link key={i} href={`/platforms/${store.slug}`} className="flex flex-col items-center bg-[#12131a] border border-white/5 rounded-2xl p-6 hover:border-cyan-500/30 transition-all hover:-translate-y-1 shadow-lg cursor-pointer">
+                                    <div
+                                        className="w-20 h-20 rounded-full flex items-center justify-center text-4xl font-bold mb-4 shadow-xl"
+                                        style={{ backgroundColor: store.backgroundColor, color: store.textColor }}
+                                    >
+                                        {store.logo || store.name.charAt(0)}
+                                    </div>
+                                    <span className="px-3 py-1.5 bg-cyan-500/10 border border-cyan-500/20 rounded-full text-xs font-semibold text-cyan-400 whitespace-nowrap">
+                                        Up to 50% Off
+                                    </span>
+                                </Link>
+                            ))}
+                        </div>
+                    )}
                 </section>
 
                 <div className="max-w-6xl mx-auto px-4 py-6">
@@ -182,71 +203,75 @@ export default function HomePage() {
                 {/* Featured Deals & Codes */}
                 <section className="w-full px-4 md:px-8 py-12">
                     <h2 className="text-2xl font-bold text-white mb-8 font-display">Featured Deals & Codes</h2>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-6">
-                        {deals.map((deal, i) => (
-                            <div key={i} className="bg-[#12131a] border border-white/5 rounded-2xl p-6 flex flex-col hover:border-cyan-500/20 transition-all hover:-translate-y-1 shadow-lg">
-                                {/* Header: Logo + Name + Active Badge */}
-                                <div className="flex items-center justify-between mb-5">
-                                    <div className="flex items-center space-x-4">
-                                        <div
-                                            className="w-12 h-12 rounded-full flex items-center justify-center font-bold text-base shadow-md"
-                                            style={{ backgroundColor: deal.bg, color: deal.text }}
-                                        >
-                                            {deal.name.charAt(0)}
+                    {loading ? (
+                        <div className="text-center py-10 text-gray-500">Loading deals...</div>
+                    ) : (
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+                            {coupons.map((deal, i) => (
+                                <div key={i} className="bg-[#12131a] border border-white/5 rounded-2xl p-6 flex flex-col hover:border-cyan-500/20 transition-all hover:-translate-y-1 shadow-lg">
+                                    {/* Header: Logo + Name + Active Badge */}
+                                    <div className="flex items-center justify-between mb-5">
+                                        <div className="flex items-center space-x-4">
+                                            <div
+                                                className="w-12 h-12 rounded-full flex items-center justify-center font-bold text-base shadow-md"
+                                                style={{ backgroundColor: deal.platform.backgroundColor, color: deal.platform.textColor }}
+                                            >
+                                                {deal.platform.logo || deal.platform.name.charAt(0)}
+                                            </div>
+                                            <span className="font-bold text-white text-base tracking-wider">
+                                                {deal.platform.name}
+                                            </span>
                                         </div>
-                                        <span className="font-bold text-white text-base tracking-wider">
-                                            {deal.name}
+                                        <span className="px-4 py-1.5 bg-cyan-500/15 border border-cyan-500/25 rounded-full text-xs font-bold text-cyan-400">
+                                            Active
                                         </span>
                                     </div>
-                                    <span className="px-4 py-1.5 bg-cyan-500/15 border border-cyan-500/25 rounded-full text-xs font-bold text-cyan-400">
-                                        Active
-                                    </span>
-                                </div>
 
-                                {/* Discount */}
-                                <h3 className="text-xl font-bold text-white mb-4 leading-snug">
-                                    {deal.discount} OFF Your Entire Purchase
-                                </h3>
+                                    {/* Discount */}
+                                    <h3 className="text-xl font-bold text-white mb-4 leading-snug">
+                                        {deal.discountType === 'percentage' ? `${deal.discountValue}% OFF` : `$${deal.discountValue} OFF`} Your Purchase
+                                    </h3>
 
-                                {/* Verified + Code */}
-                                <div className="flex items-center justify-between mb-2">
-                                    <div className="flex items-center space-x-2 text-sm">
-                                        <FiCheck className="text-cyan-400 w-4 h-4" />
-                                        <span className="text-cyan-400 font-medium">Verified</span>
-                                        <span className="text-gray-500 mx-1">•</span>
-                                        <span className="text-gray-400">Code: <span className="text-white font-mono font-bold text-base bg-white/5 px-2 py-0.5 rounded">{deal.code}</span></span>
+                                    {/* Verified + Code */}
+                                    <div className="flex items-center justify-between mb-2">
+                                        <div className="flex items-center space-x-2 text-sm">
+                                            <FiCheck className="text-cyan-400 w-4 h-4" />
+                                            <span className="text-cyan-400 font-medium">Verified</span>
+                                            <span className="text-gray-500 mx-1">•</span>
+                                            <span className="text-gray-400">Code: <span className="text-white font-mono font-bold text-base bg-white/5 px-2 py-0.5 rounded">{deal.code.slice(0, 4)}***</span></span>
+                                        </div>
+                                        <button onClick={() => handleCopy(deal.code)} className="p-1.5 hover:bg-white/10 rounded-md transition-colors">
+                                            <FiCopy className="w-4 h-4 text-gray-400 hover:text-white" />
+                                        </button>
                                     </div>
-                                    <button onClick={() => handleCopy(deal.code)} className="p-1.5 hover:bg-white/10 rounded-md transition-colors">
-                                        <FiCopy className="w-4 h-4 text-gray-400 hover:text-white" />
+
+                                    {/* Expiry + Copy */}
+                                    <div className="flex items-center text-sm text-gray-500 mb-5">
+                                        <span>Exp: {new Date(deal.expiresAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}</span>
+                                        <span className="mx-2">•</span>
+                                        <button onClick={() => handleCopy(deal.code)} className="text-cyan-400 hover:text-cyan-300 underline underline-offset-2 font-medium">Copy Code</button>
+                                    </div>
+
+                                    {/* Rating */}
+                                    <div className="flex items-center justify-between mb-6 text-sm text-gray-500">
+                                        <span>User Rating</span>
+                                        <div className="flex items-center space-x-1.5">
+                                            <span className="font-bold text-white text-base">4.9</span>
+                                            <FiStar className="text-yellow-500 w-4 h-4 fill-current" />
+                                        </div>
+                                    </div>
+
+                                    {/* Get Code Button */}
+                                    <button
+                                        onClick={() => handleOpenModal(deal)}
+                                        className="block text-center w-full py-3.5 bg-gradient-to-r from-purple-600 via-purple-500 to-cyan-500 text-white font-bold rounded-xl hover:opacity-90 transition-all shadow-lg hover:shadow-purple-500/25"
+                                    >
+                                        Get Code
                                     </button>
                                 </div>
-
-                                {/* Expiry + Copy */}
-                                <div className="flex items-center text-sm text-gray-500 mb-5">
-                                    <span>Exp: Oct 31</span>
-                                    <span className="mx-2">•</span>
-                                    <button onClick={() => handleCopy(deal.code)} className="text-cyan-400 hover:text-cyan-300 underline underline-offset-2 font-medium">Copy Code</button>
-                                </div>
-
-                                {/* Rating */}
-                                <div className="flex items-center justify-between mb-6 text-sm text-gray-500">
-                                    <span>User Rating</span>
-                                    <div className="flex items-center space-x-1.5">
-                                        <span className="font-bold text-white text-base">4.9</span>
-                                        <FiStar className="text-yellow-500 w-4 h-4 fill-current" />
-                                    </div>
-                                </div>
-
-                                {/* Get Code Button */}
-                                <Link
-                                    href="/random"
-                                    className="block text-center w-full py-3.5 bg-gradient-to-r from-purple-600 via-purple-500 to-cyan-500 text-white font-bold rounded-xl hover:opacity-90 transition-all shadow-lg hover:shadow-purple-500/25"
-                                >
-                                    Get Code
-                                </Link>
-                            </div>
-                        ))}
-                    </div>
+                            ))}
+                        </div>
+                    )}
                 </section>
 
                 <div className="max-w-6xl mx-auto px-4 mb-16">
@@ -278,6 +303,12 @@ export default function HomePage() {
                         </div>
                     </div>
                 </section>
+                <CouponModal 
+                    isOpen={isModalOpen}
+                    onClose={() => setIsModalOpen(false)}
+                    coupon={selectedCoupon}
+                    platform={selectedCoupon?.platform}
+                />
             </main>
 
             <Footer />

@@ -80,16 +80,37 @@ async function scrapeRealCoupons() {
                     }
                 });
 
-                // Fallback: Regex search through the body text for uppercase strings that look like codes
+                // Try to extract from JSON-LD SEO data first (often contains real codes unhidden)
+                $('script[type="application/ld+json"]').each((i, el) => {
+                    try {
+                        const json = JSON.parse($(el).html());
+                        const items = Array.isArray(json) ? json : [json];
+                        items.forEach(item => {
+                            if (item['@type'] === 'Coupon' || item['@type'] === 'Offer') {
+                                // Sometimes the code is in 'priceSpecification' or other fields, or just 'name'
+                                // We can just stringify and look for our regex
+                            }
+                        });
+                    } catch(e) {}
+                });
+
+                // Fallback: STRICT Regex search through the body text for alphanumeric codes
+                // Must contain at least one number and one letter, 5-15 chars long. (e.g. SAVE20, WELCOME10, 50OFF)
                 if (potentialCodes.size === 0) {
                     const bodyText = $('body').text();
-                    const codeRegex = /\b([A-Z0-9]{4,15})\b/g;
+                    const strictCodeRegex = /\b(?=.*[A-Z])(?=.*[0-9])[A-Z0-9]{5,15}\b/g;
                     let match;
-                    while ((match = codeRegex.exec(bodyText)) !== null) {
-                        // Filter out common false positives
-                        const code = match[1];
-                        if (isNaN(code) && code !== 'OFF' && code !== 'SAVE' && code !== 'DISCOUNT' && code !== 'COUPON') {
-                            potentialCodes.add(code);
+                    while ((match = strictCodeRegex.exec(bodyText)) !== null) {
+                        potentialCodes.add(match[0]);
+                    }
+                    
+                    // Also accept pure alphabetic codes that are common prefixes + numbers are handled above.
+                    // If pure letters, it must be longer than 5 and NOT a common English word.
+                    const pureLetterRegex = /\b[A-Z]{5,15}\b/g;
+                    const blacklist = new Set(['ABOUT', 'TERMS', 'PRIVACY', 'POLICY', 'CONTACT', 'STORE', 'COUPON', 'DISCOUNT', 'VOUCHER', 'PROMO', 'OFFER', 'TODAY', 'ONLINE', 'SHIPPING', 'DELIVERY', 'FREE', 'SAVE', 'MORE', 'LESS', 'CLICK', 'HERE', 'SHOP', 'NOW', 'EXPIRES', 'VALID', 'ONLY', 'DEALS', 'BRANDS', 'CATEGORIES', 'HOME', 'SEARCH', 'MENU', 'CLOSE', 'OPEN', 'CODE', 'COPY', 'PASTE', 'CHECKOUT', 'BASKET', 'CART', 'ORDER', 'ITEM', 'ITEMS', 'PRODUCT', 'PRODUCTS']);
+                    while ((match = pureLetterRegex.exec(bodyText)) !== null) {
+                        if (!blacklist.has(match[0])) {
+                            // potentialCodes.add(match[0]); // Optional: uncomment if we want pure letter codes, but they risk being random words.
                         }
                     }
                 }

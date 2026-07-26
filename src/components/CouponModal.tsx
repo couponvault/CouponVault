@@ -49,10 +49,10 @@ export default function CouponModal({ isOpen, onClose, coupon, platform }: Coupo
                     initial={{ scale: 0.95, opacity: 0, y: 20 }}
                     animate={{ scale: 1, opacity: 1, y: 0 }}
                     exit={{ scale: 0.95, opacity: 0, y: 20 }}
-                    className="relative w-full max-w-md bg-[#151922] border border-[#2A3445] rounded-2xl shadow-2xl overflow-hidden z-10"
+                    className="relative w-full max-w-md bg-smokyBlack/95 backdrop-blur-xl border border-oliveDrab rounded-2xl shadow-2xl overflow-hidden z-10"
                 >
                     {/* Header */}
-                    <div className="flex justify-between items-center p-4 border-b border-[#2A3445] bg-[#0F131C]">
+                    <div className="flex justify-between items-center p-4 border-b border-oliveDrab/30 bg-smokyBlack">
                         <div className="flex items-center gap-3">
                             <div 
                                 className="w-10 h-10 rounded-full flex items-center justify-center text-xl shadow-lg"
@@ -62,12 +62,12 @@ export default function CouponModal({ isOpen, onClose, coupon, platform }: Coupo
                             </div>
                             <div>
                                 <h3 className="font-bold text-white">{platform.name}</h3>
-                                <p className="text-xs text-[#94A3B8]">Verified Deal</p>
+                                <p className="text-xs text-bone/70">Verified Deal</p>
                             </div>
                         </div>
                         <button 
                             onClick={onClose}
-                            className="p-2 text-[#94A3B8] hover:text-white bg-[#2A3445]/50 hover:bg-[#2A3445] rounded-full transition-colors"
+                            className="p-2 text-bone/70 hover:text-floralWhite bg-oliveDrab/10 hover:bg-oliveDrab/30 rounded-full transition-colors"
                         >
                             <FiX size={20} />
                         </button>
@@ -84,41 +84,41 @@ export default function CouponModal({ isOpen, onClose, coupon, platform }: Coupo
                         </h2>
 
                         <div className="flex justify-center gap-4 text-sm mb-6">
-                            <div className="bg-[#2A3445]/30 px-4 py-2 rounded-xl border border-[#2A3445]/50">
-                                <span className="block text-[10px] uppercase tracking-wider text-gray-500 mb-1">Category</span>
-                                <span className="font-semibold text-emerald-400 capitalize">{platform.category || 'Sitewide'}</span>
+                            <div className="bg-oliveDrab/10 px-4 py-2 rounded-xl border border-oliveDrab/30">
+                                <p className="text-[10px] uppercase tracking-wider text-bone/60 mb-0.5">Category</p>
+                                <span className="font-semibold text-bone">{coupon.category || 'General'}</span>
                             </div>
-                            <div className="bg-[#2A3445]/30 px-4 py-2 rounded-xl border border-[#2A3445]/50">
-                                <span className="block text-[10px] uppercase tracking-wider text-gray-500 mb-1">Min. Order</span>
-                                <span className="font-semibold text-cyan-400">{coupon.minPurchase > 0 ? `$${coupon.minPurchase}` : 'None'}</span>
+                            <div className="bg-oliveDrab/10 px-4 py-2 rounded-xl border border-oliveDrab/30">
+                                <p className="text-[10px] uppercase tracking-wider text-bone/60 mb-0.5">Min. Order</p>
+                                <span className="font-semibold text-bone">{coupon.minPurchase > 0 ? `$${coupon.minPurchase}` : 'None'}</span>
                             </div>
                         </div>
 
                         {/* Code Box */}
                         <div 
                             onClick={handleCopy}
-                            className="relative group cursor-pointer w-full bg-[#0B0F17] border-2 border-dashed border-[#2563EB]/50 hover:border-[#2563EB] rounded-xl p-4 flex items-center justify-between transition-all"
+                            className="relative group cursor-pointer w-full bg-oliveDrab/5 border-2 border-dashed border-oliveDrab/50 hover:border-bone rounded-xl p-4 flex items-center justify-between transition-all"
                         >
-                            <span className="font-mono text-2xl font-bold tracking-widest text-white">
-                                {coupon.code}
-                            </span>
-                            <div className={`p-2 rounded-lg transition-colors ${copied ? 'bg-emerald-500/20 text-emerald-400' : 'bg-[#2563EB]/20 text-[#2563EB] group-hover:bg-[#2563EB] group-hover:text-white'}`}>
+                            <div className="flex-1 overflow-hidden">
+                                <p className="font-mono text-2xl font-bold text-floralWhite tracking-widest truncate">{coupon.code}</p>
+                            </div>
+                            <div className={`p-2 rounded-lg transition-colors ${copied ? 'bg-emerald-500/20 text-emerald-400' : 'bg-oliveDrab/20 text-bone group-hover:bg-floralWhite group-hover:text-smokyBlack'}`}>
                                 {copied ? <FiCheck size={24} /> : <FiCopy size={24} />}
                             </div>
                         </div>
-                        <p className="text-[#94A3B8] text-sm mt-3">Click the code to copy</p>
+                        <p className="text-bone/70 text-sm mt-3">Click the code to copy</p>
 
                     </div>
 
                     {/* Footer */}
-                    <div className="p-4 bg-[#0F131C] border-t border-[#2A3445]">
+                    <div className="p-4 bg-smokyBlack border-t border-oliveDrab/30">
                         <button 
                             onClick={handleRedirect}
-                            className="w-full flex items-center justify-center gap-2 py-3.5 bg-[#2563EB] hover:bg-[#1D4ED8] text-white font-semibold rounded-xl transition-all hover:scale-[1.02] shadow-lg shadow-blue-500/20"
+                            className="w-full py-3.5 bg-floralWhite text-smokyBlack font-bold text-base rounded-xl hover:opacity-90 transition-all flex items-center justify-center space-x-2"
                         >
                             Go to {platform.name} <FiExternalLink />
                         </button>
-                        <p className="text-xs text-center text-[#94A3B8] mt-3">
+                        <p className="text-center text-xs text-bone/50 mt-3">
                             A new tab will open with the store's website
                         </p>
                     </div>

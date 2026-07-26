@@ -54,7 +54,7 @@ export default function CouponCard({ coupon }: CouponCardProps) {
     };
 
     return (
-        <div className="bg-[#12131a] border border-white/5 rounded-2xl p-5 flex flex-col hover:border-cyan-500/20 transition-colors">
+        <div className="bg-smokyBlack/90 border border-oliveDrab/30 rounded-2xl p-5 flex flex-col hover:border-bone/50 transition-colors">
             {/* Header: Logo + Name + Active Badge */}
             <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center space-x-3">
@@ -68,7 +68,7 @@ export default function CouponCard({ coupon }: CouponCardProps) {
                         {coupon.platform.name}
                     </span>
                 </div>
-                <span className="px-3 py-1 bg-cyan-500/15 border border-cyan-500/25 rounded-full text-[11px] font-bold text-cyan-400">
+                <span className="px-3 py-1 bg-oliveDrab/20 border border-oliveDrab/40 rounded-full text-[11px] font-bold text-bone">
                     Active
                 </span>
             </div>
@@ -81,8 +81,8 @@ export default function CouponCard({ coupon }: CouponCardProps) {
             {/* Verified + Code */}
             <div className="flex items-center justify-between mb-1">
                 <div className="flex items-center space-x-1.5 text-sm">
-                    <FiCheck className="text-cyan-400 w-3.5 h-3.5" />
-                    <span className="text-cyan-400 font-medium text-xs">Verified</span>
+                    <FiCheck className="text-bone w-3.5 h-3.5" />
+                    <span className="text-bone font-medium text-xs">Verified</span>
                     <span className="text-gray-500 mx-0.5">•</span>
                     <span className="text-gray-400 text-xs">Code: <span className="text-white font-mono font-medium">{coupon.code}</span></span>
                 </div>
@@ -95,7 +95,7 @@ export default function CouponCard({ coupon }: CouponCardProps) {
             <div className="flex items-center text-xs text-gray-500 mb-4">
                 <span>Exp: {new Date(coupon.expiresAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}</span>
                 <span className="mx-1.5">•</span>
-                <button onClick={handleCopy} className="text-cyan-400 hover:text-cyan-300 underline underline-offset-2 font-medium">Copy Code</button>
+                <button onClick={handleCopy} className="text-bone hover:text-floralWhite underline underline-offset-2 font-medium">Copy Code</button>
             </div>
 
             {/* Rating */}
@@ -110,7 +110,7 @@ export default function CouponCard({ coupon }: CouponCardProps) {
             {/* Get Code Button */}
             <button
                 onClick={handleCopy}
-                className="w-full py-2.5 bg-gradient-to-r from-purple-600 via-purple-500 to-cyan-500 text-white font-bold text-sm rounded-xl hover:opacity-90 transition-opacity"
+                className="w-full py-2.5 bg-floralWhite text-smokyBlack font-bold text-sm rounded-xl hover:opacity-90 transition-opacity"
             >
                 Get Code
             </button>

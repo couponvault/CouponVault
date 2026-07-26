@@ -9,46 +9,14 @@ module.exports = {
     theme: {
         extend: {
             colors: {
-                primary: {
-                    50: '#ecfeff',
-                    100: '#cffafe',
-                    200: '#a5f3fc',
-                    300: '#67e8f9',
-                    400: '#22d3ee',
-                    500: '#06b6d4',
-                    600: '#0891b2',
-                    700: '#0e7490',
-                    800: '#155e75',
-                    900: '#164e63',
-                },
-                secondary: {
-                    50: '#faf5ff',
-                    100: '#f3e8ff',
-                    200: '#e9d5ff',
-                    300: '#d8b4fe',
-                    400: '#c084fc',
-                    500: '#a855f7',
-                    600: '#9333ea',
-                    700: '#7e22ce',
-                    800: '#6b21a8',
-                    900: '#581c87',
-                },
-                success: '#06b6d4',
-                warning: '#f59e0b',
-                error: '#ef4444',
-                dark: {
-                    50: '#f8fafc',
-                    100: '#f1f5f9',
-                    200: '#e2e8f0',
-                    300: '#cbd5e1',
-                    400: '#94a3b8',
-                    500: '#64748b',
-                    600: '#475569',
-                    700: '#334155',
-                    800: '#1e293b',
-                    900: '#111317',
-                    950: '#0b0c10',
-                },
+                smokyBlack: '#11120D',
+                oliveDrab: '#565449',
+                bone: '#D8CFBC',
+                floralWhite: '#FFFBF4',
+                // Keep some semantic colors for functionality but adapt them
+                success: '#84cc16', // lime-500
+                warning: '#f59e0b', // amber-500
+                error: '#ef4444',   // red-500
             },
             fontFamily: {
                 sans: ['Inter', 'system-ui', 'sans-serif'],

@@ -129,7 +129,7 @@ export default function SearchBar() {
                     className="absolute -inset-[2px] rounded-2xl transition-all duration-500 pointer-events-none"
                     style={{
                         background: isFocused
-                            ? 'linear-gradient(135deg, rgba(37,99,235,0.4), rgba(16,185,129,0.2))'
+                            ? 'linear-gradient(135deg, rgba(216, 207, 188, 0.2), rgba(86, 84, 73, 0.4))'
                             : 'transparent',
                         filter: isFocused ? 'blur(12px)' : 'blur(0px)',
                         opacity: isFocused ? 1 : 0,
@@ -138,17 +138,17 @@ export default function SearchBar() {
 
                 {/* Input wrapper */}
                 <div
-                    className={`relative flex items-center bg-[#151922] rounded-2xl border transition-all duration-300 shadow-xl ${
+                    className={`relative flex items-center bg-oliveDrab/10 rounded-2xl border transition-all duration-300 shadow-xl ${
                         isFocused
-                            ? 'border-[#2563EB] ring-2 ring-[#2563EB]/30'
-                            : 'border-[#2A3445] hover:border-[#2A3445]/80'
+                            ? 'border-bone ring-2 ring-bone/30'
+                            : 'border-oliveDrab hover:border-oliveDrab/80'
                     }`}
                 >
                     {/* Search icon left */}
                     <div className="pl-5 md:pl-6 flex-shrink-0">
                         <FiSearch
                             className={`w-5 h-5 md:w-6 md:h-6 transition-colors duration-300 ${
-                                isFocused ? 'text-[#2563EB]' : 'text-[#94A3B8]'
+                                isFocused ? 'text-floralWhite' : 'text-bone/70'
                             }`}
                         />
                     </div>
@@ -161,8 +161,8 @@ export default function SearchBar() {
                         onChange={(e) => setQuery(e.target.value)}
                         onFocus={() => setIsFocused(true)}
                         placeholder={PLACEHOLDERS[placeholderIndex]}
-                        className={`w-full bg-transparent text-white text-base md:text-lg px-4 py-[18px] md:py-[20px] outline-none rounded-2xl transition-opacity duration-200 ${
-                            placeholderFade ? 'placeholder-[#94A3B8]/70' : 'placeholder-transparent'
+                        className={`w-full bg-transparent text-floralWhite text-base md:text-lg px-4 py-[18px] md:py-[20px] outline-none rounded-2xl transition-opacity duration-200 ${
+                            placeholderFade ? 'placeholder-bone/50' : 'placeholder-transparent'
                         }`}
                         id="main-search"
                     />
@@ -171,7 +171,7 @@ export default function SearchBar() {
                     {query && (
                         <button
                             onClick={clearQuery}
-                            className="pr-3 pl-2 text-[#94A3B8] hover:text-white transition-colors flex-shrink-0"
+                            className="pr-3 pl-2 text-bone/70 hover:text-floralWhite transition-colors flex-shrink-0"
                             aria-label="Clear search"
                         >
                             <FiX className="w-5 h-5" />
@@ -181,7 +181,7 @@ export default function SearchBar() {
                     {/* Keyboard hint */}
                     {!isFocused && !query && (
                         <div className="hidden md:flex items-center pr-5 flex-shrink-0">
-                            <kbd className="px-2 py-1 bg-[#0B0F17] border border-[#2A3445] rounded-md text-[#94A3B8] text-xs font-mono">
+                            <kbd className="px-2 py-1 bg-oliveDrab/20 border border-oliveDrab rounded-md text-bone/70 text-xs font-mono">
                                 /
                             </kbd>
                         </div>
@@ -190,52 +190,52 @@ export default function SearchBar() {
 
                 {/* Autocomplete Dropdown */}
                 {showDropdown && (
-                    <div className="absolute top-full left-0 right-0 mt-2 bg-[#151922] border border-[#2A3445] rounded-2xl shadow-2xl overflow-hidden z-50 animate-in fade-in slide-in-from-top-2 duration-200">
+                    <div className="absolute top-full left-0 right-0 mt-2 bg-smokyBlack/95 backdrop-blur-md border border-oliveDrab rounded-2xl shadow-2xl overflow-hidden z-50 animate-in fade-in slide-in-from-top-2 duration-200">
                         {hasResults ? (
                             <div className="py-2 max-h-80 overflow-y-auto">
                                 {stores.length > 0 && (
                                     <div>
-                                        <p className="px-5 py-2 text-[10px] uppercase tracking-widest text-[#94A3B8]/60 font-semibold">Stores</p>
+                                        <p className="px-5 py-2 text-[10px] uppercase tracking-widest text-bone/60 font-semibold">Stores</p>
                                         {stores.map((s) => (
                                             <button
                                                 key={s.label}
                                                 onClick={() => handleSuggestionClick(s.label)}
-                                                className="w-full text-left px-5 py-3 flex items-center space-x-3 hover:bg-[#2563EB]/10 transition-colors group"
+                                                className="w-full text-left px-5 py-3 flex items-center space-x-3 hover:bg-oliveDrab/20 transition-colors group"
                                             >
                                                 <span className="text-base group-hover:scale-110 transition-transform duration-200">{s.icon}</span>
-                                                <span className="text-[#94A3B8] group-hover:text-white transition-colors text-sm font-medium">{s.label}</span>
+                                                <span className="text-bone group-hover:text-floralWhite transition-colors text-sm font-medium">{s.label}</span>
                                             </button>
                                         ))}
                                     </div>
                                 )}
                                 {coupons.length > 0 && (
                                     <div>
-                                        <div className="mx-5 border-t border-[#2A3445] my-1" />
-                                        <p className="px-5 py-2 text-[10px] uppercase tracking-widest text-[#94A3B8]/60 font-semibold">Coupons</p>
+                                        <div className="mx-5 border-t border-oliveDrab my-1" />
+                                        <p className="px-5 py-2 text-[10px] uppercase tracking-widest text-bone/60 font-semibold">Coupons</p>
                                         {coupons.map((s) => (
                                             <button
                                                 key={s.label}
                                                 onClick={() => handleSuggestionClick(s.label)}
-                                                className="w-full text-left px-5 py-3 flex items-center space-x-3 hover:bg-[#2563EB]/10 transition-colors group"
+                                                className="w-full text-left px-5 py-3 flex items-center space-x-3 hover:bg-oliveDrab/20 transition-colors group"
                                             >
                                                 <span className="text-base group-hover:scale-110 transition-transform duration-200">{s.icon}</span>
-                                                <span className="text-[#94A3B8] group-hover:text-white transition-colors text-sm font-medium">{s.label}</span>
+                                                <span className="text-bone group-hover:text-floralWhite transition-colors text-sm font-medium">{s.label}</span>
                                             </button>
                                         ))}
                                     </div>
                                 )}
                                 {categories.length > 0 && (
                                     <div>
-                                        <div className="mx-5 border-t border-[#2A3445] my-1" />
-                                        <p className="px-5 py-2 text-[10px] uppercase tracking-widest text-[#94A3B8]/60 font-semibold">Categories</p>
+                                        <div className="mx-5 border-t border-oliveDrab my-1" />
+                                        <p className="px-5 py-2 text-[10px] uppercase tracking-widest text-bone/60 font-semibold">Categories</p>
                                         {categories.map((s) => (
                                             <button
                                                 key={s.label}
                                                 onClick={() => handleSuggestionClick(s.label)}
-                                                className="w-full text-left px-5 py-3 flex items-center space-x-3 hover:bg-[#2563EB]/10 transition-colors group"
+                                                className="w-full text-left px-5 py-3 flex items-center space-x-3 hover:bg-oliveDrab/20 transition-colors group"
                                             >
                                                 <span className="text-base group-hover:scale-110 transition-transform duration-200">{s.icon}</span>
-                                                <span className="text-[#94A3B8] group-hover:text-white transition-colors text-sm font-medium">{s.label}</span>
+                                                <span className="text-bone group-hover:text-floralWhite transition-colors text-sm font-medium">{s.label}</span>
                                             </button>
                                         ))}
                                     </div>
@@ -244,14 +244,14 @@ export default function SearchBar() {
                         ) : (
                             /* Empty State */
                             <div className="py-8 px-5 text-center">
-                                <p className="text-[#94A3B8] text-sm mb-4">No coupons found.</p>
-                                <p className="text-[#94A3B8]/60 text-xs mb-4">Suggested Stores:</p>
+                                <p className="text-bone text-sm mb-4">No coupons found.</p>
+                                <p className="text-bone/60 text-xs mb-4">Suggested Stores:</p>
                                 <div className="flex items-center justify-center gap-2">
                                     {SUGGESTED_STORES.map((store) => (
                                         <button
                                             key={store}
                                             onClick={() => handleSuggestionClick(store)}
-                                            className="px-4 py-1.5 bg-[#0B0F17] border border-[#2A3445] hover:border-[#2563EB] rounded-full text-[#94A3B8] hover:text-white text-xs transition-all hover:-translate-y-0.5"
+                                            className="px-4 py-1.5 bg-oliveDrab/10 border border-oliveDrab hover:border-bone rounded-full text-bone hover:text-floralWhite text-xs transition-all hover:-translate-y-0.5"
                                         >
                                             {store}
                                         </button>
@@ -265,12 +265,12 @@ export default function SearchBar() {
 
             {/* Trending Searches */}
             <div className="flex flex-wrap items-center justify-center gap-2 mb-12">
-                <span className="text-[#94A3B8] text-sm mr-1 flex items-center font-medium">🔥 Trending</span>
+                <span className="text-bone text-sm mr-1 flex items-center font-medium">🔥 Trending</span>
                 {TRENDING.map((trend) => (
                     <button
                         key={trend}
                         onClick={() => handleTrendingClick(trend)}
-                        className="px-4 py-1.5 bg-[#151922] border border-[#2A3445] rounded-full text-[#94A3B8] text-xs font-medium transition-all duration-200 hover:text-white hover:border-[#2563EB] hover:-translate-y-0.5 hover:shadow-md hover:shadow-[#2563EB]/10"
+                        className="px-4 py-1.5 bg-oliveDrab/10 border border-oliveDrab rounded-full text-bone text-xs font-medium transition-all duration-200 hover:text-floralWhite hover:border-bone hover:-translate-y-0.5 hover:shadow-md"
                     >
                         {trend}
                     </button>

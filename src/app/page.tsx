@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { motion } from 'framer-motion';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import SearchBar from '@/components/SearchBar';
@@ -50,10 +51,51 @@ export default function HomePage() {
 
             <main className="flex-1">
                 {/* Unified Hero Section */}
-                <section className="text-center py-16 px-4 max-w-5xl mx-auto">
-                    <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 font-display tracking-tight leading-tight">
-                        Verified Coupons & Deals That Actually Work
-                    </h1>
+                <section className="relative w-full overflow-hidden text-center py-16 px-4">
+                    {/* Abstract Floating Elements (Hidden on mobile) */}
+                    <div className="hidden lg:block absolute inset-0 pointer-events-none">
+                        {/* Top Left Glassmorphic Circle */}
+                        <motion.div 
+                            initial={{ y: 0 }}
+                            animate={{ y: [0, -20, 0] }}
+                            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                            className="absolute top-10 left-[10%] w-24 h-24 bg-gradient-to-br from-[#2563EB]/20 to-transparent border border-[#2563EB]/30 rounded-full flex items-center justify-center backdrop-blur-md shadow-[0_0_30px_rgba(37,99,235,0.2)]"
+                        >
+                            <span className="text-3xl font-bold text-[#2563EB]/50">%</span>
+                        </motion.div>
+
+                        {/* Bottom Left Emerald Glow */}
+                        <motion.div 
+                            initial={{ y: 0, opacity: 0.5 }}
+                            animate={{ y: [0, 20, 0], opacity: [0.5, 0.8, 0.5] }}
+                            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                            className="absolute bottom-10 left-[5%] w-40 h-40 bg-[#10B981]/10 rounded-full blur-[60px]"
+                        />
+
+                        {/* Top Right Blue Glow */}
+                        <motion.div 
+                            initial={{ y: 0, opacity: 0.3 }}
+                            animate={{ y: [0, -30, 0], opacity: [0.3, 0.6, 0.3] }}
+                            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+                            className="absolute top-0 right-[5%] w-56 h-56 bg-[#2563EB]/10 rounded-full blur-[80px]"
+                        />
+
+                        {/* Bottom Right Glassmorphic Pill */}
+                        <motion.div 
+                            initial={{ y: 0 }}
+                            animate={{ y: [0, 15, 0], rotate: [0, 5, 0] }}
+                            transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+                            className="absolute bottom-20 right-[12%] px-6 py-3 bg-gradient-to-br from-[#10B981]/10 to-transparent border border-[#10B981]/20 rounded-full flex items-center justify-center backdrop-blur-md shadow-[0_0_30px_rgba(16,185,129,0.1)]"
+                        >
+                            <span className="text-xl">✨</span>
+                            <span className="ml-2 text-sm font-bold text-[#10B981]/70 tracking-widest">PROMO</span>
+                        </motion.div>
+                    </div>
+
+                    <div className="max-w-5xl mx-auto relative z-10">
+                        <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 font-display tracking-tight leading-tight">
+                            Verified Coupons & Deals That Actually Work
+                        </h1>
                     
                     <p className="text-[#94A3B8] text-lg md:text-xl max-w-3xl mx-auto mb-10 leading-relaxed">
                         Save money with verified coupon codes, promo offers, cashback deals, and exclusive discounts from hundreds of trusted brands. Updated daily to ensure every deal is fresh and reliable.
@@ -103,6 +145,7 @@ export default function HomePage() {
                     <p className="text-[#94A3B8] text-sm">
                         Trusted by thousands of shoppers looking for verified deals every day.
                     </p>
+                    </div>
                 </section>
 
                 {/* Top Featured Stores */}

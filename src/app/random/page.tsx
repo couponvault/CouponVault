@@ -35,8 +35,8 @@ export default function RandomCouponPage() {
             if (data.success) {
                 setCoupon(data.coupon);
                 setRemaining(data.remaining);
-                toast.success('🎉 Coupon claimed successfully!');
-                window.open('https://www.adsterra.com', '_blank');
+                await navigator.clipboard.writeText(data.coupon.code);
+                toast.success('🎉 Code copied to clipboard!');
             }
         } catch (error: any) {
             setError(error.message);

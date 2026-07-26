@@ -42,6 +42,7 @@ async function scrapeRealCoupons() {
 
         const browser = await puppeteer.launch({
             headless: 'new', // Use the new headless mode
+            executablePath: 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe',
             args: ['--no-sandbox', '--disable-setuid-sandbox']
         });
 
@@ -120,9 +121,15 @@ async function scrapeRealCoupons() {
                 }
 
                 if (newCoupons.length > 0) {
-                    await Coupon.insertMany(newCoupons);
-                    console.log(`✅ Scraped and inserted ${newCoupons.length} real codes for ${p.name}`);
-                    totalScraped += newCoupons.length;
+                    try {
+                        await Coupon.insertMany(newCoupons, { ordered: false });
+                        console.log(`✅ Scraped and inserted codes for ${p.name}`);
+                        totalScraped += newCoupons.length;
+                    } catch (bulkErr) {
+                        // If there are duplicate keys, ordered: false will still insert the non-duplicates
+                        console.log(`✅ Scraped and inserted (with some duplicates skipped) codes for ${p.name}`);
+                        totalScraped += bulkErr.insertedDocs ? bulkErr.insertedDocs.length : 0;
+                    }
                 } else {
                     console.log(`⚠️ No new codes found for ${p.name}`);
                 }

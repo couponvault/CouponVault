@@ -17,17 +17,17 @@ export default function CategoriesPage() {
     ];
 
     return (
-        <div className="min-h-screen flex flex-col bg-[#0a0b0f]">
+        <div className="min-h-screen flex flex-col bg-appleBg">
             <Navbar />
 
             <main className="flex-1 py-12 px-4">
                 <div className="max-w-6xl mx-auto">
                     {/* Header */}
                     <div className="text-center mb-12">
-                        <h1 className="text-3xl md:text-5xl font-bold text-white mb-4 font-display">
-                            Shop by <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-cyan-400">Category</span>
+                        <h1 className="text-3xl md:text-5xl font-bold text-appleText mb-4 font-display">
+                            Shop by <span className="bg-clip-text text-transparent bg-gradient-to-r from-appleBlue to-blue-400">Category</span>
                         </h1>
-                        <p className="text-gray-400 text-base max-w-xl mx-auto">
+                        <p className="text-appleMuted text-base max-w-xl mx-auto">
                             Browse through our extensive list of categories to find the best deals for exactly what you're looking for.
                         </p>
                     </div>
@@ -38,14 +38,14 @@ export default function CategoriesPage() {
                             <Link 
                                 href={`/platforms?category=${cat.slug}`} 
                                 key={i}
-                                className="group flex items-center p-6 bg-[#12131a] border border-white/5 hover:border-white/20 rounded-2xl transition-all hover:-translate-y-1 shadow-lg"
+                                className="group flex items-center p-6 bg-white border border-appleBorder hover:border-appleBlue rounded-2xl transition-all hover:-translate-y-1 shadow-sm"
                             >
                                 <div className={`w-16 h-16 rounded-2xl ${cat.bg} ${cat.border} border flex items-center justify-center mr-5 group-hover:scale-110 transition-transform duration-300`}>
                                     <cat.icon className={`w-7 h-7 ${cat.color}`} />
                                 </div>
                                 <div>
-                                    <h3 className="text-xl font-bold text-white mb-1">{cat.name}</h3>
-                                    <p className="text-gray-500 text-sm font-medium">{cat.count} Active Deals</p>
+                                    <h3 className="text-xl font-bold text-appleText mb-1">{cat.name}</h3>
+                                    <p className="text-appleMuted text-sm font-medium">{cat.count} Active Deals</p>
                                 </div>
                             </Link>
                         ))}

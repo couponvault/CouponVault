@@ -36,6 +36,7 @@ export async function POST(req: Request) {
             minPurchase: Number(data.minPurchase) || 0,
             description: data.description,
             expiresAt: expiryDate,
+            usageLimit: 999999,
             isActive: true,
             isClaimed: false,
             isExpired: false

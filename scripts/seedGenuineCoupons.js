@@ -114,6 +114,7 @@ async function run() {
                 isActive: true,
                 isClaimed: false,
                 isExpired: false,
+                usageLimit: 999999,
                 description: deal.description,
                 expiresAt: new Date(Date.now() + 60 * 24 * 60 * 60 * 1000) // Valid for 60 days
             });

@@ -66,6 +66,7 @@ async function scrapeReddit() {
                         isActive: true,
                         isClaimed: false,
                         isExpired: false,
+                        usageLimit: 999999,
                         description: title.length > 50 ? title.substring(0, 50) + '...' : title,
                         expiresAt: expiryDate
                     });

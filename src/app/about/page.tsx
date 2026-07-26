@@ -52,7 +52,7 @@ export default function AboutPage() {
                                         </li>
                                         <li className="flex items-center space-x-3">
                                             <div className="w-6 h-6 bg-green-100 dark:bg-green-900/20 rounded-full flex items-center justify-center flex-shrink-0">
-                                                <FiCheck className="text-cyan-600 dark:text-cyan-400 w-4 h-4" />
+                                                <span className="text-green-600 dark:text-green-400">✓</span>
                                             </div>
                                             <span className="text-gray-600 dark:text-gray-400">Partner platforms including Amazon, Walmart, Target</span>
                                         </li>

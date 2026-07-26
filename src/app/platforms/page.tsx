@@ -27,6 +27,13 @@ export default function PlatformsPage() {
 
     useEffect(() => {
         fetchPlatforms();
+        if (typeof window !== 'undefined') {
+            const params = new URLSearchParams(window.location.search);
+            const q = params.get('q');
+            if (q) {
+                setSearchQuery(q);
+            }
+        }
     }, []);
 
     const fetchPlatforms = async () => {

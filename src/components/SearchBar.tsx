@@ -103,17 +103,17 @@ export default function SearchBar() {
     const hasResults = suggestions.length > 0;
 
     const handleTrendingClick = (trend: string) => {
-        router.push('/platforms');
+        router.push('/platforms?q=' + encodeURIComponent(trend));
     };
 
     const handleSuggestionClick = (label: string) => {
-        router.push('/platforms');
+        router.push('/platforms?q=' + encodeURIComponent(label));
         setIsFocused(false);
     };
 
     const handleSearchSubmit = (e: React.KeyboardEvent<HTMLInputElement>) => {
         if (e.key === 'Enter' && query.trim()) {
-            router.push('/platforms');
+            router.push('/platforms?q=' + encodeURIComponent(query.trim()));
         }
     };
 

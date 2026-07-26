@@ -12,15 +12,23 @@ export async function GET(request: NextRequest) {
         // Ensure Platform is registered
         const p = Platform; 
 
-        // Fetch top 10 most recent active coupons
-        const coupons = await Coupon.find({
-            isActive: true,
-            isClaimed: false,
-            isExpired: false
-        })
-        .sort({ createdAt: -1 })
-        .limit(10)
-        .populate('platform', 'name logo slug backgroundColor textColor');
+        // Fetch 10 random active coupons to ensure brand diversity on homepage
+        const couponsAggregation = await Coupon.aggregate([
+            {
+                $match: {
+                    isActive: true,
+                    isClaimed: false,
+                    isExpired: false
+                }
+            },
+            { $sample: { size: 10 } }
+        ]);
+
+        // Populate platform manually since aggregate doesn't populate directly
+        const coupons = await Coupon.populate(couponsAggregation, {
+            path: 'platform',
+            select: 'name logo slug backgroundColor textColor'
+        });
 
         return NextResponse.json({
             success: true,

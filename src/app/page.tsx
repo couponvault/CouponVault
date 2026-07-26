@@ -120,16 +120,16 @@ export default function HomePage() {
                     </div>
 
                     <div className="max-w-5xl mx-auto relative z-10">
-                        <h1 className="text-4xl md:text-6xl font-bold text-appleText mb-6 font-display tracking-tight leading-tight">
+                        <h1 className="text-3xl md:text-5xl font-semibold text-appleText mb-4 font-display tracking-tight leading-tight">
                             Verified Coupons & Deals That Actually Work
                         </h1>
                     
-                    <p className="text-appleMuted text-lg md:text-xl max-w-3xl mx-auto mb-10 leading-relaxed">
+                    <p className="text-appleMuted text-base md:text-lg max-w-3xl mx-auto mb-6 leading-relaxed">
                         Save money with verified coupon codes, promo offers, cashback deals, and exclusive discounts from hundreds of trusted brands. Updated daily to ensure every deal is fresh and reliable.
                     </p>
 
                     {/* Trust Badges */}
-                    <div className="flex flex-wrap items-center justify-center gap-3 md:gap-4 mb-12">
+                    <div className="flex flex-wrap items-center justify-center gap-3 md:gap-4 mb-6">
                         <div className="flex items-center space-x-2 px-4 py-2 bg-white border border-appleBorder rounded-full shadow-sm">
                             <FiCheck className="w-4 h-4 text-appleBlue" />
                             <span className="text-appleMuted text-sm font-medium">15,000+ Verified Coupons</span>

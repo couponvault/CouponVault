@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef, useCallback } from 'react';
+import { useRouter } from 'next/navigation';
 import { FiSearch, FiX } from 'react-icons/fi';
 
 const PLACEHOLDERS = [
@@ -54,6 +55,7 @@ export default function SearchBar() {
     const [placeholderFade, setPlaceholderFade] = useState(true);
     const inputRef = useRef<HTMLInputElement>(null);
     const containerRef = useRef<HTMLDivElement>(null);
+    const router = useRouter();
 
     // Rotating placeholder
     useEffect(() => {
@@ -101,13 +103,18 @@ export default function SearchBar() {
     const hasResults = suggestions.length > 0;
 
     const handleTrendingClick = (trend: string) => {
-        setQuery(trend);
-        inputRef.current?.focus();
+        router.push('/platforms');
     };
 
     const handleSuggestionClick = (label: string) => {
-        setQuery(label);
+        router.push('/platforms');
         setIsFocused(false);
+    };
+
+    const handleSearchSubmit = (e: React.KeyboardEvent<HTMLInputElement>) => {
+        if (e.key === 'Enter' && query.trim()) {
+            router.push('/platforms');
+        }
     };
 
     const clearQuery = () => {
@@ -160,6 +167,7 @@ export default function SearchBar() {
                         value={query}
                         onChange={(e) => setQuery(e.target.value)}
                         onFocus={() => setIsFocused(true)}
+                        onKeyDown={handleSearchSubmit}
                         placeholder={PLACEHOLDERS[placeholderIndex]}
                         className={`w-full bg-transparent text-appleText text-base md:text-lg px-4 py-[18px] md:py-[20px] outline-none rounded-2xl transition-opacity duration-200 ${
                             placeholderFade ? 'placeholder-appleMuted/70' : 'placeholder-transparent'

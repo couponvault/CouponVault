@@ -145,7 +145,16 @@ async function scrapeRealCoupons() {
         }
 
         await browser.close();
-        console.log(`\n🎉 SCRAPING COMPLETE! Added ${totalScraped} real coupons to the vault.`);
+
+        // Sync platform stats to accurately reflect the real coupon counts
+        console.log('\n🔄 Syncing platform stats with real coupon counts...');
+        for (const p of platforms) {
+            const count = await Coupon.countDocuments({ platform: p._id });
+            // For claimed count, give a realistic random bump or keep it if you want it real, since it's a new scrape we can keep it
+            await Platform.updateOne({ _id: p._id }, { $set: { 'stats.activeCount': count } });
+        }
+
+        console.log(`\n🎉 SCRAPING COMPLETE! Added ${totalScraped} real coupons to the vault and synced stats.`);
         process.exit(0);
 
     } catch (error) {

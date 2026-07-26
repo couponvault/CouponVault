@@ -1,9 +1,9 @@
 'use client';
 
-import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import SearchBar from '@/components/SearchBar';
 import { FiZap, FiCheck, FiCopy, FiStar, FiArrowRight, FiShield, FiTrendingUp, FiGift, FiGrid } from 'react-icons/fi';
 import toast from 'react-hot-toast';
 import AdBanner from '@/components/ui/AdBanner';
@@ -11,7 +11,7 @@ import AdBanner from '@/components/ui/AdBanner';
 export const dynamic = 'force-dynamic';
 
 export default function HomePage() {
-    const [searchQuery, setSearchQuery] = useState('');
+
 
     const stores = [
         { name: 'Nike', slug: 'nike', logo: '✓', bg: '#000', text: '#fff' },
@@ -79,34 +79,8 @@ export default function HomePage() {
                         </div>
                     </div>
 
-                    {/* Search Bar */}
-                    <div className="max-w-3xl mx-auto mb-6 relative group">
-                        <div className="absolute -inset-[1px] bg-gradient-to-r from-[#2563EB] to-[#10B981] rounded-full opacity-0 group-focus-within:opacity-50 transition duration-500 blur-md"></div>
-                        <div className="relative flex items-center bg-[#151922] rounded-full border border-[#2A3445] focus-within:border-[#2563EB] focus-within:ring-2 focus-within:ring-[#2563EB]/50 transition-all duration-300 shadow-xl">
-                            <input
-                                type="text"
-                                placeholder="Search Amazon, Flipkart, Myntra, Swiggy..."
-                                value={searchQuery}
-                                onChange={(e) => setSearchQuery(e.target.value)}
-                                className="w-full bg-transparent text-white text-base md:text-lg px-8 py-4 md:py-5 outline-none placeholder-[#94A3B8] rounded-l-full"
-                            />
-                            <button className="pr-8 pl-4 text-[#94A3B8] hover:text-[#2563EB] transition-colors">
-                                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-
-                    {/* Trending Searches */}
-                    <div className="flex flex-wrap items-center justify-center gap-2 mb-12">
-                        <span className="text-[#94A3B8] text-sm mr-2 flex items-center font-medium">🔥 Trending Searches</span>
-                        {['Amazon', 'Flipkart', 'Myntra', 'Ajio', 'Nykaa', 'Swiggy', 'Zomato'].map((trend) => (
-                            <button key={trend} className="px-4 py-1.5 bg-[#151922] hover:bg-[#2A3445] border border-[#2A3445] rounded-full text-[#94A3B8] hover:text-white text-xs transition-colors">
-                                {trend}
-                            </button>
-                        ))}
-                    </div>
+                    {/* Search Bar + Trending */}
+                    <SearchBar />
 
                     {/* CTA Actions */}
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6">

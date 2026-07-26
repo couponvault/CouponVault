@@ -6,6 +6,7 @@ import JSONLD from '@/components/JSONLD';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import GlobalAds from '@/components/GlobalAds';
+import Script from 'next/script';
 
 const inter = Inter({
     subsets: ['latin'],
@@ -69,6 +70,7 @@ export default function RootLayout({
                 <Analytics />
                 <SpeedInsights />
                 <Toaster position="top-right" />
+                <Script src="https://s.skimresources.com/js/306824X1795089.skimlinks.js" strategy="afterInteractive" />
             </body>
         </html>
     );

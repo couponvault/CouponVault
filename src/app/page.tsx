@@ -275,7 +275,9 @@ export default function HomePage() {
                                     <div className="flex items-center justify-between mb-6 text-sm text-appleMuted">
                                         <span>User Rating</span>
                                         <div className="flex items-center space-x-1.5">
-                                            <span className="font-bold text-appleText text-base">4.9</span>
+                                            <span className="font-bold text-appleText text-base">
+                                                {(4.5 + (deal.code.split('').reduce((acc: number, char: string) => acc + char.charCodeAt(0), 0) % 6) / 10).toFixed(1)}
+                                            </span>
                                             <FiStar className="text-warning w-4 h-4 fill-current" />
                                         </div>
                                     </div>

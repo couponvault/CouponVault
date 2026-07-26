@@ -104,7 +104,9 @@ export default function CouponCard({ coupon }: CouponCardProps) {
             <div className="flex items-center justify-between mt-auto mb-4 text-xs text-appleMuted border-t border-appleBorder/50 pt-3">
                 <span>User Rating</span>
                 <div className="flex items-center space-x-1">
-                    <span className="font-bold text-appleText">4.9</span>
+                    <span className="font-bold text-appleText">
+                        {(4.5 + (coupon.code.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0) % 6) / 10).toFixed(1)}
+                    </span>
                     <FiStar className="text-warning w-3.5 h-3.5 fill-current" />
                 </div>
             </div>

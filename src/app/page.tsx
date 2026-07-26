@@ -63,7 +63,9 @@ export default function HomePage() {
     };
 
     return (
-        <div className="min-h-screen flex flex-col bg-appleBg">
+        <div className="min-h-screen flex flex-col bg-appleBg relative">
+            {/* Colorful top gradient mesh */}
+            <div className="absolute top-0 left-0 w-full h-[600px] bg-gradient-to-b from-blue-50 via-purple-50/30 to-transparent -z-10 pointer-events-none" />
             <Navbar />
 
             <main className="flex-1">
@@ -111,9 +113,10 @@ export default function HomePage() {
                             </motion.div>
                         ))}
                         
-                        {/* Soft background glows to blend them */}
-                        <div className="absolute top-1/4 left-0 w-64 h-64 bg-appleBlue/5 rounded-full blur-[100px]" />
-                        <div className="absolute bottom-1/4 right-0 w-64 h-64 bg-purple-500/5 rounded-full blur-[100px]" />
+                        {/* Stronger background glows to blend them */}
+                        <div className="absolute top-1/4 left-0 w-72 h-72 bg-blue-400/10 rounded-full blur-[100px]" />
+                        <div className="absolute bottom-1/4 right-0 w-72 h-72 bg-purple-400/10 rounded-full blur-[100px]" />
+                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-orange-400/5 rounded-full blur-[120px]" />
                     </div>
 
                     <div className="max-w-5xl mx-auto relative z-10">
@@ -208,7 +211,11 @@ export default function HomePage() {
                     ) : (
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-6">
                             {coupons.map((deal, i) => (
-                                <div key={i} className="coupon-card bg-white border border-appleBorder rounded-2xl p-6 flex flex-col hover:shadow-lg transition-all hover:-translate-y-1 shadow-sm group">
+                                <div 
+                                    key={i} 
+                                    className="coupon-card bg-white border-b border-l border-r border-appleBorder rounded-2xl p-6 flex flex-col hover:shadow-lg transition-all hover:-translate-y-1 shadow-sm group border-t-4"
+                                    style={{ borderTopColor: deal.platform.backgroundColor || '#007AFF' }}
+                                >
                                     {/* Header: Logo + Name + Active Badge */}
                                     <div className="flex items-center justify-between mb-5">
                                         <div className="flex items-center space-x-4">
@@ -291,7 +298,7 @@ export default function HomePage() {
                 </div>
 
                 {/* Why Choose CouponVault */}
-                <section className="bg-appleCard border-t border-b border-appleBorder py-16 px-4">
+                <section className="bg-blue-50/50 border-t border-b border-blue-100 py-16 px-4">
                     <div className="max-w-6xl mx-auto">
                         <div className="text-center mb-12">
                             <h2 className="text-3xl font-bold text-appleText mb-4 font-display">Why Choose CouponVault?</h2>
@@ -299,14 +306,14 @@ export default function HomePage() {
                         </div>
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                             {[
-                                { icon: FiZap, title: 'Instant Coupons', desc: 'Get valid coupon codes instantly with just one click' },
-                                { icon: FiShield, title: '100% Verified', desc: 'All coupons are automatically verified and tested' },
-                                { icon: FiTrendingUp, title: 'Daily Updates', desc: 'Fresh coupons added daily for maximum savings' },
-                                { icon: FiGift, title: 'Top Brands', desc: 'Exclusive deals from Amazon, Walmart, Target & more' },
+                                { icon: FiZap, title: 'Instant Coupons', desc: 'Get valid coupon codes instantly with just one click', color: 'text-yellow-500', bg: 'bg-yellow-50', border: 'border-yellow-200' },
+                                { icon: FiShield, title: '100% Verified', desc: 'All coupons are automatically verified and tested', color: 'text-green-500', bg: 'bg-green-50', border: 'border-green-200' },
+                                { icon: FiTrendingUp, title: 'Daily Updates', desc: 'Fresh coupons added daily for maximum savings', color: 'text-blue-500', bg: 'bg-blue-50', border: 'border-blue-200' },
+                                { icon: FiGift, title: 'Top Brands', desc: 'Exclusive deals from Amazon, Walmart, Target & more', color: 'text-purple-500', bg: 'bg-purple-50', border: 'border-purple-200' },
                             ].map((feature, i) => (
                                 <div key={i} className="flex flex-col items-center text-center p-6 bg-white rounded-2xl border border-appleBorder hover:shadow-md transition-all">
-                                    <div className="w-14 h-14 rounded-xl bg-appleBlue/10 border border-appleBlue/20 flex items-center justify-center mb-5">
-                                        <feature.icon className="w-6 h-6 text-appleBlue" />
+                                    <div className={`w-14 h-14 rounded-xl ${feature.bg} border ${feature.border} flex items-center justify-center mb-5 shadow-sm`}>
+                                        <feature.icon className={`w-6 h-6 ${feature.color}`} />
                                     </div>
                                     <h3 className="text-lg font-bold text-appleText mb-2">{feature.title}</h3>
                                     <p className="text-sm text-appleMuted leading-relaxed">{feature.desc}</p>

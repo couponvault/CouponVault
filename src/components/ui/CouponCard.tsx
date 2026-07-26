@@ -54,7 +54,10 @@ export default function CouponCard({ coupon }: CouponCardProps) {
     };
 
     return (
-        <div className="coupon-card bg-white border border-appleBorder p-5 flex flex-col group">
+        <div 
+            className="coupon-card bg-white border-b border-l border-r border-appleBorder p-5 flex flex-col group border-t-4"
+            style={{ borderTopColor: coupon.platform.backgroundColor || '#007AFF' }}
+        >
             {/* Header: Logo + Name + Active Badge */}
             <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center space-x-3">

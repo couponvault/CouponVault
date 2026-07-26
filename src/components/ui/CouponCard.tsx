@@ -43,7 +43,7 @@ export default function CouponCard({ coupon }: CouponCardProps) {
             case 'percentage':
                 return `${coupon.discountValue}% OFF`;
             case 'fixed':
-                return `₹${coupon.discountValue} OFF`;
+                return `$${coupon.discountValue} OFF`;
             case 'freeShipping':
                 return 'FREE SHIPPING';
             case 'bogo':

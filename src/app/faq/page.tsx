@@ -34,8 +34,8 @@ export default function FAQPage() {
             answer: 'While our system ensures all coupons are valid at the time of generation, some may have platform-specific restrictions. If a code doesn\'t work, try getting another one. You can claim multiple coupons within your daily limit.',
         },
         {
-            question: 'Which platforms are supported?',
-            answer: 'We currently support 50+ platforms including Amazon, Flipkart, Netflix, Amazon Prime, Myntra, Ajio, Swiggy, Zomato, MakeMyTrip, Uber, and many more. New platforms are added regularly.',
+            question: 'Which platforms do you support?',
+            answer: 'We currently support top platforms including Amazon, Walmart, Target, Best Buy, Sephora, Macy\'s, Netflix, and many more. New platforms are added regularly.',
         },
         {
             question: 'Can I use multiple coupons on the same platform?',

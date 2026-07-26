@@ -26,9 +26,9 @@ export const viewport = {
 };
 
 export const metadata: Metadata = {
-    title: 'CouponVault | 100% Verified Promo Codes for Amazon, Flipkart, Netflix',
-    description: 'Get exclusive, hand-verified coupon codes and discount deals for top Indian brands. Instant savings on Fashion, Food, Streaming & Travel.',
-    keywords: 'coupon codes india, amazon promo codes, flipkart discount coupons, myntra fashion deals, verified coupons, online shopping discounts, promo codes 2026',
+    title: 'CouponVault | 100% Verified Promo Codes for Amazon, Walmart, Target',
+    description: 'Find the best verified coupon codes and deals for top e-commerce platforms. Save money with our daily updated, automated promo codes.',
+    keywords: 'coupon codes usa, amazon promo codes, walmart discount coupons, target fashion deals, verified coupons, online shopping discounts, promo codes 2026',
     authors: [{ name: 'CouponVault' }],
     verification: {
         google: 'AWhoJenbK6Y3oEL5fK5BXj4SnmwfoTLXB1NnUO6-414',

@@ -44,14 +44,19 @@ export default function AboutPage() {
                                 <div>
                                     <h2 className="text-2xl font-bold mb-4">What We Offer</h2>
                                     <ul className="space-y-3">
-                                        {[
-                                            'Auto-generated verified coupon codes',
-                                            '50+ partner platforms including Amazon, Flipkart, Netflix',
-                                            'Daily fresh coupon updates',
-                                            'Smart distribution system',
-                                            'No manual code hunting required',
-                                            'Free for all users',
-                                        ].map((item, index) => (
+                                        <li className="flex items-center space-x-3">
+                                            <div className="w-6 h-6 bg-green-100 dark:bg-green-900/20 rounded-full flex items-center justify-center flex-shrink-0">
+                                                <span className="text-green-600 dark:text-green-400">✓</span>
+                                            </div>
+                                            <span className="text-gray-600 dark:text-gray-400">Auto-generated verified coupon codes</span>
+                                        </li>
+                                        <li className="flex items-center space-x-3">
+                                            <div className="w-6 h-6 bg-green-100 dark:bg-green-900/20 rounded-full flex items-center justify-center flex-shrink-0">
+                                                <FiCheck className="text-cyan-600 dark:text-cyan-400 w-4 h-4" />
+                                            </div>
+                                            <span className="text-gray-600 dark:text-gray-400">Partner platforms including Amazon, Walmart, Target</span>
+                                        </li>
+                                        {['Daily fresh coupon updates', 'Smart distribution system', 'No manual code hunting required', 'Free for all users'].map((item, index) => (
                                             <li key={index} className="flex items-center space-x-3">
                                                 <div className="w-6 h-6 bg-green-100 dark:bg-green-900/20 rounded-full flex items-center justify-center flex-shrink-0">
                                                     <span className="text-green-600 dark:text-green-400">✓</span>

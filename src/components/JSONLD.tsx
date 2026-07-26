@@ -5,7 +5,7 @@ export default function JSONLD() {
         "name": "CouponVault",
         "url": "https://coupon-vault.vercel.app",
         "logo": "https://coupon-vault.vercel.app/logo.png",
-        "description": "Premium verified coupon codes for top Indian e-commerce platforms like Amazon, Flipkart, Myntra, and more.",
+        "description": "Premium verified coupon codes for top e-commerce platforms like Amazon, Walmart, Target, and more.",
         "sameAs": [
             "https://twitter.com/couponvault",
             "https://facebook.com/couponvault"

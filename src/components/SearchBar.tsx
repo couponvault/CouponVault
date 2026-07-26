@@ -5,14 +5,14 @@ import { FiSearch, FiX } from 'react-icons/fi';
 
 const PLACEHOLDERS = [
     'Search Amazon Coupons...',
-    'Search Flipkart Deals...',
-    'Search Myntra Promo Codes...',
-    'Search Swiggy Offers...',
-    'Search Zomato Discounts...',
-    'Search Samsung Offers...',
+    'Search Walmart Deals...',
+    'Search Target Promo Codes...',
+    'Search Best Buy Offers...',
+    'Search Sephora Discounts...',
+    'Search Macy\'s Offers...',
 ];
 
-const TRENDING = ['Amazon', 'Flipkart', 'Myntra', 'Ajio', 'Nykaa', 'Swiggy', 'Zomato'];
+const TRENDING = ['Amazon', 'Walmart', 'Target', 'Best Buy', 'Sephora', 'Macy\'s', 'DoorDash'];
 
 interface Suggestion {
     type: 'store' | 'coupon' | 'category';
@@ -22,21 +22,21 @@ interface Suggestion {
 
 const ALL_SUGGESTIONS: Suggestion[] = [
     { type: 'store', icon: '🏪', label: 'Amazon' },
-    { type: 'store', icon: '🏪', label: 'Flipkart' },
-    { type: 'store', icon: '🏪', label: 'Myntra' },
-    { type: 'store', icon: '🏪', label: 'Ajio' },
-    { type: 'store', icon: '🏪', label: 'Nykaa' },
-    { type: 'store', icon: '🏪', label: 'Swiggy' },
-    { type: 'store', icon: '🏪', label: 'Zomato' },
-    { type: 'store', icon: '🏪', label: 'Samsung' },
-    { type: 'store', icon: '🏪', label: 'Nike' },
-    { type: 'store', icon: '🏪', label: 'Adidas' },
+    { type: 'store', icon: '🏪', label: 'Walmart' },
+    { type: 'store', icon: '🏪', label: 'Target' },
+    { type: 'store', icon: '🏪', label: 'Best Buy' },
+    { type: 'store', icon: '🏪', label: 'Sephora' },
+    { type: 'store', icon: '🏪', label: 'DoorDash' },
+    { type: 'store', icon: '🏪', label: 'Uber Eats' },
+    { type: 'store', icon: '🏪', label: 'Expedia' },
+    { type: 'store', icon: '🏪', label: 'Netflix' },
+    { type: 'store', icon: '🏪', label: 'Macy\'s' },
     { type: 'coupon', icon: '🎟', label: 'Amazon Coupons' },
-    { type: 'coupon', icon: '🎟', label: 'Flipkart Bank Offers' },
-    { type: 'coupon', icon: '🎟', label: 'Myntra Promo Codes' },
-    { type: 'coupon', icon: '🎟', label: 'Swiggy First Order' },
-    { type: 'coupon', icon: '🎟', label: 'Zomato Pro Deals' },
-    { type: 'coupon', icon: '🎟', label: 'Nykaa Sale Codes' },
+    { type: 'coupon', icon: '🎟', label: 'Walmart Bank Offers' },
+    { type: 'coupon', icon: '🎟', label: 'Target Promo Codes' },
+    { type: 'coupon', icon: '🎟', label: 'DoorDash First Order' },
+    { type: 'coupon', icon: '🎟', label: 'Uber Eats Pro Deals' },
+    { type: 'coupon', icon: '🎟', label: 'Sephora Sale Codes' },
     { type: 'category', icon: '📂', label: 'Fashion' },
     { type: 'category', icon: '📂', label: 'Food Delivery' },
     { type: 'category', icon: '📂', label: 'Electronics' },
@@ -45,7 +45,7 @@ const ALL_SUGGESTIONS: Suggestion[] = [
     { type: 'category', icon: '📂', label: 'Beauty & Health' },
 ];
 
-const SUGGESTED_STORES = ['Amazon', 'Flipkart', 'Myntra'];
+const SUGGESTED_STORES = ['Amazon', 'Walmart', 'Target'];
 
 export default function SearchBar() {
     const [query, setQuery] = useState('');

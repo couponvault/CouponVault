@@ -302,7 +302,7 @@ export default function HomePage() {
                                 { icon: FiZap, title: 'Instant Coupons', desc: 'Get valid coupon codes instantly with just one click' },
                                 { icon: FiShield, title: '100% Verified', desc: 'All coupons are automatically verified and tested' },
                                 { icon: FiTrendingUp, title: 'Daily Updates', desc: 'Fresh coupons added daily for maximum savings' },
-                                { icon: FiGift, title: 'Top Brands', desc: 'Exclusive deals from Amazon, Flipkart, Netflix & more' },
+                                { icon: FiGift, title: 'Top Brands', desc: 'Exclusive deals from Amazon, Walmart, Target & more' },
                             ].map((feature, i) => (
                                 <div key={i} className="flex flex-col items-center text-center p-6 bg-[#0a0b0f] rounded-2xl border border-white/5 hover:border-cyan-500/20 transition-all">
                                     <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-purple-500/10 to-cyan-500/10 border border-cyan-500/20 flex items-center justify-center mb-5">

@@ -52,44 +52,51 @@ export default function HomePage() {
             <main className="flex-1">
                 {/* Unified Hero Section */}
                 <section className="relative w-full overflow-hidden text-center py-16 px-4">
-                    {/* Abstract Floating Elements (Hidden on mobile) */}
-                    <div className="hidden lg:block absolute inset-0 pointer-events-none">
-                        {/* Top Left Glassmorphic Circle */}
-                        <motion.div 
-                            initial={{ y: 0 }}
-                            animate={{ y: [0, -20, 0] }}
-                            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                            className="absolute top-10 left-[10%] w-24 h-24 bg-gradient-to-br from-[#2563EB]/20 to-transparent border border-[#2563EB]/30 rounded-full flex items-center justify-center backdrop-blur-md shadow-[0_0_30px_rgba(37,99,235,0.2)]"
-                        >
-                            <span className="text-3xl font-bold text-[#2563EB]/50">%</span>
-                        </motion.div>
+                    {/* Floating Brand Logos (Solar System effect) */}
+                    <div className="hidden xl:block absolute inset-0 pointer-events-none">
+                        {/* Left Side Brands */}
+                        {[
+                            { name: 'A', bg: '#fff', text: '#ff9900', t: '10%', l: '8%', dur: 4, del: 0 },
+                            { name: 'M', bg: '#fff', text: '#F13AB1', t: '35%', l: '3%', dur: 5, del: 1 },
+                            { name: 'F', bg: '#0456c8', text: '#ffe11b', t: '60%', l: '12%', dur: 4.5, del: 2 },
+                            { name: 'S', bg: '#fc8019', text: '#fff', t: '80%', l: '5%', dur: 5.5, del: 0.5 },
+                            { name: 'N', bg: '#000', text: '#fff', t: '25%', l: '18%', dur: 6, del: 1.5 },
+                        ].map((brand, i) => (
+                            <motion.div 
+                                key={`left-${i}`}
+                                initial={{ y: 0 }}
+                                animate={{ y: [0, -20, 0] }}
+                                transition={{ duration: brand.dur, repeat: Infinity, ease: "easeInOut", delay: brand.del }}
+                                className="absolute w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold shadow-[0_10px_40px_rgba(37,99,235,0.15)] border border-[#2A3445] backdrop-blur-md"
+                                style={{ top: brand.t, left: brand.l, backgroundColor: brand.bg, color: brand.text }}
+                            >
+                                {brand.name}
+                            </motion.div>
+                        ))}
 
-                        {/* Bottom Left Emerald Glow */}
-                        <motion.div 
-                            initial={{ y: 0, opacity: 0.5 }}
-                            animate={{ y: [0, 20, 0], opacity: [0.5, 0.8, 0.5] }}
-                            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                            className="absolute bottom-10 left-[5%] w-40 h-40 bg-[#10B981]/10 rounded-full blur-[60px]"
-                        />
-
-                        {/* Top Right Blue Glow */}
-                        <motion.div 
-                            initial={{ y: 0, opacity: 0.3 }}
-                            animate={{ y: [0, -30, 0], opacity: [0.3, 0.6, 0.3] }}
-                            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-                            className="absolute top-0 right-[5%] w-56 h-56 bg-[#2563EB]/10 rounded-full blur-[80px]"
-                        />
-
-                        {/* Bottom Right Glassmorphic Pill */}
-                        <motion.div 
-                            initial={{ y: 0 }}
-                            animate={{ y: [0, 15, 0], rotate: [0, 5, 0] }}
-                            transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-                            className="absolute bottom-20 right-[12%] px-6 py-3 bg-gradient-to-br from-[#10B981]/10 to-transparent border border-[#10B981]/20 rounded-full flex items-center justify-center backdrop-blur-md shadow-[0_0_30px_rgba(16,185,129,0.1)]"
-                        >
-                            <span className="text-xl">✨</span>
-                            <span className="ml-2 text-sm font-bold text-[#10B981]/70 tracking-widest">PROMO</span>
-                        </motion.div>
+                        {/* Right Side Brands */}
+                        {[
+                            { name: 'Z', bg: '#e23744', text: '#fff', t: '12%', r: '10%', dur: 5, del: 0.2 },
+                            { name: 'N', bg: '#E80071', text: '#fff', t: '38%', r: '4%', dur: 4.5, del: 1.2 },
+                            { name: 'S', bg: '#1428a0', text: '#fff', t: '65%', r: '14%', dur: 5.5, del: 2.5 },
+                            { name: 'A', bg: '#000', text: '#fff', t: '85%', r: '6%', dur: 4, del: 0.8 },
+                            { name: 'T', bg: '#cc0000', text: '#fff', t: '22%', r: '18%', dur: 6, del: 1.8 },
+                        ].map((brand, i) => (
+                            <motion.div 
+                                key={`right-${i}`}
+                                initial={{ y: 0 }}
+                                animate={{ y: [0, 20, 0] }}
+                                transition={{ duration: brand.dur, repeat: Infinity, ease: "easeInOut", delay: brand.del }}
+                                className="absolute w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold shadow-[0_10px_40px_rgba(16,185,129,0.15)] border border-[#2A3445] backdrop-blur-md"
+                                style={{ top: brand.t, right: brand.r, backgroundColor: brand.bg, color: brand.text }}
+                            >
+                                {brand.name}
+                            </motion.div>
+                        ))}
+                        
+                        {/* Soft background glows to blend them */}
+                        <div className="absolute top-1/4 left-0 w-64 h-64 bg-[#2563EB]/5 rounded-full blur-[100px]" />
+                        <div className="absolute bottom-1/4 right-0 w-64 h-64 bg-[#10B981]/5 rounded-full blur-[100px]" />
                     </div>
 
                     <div className="max-w-5xl mx-auto relative z-10">

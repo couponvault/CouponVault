@@ -6,6 +6,7 @@ import JSONLD from '@/components/JSONLD';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import GlobalAds from '@/components/GlobalAds';
+import CookieBanner from '@/components/CookieBanner';
 import Script from 'next/script';
 
 const inter = Inter({
@@ -63,6 +64,14 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en" suppressHydrationWarning>
+            <head>
+                <Script 
+                    async 
+                    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-0000000000000000" 
+                    crossOrigin="anonymous" 
+                    strategy="afterInteractive"
+                />
+            </head>
             <body className={`${inter.variable} ${outfit.variable} font-sans antialiased`}>
                 <JSONLD />
                 <GlobalAds />
@@ -70,6 +79,7 @@ export default function RootLayout({
                 <Analytics />
                 <SpeedInsights />
                 <Toaster position="top-right" />
+                <CookieBanner />
                 <Script src="https://s.skimresources.com/js/306824X1795089.skimlinks.js" strategy="afterInteractive" />
             </body>
         </html>

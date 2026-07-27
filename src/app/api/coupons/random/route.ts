@@ -75,29 +75,37 @@ export async function GET(request: NextRequest) {
             );
         }
 
-        // Mark as claimed
-        coupon.isClaimed = true;
-        coupon.claimedAt = new Date();
+        // Increment usage
         coupon.usedCount += 1;
+        coupon.claimedAt = new Date();
 
         if (user) {
             coupon.claimedBy = user.userId as any;
         }
 
+        let isFullyClaimed = false;
+
         // Deactivate if usage limit reached
         if (coupon.usedCount >= coupon.usageLimit) {
             coupon.isActive = false;
+            coupon.isClaimed = true;
+            isFullyClaimed = true;
         }
 
         await coupon.save();
 
         // Update platform stats
-        await Platform.findByIdAndUpdate(coupon.platform, {
+        const platformUpdate: any = {
             $inc: {
-                'stats.totalClaimed': 1,
-                'stats.activeCount': -1
+                'stats.totalClaimed': 1
             }
-        });
+        };
+
+        if (isFullyClaimed) {
+            platformUpdate.$inc['stats.activeCount'] = -1;
+        }
+
+        await Platform.findByIdAndUpdate(coupon.platform, platformUpdate);
 
         // Log activity
         await Activity.create({

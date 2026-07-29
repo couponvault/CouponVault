@@ -22,19 +22,31 @@ async function scrapeReddit() {
         const page = await browser.newPage();
         await page.setViewport({ width: 1280, height: 800 });
         
-        const targetUrl = 'https://old.reddit.com/r/coupons/';
-        console.log(`\n🔍 Scraping Reddit r/coupons...`);
-        
-        await page.goto(targetUrl, { waitUntil: 'domcontentloaded', timeout: 15000 });
-        const html = await page.content();
-        const $ = cheerio.load(html);
+        const subreddits = [
+            'https://old.reddit.com/r/coupons/',
+            'https://old.reddit.com/r/deals/',
+            'https://old.reddit.com/r/PromoCodes/',
+            'https://old.reddit.com/r/AmazonDealsUS/',
+            'https://old.reddit.com/r/FrugalMaleFashion/',
+            'https://old.reddit.com/r/MUAontheCheap/',
+            'https://old.reddit.com/r/buildapcsales/',
+            'https://old.reddit.com/r/consoledeals/'
+        ];
 
         const newCoupons = [];
         const expiryDate = new Date();
         expiryDate.setDate(expiryDate.getDate() + 30); // Valid for 30 days
-        
-        $('p.title a.title').each((i, el) => {
-            const title = $(el).text();
+
+        for (const targetUrl of subreddits) {
+            console.log(`\n🔍 Scraping Reddit ${targetUrl}...`);
+            
+            try {
+                await page.goto(targetUrl, { waitUntil: 'domcontentloaded', timeout: 15000 });
+                const html = await page.content();
+                const $ = cheerio.load(html);
+
+                $('p.title a.title').each((i, el) => {
+                    const title = $(el).text();
             // Typical format: [Amazon] 20% off Shoes (Code: XYZ123)
             
             // Find platform match
@@ -73,6 +85,10 @@ async function scrapeReddit() {
                 }
             }
         });
+            } catch (e) {
+                console.log(`⚠️ Failed to scrape ${targetUrl}`);
+            }
+        }
         
         if (newCoupons.length > 0) {
             // Filter duplicates by checking existing codes

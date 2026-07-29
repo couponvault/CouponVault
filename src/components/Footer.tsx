@@ -13,6 +13,7 @@ export default function Footer() {
             { label: 'FAQ', href: '/faq' },
         ],
         company: [
+            { label: 'Blog', href: '/blog' },
             { label: 'About Us', href: '/about' },
             { label: 'Contact', href: '/contact' },
             { label: 'Privacy Policy', href: '/privacy' },

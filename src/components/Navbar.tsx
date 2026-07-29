@@ -15,6 +15,7 @@ export default function Navbar() {
         { href: '/platforms', label: 'Top Stores' },
         { href: '/categories', label: 'Categories' },
         { href: '/random', label: 'Daily Deals' },
+        { href: '/blog', label: 'Blog' },
         { href: '/about', label: 'Community' },
     ];
 

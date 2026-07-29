@@ -19,89 +19,72 @@ export default function AboutPage() {
                     </div>
 
                     <div className="space-y-8">
-                        <div className="glass-card p-8 rounded-2xl">
+                        <div className="glass-card p-8 rounded-2xl bg-white border border-appleBorder shadow-sm">
                             <div className="flex items-start space-x-4">
-                                <div className="w-12 h-12 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-lg flex items-center justify-center flex-shrink-0">
-                                    <FiInfo className="w-6 h-6 text-white" />
+                                <div className="w-12 h-12 bg-appleBlue/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                                    <FiInfo className="w-6 h-6 text-appleBlue" />
                                 </div>
                                 <div>
-                                    <h2 className="text-2xl font-bold mb-4">Who We Are</h2>
-                                    <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-4">
-                                        CouponVault is a cutting-edge platform that automatically generates, manages, and distributes exclusive coupon codes for India's top e-commerce and service platforms. We leverage advanced technology to ensure you always have access to valid, working coupon codes.
+                                    <h2 className="text-2xl font-bold text-appleText mb-4">About the Publisher</h2>
+                                    <p className="text-appleMuted leading-relaxed mb-4">
+                                        CouponVault is operated by an independent team of shopping experts and technology developers dedicated to bringing transparency to the digital coupon industry. Founded in 2026, our platform is built on the premise that consumers deserve verified, working deals without the clutter of expired codes.
                                     </p>
-                                    <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                                        Our mission is to make online shopping more affordable for everyone by providing instant access to verified discount codes, eliminating the frustration of expired or invalid coupons.
+                                    <p className="text-appleMuted leading-relaxed mb-4">
+                                        Our editorial team, led by seasoned retail analysts, manually curates and verifies promotional offers from hundreds of top global brands. We also publish original shopping guides, savings strategies, and product reviews to provide clear commercial value to our readers.
                                     </p>
                                 </div>
                             </div>
                         </div>
 
-                        <div className="glass-card p-8 rounded-2xl">
+                        <div className="glass-card p-8 rounded-2xl bg-white border border-appleBorder shadow-sm">
                             <div className="flex items-start space-x-4">
-                                <div className="w-12 h-12 bg-gradient-to-r from-green-500 to-emerald-500 rounded-lg flex items-center justify-center flex-shrink-0">
-                                    <FiTarget className="w-6 h-6 text-white" />
+                                <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                                    <FiTarget className="w-6 h-6 text-green-600" />
                                 </div>
                                 <div>
-                                    <h2 className="text-2xl font-bold mb-4">What We Offer</h2>
+                                    <h2 className="text-2xl font-bold text-appleText mb-4">Our Editorial Policy</h2>
                                     <ul className="space-y-3">
                                         <li className="flex items-center space-x-3">
-                                            <div className="w-6 h-6 bg-green-100 dark:bg-green-900/20 rounded-full flex items-center justify-center flex-shrink-0">
-                                                <span className="text-green-600 dark:text-green-400">✓</span>
+                                            <div className="w-6 h-6 bg-green-50 rounded-full flex items-center justify-center flex-shrink-0">
+                                                <span className="text-green-600 font-bold">✓</span>
                                             </div>
-                                            <span className="text-gray-600 dark:text-gray-400">Auto-generated verified coupon codes</span>
+                                            <span className="text-appleMuted">We only publish 100% original editorial content and shopping guides.</span>
                                         </li>
                                         <li className="flex items-center space-x-3">
-                                            <div className="w-6 h-6 bg-green-100 dark:bg-green-900/20 rounded-full flex items-center justify-center flex-shrink-0">
-                                                <span className="text-green-600 dark:text-green-400">✓</span>
+                                            <div className="w-6 h-6 bg-green-50 rounded-full flex items-center justify-center flex-shrink-0">
+                                                <span className="text-green-600 font-bold">✓</span>
                                             </div>
-                                            <span className="text-gray-600 dark:text-gray-400">Partner platforms including Amazon, Walmart, Target</span>
+                                            <span className="text-appleMuted">All coupons are manually tested or sourced directly from certified merchant APIs.</span>
                                         </li>
-                                        {['Daily fresh coupon updates', 'Smart distribution system', 'No manual code hunting required', 'Free for all users'].map((item, index) => (
-                                            <li key={index} className="flex items-center space-x-3">
-                                                <div className="w-6 h-6 bg-green-100 dark:bg-green-900/20 rounded-full flex items-center justify-center flex-shrink-0">
-                                                    <span className="text-green-600 dark:text-green-400">✓</span>
-                                                </div>
-                                                <span className="text-gray-600 dark:text-gray-400">{item}</span>
-                                            </li>
-                                        ))}
+                                        <li className="flex items-center space-x-3">
+                                            <div className="w-6 h-6 bg-green-50 rounded-full flex items-center justify-center flex-shrink-0">
+                                                <span className="text-green-600 font-bold">✓</span>
+                                            </div>
+                                            <span className="text-appleMuted">We strictly prohibit user-generated spam or scraped content.</span>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
 
-                        <div className="glass-card p-8 rounded-2xl">
+                        <div className="glass-card p-8 rounded-2xl bg-white border border-appleBorder shadow-sm">
                             <div className="flex items-start space-x-4">
-                                <div className="w-12 h-12 bg-gradient-to-r from-pink-500 to-red-500 rounded-lg flex items-center justify-center flex-shrink-0">
-                                    <FiHeart className="w-6 h-6 text-white" />
+                                <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                                    <FiHeart className="w-6 h-6 text-purple-600" />
                                 </div>
                                 <div>
-                                    <h2 className="text-2xl font-bold mb-4">Why Choose Us</h2>
-                                    <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-4">
-                                        Unlike traditional coupon websites that rely on user-submitted codes, CouponVault uses an intelligent auto-generation system that creates and validates codes in real-time. This means:
+                                    <h2 className="text-2xl font-bold text-appleText mb-4">Contact & Transparency</h2>
+                                    <p className="text-appleMuted leading-relaxed mb-4">
+                                        Transparency is one of our core values. We actively partner with leading affiliate networks (including Skimlinks and ShareASale) to monetize our platform through legitimate CPA/CPS models. When you click on links to various merchants on this site and make a purchase, this can result in this site earning a commission.
                                     </p>
-                                    <ul className="space-y-2">
-                                        {[
-                                            'Zero expired coupons',
-                                            'Instant availability',
-                                            'Fair distribution',
-                                            'Anti-abuse protection',
-                                            'Always up-to-date',
-                                        ].map((item, index) => (
-                                            <li key={index} className="flex items-start space-x-2 text-gray-600 dark:text-gray-400">
-                                                <span className="text-primary-500">→</span>
-                                                <span>{item}</span>
-                                            </li>
-                                        ))}
-                                    </ul>
+                                    <div className="mt-4 p-4 bg-gray-50 rounded-xl border border-gray-100">
+                                        <h3 className="font-bold text-appleText mb-2">Operating Entity:</h3>
+                                        <p className="text-sm text-appleMuted">CouponVault Operations Team</p>
+                                        <p className="text-sm text-appleMuted">Email: publisher@couponvault.in</p>
+                                        <p className="text-sm text-appleMuted">Website: https://couponvault.in</p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-
-                        <div className="glass-card p-8 rounded-2xl text-center bg-gradient-to-r from-primary-50 to-secondary-50 dark:from-primary-900/10 dark:to-secondary-900/10">
-                            <h2 className="text-2xl font-bold mb-4">Our Commitment</h2>
-                            <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                                We're committed to helping you save money on every purchase. Our platform is constantly evolving to bring you the best coupon experience possible. Join thousands of satisfied users who save money every day with CouponVault!
-                            </p>
                         </div>
                     </div>
                 </div>

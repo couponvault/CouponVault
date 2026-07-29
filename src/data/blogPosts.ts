@@ -22,7 +22,7 @@ export const blogPosts = [
         author: 'CouponVault Editorial Team',
         date: '2026-07-25',
         readTime: '4 min read',
-        image: 'https://images.unsplash.com/photo-1523474253046-8cd2748b5fd2?auto=format&fit=crop&q=80&w=1000'
+        image: 'https://images.unsplash.com/photo-1607083206968-13611e3d76db?auto=format&fit=crop&q=80&w=1000'
     },
     {
         id: '2',
@@ -45,7 +45,7 @@ export const blogPosts = [
         author: 'Sarah Jenkins',
         date: '2026-07-22',
         readTime: '3 min read',
-        image: 'https://images.unsplash.com/photo-1596462502278-27bf85033e5a?auto=format&fit=crop&q=80&w=1000'
+        image: 'https://images.unsplash.com/photo-1571781926291-c477ebfd024b?auto=format&fit=crop&q=80&w=1000'
     },
     {
         id: '3',
@@ -91,7 +91,7 @@ export const blogPosts = [
         author: 'CouponVault Tech Desk',
         date: '2026-07-15',
         readTime: '4 min read',
-        image: 'https://images.unsplash.com/photo-1550009158-9ebf6d17332f?auto=format&fit=crop&q=80&w=1000'
+        image: 'https://images.unsplash.com/photo-1531297172867-111116c4eb04?auto=format&fit=crop&q=80&w=1000'
     },
     {
         id: '5',
@@ -134,7 +134,7 @@ export const blogPosts = [
         author: 'Mike Chen',
         date: '2026-07-05',
         readTime: '3 min read',
-        image: 'https://images.unsplash.com/photo-1588702547923-70659a633c09?auto=format&fit=crop&q=80&w=1000'
+        image: 'https://images.unsplash.com/photo-1534452203293-494d7ddbf7e0?auto=format&fit=crop&q=80&w=1000'
     },
     {
         id: '7',
@@ -154,7 +154,7 @@ export const blogPosts = [
         author: 'CouponVault Editorial Team',
         date: '2026-06-28',
         readTime: '4 min read',
-        image: 'https://images.unsplash.com/photo-1604719312566-8fa2465e4f50?auto=format&fit=crop&q=80&w=1000'
+        image: 'https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?auto=format&fit=crop&q=80&w=1000'
     },
     {
         id: '8',
@@ -177,7 +177,7 @@ export const blogPosts = [
         author: 'Sarah Jenkins',
         date: '2026-06-20',
         readTime: '5 min read',
-        image: 'https://images.unsplash.com/photo-1511556532299-8f662fc26c06?auto=format&fit=crop&q=80&w=1000'
+        image: 'https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&q=80&w=1000'
     },
     {
         id: '9',
@@ -201,7 +201,7 @@ export const blogPosts = [
         author: 'Mike Chen',
         date: '2026-06-15',
         readTime: '3 min read',
-        image: 'https://images.unsplash.com/photo-1555529733-0e670560f7e1?auto=format&fit=crop&q=80&w=1000'
+        image: 'https://images.unsplash.com/photo-1556740749-887f6717d5e4?auto=format&fit=crop&q=80&w=1000'
     },
     {
         id: '10',
@@ -224,6 +224,6 @@ export const blogPosts = [
         author: 'CouponVault Editorial Team',
         date: '2026-06-10',
         readTime: '5 min read',
-        image: 'https://images.unsplash.com/photo-1587614295999-6c1c13675117?auto=format&fit=crop&q=80&w=1000'
+        image: 'https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&q=80&w=1000'
     }
 ];

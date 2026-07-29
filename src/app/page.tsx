@@ -7,9 +7,10 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import SearchBar from '@/components/SearchBar';
 import CouponModal from '@/components/CouponModal';
-import { FiZap, FiCheck, FiCopy, FiStar, FiArrowRight, FiShield, FiTrendingUp, FiGift, FiGrid } from 'react-icons/fi';
+import { FiZap, FiCheck, FiCopy, FiStar, FiArrowRight, FiShield, FiTrendingUp, FiGift, FiGrid, FiBookOpen } from 'react-icons/fi';
 import toast from 'react-hot-toast';
 import AdBanner from '@/components/ui/AdBanner';
+import { blogPosts } from '@/data/blogPosts';
 
 export const dynamic = 'force-dynamic';
 
@@ -298,6 +299,54 @@ export default function HomePage() {
                 <div className="max-w-6xl mx-auto px-4 mb-16">
                     <AdBanner />
                 </div>
+
+                {/* Latest Shopping Guides */}
+                <section className="max-w-6xl mx-auto px-4 py-16 border-t border-appleBorder">
+                    <div className="flex justify-between items-end mb-8">
+                        <div>
+                            <h2 className="text-3xl font-bold text-appleText mb-2 font-display">Latest Shopping Guides</h2>
+                            <p className="text-appleMuted">Tips, hacks, and strategies from our editorial team.</p>
+                        </div>
+                        <Link href="/blog" className="hidden sm:flex items-center text-appleBlue hover:text-blue-700 font-medium">
+                            View All <FiArrowRight className="ml-1" />
+                        </Link>
+                    </div>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        {blogPosts.slice(0, 3).map((post) => (
+                            <Link 
+                                key={post.id} 
+                                href={`/blog/${post.slug}`}
+                                className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow border border-appleBorder group flex flex-col"
+                            >
+                                <div className="relative h-48 w-full overflow-hidden bg-gray-100">
+                                    <img 
+                                        src={post.image} 
+                                        alt={post.title}
+                                        className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300"
+                                    />
+                                </div>
+                                <div className="p-6 flex flex-col flex-grow">
+                                    <div className="flex items-center text-xs text-appleMuted mb-3 space-x-2">
+                                        <span>{new Date(post.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
+                                        <span>•</span>
+                                        <span>{post.readTime}</span>
+                                    </div>
+                                    <h3 className="text-xl font-bold text-appleText mb-3 leading-snug group-hover:text-appleBlue transition-colors line-clamp-2">
+                                        {post.title}
+                                    </h3>
+                                    <p className="text-appleMuted text-sm line-clamp-2">
+                                        {post.excerpt}
+                                    </p>
+                                </div>
+                            </Link>
+                        ))}
+                    </div>
+                    <div className="mt-6 sm:hidden">
+                        <Link href="/blog" className="flex items-center justify-center w-full py-3 bg-gray-50 border border-appleBorder rounded-xl text-appleText font-medium">
+                            View All Guides
+                        </Link>
+                    </div>
+                </section>
 
                 {/* Why Choose CouponVault */}
                 <section className="bg-blue-50/50 border-t border-b border-blue-100 py-16 px-4">

@@ -91,7 +91,7 @@ export const blogPosts = [
         author: 'CouponVault Tech Desk',
         date: '2026-07-15',
         readTime: '4 min read',
-        image: 'https://images.unsplash.com/photo-1531297172867-111116c4eb04?auto=format&fit=crop&q=80&w=1000'
+        image: 'https://images.unsplash.com/photo-1550009158-9ebf6d17332f?auto=format&fit=crop&q=80&w=1000'
     },
     {
         id: '5',
@@ -201,7 +201,7 @@ export const blogPosts = [
         author: 'Mike Chen',
         date: '2026-06-15',
         readTime: '3 min read',
-        image: 'https://images.unsplash.com/photo-1556740749-887f6717d5e4?auto=format&fit=crop&q=80&w=1000'
+        image: 'https://images.unsplash.com/photo-1555529733-0e670560f7e1?auto=format&fit=crop&q=80&w=1000'
     },
     {
         id: '10',

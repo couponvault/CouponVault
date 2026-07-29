@@ -1,6 +1,6 @@
 import { blogPosts } from '@/data/blogPosts';
 import Link from 'next/link';
-import Image from 'next/image';
+import { FiArrowLeft } from 'react-icons/fi';
 
 export const metadata = {
     title: 'Shopping Guides & Tips | CouponVault Blog',
@@ -11,6 +11,14 @@ export default function BlogIndex() {
     return (
         <main className="min-h-screen bg-gray-50 py-12">
             <div className="max-w-6xl mx-auto px-4">
+                <Link 
+                    href="/"
+                    className="inline-flex items-center text-appleMuted hover:text-appleBlue mb-8 transition-colors font-medium"
+                >
+                    <FiArrowLeft className="mr-2" />
+                    Back to Home
+                </Link>
+
                 <div className="mb-12 text-center">
                     <h1 className="text-4xl md:text-5xl font-bold text-appleText mb-4" style={{ fontFamily: 'Outfit' }}>
                         Shopping Guides & Secrets

@@ -42,7 +42,7 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
             name: 'CouponVault',
             logo: {
                 '@type': 'ImageObject',
-                url: 'https://couponvault.vercel.app/logo.png' // Adjust URL as needed
+                url: 'https://couponvault.in/logo.png' 
             }
         },
         datePublished: post.date,

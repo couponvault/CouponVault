@@ -33,11 +33,16 @@ async function runSync() {
 
             const slugify = (text) => text.toString().toLowerCase().replace(/\s+/g, '-').replace(/[^\w\-]+/g, '').replace(/\-\-+/g, '-').replace(/^-+/, '').replace(/-+$/, '');
             const slug = slugify(storeName);
-            
+            const logo = offer.Image_Url || offer['Image Url'] || offer.image_url || `https://www.google.com/s2/favicons?domain=${storeName}&sz=128`;
+
             // 1. Check Platform
             let platform = await db.collection('platforms').findOne({ slug });
 
-            if (!platform) {
+            if (platform) {
+                if (platform.logo && platform.logo.includes('placeholder.com')) {
+                    await db.collection('platforms').updateOne({_id: platform._id}, {$set: {logo}});
+                }
+            } else {
                 // Create platform
                 const catString = (offer.Categories || offer['Categories'] || '').toLowerCase();
                 const categoryMap = { 'fashion': 'fashion', 'electronics': 'ecommerce', 'food': 'food', 'travel': 'travel' };
@@ -50,7 +55,7 @@ async function runSync() {
                     name: storeName,
                     slug,
                     description: `Discover the best coupons and deals for ${storeName}.`,
-                    logo: offer.Image_Url || offer['Image Url'] || offer.image_url || 'https://via.placeholder.com/150',
+                    logo: offer.Image_Url || offer['Image Url'] || offer.image_url || `https://www.google.com/s2/favicons?domain=${storeName}&sz=128`,
                     category: matchedCategory,
                     isActive: true,
                     backgroundColor: '#0ea5e9',

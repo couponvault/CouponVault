@@ -74,11 +74,15 @@ export async function GET(request: Request) {
                 const storeName = offer.Store || offer['Store'] || offer.store;
                 if (!storeName) continue;
 
-                // 1. Ensure Platform Exists
+                // 1. Check Platform
                 const slug = slugify(storeName);
-                let platform = await Platform.findOne({ slug });
+                let platform = await db.collection('platforms').findOne({ slug });
 
-                if (!platform) {
+                if (platform) {
+                    if (platform.logo && platform.logo.includes('placeholder.com')) {
+                        await db.collection('platforms').updateOne({_id: platform._id}, {$set: {logo: offer.Image_Url || offer['Image Url'] || offer.image_url || `https://www.google.com/s2/favicons?domain=${storeName}&sz=128`}});
+                    }
+                } else {
                     // Create new platform
                     const categoryMap: Record<string, string> = {
                         'fashion': 'fashion',
@@ -99,7 +103,7 @@ export async function GET(request: Request) {
                         name: storeName,
                         slug,
                         description: `Discover the best coupons and deals for ${storeName}.`,
-                        logo: offer.Image_Url || offer['Image Url'] || offer.image_url || 'https://via.placeholder.com/150',
+                        logo: offer.Image_Url || offer['Image Url'] || offer.image_url || `https://www.google.com/s2/favicons?domain=${storeName}&sz=128`,
                         category: matchedCategory,
                         isActive: true,
                         backgroundColor: '#0ea5e9',

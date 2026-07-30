@@ -19,71 +19,29 @@ interface PlatformCardProps {
 }
 
 export default function PlatformCard({ platform, onClick }: PlatformCardProps) {
-    const categoryIcons: Record<string, string> = {
-        ecommerce: '🛍️',
-        streaming: '📺',
-        food: '🍔',
-        travel: '✈️',
-        fashion: '👗',
-        other: '🎁',
-    };
-
     return (
         <div
             onClick={onClick}
-            className="coupon-card bg-white border-b border-l border-r border-appleBorder rounded-2xl p-6 cursor-pointer group hover:shadow-lg transition-all hover:-translate-y-1 shadow-sm border-t-4"
-            style={{
-                borderTopColor: platform.backgroundColor || '#007AFF',
-            }}
+            className="flex flex-col items-center text-center bg-white border border-appleBorder rounded-2xl p-6 hover:shadow-lg transition-all hover:-translate-y-1 shadow-sm cursor-pointer group"
         >
-            <div className="flex items-start justify-between mb-4">
-                <div className="flex items-center space-x-3">
-                    <div
-                        className="w-12 h-12 rounded-lg flex items-center justify-center text-2xl font-bold overflow-hidden shrink-0"
-                        style={{
-                            backgroundColor: platform.backgroundColor,
-                            color: platform.textColor,
-                        }}
-                    >
-                        {platform.logo && platform.logo.startsWith('http') ? (
-                            <img src={platform.logo} alt={platform.name} className="w-full h-full object-cover" />
-                        ) : (
-                            platform.name.charAt(0).toUpperCase()
-                        )}
-                    </div>
-                    <div>
-                        <h3 className="text-lg font-bold group-hover:text-appleBlue text-appleText transition-colors">
-                            {platform.name}
-                        </h3>
-                        <div className="flex items-center space-x-2 text-sm text-appleMuted">
-                            <span>{categoryIcons[platform.category]}</span>
-                            <span className="capitalize">{platform.category}</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <p className="text-appleMuted text-sm mb-4 line-clamp-2">
-                {platform.description}
-            </p>
-
-            <div className="pt-4 border-t border-appleBorder">
-                <div className="text-2xl font-bold text-appleText">
-                    {platform.stats.activeCount || 0}
-                </div>
-                <div className="text-xs text-appleMuted">
-                    Available Coupons
-                </div>
-            </div>
-
-            <button
-                className="w-full mt-4 py-2 text-white font-semibold rounded-lg opacity-0 group-hover:opacity-100 transition-opacity"
-                style={{
-                    background: `linear-gradient(to right, ${platform.backgroundColor}, ${platform.backgroundColor}dd)`,
-                }}
+            <div
+                className="w-20 h-20 rounded-full flex items-center justify-center text-4xl font-bold mb-4 shadow-sm border border-appleBorder/50 overflow-hidden shrink-0 group-hover:scale-105 transition-transform"
+                style={{ backgroundColor: platform.backgroundColor, color: platform.textColor }}
             >
-                Get Coupon
-            </button>
+                {platform.logo && platform.logo.startsWith('http') ? (
+                    <img src={platform.logo} alt={platform.name} className="w-full h-full object-cover" />
+                ) : (
+                    platform.name.charAt(0).toUpperCase()
+                )}
+            </div>
+            
+            <h3 className="text-lg font-bold text-appleText mb-2 group-hover:text-appleBlue transition-colors">
+                {platform.name}
+            </h3>
+            
+            <span className="px-3 py-1.5 bg-success/10 border border-success/20 rounded-full text-xs font-semibold text-success whitespace-nowrap">
+                {platform.stats?.activeCount || 0} Offers Available
+            </span>
         </div>
     );
 }

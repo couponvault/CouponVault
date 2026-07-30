@@ -69,8 +69,8 @@ export default function PlatformsPage() {
         <div className="min-h-screen flex flex-col bg-appleBg">
             <Navbar />
 
-            <main className="flex-1 py-12 px-4">
-                <div className="max-w-4xl mx-auto">
+            <main className="flex-1 py-12 px-4 md:px-8">
+                <div className="max-w-7xl mx-auto">
                     {/* Header */}
                     <div className="text-center mb-10">
                         <h1 className="text-3xl md:text-5xl font-bold text-appleText mb-3 font-display">
@@ -116,13 +116,13 @@ export default function PlatformsPage() {
 
                     {/* Platforms Grid */}
                     {loading ? (
-                        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5">
-                            {[...Array(10)].map((_, i) => (
+                        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
+                            {[...Array(12)].map((_, i) => (
                                 <div key={i} className="h-48 rounded-2xl bg-white border border-appleBorder animate-pulse"></div>
                             ))}
                         </div>
                     ) : filteredPlatforms.length > 0 ? (
-                        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5">
+                        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
                             {filteredPlatforms.map(platform => (
                                 <PlatformCard
                                     key={platform._id}

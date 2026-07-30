@@ -344,36 +344,35 @@ export default function HomePage() {
                     <div className="flex justify-between items-end mb-8">
                         <div>
                             <h2 className="text-3xl font-bold text-appleText mb-2 font-display">Latest Shopping Guides</h2>
-                            <p className="text-appleMuted">Tips, hacks, and strategies from our editorial team.</p>
+                    <p className="text-appleMuted">Tips, hacks, and strategies from our editorial team.</p>
                         </div>
                         <Link href="/blog" className="hidden sm:flex items-center text-appleBlue hover:text-blue-700 font-medium">
                             View All <FiArrowRight className="ml-1" />
                         </Link>
                     </div>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                        {blogPosts.slice(0, 3).map((post) => (
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+                        {blogPosts.slice(0, 5).map((post, index) => (
                             <Link 
                                 key={post.id} 
                                 href={`/blog/${post.slug}`}
-                                className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow border border-appleBorder group flex flex-col"
+                                className={`group flex flex-col bg-white rounded-2xl overflow-hidden border border-appleBorder hover:shadow-lg transition-all duration-300 ${index === 0 ? 'md:col-span-2 md:flex-row' : ''}`}
                             >
-                                <div className="relative h-48 w-full overflow-hidden bg-gray-100">
+                                <div className={`relative ${index === 0 ? 'md:w-1/2 h-64 md:h-auto' : 'h-48'} overflow-hidden shrink-0`}>
                                     <img 
                                         src={post.image} 
                                         alt={post.title}
-                                        className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300"
+                                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                                     />
                                 </div>
-                                <div className="p-6 flex flex-col flex-grow">
-                                    <div className="flex items-center text-xs text-appleMuted mb-3 space-x-2">
-                                        <span>{new Date(post.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
-                                        <span>•</span>
+                                <div className={`p-6 flex flex-col flex-1 justify-center ${index === 0 ? 'md:p-8' : ''}`}>
+                                    <div className="flex items-center space-x-2 text-sm text-appleBlue font-medium mb-3">
+                                        <FiBookOpen className="w-4 h-4" />
                                         <span>{post.readTime}</span>
                                     </div>
-                                    <h3 className="text-xl font-bold text-appleText mb-3 leading-snug group-hover:text-appleBlue transition-colors line-clamp-2">
+                                    <h3 className={`font-bold text-appleText mb-3 group-hover:text-appleBlue transition-colors ${index === 0 ? 'text-2xl' : 'text-lg'}`}>
                                         {post.title}
                                     </h3>
-                                    <p className="text-appleMuted text-sm line-clamp-2">
+                                    <p className="text-appleMuted text-sm leading-relaxed mb-4 line-clamp-3">
                                         {post.excerpt}
                                     </p>
                                 </div>

@@ -190,7 +190,7 @@ export default function HomePage() {
                             className="w-full sm:w-auto px-8 py-4 bg-white border border-appleBorder hover:border-appleBlue text-appleText font-semibold rounded-xl transition-all flex items-center justify-center space-x-2 text-lg"
                         >
                             <span>🏪</span>
-                            <span>Browse Stores</span>
+                            <span>Browse Brands</span>
                         </Link>
                     </div>
                     
@@ -330,7 +330,7 @@ export default function HomePage() {
                                         onClick={() => handleOpenModal(deal)}
                                         className={`btn-glow block text-center w-full py-3.5 font-semibold rounded-xl text-white ${deal.code.startsWith('DEAL-') ? 'bg-orange-500 hover:bg-orange-600' : 'bg-appleBlue hover:bg-blue-600'}`}
                                     >
-                                        {deal.code.startsWith('DEAL-') ? 'Get Deal' : 'Get Code'}
+                                        Get Code
                                     </button>
                                 </div>
                             ))}

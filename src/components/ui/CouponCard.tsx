@@ -137,7 +137,7 @@ export default function CouponCard({ coupon, onOpenModal }: CouponCardProps) {
                 }}
                 className={`btn-glow w-full py-2.5 font-semibold text-sm rounded-xl text-white ${coupon.code.startsWith('DEAL-') ? 'bg-orange-500 hover:bg-orange-600' : 'bg-appleBlue hover:bg-blue-600'}`}
             >
-                {coupon.code.startsWith('DEAL-') ? 'Get Deal' : 'Get Code'}
+                Get Code
             </button>
         </div>
     );

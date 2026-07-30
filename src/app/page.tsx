@@ -101,41 +101,41 @@ export default function HomePage() {
                     <div className="hidden xl:block absolute inset-0 pointer-events-none">
                         {/* Left Side Brands */}
                         {[
-                            { name: 'A', bg: '#fff', text: '#ff9900', t: '10%', l: '8%', dur: 4, del: 0 },
-                            { name: 'M', bg: '#fff', text: '#F13AB1', t: '35%', l: '3%', dur: 5, del: 1 },
-                            { name: 'F', bg: '#0456c8', text: '#ffe11b', t: '60%', l: '12%', dur: 4.5, del: 2 },
-                            { name: 'S', bg: '#fc8019', text: '#fff', t: '80%', l: '5%', dur: 5.5, del: 0.5 },
-                            { name: 'N', bg: '#000', text: '#fff', t: '25%', l: '18%', dur: 6, del: 1.5 },
+                            { name: 'Amazon', logo: 'https://logo.clearbit.com/amazon.com', bg: '#fff', text: '#ff9900', t: '10%', l: '8%', dur: 4, del: 0 },
+                            { name: 'Myntra', logo: 'https://logo.clearbit.com/myntra.com', bg: '#fff', text: '#F13AB1', t: '35%', l: '3%', dur: 5, del: 1 },
+                            { name: 'Flipkart', logo: 'https://logo.clearbit.com/flipkart.com', bg: '#0456c8', text: '#ffe11b', t: '60%', l: '12%', dur: 4.5, del: 2 },
+                            { name: 'Swiggy', logo: 'https://logo.clearbit.com/swiggy.com', bg: '#fc8019', text: '#fff', t: '80%', l: '5%', dur: 5.5, del: 0.5 },
+                            { name: 'Nike', logo: 'https://logo.clearbit.com/nike.com', bg: '#000', text: '#fff', t: '25%', l: '18%', dur: 6, del: 1.5 },
                         ].map((brand, i) => (
                             <motion.div 
                                 key={`left-${i}`}
                                 initial={{ y: 0 }}
                                 animate={{ y: [0, -20, 0] }}
                                 transition={{ duration: brand.dur, repeat: Infinity, ease: "easeInOut", delay: brand.del }}
-                                className="absolute w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold shadow-[0_10px_40px_rgba(37,99,235,0.15)] border border-[#2A3445] backdrop-blur-md"
+                                className="absolute w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold shadow-[0_10px_40px_rgba(37,99,235,0.15)] border border-[#2A3445] backdrop-blur-md overflow-hidden"
                                 style={{ top: brand.t, left: brand.l, backgroundColor: brand.bg, color: brand.text }}
                             >
-                                {brand.name}
+                                <BrandLogo name={brand.name} logo={brand.logo} />
                             </motion.div>
                         ))}
 
                         {/* Right Side Brands */}
                         {[
-                            { name: 'Z', bg: '#e23744', text: '#fff', t: '12%', r: '10%', dur: 5, del: 0.2 },
-                            { name: 'N', bg: '#E80071', text: '#fff', t: '38%', r: '4%', dur: 4.5, del: 1.2 },
-                            { name: 'S', bg: '#1428a0', text: '#fff', t: '65%', r: '14%', dur: 5.5, del: 2.5 },
-                            { name: 'A', bg: '#000', text: '#fff', t: '85%', r: '6%', dur: 4, del: 0.8 },
-                            { name: 'T', bg: '#cc0000', text: '#fff', t: '22%', r: '18%', dur: 6, del: 1.8 },
+                            { name: 'Zomato', logo: 'https://logo.clearbit.com/zomato.com', bg: '#e23744', text: '#fff', t: '12%', r: '10%', dur: 5, del: 0.2 },
+                            { name: 'Nykaa', logo: 'https://logo.clearbit.com/nykaa.com', bg: '#E80071', text: '#fff', t: '38%', r: '4%', dur: 4.5, del: 1.2 },
+                            { name: 'Samsung', logo: 'https://logo.clearbit.com/samsung.com', bg: '#1428a0', text: '#fff', t: '65%', r: '14%', dur: 5.5, del: 2.5 },
+                            { name: 'Apple', logo: 'https://logo.clearbit.com/apple.com', bg: '#000', text: '#fff', t: '85%', r: '6%', dur: 4, del: 0.8 },
+                            { name: 'Target', logo: 'https://logo.clearbit.com/target.com', bg: '#cc0000', text: '#fff', t: '22%', r: '18%', dur: 6, del: 1.8 },
                         ].map((brand, i) => (
                             <motion.div 
                                 key={`right-${i}`}
                                 initial={{ y: 0 }}
                                 animate={{ y: [0, 20, 0] }}
                                 transition={{ duration: brand.dur, repeat: Infinity, ease: "easeInOut", delay: brand.del }}
-                                className="absolute w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold shadow-[0_10px_40px_rgba(16,185,129,0.15)] border border-[#2A3445] backdrop-blur-md"
+                                className="absolute w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold shadow-[0_10px_40px_rgba(16,185,129,0.15)] border border-[#2A3445] backdrop-blur-md overflow-hidden"
                                 style={{ top: brand.t, right: brand.r, backgroundColor: brand.bg, color: brand.text }}
                             >
-                                {brand.name}
+                                <BrandLogo name={brand.name} logo={brand.logo} />
                             </motion.div>
                         ))}
                         

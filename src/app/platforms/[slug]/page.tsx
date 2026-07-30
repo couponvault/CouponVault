@@ -8,7 +8,7 @@ import CouponCard from '@/components/ui/CouponCard';
 import { FiArrowLeft, FiTag, FiInfo, FiExternalLink } from 'react-icons/fi';
 import Link from 'next/link';
 import toast from 'react-hot-toast';
-import AdBanner from '@/components/ui/AdBanner';
+import CouponModal from '@/components/CouponModal';
 
 export default function PlatformDetailsPage() {
     const params = useParams();
@@ -17,6 +17,8 @@ export default function PlatformDetailsPage() {
     const [platform, setPlatform] = useState<any>(null);
     const [coupons, setCoupons] = useState<any[]>([]);
     const [loading, setLoading] = useState(true);
+    const [selectedCoupon, setSelectedCoupon] = useState<any>(null);
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
     useEffect(() => {
         if (slug) {
@@ -136,7 +138,14 @@ export default function PlatformDetailsPage() {
                         {coupons.length > 0 ? (
                             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
                                 {coupons.map((coupon, index) => (
-                                    <CouponCard key={index} coupon={coupon} />
+                                    <CouponCard 
+                                        key={index} 
+                                        coupon={coupon} 
+                                        onOpenModal={(c) => {
+                                            setSelectedCoupon(c);
+                                            setIsModalOpen(true);
+                                        }}
+                                    />
                                 ))}
                             </div>
                         ) : (
@@ -146,6 +155,12 @@ export default function PlatformDetailsPage() {
                         )}
                     </div>
                 </div>
+                <CouponModal 
+                    isOpen={isModalOpen}
+                    onClose={() => setIsModalOpen(false)}
+                    coupon={selectedCoupon}
+                    platform={selectedCoupon?.platform || platform}
+                />
             </main>
 
             <Footer />

@@ -21,9 +21,10 @@ interface CouponCardProps {
         terms?: string;
         expiresAt: string;
     };
+    onOpenModal?: (coupon: any) => void;
 }
 
-export default function CouponCard({ coupon }: CouponCardProps) {
+export default function CouponCard({ coupon, onOpenModal }: CouponCardProps) {
     const [copied, setCopied] = useState(false);
 
     const handleCopy = async () => {
@@ -127,7 +128,13 @@ export default function CouponCard({ coupon }: CouponCardProps) {
 
             {/* Get Code / Deal Button */}
             <button
-                onClick={handleCopy}
+                onClick={() => {
+                    if (onOpenModal) {
+                        onOpenModal(coupon);
+                    } else {
+                        handleCopy();
+                    }
+                }}
                 className={`btn-glow w-full py-2.5 font-semibold text-sm rounded-xl text-white ${coupon.code.startsWith('DEAL-') ? 'bg-orange-500 hover:bg-orange-600' : 'bg-appleBlue hover:bg-blue-600'}`}
             >
                 {coupon.code.startsWith('DEAL-') ? 'Get Deal' : 'Get Code'}

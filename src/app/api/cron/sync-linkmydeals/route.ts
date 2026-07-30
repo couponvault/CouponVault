@@ -76,11 +76,11 @@ export async function GET(request: Request) {
 
                 // 1. Check Platform
                 const slug = slugify(storeName);
-                let platform = await db.collection('platforms').findOne({ slug });
+                let platform = await mongoose.connection.db!.collection('platforms').findOne({ slug });
 
                 if (platform) {
                     if (platform.logo && platform.logo.includes('placeholder.com')) {
-                        await db.collection('platforms').updateOne({_id: platform._id}, {$set: {logo: offer.Image_Url || offer['Image Url'] || offer.image_url || `https://www.google.com/s2/favicons?domain=${storeName}&sz=128`}});
+                        await mongoose.connection.db!.collection('platforms').updateOne({_id: platform._id}, {$set: {logo: offer.Image_Url || offer['Image Url'] || offer.image_url || `https://www.google.com/s2/favicons?domain=${storeName}&sz=128`}});
                     }
                 } else {
                     // Create new platform

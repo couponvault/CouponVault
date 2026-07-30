@@ -24,9 +24,8 @@ export default function PrivacyPage() {
 
                         <h3>Information You Provide</h3>
                         <ul>
-                            <li>Account information (email, name, password)</li>
-                            <li>Contact information when you reach out to us</li>
-                            <li>Preferences and saved platforms</li>
+                            <li>Contact information (only when you voluntarily reach out to us via email or forms)</li>
+                            <li>We <strong>do not</strong> require you to create an account, and we do not collect passwords or force you to sign up to use our coupons.</li>
                         </ul>
 
                         <h3>Automatically Collected Information</h3>
@@ -53,11 +52,9 @@ export default function PrivacyPage() {
                             We implement industry-standard security measures to protect your information:
                         </p>
                         <ul>
-                            <li>Password encryption using bcrypt</li>
-                            <li>Secure JWT token authentication</li>
-                            <li>HTTPS encryption for data transmission</li>
+                            <li>HTTPS encryption for all data transmission</li>
                             <li>Rate limiting and anti-abuse protection</li>
-                            <li>Regular security audits</li>
+                            <li>Regular security audits of our infrastructure</li>
                         </ul>
 
                         <h2>Data Sharing</h2>
@@ -111,7 +108,7 @@ export default function PrivacyPage() {
 
                         <h2>Changes to Privacy Policy</h2>
                         <p>
-                            We may update this Privacy Policy periodically. We will notify you of significant changes via email or through our platform.
+                            We may update this Privacy Policy periodically. Significant changes will be highlighted through announcements on our platform.
                         </p>
 
                         <h2>Contact Us</h2>

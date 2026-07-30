@@ -87,10 +87,10 @@ export default function PlatformDetailsPage() {
                         className="glass-card p-8 rounded-3xl mb-8 border-b-8"
                         style={{ borderBottomColor: platform.backgroundColor }}
                     >
-                        <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
+                        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-8">
                             <div className="flex items-center space-x-6">
                                 <div
-                                    className="w-20 h-20 rounded-2xl flex items-center justify-center text-4xl shadow-lg overflow-hidden shrink-0"
+                                    className="w-24 h-24 rounded-2xl flex items-center justify-center text-4xl shadow-lg overflow-hidden shrink-0"
                                     style={{ backgroundColor: platform.backgroundColor, color: platform.textColor }}
                                 >
                                     {platform.logo && platform.logo.startsWith('http') ? (
@@ -101,85 +101,49 @@ export default function PlatformDetailsPage() {
                                 </div>
                                 <div>
                                     <h1 className="text-3xl md:text-4xl font-bold font-display">{platform.name}</h1>
-                                    <p className="text-gray-600 dark:text-gray-400 mt-1">{platform.description}</p>
+                                    <p className="text-gray-600 dark:text-gray-400 mt-2 max-w-xl line-clamp-2">{platform.description}</p>
                                 </div>
                             </div>
 
-                            <button
-                                onClick={() => window.location.reload()}
-                                className="px-6 py-3 bg-gradient-to-r from-primary-500 to-secondary-500 text-white font-bold rounded-xl hover:shadow-glow transition-all"
-                            >
-                                Get New Coupon
-                            </button>
+                            <div className="flex flex-wrap items-center gap-4 lg:justify-end">
+                                <div className="px-4 py-2 bg-gray-50 rounded-xl border border-gray-100 flex items-center space-x-2 shadow-sm">
+                                    <span className="text-gray-500 text-sm">Status:</span>
+                                    <span className="font-bold text-green-500 flex items-center gap-1 text-sm">
+                                        <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div> Verified
+                                    </span>
+                                </div>
+                                <div className="px-4 py-2 bg-gray-50 rounded-xl border border-gray-100 flex flex-col shadow-sm">
+                                    <span className="text-gray-500 text-xs">Success Rate</span>
+                                    <span className="font-bold text-blue-500">99.4%</span>
+                                </div>
+                                <div className="px-4 py-2 bg-gray-50 rounded-xl border border-gray-100 flex flex-col shadow-sm">
+                                    <span className="text-gray-500 text-xs">Users Saving</span>
+                                    <span className="font-bold text-appleText">4.2k Today</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-                        {/* Main Content */}
-                        <div className="md:col-span-3 space-y-6">
+                    <div className="space-y-6">
+                        <div className="flex items-center justify-between mb-2">
                             <h2 className="text-2xl font-bold flex items-center space-x-2">
                                 <FiTag className="text-primary-500" />
                                 <span>All Available Coupons</span>
                             </h2>
-
-                            {coupons.length > 0 ? (
-                                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                                    {coupons.map((coupon, index) => (
-                                        <CouponCard key={index} coupon={coupon} />
-                                    ))}
-                                </div>
-                            ) : (
-                                <div className="glass-card p-12 text-center rounded-2xl">
-                                    <p className="text-gray-500">No active coupons found for this platform.</p>
-                                </div>
-                            )}
+                            <span className="text-sm text-gray-500 font-medium">{coupons.length} coupons found</span>
                         </div>
 
-                        {/* Sidebar Info */}
-                        <div className="space-y-6">
-                            <div className="glass-card p-6 rounded-2xl">
-                                <h3 className="font-bold mb-4 flex items-center space-x-2">
-                                    <FiInfo className="text-secondary-500" />
-                                    <span>Platform Info</span>
-                                </h3>
-                                <div className="space-y-4 text-sm">
-                                    <div className="flex justify-between">
-                                        <span className="text-gray-500">Status</span>
-                                        <span className="font-semibold text-green-500 flex items-center gap-1">
-                                            <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                                            Verified ✅
-                                        </span>
-                                    </div>
-                                    <div className="flex justify-between">
-                                        <span className="text-gray-500">Success Rate</span>
-                                        <span className="font-semibold text-blue-500">99.4%</span>
-                                    </div>
-                                    <div className="flex justify-between">
-                                        <span className="text-gray-500">Users Saving</span>
-                                        <span className="font-semibold">4.2k Today</span>
-                                    </div>
-                                    <div className="flex justify-between">
-                                        <span className="text-gray-500">Last Checked</span>
-                                        <span className="text-gray-400 italic">2 mins ago</span>
-                                    </div>
-                                </div>
+                        {coupons.length > 0 ? (
+                            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+                                {coupons.map((coupon, index) => (
+                                    <CouponCard key={index} coupon={coupon} />
+                                ))}
                             </div>
-
-                            <AdBanner slotId="150c3903e11298ce18dfe86139a7f4e0" format="square" className="mb-6" />
-
-                            <div className="glass-card p-6 rounded-2xl bg-gradient-to-br from-primary-500/5 to-secondary-500/5">
-                                <h3 className="font-bold mb-2">Instructions</h3>
-                                <p className="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">
-                                    1. Copy the code above.<br />
-                                    2. Visit {platform.name} website.<br />
-                                    3. Paste at checkout to save money!
-                                </p>
-                                <button className="w-full mt-4 flex items-center justify-center space-x-2 text-xs font-bold text-primary-500 border border-primary-500/20 py-2 rounded-lg hover:bg-primary-500/10 transition-colors uppercase tracking-widest">
-                                    <span>Visit Store</span>
-                                    <FiExternalLink />
-                                </button>
+                        ) : (
+                            <div className="glass-card p-12 text-center rounded-2xl">
+                                <p className="text-gray-500">No active coupons found for this platform.</p>
                             </div>
-                        </div>
+                        )}
                     </div>
                 </div>
             </main>

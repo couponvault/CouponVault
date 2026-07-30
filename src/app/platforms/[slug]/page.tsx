@@ -5,10 +5,10 @@ import { useParams } from 'next/navigation';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import CouponCard from '@/components/ui/CouponCard';
-import { FiArrowLeft, FiTag, FiInfo, FiExternalLink } from 'react-icons/fi';
 import Link from 'next/link';
 import toast from 'react-hot-toast';
 import CouponModal from '@/components/CouponModal';
+import BrandLogo from '@/components/ui/BrandLogo';
 
 export default function PlatformDetailsPage() {
     const params = useParams();
@@ -95,11 +95,7 @@ export default function PlatformDetailsPage() {
                                     className="w-24 h-24 rounded-2xl flex items-center justify-center text-4xl shadow-lg overflow-hidden shrink-0"
                                     style={{ backgroundColor: platform.backgroundColor, color: platform.textColor }}
                                 >
-                                    {platform.logo && platform.logo.startsWith('http') ? (
-                                        <img src={platform.logo} alt={platform.name} className="w-full h-full object-cover" />
-                                    ) : (
-                                        platform.name.charAt(0).toUpperCase()
-                                    )}
+                                    <BrandLogo name={platform.name} logo={platform.logo} />
                                 </div>
                                 <div>
                                     <h1 className="text-3xl md:text-4xl font-bold font-display">{platform.name}</h1>

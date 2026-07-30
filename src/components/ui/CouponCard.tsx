@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { FiCopy, FiCheck, FiStar } from 'react-icons/fi';
 import toast from 'react-hot-toast';
+import BrandLogo from './BrandLogo';
 
 interface CouponCardProps {
     coupon: {
@@ -65,11 +66,7 @@ export default function CouponCard({ coupon, onOpenModal }: CouponCardProps) {
                         className="w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm shadow-sm border border-appleBorder overflow-hidden"
                         style={{ backgroundColor: coupon.platform.backgroundColor, color: coupon.platform.textColor }}
                     >
-                        {coupon.platform.logo && coupon.platform.logo.startsWith('http') ? (
-                            <img src={coupon.platform.logo} alt={coupon.platform.name} className="w-full h-full object-cover" />
-                        ) : (
-                            coupon.platform.name.charAt(0).toUpperCase()
-                        )}
+                        <BrandLogo name={coupon.platform.name} logo={coupon.platform.logo} />
                     </div>
                     <span className="font-bold text-appleText text-sm tracking-wider">
                         {coupon.platform.name}

@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiX, FiCopy, FiCheck, FiExternalLink } from 'react-icons/fi';
 import toast from 'react-hot-toast';
+import BrandLogo from '@/components/ui/BrandLogo';
 
 interface CouponModalProps {
     isOpen: boolean;
@@ -58,7 +59,7 @@ export default function CouponModal({ isOpen, onClose, coupon, platform }: Coupo
                                 className="w-10 h-10 rounded-full flex items-center justify-center text-xl shadow-lg"
                                 style={{ backgroundColor: platform.backgroundColor, color: platform.textColor }}
                             >
-                                {platform.logo || platform.name.charAt(0)}
+                                <BrandLogo name={platform.name} logo={platform.logo} />
                             </div>
                             <div>
                                 <h3 className="font-bold text-appleText">{platform.name}</h3>

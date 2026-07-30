@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     verification: {
         google: 'AWhoJenbK6Y3oEL5fK5BXj4SnmwfoTLXB1NnUO6-414',
     },
-    metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || 'https://couponvault.vercel.app'),
+    metadataBase: new URL('https://couponvault.in'),
     alternates: {
         canonical: '/',
     },
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
         description: 'Join 50,000+ shoppers saving money every day with our verified coupon codes.',
         type: 'website',
         locale: 'en_US',
-        url: process.env.NEXT_PUBLIC_APP_URL || 'https://couponvault.vercel.app',
+        url: 'https://couponvault.in',
         siteName: 'CouponVault',
         images: [
             {

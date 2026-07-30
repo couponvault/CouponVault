@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
             allow: '/',
             disallow: ['/admin/', '/api/admin/'],
         },
-        sitemap: `${process.env.NEXT_PUBLIC_APP_URL || 'https://couponvault.vercel.app'}/sitemap.xml`,
+        sitemap: 'https://couponvault.in/sitemap.xml',
     };
 }

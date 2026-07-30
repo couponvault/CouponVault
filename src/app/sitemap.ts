@@ -5,7 +5,7 @@ import Platform from '@/models/Platform';
 export const dynamic = 'force-dynamic';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-    const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://couponvault.vercel.app';
+    const baseUrl = 'https://couponvault.in';
 
     try {
         await connectDB();

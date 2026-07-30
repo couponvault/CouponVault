@@ -20,7 +20,6 @@ export default function HomePage() {
     const [loading, setLoading] = useState(true);
     const [selectedCoupon, setSelectedCoupon] = useState<any>(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const [page, setPage] = useState(1);
     const [hasMore, setHasMore] = useState(true);
     const [loadingMore, setLoadingMore] = useState(false);
 
@@ -29,7 +28,7 @@ export default function HomePage() {
             try {
                 const [platformsRes, couponsRes] = await Promise.all([
                     fetch('/api/platforms?active=true'),
-                    fetch('/api/coupons?limit=30&page=1')
+                    fetch('/api/coupons?limit=30')
                 ]);
                 
                 const platformsData = await platformsRes.json();
@@ -56,13 +55,16 @@ export default function HomePage() {
         if (loadingMore) return;
         setLoadingMore(true);
         try {
-            const nextPage = page + 1;
-            const res = await fetch(`/api/coupons?limit=30&page=${nextPage}`);
+            const excludeIds = coupons.map(c => c._id);
+            const res = await fetch('/api/coupons', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ limit: 30, exclude: excludeIds })
+            });
             const data = await res.json();
             if (data.success) {
                 setCoupons(prev => [...prev, ...data.coupons.filter((c: any) => c.platform)]);
                 setHasMore(data.hasMore);
-                setPage(nextPage);
             }
         } catch (error) {
             toast.error('Failed to load more coupons');

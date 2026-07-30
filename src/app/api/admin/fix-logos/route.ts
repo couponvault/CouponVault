@@ -192,44 +192,57 @@ const BRAND_LOGOS: Record<string, string> = {
     'allbirds': 'https://logo.clearbit.com/allbirds.com',
 };
 
-// Generate a logo URL from a slug using multiple strategies
-function getLogoUrl(slug: string, name: string): string {
-    // 1. Check our curated list first
-    const normalizedSlug = slug.toLowerCase().trim();
-    if (BRAND_LOGOS[normalizedSlug]) {
-        return BRAND_LOGOS[normalizedSlug];
+// Extract likely domain from slug
+// Slugs are like "yatracom", "kmartcom", "box8in", "bannerbuzzcouk", "bedworkscomau"
+function extractDomain(slug: string): string {
+    // Common TLD patterns to detect in slug
+    const tldPatterns = [
+        { suffix: 'comau', domain: '.com.au' },
+        { suffix: 'couk', domain: '.co.uk' },
+        { suffix: 'coid', domain: '.co.id' },
+        { suffix: 'coin', domain: '.co.in' },
+        { suffix: 'com', domain: '.com' },
+        { suffix: 'in', domain: '.in' },
+        { suffix: 'fr', domain: '.fr' },
+        { suffix: 'de', domain: '.de' },
+        { suffix: 'co', domain: '.co' },
+    ];
+
+    const lowerSlug = slug.toLowerCase();
+
+    for (const { suffix, domain } of tldPatterns) {
+        if (lowerSlug.endsWith(suffix)) {
+            const name = lowerSlug.slice(0, lowerSlug.length - suffix.length);
+            if (name.length > 0) {
+                return `${name}${domain}`;
+            }
+        }
     }
 
-    // 2. Try clearbit with the slug as domain
-    // Clean the slug - remove special chars, convert to domain format
-    const cleanSlug = normalizedSlug
-        .replace(/[^a-z0-9-]/g, '')
-        .replace(/-+/g, '');
-    
-    return `https://logo.clearbit.com/${cleanSlug}.com`;
+    // Fallback: assume .com
+    return `${lowerSlug}.com`;
 }
 
 export async function GET(request: NextRequest) {
     try {
         await connectDB();
 
-        // Get all platforms
         const platforms = await Platform.find({});
-        
-        const updates: { name: string; slug: string; oldLogo: string; newLogo: string }[] = [];
+        const updates: { name: string; slug: string; oldLogo: string; newLogo: string; domain: string }[] = [];
 
         for (const platform of platforms) {
             const currentLogo = platform.logo || '';
-            const needsUpdate = !currentLogo.startsWith('http') || currentLogo.includes('undefined');
+            const domain = extractDomain(platform.slug);
+            const newLogo = `https://logo.clearbit.com/${domain}`;
 
-            if (needsUpdate) {
-                const newLogo = getLogoUrl(platform.slug, platform.name);
+            if (newLogo !== currentLogo) {
                 await Platform.findByIdAndUpdate(platform._id, { logo: newLogo });
                 updates.push({
                     name: platform.name,
                     slug: platform.slug,
                     oldLogo: currentLogo,
                     newLogo: newLogo,
+                    domain: domain,
                 });
             }
         }

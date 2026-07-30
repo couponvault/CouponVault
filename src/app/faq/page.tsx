@@ -27,7 +27,7 @@ export default function FAQPage() {
         },
         {
             question: 'Do I need to create an account?',
-            answer: 'No account is required to access and use coupons! However, creating a free account allows you to save favorite platforms, track your claimed coupons, and enjoy a personalized experience.',
+            answer: 'No account is required to access and use coupons! You can browse and claim working coupons immediately without ever signing up.',
         },
         {
             question: 'What if a coupon doesn\'t work?',
@@ -108,7 +108,7 @@ export default function FAQPage() {
                         </p>
                         <a
                             href="/contact"
-                            className="inline-block px-8 py-3 bg-gradient-to-r from-primary-500 to-secondary-500 text-white font-semibold rounded-lg hover:shadow-glow transition-all duration-300"
+                            className="inline-block px-8 py-3 bg-appleBlue text-white font-semibold rounded-lg hover:shadow-glow transition-all duration-300"
                         >
                             Contact Support
                         </a>

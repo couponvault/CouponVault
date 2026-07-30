@@ -54,17 +54,6 @@ export default function TermsPage() {
                             <li>Compatibility with all products/services</li>
                         </ul>
 
-                        <h2>User Accounts</h2>
-                        <p>
-                            When you create an account:
-                        </p>
-                        <ul>
-                            <li>You must provide accurate information</li>
-                            <li>You are responsible for maintaining account security</li>
-                            <li>You must not share your account credentials</li>
-                            <li>You must notify us of any unauthorized access</li>
-                            <li>We reserve the right to terminate accounts that violate terms</li>
-                        </ul>
 
                         <h2>Prohibited Activities</h2>
                         <p>You may not:</p>

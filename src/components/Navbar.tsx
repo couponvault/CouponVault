@@ -35,9 +35,7 @@ export default function Navbar() {
                             </button>
                         )}
                         <Link href="/" className="flex items-center space-x-2.5 group">
-                            <div className="w-8 h-8 rounded-lg bg-appleBlue flex items-center justify-center">
-                                <span className="text-white font-bold text-lg" style={{ fontFamily: 'Outfit' }}>S</span>
-                            </div>
+                            <img src="/logo.png" alt="CouponVault Logo" className="w-8 h-8 rounded-lg shadow-sm" />
                             <span className="text-lg font-bold tracking-[0.2em] text-appleText uppercase" style={{ fontFamily: 'Outfit' }}>
                                 CouponVault
                             </span>

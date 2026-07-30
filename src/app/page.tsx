@@ -350,7 +350,7 @@ export default function HomePage() {
                             View All <FiArrowRight className="ml-1" />
                         </Link>
                     </div>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 sm:gap-6">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6">
                         {blogPosts.slice(0, 5).map((post) => (
                             <Link 
                                 key={post.id} 

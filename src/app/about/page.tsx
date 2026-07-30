@@ -80,7 +80,7 @@ export default function AboutPage() {
                                     <div className="mt-4 p-4 bg-gray-50 rounded-xl border border-gray-100">
                                         <h3 className="font-bold text-appleText mb-2">Operating Entity:</h3>
                                         <p className="text-sm text-appleMuted">CouponVault Operations Team</p>
-                                        <p className="text-sm text-appleMuted">Email: publisher@couponvault.in</p>
+                                        <p className="text-sm text-appleMuted">Email: couponvault.support@gmail.com</p>
                                         <p className="text-sm text-appleMuted">Website: https://couponvault.in</p>
                                     </div>
                                 </div>

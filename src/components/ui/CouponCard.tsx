@@ -61,10 +61,14 @@ export default function CouponCard({ coupon }: CouponCardProps) {
             <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center space-x-3">
                     <div
-                        className="w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm shadow-sm border border-appleBorder"
+                        className="w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm shadow-sm border border-appleBorder overflow-hidden"
                         style={{ backgroundColor: coupon.platform.backgroundColor, color: coupon.platform.textColor }}
                     >
-                        {coupon.platform.logo || coupon.platform.name.charAt(0)}
+                        {coupon.platform.logo && coupon.platform.logo.startsWith('http') ? (
+                            <img src={coupon.platform.logo} alt={coupon.platform.name} className="w-full h-full object-cover" />
+                        ) : (
+                            coupon.platform.name.charAt(0).toUpperCase()
+                        )}
                     </div>
                     <span className="font-bold text-appleText text-sm tracking-wider">
                         {coupon.platform.name}
@@ -75,9 +79,9 @@ export default function CouponCard({ coupon }: CouponCardProps) {
                 </span>
             </div>
 
-            {/* Discount */}
-            <h3 className="text-lg font-bold text-appleText mb-3 leading-snug group-hover:text-appleBlue transition-colors">
-                {formatDiscount()} Your Entire Purchase
+            {/* Title / Description */}
+            <h3 className="text-lg font-bold text-appleText mb-3 leading-snug group-hover:text-appleBlue transition-colors line-clamp-2">
+                {coupon.description || `${formatDiscount()} Your Entire Purchase`}
             </h3>
 
             {/* Verified + Code */}
@@ -85,19 +89,29 @@ export default function CouponCard({ coupon }: CouponCardProps) {
                 <div className="flex items-center space-x-1.5 text-sm">
                     <FiCheck className="text-appleBlue w-3.5 h-3.5" />
                     <span className="text-appleBlue font-medium text-xs">Verified</span>
-                    <span className="text-appleMuted mx-0.5">•</span>
-                    <span className="text-appleMuted text-xs">Code: <span className="text-appleText font-mono font-medium">{coupon.code}</span></span>
+                    {!coupon.code.startsWith('DEAL-') && (
+                        <>
+                            <span className="text-appleMuted mx-0.5">•</span>
+                            <span className="text-appleMuted text-xs">Code: <span className="text-appleText font-mono font-medium">{coupon.code}</span></span>
+                        </>
+                    )}
                 </div>
-                <button onClick={handleCopy} className="p-1 hover:bg-white/5 rounded transition-colors">
-                    {copied ? <FiCheck className="w-3.5 h-3.5 text-green-400" /> : <FiCopy className="w-3.5 h-3.5 text-gray-500" />}
-                </button>
+                {!coupon.code.startsWith('DEAL-') && (
+                    <button onClick={handleCopy} className="p-1 hover:bg-white/5 rounded transition-colors">
+                        {copied ? <FiCheck className="w-3.5 h-3.5 text-green-400" /> : <FiCopy className="w-3.5 h-3.5 text-gray-500" />}
+                    </button>
+                )}
             </div>
 
             {/* Expiry + Copy */}
             <div className="flex items-center text-xs text-appleMuted mb-4">
                 <span>Exp: {new Date(coupon.expiresAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}</span>
-                <span className="mx-1.5">•</span>
-                <button onClick={handleCopy} className="text-appleBlue hover:text-blue-700 font-medium">Copy Code</button>
+                {!coupon.code.startsWith('DEAL-') && (
+                    <>
+                        <span className="mx-1.5">•</span>
+                        <button onClick={handleCopy} className="text-appleBlue hover:text-blue-700 font-medium">Copy Code</button>
+                    </>
+                )}
             </div>
 
             {/* Rating */}
@@ -111,12 +125,12 @@ export default function CouponCard({ coupon }: CouponCardProps) {
                 </div>
             </div>
 
-            {/* Get Code Button */}
+            {/* Get Code / Deal Button */}
             <button
                 onClick={handleCopy}
-                className="btn-glow w-full py-2.5 bg-appleBlue text-white font-semibold text-sm rounded-xl"
+                className={`btn-glow w-full py-2.5 font-semibold text-sm rounded-xl text-white ${coupon.code.startsWith('DEAL-') ? 'bg-orange-500 hover:bg-orange-600' : 'bg-appleBlue hover:bg-blue-600'}`}
             >
-                Get Code
+                {coupon.code.startsWith('DEAL-') ? 'Get Deal' : 'Get Code'}
             </button>
         </div>
     );

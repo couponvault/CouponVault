@@ -70,7 +70,7 @@ export default function ContactPage() {
                                 </div>
                                 <div>
                                     <h3 className="font-semibold">Email Us</h3>
-                                    <p className="text-sm text-gray-500 dark:text-gray-400">support@couponvault.com</p>
+                                    <p className="text-sm text-gray-500 dark:text-gray-400">couponvault.support@gmail.com</p>
                                 </div>
                             </div>
                             <p className="text-gray-600 dark:text-gray-400 text-sm">

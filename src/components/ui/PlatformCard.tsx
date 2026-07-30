@@ -39,13 +39,17 @@ export default function PlatformCard({ platform, onClick }: PlatformCardProps) {
             <div className="flex items-start justify-between mb-4">
                 <div className="flex items-center space-x-3">
                     <div
-                        className="w-12 h-12 rounded-lg flex items-center justify-center text-2xl font-bold"
+                        className="w-12 h-12 rounded-lg flex items-center justify-center text-2xl font-bold overflow-hidden shrink-0"
                         style={{
                             backgroundColor: platform.backgroundColor,
                             color: platform.textColor,
                         }}
                     >
-                        {platform.logo || platform.name.charAt(0)}
+                        {platform.logo && platform.logo.startsWith('http') ? (
+                            <img src={platform.logo} alt={platform.name} className="w-full h-full object-cover" />
+                        ) : (
+                            platform.name.charAt(0).toUpperCase()
+                        )}
                     </div>
                     <div>
                         <h3 className="text-lg font-bold group-hover:text-appleBlue text-appleText transition-colors">
@@ -63,22 +67,12 @@ export default function PlatformCard({ platform, onClick }: PlatformCardProps) {
                 {platform.description}
             </p>
 
-            <div className="grid grid-cols-2 gap-4 pt-4 border-t border-appleBorder">
-                <div>
-                    <div className="text-2xl font-bold text-appleText">
-                        {platform.stats.activeCount}
-                    </div>
-                    <div className="text-xs text-appleMuted">
-                        Available
-                    </div>
+            <div className="pt-4 border-t border-appleBorder">
+                <div className="text-2xl font-bold text-appleText">
+                    {platform.stats.activeCount || 0}
                 </div>
-                <div>
-                    <div className="text-2xl font-bold text-appleText">
-                        {platform.stats.totalClaimed}
-                    </div>
-                    <div className="text-xs text-appleMuted">
-                        Claimed
-                    </div>
+                <div className="text-xs text-appleMuted">
+                    Available Coupons
                 </div>
             </div>
 

@@ -186,10 +186,14 @@ export default function HomePage() {
                             {platforms.map((store, i) => (
                                 <Link key={i} href={`/platforms/${store.slug}`} className="flex flex-col items-center bg-white border border-appleBorder rounded-2xl p-6 hover:shadow-lg transition-all hover:-translate-y-1 shadow-sm cursor-pointer">
                                     <div
-                                        className="w-20 h-20 rounded-full flex items-center justify-center text-4xl font-bold mb-4 shadow-sm border border-appleBorder/50"
+                                        className="w-20 h-20 rounded-full flex items-center justify-center text-4xl font-bold mb-4 shadow-sm border border-appleBorder/50 overflow-hidden shrink-0"
                                         style={{ backgroundColor: store.backgroundColor, color: store.textColor }}
                                     >
-                                        {store.logo || store.name.charAt(0)}
+                                        {store.logo && store.logo.startsWith('http') ? (
+                                            <img src={store.logo} alt={store.name} className="w-full h-full object-cover" />
+                                        ) : (
+                                            store.name.charAt(0).toUpperCase()
+                                        )}
                                     </div>
                                     <span className="px-3 py-1.5 bg-success/10 border border-success/20 rounded-full text-xs font-semibold text-success whitespace-nowrap">
                                         Up to 50% Off
@@ -221,10 +225,14 @@ export default function HomePage() {
                                     <div className="flex items-center justify-between mb-5">
                                         <div className="flex items-center space-x-4">
                                             <div
-                                                className="w-12 h-12 rounded-full flex items-center justify-center font-bold text-base shadow-sm border border-appleBorder/50"
+                                                className="w-12 h-12 rounded-full flex items-center justify-center font-bold text-base shadow-sm border border-appleBorder/50 overflow-hidden shrink-0"
                                                 style={{ backgroundColor: deal.platform.backgroundColor, color: deal.platform.textColor }}
                                             >
-                                                {deal.platform.logo || deal.platform.name.charAt(0)}
+                                                {deal.platform.logo && deal.platform.logo.startsWith('http') ? (
+                                                    <img src={deal.platform.logo} alt={deal.platform.name} className="w-full h-full object-cover" />
+                                                ) : (
+                                                    deal.platform.name.charAt(0).toUpperCase()
+                                                )}
                                             </div>
                                             <span className="font-bold text-appleText text-base tracking-wider">
                                                 {deal.platform.name}
@@ -236,8 +244,8 @@ export default function HomePage() {
                                     </div>
 
                                     {/* Discount */}
-                                    <h3 className="text-xl font-bold text-appleText mb-4 leading-snug group-hover:text-appleBlue transition-colors">
-                                        {deal.discountType === 'percentage' ? `${deal.discountValue}% OFF` : `$${deal.discountValue} OFF`} Your Purchase
+                                    <h3 className="text-xl font-bold text-appleText mb-4 leading-snug group-hover:text-appleBlue transition-colors line-clamp-2">
+                                        {deal.description || `${deal.discountType === 'percentage' ? `${deal.discountValue}% OFF` : `$${deal.discountValue} OFF`} Your Purchase`}
                                     </h3>
 
                                     {/* Verified + Code */}
@@ -245,19 +253,29 @@ export default function HomePage() {
                                         <div className="flex items-center space-x-2 text-sm">
                                             <FiCheck className="text-appleBlue w-4 h-4" />
                                             <span className="text-appleBlue font-medium">Verified</span>
-                                            <span className="text-appleMuted mx-1">•</span>
-                                            <span className="text-appleMuted">Code: <span className="text-appleText font-mono font-medium">{deal.code.slice(0, 4)}***</span></span>
+                                            {!deal.code.startsWith('DEAL-') && (
+                                                <>
+                                                    <span className="text-appleMuted mx-1">•</span>
+                                                    <span className="text-appleMuted">Code: <span className="text-appleText font-mono font-medium">{deal.code.slice(0, 4)}***</span></span>
+                                                </>
+                                            )}
                                         </div>
-                                        <button onClick={() => handleCopy(deal.code)} className="p-1.5 hover:bg-gray-100 rounded-md transition-colors">
-                                            <FiCopy className="w-4 h-4 text-appleMuted hover:text-appleBlue" />
-                                        </button>
+                                        {!deal.code.startsWith('DEAL-') && (
+                                            <button onClick={() => handleCopy(deal.code)} className="p-1.5 hover:bg-gray-100 rounded-md transition-colors">
+                                                <FiCopy className="w-4 h-4 text-appleMuted hover:text-appleBlue" />
+                                            </button>
+                                        )}
                                     </div>
 
                                     {/* Expiry + Copy */}
                                     <div className="flex items-center text-sm text-appleMuted mb-5">
                                         <span>Exp: {new Date(deal.expiresAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}</span>
-                                        <span className="mx-2">•</span>
-                                        <button onClick={() => handleCopy(deal.code)} className="text-appleBlue hover:text-blue-700 font-medium">Copy Code</button>
+                                        {!deal.code.startsWith('DEAL-') && (
+                                            <>
+                                                <span className="mx-2">•</span>
+                                                <button onClick={() => handleCopy(deal.code)} className="text-appleBlue hover:text-blue-700 font-medium">Copy Code</button>
+                                            </>
+                                        )}
                                     </div>
 
                                     {/* Terms Info */}
@@ -286,9 +304,9 @@ export default function HomePage() {
                                     {/* Get Code Button */}
                                     <button
                                         onClick={() => handleOpenModal(deal)}
-                                        className="btn-glow block text-center w-full py-3.5 bg-appleBlue text-white font-semibold rounded-xl"
+                                        className={`btn-glow block text-center w-full py-3.5 font-semibold rounded-xl text-white ${deal.code.startsWith('DEAL-') ? 'bg-orange-500 hover:bg-orange-600' : 'bg-appleBlue hover:bg-blue-600'}`}
                                     >
-                                        Get Code
+                                        {deal.code.startsWith('DEAL-') ? 'Get Deal' : 'Get Code'}
                                     </button>
                                 </div>
                             ))}

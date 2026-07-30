@@ -412,6 +412,24 @@ export default function HomePage() {
                         </div>
                     </div>
                 </section>
+
+                {/* SEO Text Section for Google Rank */}
+                <section className="bg-white py-12 px-4 border-t border-appleBorder">
+                    <div className="max-w-6xl mx-auto">
+                        <div className="prose prose-sm md:prose-base text-gray-500 max-w-none">
+                            <h2 className="text-xl font-bold text-gray-700 mb-4">Find The Best Verified Amazon Coupons & Promo Codes for 2026</h2>
+                            <p className="mb-4">
+                                Welcome to CouponVault, your ultimate destination for unlocking massive savings across the internet's biggest retailers. If you are looking for an <strong>Amazon coupon</strong>, Walmart promo code, or Target discount, you have come to the right place. Our proprietary engine automatically tests, verifies, and updates thousands of discount codes daily, ensuring you never face the frustration of an expired code again.
+                            </p>
+                            <p className="mb-4">
+                                Why pay full price when you can access exclusive savings? From tech gadgets and fashion apparel to everyday household essentials, our extensive database of <strong>Amazon promo codes</strong> and deals is meticulously curated to guarantee working discounts. We partner directly with top brands and leverage cutting-edge technology to bring you real-time savings that actually work at checkout. 
+                            </p>
+                            <p>
+                                Join thousands of smart shoppers who trust CouponVault for their daily online shopping. Whether you need free shipping, percentage-off deals, or buy-one-get-one offers, our platform is designed to make saving money effortless. Stop searching endless coupon sites—get your verified <strong>Amazon coupons</strong> and start saving today with CouponVault!
+                            </p>
+                        </div>
+                    </div>
+                </section>
                 <CouponModal 
                     isOpen={isModalOpen}
                     onClose={() => setIsModalOpen(false)}

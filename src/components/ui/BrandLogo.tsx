@@ -69,7 +69,7 @@ function buildLogoSources(logo?: string, slug?: string): string[] {
     return sources;
 }
 
-export default function BrandLogo({ name, logo, slug, className = "w-full h-full object-cover" }: BrandLogoProps) {
+export default function BrandLogo({ name, logo, slug, className = "w-full h-full object-contain bg-white p-1" }: BrandLogoProps) {
     const [sourceIndex, setSourceIndex] = useState(0);
     const sources = buildLogoSources(logo, slug);
 

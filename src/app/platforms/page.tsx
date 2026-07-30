@@ -116,13 +116,13 @@ export default function PlatformsPage() {
 
                     {/* Platforms Grid */}
                     {loading ? (
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-                            {[...Array(6)].map((_, i) => (
+                        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5">
+                            {[...Array(10)].map((_, i) => (
                                 <div key={i} className="h-48 rounded-2xl bg-white border border-appleBorder animate-pulse"></div>
                             ))}
                         </div>
                     ) : filteredPlatforms.length > 0 ? (
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5">
                             {filteredPlatforms.map(platform => (
                                 <PlatformCard
                                     key={platform._id}

@@ -114,18 +114,20 @@ export default function PlatformDetailsPage() {
                         </div>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
                         {/* Main Content */}
-                        <div className="md:col-span-2 space-y-6">
+                        <div className="md:col-span-3 space-y-6">
                             <h2 className="text-2xl font-bold flex items-center space-x-2">
                                 <FiTag className="text-primary-500" />
                                 <span>All Available Coupons</span>
                             </h2>
 
                             {coupons.length > 0 ? (
-                                coupons.map((coupon, index) => (
-                                    <CouponCard key={index} coupon={coupon} />
-                                ))
+                                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                                    {coupons.map((coupon, index) => (
+                                        <CouponCard key={index} coupon={coupon} />
+                                    ))}
+                                </div>
                             ) : (
                                 <div className="glass-card p-12 text-center rounded-2xl">
                                     <p className="text-gray-500">No active coupons found for this platform.</p>

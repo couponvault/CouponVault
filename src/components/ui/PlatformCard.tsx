@@ -1,5 +1,7 @@
 'use client';
 
+import BrandLogo from './BrandLogo';
+
 interface PlatformCardProps {
     platform: {
         _id: string;
@@ -16,7 +18,7 @@ interface PlatformCardProps {
         };
     };
     onClick?: () => void;
-import BrandLogo from './BrandLogo';
+}
 
 export default function PlatformCard({ platform, onClick }: PlatformCardProps) {
     return (

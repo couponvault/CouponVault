@@ -5,6 +5,7 @@ import { useParams } from 'next/navigation';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import CouponCard from '@/components/ui/CouponCard';
+import { FiArrowLeft, FiTag, FiInfo, FiExternalLink } from 'react-icons/fi';
 import Link from 'next/link';
 import toast from 'react-hot-toast';
 import CouponModal from '@/components/CouponModal';

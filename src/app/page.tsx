@@ -101,11 +101,11 @@ export default function HomePage() {
                     <div className="hidden xl:block absolute inset-0 pointer-events-none">
                         {/* Left Side Brands */}
                         {[
-                            { name: 'Amazon', logo: 'https://logo.clearbit.com/amazon.com', bg: '#fff', text: '#ff9900', t: '10%', l: '8%', dur: 4, del: 0 },
-                            { name: 'Myntra', logo: 'https://logo.clearbit.com/myntra.com', bg: '#fff', text: '#F13AB1', t: '35%', l: '3%', dur: 5, del: 1 },
-                            { name: 'Flipkart', logo: 'https://logo.clearbit.com/flipkart.com', bg: '#0456c8', text: '#ffe11b', t: '60%', l: '12%', dur: 4.5, del: 2 },
-                            { name: 'Swiggy', logo: 'https://logo.clearbit.com/swiggy.com', bg: '#fc8019', text: '#fff', t: '80%', l: '5%', dur: 5.5, del: 0.5 },
-                            { name: 'Nike', logo: 'https://logo.clearbit.com/nike.com', bg: '#000', text: '#fff', t: '25%', l: '18%', dur: 6, del: 1.5 },
+                            { name: 'Amazon', logo: 'https://www.google.com/s2/favicons?domain=amazon.com&sz=128', bg: '#fff', text: '#ff9900', t: '10%', l: '8%', dur: 4, del: 0 },
+                            { name: 'Myntra', logo: 'https://www.google.com/s2/favicons?domain=myntra.com&sz=128', bg: '#fff', text: '#F13AB1', t: '35%', l: '3%', dur: 5, del: 1 },
+                            { name: 'Flipkart', logo: 'https://www.google.com/s2/favicons?domain=flipkart.com&sz=128', bg: '#0456c8', text: '#ffe11b', t: '60%', l: '12%', dur: 4.5, del: 2 },
+                            { name: 'Swiggy', logo: 'https://www.google.com/s2/favicons?domain=swiggy.com&sz=128', bg: '#fc8019', text: '#fff', t: '80%', l: '5%', dur: 5.5, del: 0.5 },
+                            { name: 'Nike', logo: 'https://www.google.com/s2/favicons?domain=nike.com&sz=128', bg: '#000', text: '#fff', t: '25%', l: '18%', dur: 6, del: 1.5 },
                         ].map((brand, i) => (
                             <motion.div 
                                 key={`left-${i}`}
@@ -121,11 +121,11 @@ export default function HomePage() {
 
                         {/* Right Side Brands */}
                         {[
-                            { name: 'Zomato', logo: 'https://logo.clearbit.com/zomato.com', bg: '#e23744', text: '#fff', t: '12%', r: '10%', dur: 5, del: 0.2 },
-                            { name: 'Nykaa', logo: 'https://logo.clearbit.com/nykaa.com', bg: '#E80071', text: '#fff', t: '38%', r: '4%', dur: 4.5, del: 1.2 },
-                            { name: 'Samsung', logo: 'https://logo.clearbit.com/samsung.com', bg: '#1428a0', text: '#fff', t: '65%', r: '14%', dur: 5.5, del: 2.5 },
-                            { name: 'Apple', logo: 'https://logo.clearbit.com/apple.com', bg: '#000', text: '#fff', t: '85%', r: '6%', dur: 4, del: 0.8 },
-                            { name: 'Target', logo: 'https://logo.clearbit.com/target.com', bg: '#cc0000', text: '#fff', t: '22%', r: '18%', dur: 6, del: 1.8 },
+                            { name: 'Zomato', logo: 'https://www.google.com/s2/favicons?domain=zomato.com&sz=128', bg: '#e23744', text: '#fff', t: '12%', r: '10%', dur: 5, del: 0.2 },
+                            { name: 'Nykaa', logo: 'https://www.google.com/s2/favicons?domain=nykaa.com&sz=128', bg: '#E80071', text: '#fff', t: '38%', r: '4%', dur: 4.5, del: 1.2 },
+                            { name: 'Samsung', logo: 'https://www.google.com/s2/favicons?domain=samsung.com&sz=128', bg: '#1428a0', text: '#fff', t: '65%', r: '14%', dur: 5.5, del: 2.5 },
+                            { name: 'Apple', logo: 'https://www.google.com/s2/favicons?domain=apple.com&sz=128', bg: '#000', text: '#fff', t: '85%', r: '6%', dur: 4, del: 0.8 },
+                            { name: 'Target', logo: 'https://www.google.com/s2/favicons?domain=target.com&sz=128', bg: '#cc0000', text: '#fff', t: '22%', r: '18%', dur: 6, del: 1.8 },
                         ].map((brand, i) => (
                             <motion.div 
                                 key={`right-${i}`}

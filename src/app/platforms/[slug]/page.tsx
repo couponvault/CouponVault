@@ -28,17 +28,14 @@ export default function PlatformDetailsPage() {
         try {
             setLoading(true);
 
-            // We'll use a random coupon endpoint or create a new specific one
-            // For now, let's fetch a random coupon for this platform to simulate the experience
-            const response = await fetch(`/api/coupons/random?platform=${slug}`);
+            // Fetch platform details and ALL its coupons
+            const response = await fetch(`/api/platforms/${slug}`);
             const data = await response.json();
 
             if (data.success) {
-                setPlatform(data.coupon.platform);
-                setCoupons([data.coupon]); // Show the claimed random coupon
+                setPlatform(data.platform);
+                setCoupons(data.coupons);
             } else {
-                // Fallback: If no coupons claimed yet, we just show platform info
-                // (In a real app, you'd have a specific GET /api/platforms/[slug] endpoint)
                 toast.error(data.error || 'Failed to load details');
             }
         } catch (error) {
@@ -93,10 +90,14 @@ export default function PlatformDetailsPage() {
                         <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
                             <div className="flex items-center space-x-6">
                                 <div
-                                    className="w-20 h-20 rounded-2xl flex items-center justify-center text-4xl shadow-lg"
+                                    className="w-20 h-20 rounded-2xl flex items-center justify-center text-4xl shadow-lg overflow-hidden shrink-0"
                                     style={{ backgroundColor: platform.backgroundColor, color: platform.textColor }}
                                 >
-                                    {platform.logo || platform.name.charAt(0)}
+                                    {platform.logo && platform.logo.startsWith('http') ? (
+                                        <img src={platform.logo} alt={platform.name} className="w-full h-full object-cover" />
+                                    ) : (
+                                        platform.name.charAt(0).toUpperCase()
+                                    )}
                                 </div>
                                 <div>
                                     <h1 className="text-3xl md:text-4xl font-bold font-display">{platform.name}</h1>
@@ -118,7 +119,7 @@ export default function PlatformDetailsPage() {
                         <div className="md:col-span-2 space-y-6">
                             <h2 className="text-2xl font-bold flex items-center space-x-2">
                                 <FiTag className="text-primary-500" />
-                                <span>Your Exclusive Coupon</span>
+                                <span>All Available Coupons</span>
                             </h2>
 
                             {coupons.length > 0 ? (

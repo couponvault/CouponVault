@@ -59,7 +59,7 @@ export default function CouponModal({ isOpen, onClose, coupon, platform }: Coupo
                                 className="w-10 h-10 rounded-full flex items-center justify-center text-xl shadow-lg"
                                 style={{ backgroundColor: platform.backgroundColor, color: platform.textColor }}
                             >
-                                <BrandLogo name={platform.name} logo={platform.logo} />
+                                <BrandLogo name={platform.name} logo={platform.logo} slug={platform.slug} />
                             </div>
                             <div>
                                 <h3 className="font-bold text-appleText">{platform.name}</h3>

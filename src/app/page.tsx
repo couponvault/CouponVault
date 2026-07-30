@@ -214,7 +214,7 @@ export default function HomePage() {
                                         className="w-20 h-20 rounded-full flex items-center justify-center text-4xl font-bold mb-4 shadow-sm border border-appleBorder/50 overflow-hidden shrink-0"
                                         style={{ backgroundColor: store.backgroundColor, color: store.textColor }}
                                     >
-                                        <BrandLogo name={store.name} logo={store.logo} />
+                                        <BrandLogo name={store.name} logo={store.logo} slug={store.slug} />
                                     </div>
                                     <span className="px-3 py-1.5 bg-success/10 border border-success/20 rounded-full text-xs font-semibold text-success whitespace-nowrap">
                                         Up to 50% Off
@@ -249,7 +249,7 @@ export default function HomePage() {
                                                 className="w-12 h-12 rounded-full flex items-center justify-center font-bold text-base shadow-sm border border-appleBorder/50 overflow-hidden shrink-0"
                                                 style={{ backgroundColor: deal.platform.backgroundColor, color: deal.platform.textColor }}
                                             >
-                                                <BrandLogo name={deal.platform.name} logo={deal.platform.logo} />
+                                                <BrandLogo name={deal.platform.name} logo={deal.platform.logo} slug={deal.platform.slug} />
                                             </div>
                                             <span className="font-bold text-appleText text-base tracking-wider">
                                                 {deal.platform.name}

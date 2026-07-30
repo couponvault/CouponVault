@@ -10,6 +10,7 @@ interface CouponCardProps {
         code: string;
         platform: {
             name: string;
+            slug?: string;
             logo?: string;
             backgroundColor: string;
             textColor: string;
@@ -66,7 +67,7 @@ export default function CouponCard({ coupon, onOpenModal }: CouponCardProps) {
                         className="w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm shadow-sm border border-appleBorder overflow-hidden"
                         style={{ backgroundColor: coupon.platform.backgroundColor, color: coupon.platform.textColor }}
                     >
-                        <BrandLogo name={coupon.platform.name} logo={coupon.platform.logo} />
+                        <BrandLogo name={coupon.platform.name} logo={coupon.platform.logo} slug={coupon.platform.slug} />
                     </div>
                     <span className="font-bold text-appleText text-sm tracking-wider">
                         {coupon.platform.name}

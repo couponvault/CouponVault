@@ -30,7 +30,7 @@ export default function PlatformCard({ platform, onClick }: PlatformCardProps) {
                 className="w-20 h-20 rounded-full flex items-center justify-center text-4xl font-bold mb-4 shadow-sm border border-appleBorder/50 overflow-hidden shrink-0 group-hover:scale-105 transition-transform"
                 style={{ backgroundColor: platform.backgroundColor, color: platform.textColor }}
             >
-                <BrandLogo name={platform.name} logo={platform.logo} />
+                <BrandLogo name={platform.name} logo={platform.logo} slug={platform.slug} />
             </div>
             
             <h3 className="text-lg font-bold text-appleText mb-2 group-hover:text-appleBlue transition-colors">

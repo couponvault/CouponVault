@@ -96,7 +96,7 @@ export default function PlatformDetailsPage() {
                                     className="w-24 h-24 rounded-2xl flex items-center justify-center text-4xl shadow-lg overflow-hidden shrink-0"
                                     style={{ backgroundColor: platform.backgroundColor, color: platform.textColor }}
                                 >
-                                    <BrandLogo name={platform.name} logo={platform.logo} />
+                                    <BrandLogo name={platform.name} logo={platform.logo} slug={platform.slug} />
                                 </div>
                                 <div>
                                     <h1 className="text-3xl md:text-4xl font-bold font-display">{platform.name}</h1>

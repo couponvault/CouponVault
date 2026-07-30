@@ -20,13 +20,16 @@ export default function HomePage() {
     const [loading, setLoading] = useState(true);
     const [selectedCoupon, setSelectedCoupon] = useState<any>(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [page, setPage] = useState(1);
+    const [hasMore, setHasMore] = useState(true);
+    const [loadingMore, setLoadingMore] = useState(false);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const [platformsRes, couponsRes] = await Promise.all([
                     fetch('/api/platforms?active=true'),
-                    fetch('/api/coupons')
+                    fetch('/api/coupons?limit=30&page=1')
                 ]);
                 
                 const platformsData = await platformsRes.json();
@@ -37,8 +40,8 @@ export default function HomePage() {
                 }
                 
                 if (couponsData.success) {
-                    // Filter out any orphaned coupons that might have null platforms
                     setCoupons(couponsData.coupons.filter((c: any) => c.platform));
+                    setHasMore(couponsData.hasMore);
                 }
             } catch (err) {
                 console.error('Error fetching data:', err);
@@ -48,6 +51,25 @@ export default function HomePage() {
         };
         fetchData();
     }, []);
+
+    const handleLoadMore = async () => {
+        if (loadingMore) return;
+        setLoadingMore(true);
+        try {
+            const nextPage = page + 1;
+            const res = await fetch(`/api/coupons?limit=30&page=${nextPage}`);
+            const data = await res.json();
+            if (data.success) {
+                setCoupons(prev => [...prev, ...data.coupons.filter((c: any) => c.platform)]);
+                setHasMore(data.hasMore);
+                setPage(nextPage);
+            }
+        } catch (error) {
+            toast.error('Failed to load more coupons');
+        } finally {
+            setLoadingMore(false);
+        }
+    };
 
     const handleOpenModal = (coupon: any) => {
         setSelectedCoupon(coupon);
@@ -310,6 +332,29 @@ export default function HomePage() {
                                     </button>
                                 </div>
                             ))}
+                        </div>
+                    )}
+
+                    {/* Load More Button */}
+                    {hasMore && !loading && (
+                        <div className="flex justify-center mt-12">
+                            <button
+                                onClick={handleLoadMore}
+                                disabled={loadingMore}
+                                className="px-8 py-4 bg-white border-2 border-appleBorder hover:border-appleBlue text-appleText font-bold rounded-xl transition-all shadow-sm hover:shadow-md flex items-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                            >
+                                {loadingMore ? (
+                                    <>
+                                        <div className="w-5 h-5 border-2 border-appleBlue border-t-transparent rounded-full animate-spin" />
+                                        <span>Loading...</span>
+                                    </>
+                                ) : (
+                                    <>
+                                        <span>Load More Coupons</span>
+                                        <FiArrowRight className="w-5 h-5" />
+                                    </>
+                                )}
+                            </button>
                         </div>
                     )}
                 </section>

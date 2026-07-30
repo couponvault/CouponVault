@@ -12,27 +12,32 @@ export async function GET(request: NextRequest) {
         // Ensure Platform is registered
         const p = Platform; 
 
-        // Fetch 10 random active coupons to ensure brand diversity on homepage
-        const couponsAggregation = await Coupon.aggregate([
-            {
-                $match: {
-                    isActive: true,
-                    isClaimed: false,
-                    isExpired: false
-                }
-            },
-            { $sample: { size: 10 } }
-        ]);
+        const { searchParams } = new URL(request.url);
+        const limit = parseInt(searchParams.get('limit') || '30', 10);
+        const page = parseInt(searchParams.get('page') || '1', 10);
+        const skip = (page - 1) * limit;
 
-        // Populate platform manually since aggregate doesn't populate directly
-        const coupons = await Coupon.populate(couponsAggregation, {
-            path: 'platform',
-            select: 'name logo slug backgroundColor textColor category'
+        // Fetch latest active coupons
+        const coupons = await Coupon.find({
+            isActive: true,
+            isClaimed: false,
+            isExpired: false
+        })
+        .sort({ createdAt: -1 })
+        .skip(skip)
+        .limit(limit)
+        .populate('platform', 'name logo slug backgroundColor textColor category');
+
+        const total = await Coupon.countDocuments({
+            isActive: true,
+            isClaimed: false,
+            isExpired: false
         });
 
         return NextResponse.json({
             success: true,
-            coupons
+            coupons,
+            hasMore: skip + coupons.length < total
         });
     } catch (error: any) {
         console.error('Get coupons error:', error);

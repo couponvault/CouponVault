@@ -48,7 +48,7 @@ export async function GET(request: Request) {
             await mongoose.connect(process.env.MONGODB_URI);
         }
         
-        try { await mongoose.connection.db.collection('coupons').dropIndex('code_1'); } catch(e) {}
+        try { await mongoose.connection.db?.collection('coupons').dropIndex('code_1'); } catch(e) {}
 
         const apiKey = 'fc11b7de1adb1305bd0a3779615b7b91';
         const url = `https://feed.linkmydeals.com/getOffers/?API_KEY=${apiKey}&format=json`;

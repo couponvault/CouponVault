@@ -235,68 +235,49 @@ export default function HomePage() {
                     {loading ? (
                         <div className="text-center py-10 text-appleMuted">Loading deals...</div>
                     ) : (
-                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+                        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-6">
                             {coupons.map((deal, i) => (
                                 <div 
                                     key={i} 
-                                    className="coupon-card bg-white border-b border-l border-r border-appleBorder rounded-2xl p-6 flex flex-col hover:shadow-lg transition-all hover:-translate-y-1 shadow-sm group border-t-4"
+                                    className="coupon-card bg-white border-b border-l border-r border-appleBorder rounded-2xl p-3 sm:p-6 flex flex-col hover:shadow-lg transition-all hover:-translate-y-1 shadow-sm group border-t-4"
                                     style={{ borderTopColor: deal.platform.backgroundColor || '#007AFF' }}
                                 >
                                     {/* Header: Logo + Name + Active Badge */}
-                                    <div className="flex items-center justify-between mb-5">
-                                        <div className="flex items-center space-x-4">
+                                    <div className="flex items-center justify-between mb-2 sm:mb-5">
+                                        <div className="flex items-center space-x-2 sm:space-x-4 min-w-0">
                                             <div
-                                                className="w-12 h-12 rounded-full flex items-center justify-center font-bold text-base shadow-sm border border-appleBorder/50 overflow-hidden shrink-0"
+                                                className="w-7 h-7 sm:w-12 sm:h-12 rounded-full flex items-center justify-center font-bold text-xs sm:text-base shadow-sm border border-appleBorder/50 overflow-hidden shrink-0"
                                                 style={{ backgroundColor: deal.platform.backgroundColor, color: deal.platform.textColor }}
                                             >
                                                 <BrandLogo name={deal.platform.name} logo={deal.platform.logo} slug={deal.platform.slug} />
                                             </div>
-                                            <span className="font-bold text-appleText text-base tracking-wider">
+                                            <span className="font-bold text-appleText text-xs sm:text-base tracking-wider truncate">
                                                 {deal.platform.name}
                                             </span>
                                         </div>
-                                        <span className="px-4 py-1.5 bg-success/10 border border-success/20 rounded-full text-xs font-bold text-success">
+                                        <span className="px-1.5 py-0.5 sm:px-4 sm:py-1.5 bg-success/10 border border-success/20 rounded-full text-[9px] sm:text-xs font-bold text-success shrink-0">
                                             Active
                                         </span>
                                     </div>
 
                                     {/* Discount */}
-                                    <h3 className="text-xl font-bold text-appleText mb-4 leading-snug group-hover:text-appleBlue transition-colors line-clamp-2">
+                                    <h3 className="text-sm sm:text-xl font-bold text-appleText mb-2 sm:mb-4 leading-snug group-hover:text-appleBlue transition-colors line-clamp-2">
                                         {deal.description || `${deal.discountType === 'percentage' ? `${deal.discountValue}% OFF` : `$${deal.discountValue} OFF`} Your Purchase`}
                                     </h3>
 
-                                    {/* Verified + Code */}
-                                    <div className="flex items-center justify-between mb-2">
-                                        <div className="flex items-center space-x-2 text-sm">
-                                            <FiCheck className="text-appleBlue w-4 h-4" />
-                                            <span className="text-appleBlue font-medium">Verified</span>
-                                            {!deal.code.startsWith('DEAL-') && (
-                                                <>
-                                                    <span className="text-appleMuted mx-1">•</span>
-                                                    <span className="text-appleMuted">Code: <span className="text-appleText font-mono font-medium">{deal.code.slice(0, 4)}***</span></span>
-                                                </>
-                                            )}
-                                        </div>
-                                        {!deal.code.startsWith('DEAL-') && (
-                                            <button onClick={() => handleCopy(deal.code)} className="p-1.5 hover:bg-gray-100 rounded-md transition-colors">
-                                                <FiCopy className="w-4 h-4 text-appleMuted hover:text-appleBlue" />
-                                            </button>
-                                        )}
+                                    {/* Verified */}
+                                    <div className="flex items-center space-x-1.5 text-xs mb-1">
+                                        <FiCheck className="text-appleBlue w-3 h-3 sm:w-4 sm:h-4" />
+                                        <span className="text-appleBlue font-medium text-[10px] sm:text-sm">Verified</span>
                                     </div>
 
-                                    {/* Expiry + Copy */}
-                                    <div className="flex items-center text-sm text-appleMuted mb-5">
+                                    {/* Expiry */}
+                                    <div className="flex items-center text-[10px] sm:text-sm text-appleMuted mb-2 sm:mb-5">
                                         <span>Exp: {new Date(deal.expiresAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}</span>
-                                        {!deal.code.startsWith('DEAL-') && (
-                                            <>
-                                                <span className="mx-2">•</span>
-                                                <button onClick={() => handleCopy(deal.code)} className="text-appleBlue hover:text-blue-700 font-medium">Copy Code</button>
-                                            </>
-                                        )}
                                     </div>
 
-                                    {/* Terms Info */}
-                                    <div className="flex flex-col space-y-2 mb-6 p-3 bg-appleCard rounded-lg text-xs text-appleMuted border border-appleBorder/50">
+                                    {/* Terms Info - hidden on mobile */}
+                                    <div className="hidden sm:flex flex-col space-y-2 mb-6 p-3 bg-appleCard rounded-lg text-xs text-appleMuted border border-appleBorder/50">
                                         <div className="flex items-center justify-between">
                                             <span>Category</span>
                                             <span className="text-appleText capitalize font-medium">{deal.platform.category || 'Sitewide'}</span>
@@ -307,8 +288,8 @@ export default function HomePage() {
                                         </div>
                                     </div>
 
-                                    {/* Rating */}
-                                    <div className="flex items-center justify-between mb-6 text-sm text-appleMuted">
+                                    {/* Rating - hidden on mobile */}
+                                    <div className="hidden sm:flex items-center justify-between mb-6 text-sm text-appleMuted">
                                         <span>User Rating</span>
                                         <div className="flex items-center space-x-1.5">
                                             <span className="font-bold text-appleText text-base">
@@ -321,7 +302,7 @@ export default function HomePage() {
                                     {/* Get Code Button */}
                                     <button
                                         onClick={() => handleOpenModal(deal)}
-                                        className={`btn-glow block text-center w-full py-3.5 font-semibold rounded-xl text-white ${deal.code.startsWith('DEAL-') ? 'bg-orange-500 hover:bg-orange-600' : 'bg-appleBlue hover:bg-blue-600'}`}
+                                        className={`btn-glow block text-center w-full py-2 sm:py-3.5 font-semibold text-xs sm:text-base rounded-lg sm:rounded-xl text-white mt-auto ${deal.code.startsWith('DEAL-') ? 'bg-orange-500 hover:bg-orange-600' : 'bg-appleBlue hover:bg-blue-600'}`}
                                     >
                                         Get Code
                                     </button>

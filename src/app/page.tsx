@@ -350,31 +350,35 @@ export default function HomePage() {
                             View All <FiArrowRight className="ml-1" />
                         </Link>
                     </div>
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-                        {blogPosts.slice(0, 5).map((post, index) => (
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 sm:gap-6">
+                        {blogPosts.slice(0, 5).map((post) => (
                             <Link 
                                 key={post.id} 
                                 href={`/blog/${post.slug}`}
-                                className={`group flex flex-col bg-white rounded-2xl overflow-hidden border border-appleBorder hover:shadow-lg transition-all duration-300 ${index === 0 ? 'md:col-span-2 md:flex-row' : ''}`}
+                                className="group flex flex-col bg-white rounded-2xl overflow-hidden border border-appleBorder hover:shadow-lg transition-all duration-300"
                             >
-                                <div className={`relative ${index === 0 ? 'md:w-1/2 h-64 md:h-auto' : 'h-48'} overflow-hidden shrink-0`}>
+                                <div className="relative h-40 sm:h-48 overflow-hidden shrink-0">
                                     <img 
                                         src={post.image} 
                                         alt={post.title}
                                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                                     />
                                 </div>
-                                <div className={`p-6 flex flex-col flex-1 justify-center ${index === 0 ? 'md:p-8' : ''}`}>
-                                    <div className="flex items-center space-x-2 text-sm text-appleBlue font-medium mb-3">
-                                        <FiBookOpen className="w-4 h-4" />
+                                <div className="p-4 sm:p-5 flex flex-col flex-1 justify-center">
+                                    <div className="flex items-center space-x-2 text-xs sm:text-sm text-appleBlue font-medium mb-2">
+                                        <FiBookOpen className="w-3 h-3 sm:w-4 sm:h-4" />
                                         <span>{post.readTime}</span>
                                     </div>
-                                    <h3 className={`font-bold text-appleText mb-3 group-hover:text-appleBlue transition-colors ${index === 0 ? 'text-2xl' : 'text-lg'}`}>
+                                    <h3 className="font-bold text-appleText text-sm sm:text-base mb-2 group-hover:text-appleBlue transition-colors line-clamp-2">
                                         {post.title}
                                     </h3>
-                                    <p className="text-appleMuted text-sm leading-relaxed mb-4 line-clamp-3">
+                                    <p className="text-appleMuted text-xs sm:text-sm leading-relaxed mb-4 line-clamp-3">
                                         {post.excerpt}
                                     </p>
+                                    <div className="mt-auto flex items-center justify-between text-xs text-gray-400">
+                                        <span className="font-medium text-appleText line-clamp-1">{post.author}</span>
+                                        <span className="shrink-0 ml-2">{new Date(post.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
+                                    </div>
                                 </div>
                             </Link>
                         ))}

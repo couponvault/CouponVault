@@ -102,9 +102,9 @@ export default function HomePage() {
                         {/* Left Side Brands */}
                         {[
                             { name: 'Amazon', logo: 'https://www.google.com/s2/favicons?domain=amazon.com&sz=128', bg: '#fff', text: '#ff9900', t: '10%', l: '8%', dur: 4, del: 0 },
-                            { name: 'Myntra', logo: 'https://www.google.com/s2/favicons?domain=myntra.com&sz=128', bg: '#fff', text: '#F13AB1', t: '35%', l: '3%', dur: 5, del: 1 },
-                            { name: 'Flipkart', logo: 'https://www.google.com/s2/favicons?domain=flipkart.com&sz=128', bg: '#0456c8', text: '#ffe11b', t: '60%', l: '12%', dur: 4.5, del: 2 },
-                            { name: 'Swiggy', logo: 'https://www.google.com/s2/favicons?domain=swiggy.com&sz=128', bg: '#fc8019', text: '#fff', t: '80%', l: '5%', dur: 5.5, del: 0.5 },
+                            { name: 'Walmart', logo: 'https://www.google.com/s2/favicons?domain=walmart.com&sz=128', bg: '#fff', text: '#0071ce', t: '35%', l: '3%', dur: 5, del: 1 },
+                            { name: 'Best Buy', logo: 'https://www.google.com/s2/favicons?domain=bestbuy.com&sz=128', bg: '#0046be', text: '#fff', t: '60%', l: '12%', dur: 4.5, del: 2 },
+                            { name: 'Sephora', logo: 'https://www.google.com/s2/favicons?domain=sephora.com&sz=128', bg: '#000', text: '#fff', t: '80%', l: '5%', dur: 5.5, del: 0.5 },
                             { name: 'Nike', logo: 'https://www.google.com/s2/favicons?domain=nike.com&sz=128', bg: '#000', text: '#fff', t: '25%', l: '18%', dur: 6, del: 1.5 },
                         ].map((brand, i) => (
                             <motion.div 
@@ -121,9 +121,9 @@ export default function HomePage() {
 
                         {/* Right Side Brands */}
                         {[
-                            { name: 'Zomato', logo: 'https://www.google.com/s2/favicons?domain=zomato.com&sz=128', bg: '#e23744', text: '#fff', t: '12%', r: '10%', dur: 5, del: 0.2 },
-                            { name: 'Nykaa', logo: 'https://www.google.com/s2/favicons?domain=nykaa.com&sz=128', bg: '#E80071', text: '#fff', t: '38%', r: '4%', dur: 4.5, del: 1.2 },
-                            { name: 'Samsung', logo: 'https://www.google.com/s2/favicons?domain=samsung.com&sz=128', bg: '#1428a0', text: '#fff', t: '65%', r: '14%', dur: 5.5, del: 2.5 },
+                            { name: 'eBay', logo: 'https://www.google.com/s2/favicons?domain=ebay.com&sz=128', bg: '#fff', text: '#e53238', t: '12%', r: '10%', dur: 5, del: 0.2 },
+                            { name: "Macy's", logo: 'https://www.google.com/s2/favicons?domain=macys.com&sz=128', bg: '#e21a2c', text: '#fff', t: '38%', r: '4%', dur: 4.5, del: 1.2 },
+                            { name: 'DoorDash', logo: 'https://www.google.com/s2/favicons?domain=doordash.com&sz=128', bg: '#eb1700', text: '#fff', t: '65%', r: '14%', dur: 5.5, del: 2.5 },
                             { name: 'Apple', logo: 'https://www.google.com/s2/favicons?domain=apple.com&sz=128', bg: '#000', text: '#fff', t: '85%', r: '6%', dur: 4, del: 0.8 },
                             { name: 'Target', logo: 'https://www.google.com/s2/favicons?domain=target.com&sz=128', bg: '#cc0000', text: '#fff', t: '22%', r: '18%', dur: 6, del: 1.8 },
                         ].map((brand, i) => (

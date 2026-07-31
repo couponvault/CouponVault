@@ -26,6 +26,18 @@ export default function StoreClientView({ platform, coupons }: { platform: any, 
         )
     }
 
+    const hashString = (str: string) => {
+        let hash = 0;
+        for (let i = 0; i < str.length; i++) {
+            hash = str.charCodeAt(i) + ((hash << 5) - hash);
+        }
+        return Math.abs(hash);
+    };
+
+    const hash = hashString(platform.name);
+    const successRate = (95 + (hash % 50) / 10).toFixed(1) + '%'; 
+    const usersSaving = (1 + (hash % 150) / 10).toFixed(1) + 'k Today';
+
     return (
         <div className="min-h-screen flex flex-col">
             <Navbar />
@@ -66,11 +78,11 @@ export default function StoreClientView({ platform, coupons }: { platform: any, 
                                 </div>
                                 <div className="px-4 py-2 bg-gray-50 rounded-xl border border-gray-100 flex flex-col shadow-sm">
                                     <span className="text-gray-500 text-xs">Success Rate</span>
-                                    <span className="font-bold text-blue-500">99.4%</span>
+                                    <span className="font-bold text-blue-500">{successRate}</span>
                                 </div>
                                 <div className="px-4 py-2 bg-gray-50 rounded-xl border border-gray-100 flex flex-col shadow-sm">
                                     <span className="text-gray-500 text-xs">Users Saving</span>
-                                    <span className="font-bold text-appleText">4.2k Today</span>
+                                    <span className="font-bold text-appleText">{usersSaving}</span>
                                 </div>
                             </div>
                         </div>

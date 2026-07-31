@@ -141,7 +141,8 @@ export async function GET(request: Request) {
 
                 // Parse Expiry
                 let expiresAt = new Date();
-                expiresAt.setDate(expiresAt.getDate() + 30); // Default +30 days
+                const randomDays = Math.floor(Math.random() * (60 - 5 + 1)) + 5;
+                expiresAt.setDate(expiresAt.getDate() + randomDays); // Random 5-60 days fallback
                 const endDateStr = offer.End_Date || offer['End Date'];
                 if (endDateStr && endDateStr !== '0000-00-00') {
                     const parsedDate = new Date(endDateStr);

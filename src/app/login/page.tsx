@@ -99,9 +99,10 @@ export default function LoginPage() {
                             <button
                                 type="submit"
                                 disabled={loading}
-                                className="group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-bold rounded-xl text-white bg-gradient-to-r from-primary-600 to-secondary-600 hover:shadow-glow transition-all duration-300 disabled:opacity-50"
+                                className="group relative w-full flex justify-center py-3.5 px-4 border-0 text-base font-bold rounded-xl text-white transition-all duration-300 disabled:opacity-50"
+                                style={{ backgroundColor: '#0071e3' }}
                             >
-                                {loading ? 'Signing in...' : 'Sign In'}
+                                {loading ? 'Signing in...' : '🔐 Sign In'}
                             </button>
                         </div>
 

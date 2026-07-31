@@ -103,7 +103,7 @@ export const blogPosts = [
         author: 'Marcus Johnson, Hardware Reviewer',
         date: '2026-07-15',
         readTime: '5 min read',
-        image: 'https://images.unsplash.com/photo-1550009158-9ebf6d17332f?auto=format&fit=crop&q=80&w=1000'
+        image: 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&q=80&w=1000'
     },
     {
         id: '5',

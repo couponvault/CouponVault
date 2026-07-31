@@ -55,7 +55,10 @@ export async function GET(request: Request) {
         
         try { await mongoose.connection.db?.collection('coupons').dropIndex('code_1'); } catch(e) {}
 
-        const apiKey = 'fc11b7de1adb1305bd0a3779615b7b91';
+        const apiKey = process.env.LINKMYDEALS_API_KEY;
+        if (!apiKey) {
+            throw new Error('LINKMYDEALS_API_KEY is not defined');
+        }
         const url = `https://feed.linkmydeals.com/getOffers/?API_KEY=${apiKey}&format=json`;
         
         console.log('Fetching LinkMyDeals API...');

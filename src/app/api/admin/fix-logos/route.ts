@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import connectDB from '@/lib/mongodb';
 import Platform from '@/models/Platform';
+import { verifyAdmin } from '@/lib/auth';
 
 export const dynamic = 'force-dynamic';
 
@@ -225,6 +226,11 @@ function extractDomain(slug: string): string {
 
 export async function GET(request: NextRequest) {
     try {
+        const isAdmin = await verifyAdmin(request);
+        if (!isAdmin) {
+            return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+        }
+
         await connectDB();
 
         const platforms = await Platform.find({});

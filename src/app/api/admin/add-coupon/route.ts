@@ -1,10 +1,16 @@
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import connectDB from '@/lib/mongodb';
 import Coupon from '@/models/Coupon';
 import Platform from '@/models/Platform';
+import { verifyAdmin } from '@/lib/auth';
 
-export async function POST(req: Request) {
+export async function POST(req: NextRequest) {
     try {
+        const isAdmin = await verifyAdmin(req);
+        if (!isAdmin) {
+            return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+        }
+
         await connectDB();
         const data = await req.json();
 

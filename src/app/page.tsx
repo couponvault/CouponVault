@@ -2,11 +2,15 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
+import nextDynamic from 'next/dynamic';
 import { motion } from 'framer-motion';
 import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
+
+// Lazy load heavy components
+const Footer = nextDynamic(() => import('@/components/Footer'), { ssr: false });
+const CouponModal = nextDynamic(() => import('@/components/CouponModal'), { ssr: false });
 import SearchBar from '@/components/SearchBar';
-import CouponModal from '@/components/CouponModal';
 import BrandLogo from '@/components/ui/BrandLogo';
 import { FiZap, FiCheck, FiCopy, FiStar, FiArrowRight, FiShield, FiTrendingUp, FiGift, FiGrid, FiBookOpen } from 'react-icons/fi';
 import toast from 'react-hot-toast';
@@ -358,10 +362,12 @@ export default function HomePage() {
                                 className="group flex flex-col bg-white rounded-2xl overflow-hidden border border-appleBorder hover:shadow-lg transition-all duration-300"
                             >
                                 <div className="relative h-40 sm:h-48 overflow-hidden shrink-0">
-                                    <img 
+                                    <Image 
                                         src={post.image} 
                                         alt={post.title}
-                                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                        fill
+                                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                        className="object-cover group-hover:scale-105 transition-transform duration-500"
                                     />
                                 </div>
                                 <div className="p-4 sm:p-5 flex flex-col flex-1 justify-center">

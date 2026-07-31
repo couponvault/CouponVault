@@ -1,4 +1,5 @@
 'use client';
+import Image from 'next/image';
 
 import { useState } from 'react';
 
@@ -86,13 +87,17 @@ export default function BrandLogo({ name, logo, slug, className = "w-full h-full
     // If we still have sources to try, show image
     if (sourceIndex < sources.length) {
         return (
-            <img
-                src={sources[sourceIndex]}
-                alt={name}
-                className={className}
-                onError={handleError}
-                referrerPolicy="no-referrer"
-            />
+            <div className={`relative ${className.replace(/w-\w+ h-\w+/, 'w-full h-full')}`} style={{ minHeight: '100%', minWidth: '100%' }}>
+                <Image
+                    src={sources[sourceIndex]}
+                    alt={name}
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    className="object-contain p-1"
+                    onError={handleError}
+                    unoptimized={sources[sourceIndex].includes('.ico')} // skip optimization for ICO files
+                />
+            </div>
         );
     }
 

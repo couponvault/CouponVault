@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { useState } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 import { FiMenu, FiX, FiArrowLeft } from 'react-icons/fi';
@@ -35,7 +36,7 @@ export default function Navbar() {
                             </button>
                         )}
                         <Link href="/" className="flex items-center space-x-2.5 group">
-                            <img src="/logo.png" alt="CouponVault Logo" className="w-8 h-8 rounded-lg shadow-sm" />
+                            <Image src="/logo.png" alt="CouponVault Logo" width={32} height={32} className="w-8 h-8 rounded-lg shadow-sm" priority />
                             <span className="text-lg font-bold tracking-[0.2em] text-appleText uppercase" style={{ fontFamily: 'Outfit' }}>
                                 CouponVault
                             </span>

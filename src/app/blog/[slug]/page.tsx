@@ -1,6 +1,7 @@
 import { blogPosts } from '@/data/blogPosts';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 import { FiArrowLeft, FiClock, FiUser, FiCalendar } from 'react-icons/fi';
 
 export function generateStaticParams() {
@@ -71,10 +72,13 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
                     <div className="lg:col-span-2">
                         <article className="bg-white rounded-3xl overflow-hidden shadow-sm border border-appleBorder">
                             <div className="w-full h-64 md:h-[400px] relative">
-                                <img 
+                                <Image 
                                     src={post.image} 
                                     alt={post.title}
-                                    className="w-full h-full object-cover"
+                                    fill
+                                    priority
+                                    sizes="(max-width: 768px) 100vw, 66vw"
+                                    className="object-cover"
                                 />
                             </div>
                             
@@ -121,11 +125,13 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
                                         className="group block"
                                     >
                                         <div className="flex space-x-4">
-                                            <div className="w-24 h-24 flex-shrink-0 rounded-xl overflow-hidden bg-gray-100">
-                                                <img 
+                                            <div className="relative w-24 h-24 flex-shrink-0 rounded-xl overflow-hidden bg-gray-100">
+                                                <Image 
                                                     src={relatedPost.image} 
                                                     alt={relatedPost.title}
-                                                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                                                    fill
+                                                    sizes="96px"
+                                                    className="object-cover group-hover:scale-105 transition-transform duration-300"
                                                 />
                                             </div>
                                             <div>

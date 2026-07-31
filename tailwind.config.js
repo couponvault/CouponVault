@@ -12,11 +12,11 @@ module.exports = {
                 appleBg: '#FFFFFF',
                 appleCard: '#F5F5F7',
                 appleText: '#1D1D1F',
-                appleMuted: '#86868B',
+                appleMuted: '#55555A',
                 appleBlue: '#007AFF',
                 appleBorder: '#E5E5EA',
                 // Keep some semantic colors for functionality but adapt them
-                success: '#34C759', // Apple green
+                success: '#15803D', // Darker green for WCAG AA contrast
                 warning: '#FF9500', // Apple orange
                 error: '#FF3B30',   // Apple red
             },

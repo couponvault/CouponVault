@@ -36,13 +36,13 @@ export default function Footer() {
                             Your trusted source for exclusive discount codes and amazing deals from top brands.
                         </p>
                         <div className="flex space-x-3">
-                            <a href="#" className="text-appleMuted hover:text-appleBlue transition-colors">
+                            <a href="#" aria-label="Twitter" className="text-appleMuted hover:text-appleBlue transition-colors">
                                 <FiTwitter className="w-4 h-4" />
                             </a>
-                            <a href="#" className="text-appleMuted hover:text-appleBlue transition-colors">
+                            <a href="#" aria-label="GitHub" className="text-appleMuted hover:text-appleBlue transition-colors">
                                 <FiGithub className="w-4 h-4" />
                             </a>
-                            <a href="/contact" className="text-appleMuted hover:text-appleBlue transition-colors">
+                            <a href="/contact" aria-label="Contact Us" className="text-appleMuted hover:text-appleBlue transition-colors">
                                 <FiMail className="w-4 h-4" />
                             </a>
                         </div>

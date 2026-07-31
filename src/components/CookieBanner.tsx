@@ -27,8 +27,8 @@ export default function CookieBanner() {
                 <h3 className="text-appleText font-bold text-lg mb-1">We use cookies</h3>
                 <p className="text-appleMuted text-sm">
                     This website uses cookies, including third-party advertising cookies from Google AdSense, to ensure you get the best experience on our website and to serve personalized ads. By continuing to use this site, you consent to our use of cookies. 
-                    <Link href="/privacy" className="text-appleBlue hover:underline ml-1">
-                        Learn more
+                    <Link href="/privacy" aria-label="Read our Privacy Policy" className="text-appleBlue hover:underline ml-1">
+                        Read our Privacy Policy
                     </Link>
                 </p>
             </div>

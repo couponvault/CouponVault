@@ -96,7 +96,7 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
                                     </div>
                                     <div className="flex items-center">
                                         <FiCalendar className="mr-2" />
-                                        <span>{new Date(post.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</span>
+                                        <span suppressHydrationWarning>{new Date(post.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</span>
                                     </div>
                                     <div className="flex items-center">
                                         <FiClock className="mr-2" />
@@ -138,7 +138,7 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
                                                 <h4 className="font-bold text-appleText leading-tight group-hover:text-appleBlue transition-colors line-clamp-2 mb-2">
                                                     {relatedPost.title}
                                                 </h4>
-                                                <span className="text-xs text-appleMuted">{new Date(relatedPost.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}</span>
+                                                <span suppressHydrationWarning className="text-xs text-appleMuted">{new Date(relatedPost.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}</span>
                                             </div>
                                         </div>
                                     </Link>

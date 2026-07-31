@@ -277,7 +277,7 @@ export default function HomePage() {
 
                                     {/* Expiry */}
                                     <div className="flex items-center text-[10px] sm:text-sm text-appleMuted mb-2 sm:mb-5">
-                                        <span>Exp: {new Date(deal.expiresAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}</span>
+                                        <span suppressHydrationWarning>Exp: {new Date(deal.expiresAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}</span>
                                     </div>
 
                                     {/* Terms Info - hidden on mobile */}
@@ -383,7 +383,7 @@ export default function HomePage() {
                                     </p>
                                     <div className="mt-auto flex items-center justify-between text-xs text-gray-400">
                                         <span className="font-medium text-appleText line-clamp-1">{post.author}</span>
-                                        <span className="shrink-0 ml-2">{new Date(post.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
+                                        <span suppressHydrationWarning className="shrink-0 ml-2">{new Date(post.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
                                     </div>
                                 </div>
                             </Link>

@@ -45,7 +45,7 @@ export default function BlogIndex() {
                             </div>
                             <div className="p-6 flex flex-col flex-grow">
                                 <div className="flex items-center text-xs text-appleMuted mb-3 space-x-2">
-                                    <span>{new Date(post.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
+                                    <span suppressHydrationWarning>{new Date(post.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
                                     <span>•</span>
                                     <span>{post.readTime}</span>
                                 </div>

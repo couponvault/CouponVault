@@ -56,7 +56,7 @@ export default function PlatformsPage() {
 
     const filteredPlatforms = platforms.filter(platform => {
         const matchesSearch = platform.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-            platform.description.toLowerCase().includes(searchQuery.toLowerCase());
+            (platform.description || '').toLowerCase().includes(searchQuery.toLowerCase());
         const matchesCategory = selectedCategory === 'all' || platform.category === selectedCategory;
         return matchesSearch && matchesCategory;
     });

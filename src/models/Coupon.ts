@@ -25,6 +25,7 @@ export interface ICoupon extends Document {
     claimedBy?: mongoose.Types.ObjectId;
 
     // Metadata
+    title?: string;
     description?: string;
     terms?: string;
 
@@ -68,6 +69,7 @@ const CouponSchema = new Schema<ICoupon>(
         claimedAt: { type: Date },
         claimedBy: { type: Schema.Types.ObjectId, ref: 'User' },
 
+        title: { type: String },
         description: { type: String },
         terms: { type: String }
     },

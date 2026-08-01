@@ -201,6 +201,7 @@ export async function GET(request: Request) {
                     isClaimed: false,
                     isExpired: false,
                     expiresAt,
+                    title: title,
                     description: offer.Description || offer.description || offer['Description'] || title,
                     source: 'linkmydeals'
                 });

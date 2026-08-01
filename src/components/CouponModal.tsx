@@ -76,9 +76,7 @@ export default function CouponModal({ isOpen, onClose, coupon, platform }: Coupo
 
                     {/* Body */}
                     <div className="p-6 text-center">
-                        <div className="inline-block px-3 py-1 mb-4 bg-success/10 border border-success/20 text-success rounded-full text-xs font-bold tracking-wide">
-                            {coupon.discountType === 'percentage' ? `${coupon.discountValue}% OFF` : coupon.discountType === 'fixed' ? `${coupon.currency || '₹'}${coupon.discountValue} OFF` : coupon.discountType === 'freeShipping' ? 'Free Shipping' : coupon.discountType === 'bogo' ? 'Buy 1 Get 1 Free' : 'Special Deal'}
-                        </div>
+                        <div className="inline-block px-3 py-1 mb-4 bg-success/10 border border-success/20 text-success rounded-full text-xs font-bold tracking-wide" dangerouslySetInnerHTML={{ __html: coupon.title || (coupon.discountType === 'percentage' ? `${coupon.discountValue}% OFF` : coupon.discountType === 'fixed' ? `${coupon.currency || '₹'}${coupon.discountValue} OFF` : coupon.discountType === 'freeShipping' ? 'Free Shipping' : coupon.discountType === 'bogo' ? 'Buy 1 Get 1 Free' : 'Special Deal') }} />
                         
                         <h2 className="text-xl font-bold text-appleText mb-4">
                             Copy this code and use it at checkout

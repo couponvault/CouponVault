@@ -35,6 +35,10 @@ export const metadata: Metadata = {
     verification: {
         google: 'AWhoJenbK6Y3oEL5fK5BXj4SnmwfoTLXB1NnUO6-414',
     },
+    icons: {
+        icon: '/favicon.png',
+        apple: '/apple-touch-icon.png',
+    },
     metadataBase: new URL('https://couponvault.in'),
     alternates: {
         canonical: '/',

@@ -15,7 +15,21 @@ function slugify(text: string) {
         .replace(/-+$/, '');            // Trim - from end of text
 }
 
+function decodeEntities(str: string) {
+    if (!str) return '';
+    return str
+        .replace(/&#8377;/g, '₹')
+        .replace(/&#163;/g, '£')
+        .replace(/&#8364;/g, '€')
+        .replace(/&#128;/g, '€')
+        .replace(/&#36;/g, '$')
+        .replace(/&amp;/g, '&')
+        .replace(/&nbsp;/g, ' ');
+}
+
 function parseDiscount(title: string, offerValue: string) {
+    title = decodeEntities(title);
+    offerValue = decodeEntities(offerValue);
     const titleUpper = title.toUpperCase();
     
     // Extract currency symbol if present

@@ -308,7 +308,7 @@ export default function HomePage() {
                                         onClick={() => handleOpenModal(deal)}
                                         className={`btn-glow block text-center w-full py-2 sm:py-3.5 font-semibold text-xs sm:text-base rounded-lg sm:rounded-xl text-white mt-auto ${deal.code.startsWith('DEAL-') ? 'bg-orange-500 hover:bg-orange-600' : 'bg-appleBlue hover:bg-blue-600'}`}
                                     >
-                                        Get Code
+                                        {deal.code.startsWith('DEAL-') ? 'Get Deal' : 'Get Code'}
                                     </button>
                                 </div>
                             ))}

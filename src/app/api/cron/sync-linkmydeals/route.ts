@@ -177,6 +177,12 @@ export async function GET(request: Request) {
                 const offerVal = offer.Offer_Value || offer.offer_value || offer['Offer Value'] || '';
         
                 // Skip Indian coupons
+                const indianStores = ['box8.in', 'firstcry.com', 'kushals.com', 'maccaron.in', 'photojaanic.com', 'timesprime.com', 'voylla.com', 'yatra.com', 'themancompany.com'];
+                const storeLower = (storeName || '').toLowerCase();
+                if (indianStores.some(s => storeLower.includes(s))) {
+                    continue;
+                }
+                
                 const rawText = (title + ' ' + offerVal + ' ' + (offer.Description || offer.description || '')).toUpperCase();
                 if (rawText.includes('₹') || rawText.includes('&#8377;') || rawText.includes(' RS') || rawText.includes('RUPEE') || rawText.includes('INR ')) {
                     continue;

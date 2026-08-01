@@ -175,6 +175,13 @@ export async function GET(request: Request) {
                 // Parse discount
                 const title = offer.Title || offer.title || offer.Offer_Text || offer.offer_text || '';
                 const offerVal = offer.Offer_Value || offer.offer_value || offer['Offer Value'] || '';
+        
+                // Skip Indian coupons
+                const rawText = (title + ' ' + offerVal + ' ' + (offer.Description || offer.description || '')).toUpperCase();
+                if (rawText.includes('₹') || rawText.includes('&#8377;') || rawText.includes(' RS') || rawText.includes('RUPEE') || rawText.includes('INR ')) {
+                    continue;
+                }
+
                 const parsedDiscount = parseDiscount(title, offerVal);
 
                 // Parse Expiry

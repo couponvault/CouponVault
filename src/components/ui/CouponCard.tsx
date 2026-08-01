@@ -17,6 +17,7 @@ interface CouponCardProps {
         };
         discountType: string;
         discountValue: number;
+        currency?: string;
         minPurchase?: number;
         maxDiscount?: number;
         description?: string;

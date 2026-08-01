@@ -35,7 +35,11 @@ function parseDiscount(title: string, offerValue: string) {
     if (titleUpper.includes('BOGO') || titleUpper.includes('BUY 1 GET 1')) {
         return { type: 'bogo', value: 0 };
     }
-    return { type: 'percentage', value: parseInt(offerValue.replace(/[^0-9]/g, '')) || 10 };
+    const fallbackValue = parseInt(offerValue.replace(/[^0-9]/g, ''));
+    if (!isNaN(fallbackValue) && fallbackValue > 0) {
+        return { type: 'percentage', value: fallbackValue };
+    }
+    return { type: 'deal', value: 0 };
 }
 
 export async function GET(request: Request) {
@@ -98,7 +102,7 @@ export async function GET(request: Request) {
                         'food': 'food',
                         'travel': 'travel'
                     };
-                    const catString = (offer.Categories || offer['Categories'] || '').toLowerCase();
+                    const catString = (offer.Categories || offer['Categories'] || offer.categories || '').toLowerCase();
                     let matchedCategory = 'other';
                     for (const [key, val] of Object.entries(categoryMap)) {
                         if (catString.includes(key)) {
@@ -143,15 +147,15 @@ export async function GET(request: Request) {
                 }
 
                 // Parse discount
-                const title = offer.Title || offer['Title'] || offer.Offer_Text || '';
-                const offerVal = offer.Offer_Value || offer['Offer Value'] || '';
+                const title = offer.Title || offer.title || offer.Offer_Text || offer.offer_text || '';
+                const offerVal = offer.Offer_Value || offer.offer_value || offer['Offer Value'] || '';
                 const parsedDiscount = parseDiscount(title, offerVal);
 
                 // Parse Expiry
                 let expiresAt = new Date();
                 const randomDays = Math.floor(Math.random() * (60 - 5 + 1)) + 5;
                 expiresAt.setDate(expiresAt.getDate() + randomDays); // Random 5-60 days fallback
-                const endDateStr = offer.End_Date || offer['End Date'];
+                const endDateStr = offer.End_Date || offer.end_date || offer['End Date'];
                 if (endDateStr && endDateStr !== '0000-00-00') {
                     const parsedDate = new Date(endDateStr);
                     if (!isNaN(parsedDate.getTime())) {
@@ -170,7 +174,7 @@ export async function GET(request: Request) {
                     isClaimed: false,
                     isExpired: false,
                     expiresAt,
-                    description: offer.Description || offer['Description'] || title,
+                    description: offer.Description || offer.description || offer['Description'] || title,
                     source: 'linkmydeals'
                 });
 

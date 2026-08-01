@@ -79,9 +79,11 @@ export default function CouponCard({ coupon, onOpenModal }: CouponCardProps) {
             </div>
 
             {/* Title / Description */}
-            <h3 className="text-sm sm:text-lg font-bold text-appleText mb-2 sm:mb-3 leading-snug group-hover:text-appleBlue transition-colors line-clamp-2">
-                {coupon.description || `${formatDiscount()} Your Entire Purchase`}
+            <h3 className="text-sm sm:text-lg font-bold text-appleText mb-1 leading-snug group-hover:text-appleBlue transition-colors line-clamp-1">
+                {coupon.discountType === 'percentage' ? `${coupon.discountValue}% OFF` : coupon.discountType === 'fixed' ? `₹${coupon.discountValue} OFF` : coupon.discountType === 'freeShipping' ? 'Free Shipping' : coupon.discountType === 'bogo' ? 'Buy 1 Get 1 Free' : 'Special Deal'}
             </h3>
+            
+            <p className="text-xs sm:text-xs text-appleMuted mb-2 sm:mb-3 line-clamp-2" dangerouslySetInnerHTML={{ __html: coupon.description || 'Apply this verified code at checkout' }} />
 
             {/* Verified + Expiry */}
             <div className="flex items-center space-x-1.5 text-xs mb-1 sm:mb-1">

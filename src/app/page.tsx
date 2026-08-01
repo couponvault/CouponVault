@@ -265,9 +265,12 @@ export default function HomePage() {
                                     </div>
 
                                     {/* Discount */}
-                                    <h3 className="text-sm sm:text-xl font-bold text-appleText mb-2 sm:mb-4 leading-snug group-hover:text-appleBlue transition-colors line-clamp-2">
-                                        {deal.description || `${deal.discountType === 'percentage' ? `${deal.discountValue}% OFF` : `$${deal.discountValue} OFF`} Your Purchase`}
+                                    <h3 className="text-sm sm:text-xl font-bold text-appleText mb-1 leading-snug group-hover:text-appleBlue transition-colors line-clamp-1">
+                                        {deal.discountType === 'percentage' ? `${deal.discountValue}% OFF` : deal.discountType === 'fixed' ? `₹${deal.discountValue} OFF` : deal.discountType === 'freeShipping' ? 'Free Shipping' : deal.discountType === 'bogo' ? 'Buy 1 Get 1 Free' : 'Special Deal'}
                                     </h3>
+                                    
+                                    {/* Description */}
+                                    <p className="text-xs sm:text-sm text-appleMuted mb-2 sm:mb-4 line-clamp-2" dangerouslySetInnerHTML={{ __html: deal.description || 'Apply this verified code at checkout' }} />
 
                                     {/* Verified */}
                                     <div className="flex items-center space-x-1.5 text-xs mb-1">

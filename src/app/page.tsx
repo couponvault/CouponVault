@@ -32,8 +32,8 @@ export default function HomePage() {
         const fetchData = async () => {
             try {
                 const [platformsRes, couponsRes] = await Promise.all([
-                    fetch('/api/platforms?active=true'),
-                    fetch('/api/coupons?limit=30')
+                    fetch(`/api/platforms?active=true&t=${Date.now()}`, { cache: 'no-store' }),
+                    fetch(`/api/coupons?limit=30&t=${Date.now()}`, { cache: 'no-store' })
                 ]);
                 
                 const platformsData = await platformsRes.json();
@@ -221,7 +221,7 @@ export default function HomePage() {
                                         <BrandLogo name={store.name} logo={store.logo} slug={store.slug} />
                                     </div>
                                     <span className="px-3 py-1.5 bg-success/10 border border-success/20 rounded-full text-xs font-semibold text-success whitespace-nowrap">
-                                        Up to 50% Off
+                                        Up to {store.couponConfig?.discountValue?.max || 50}{store.couponConfig?.discountType === 'percentage' ? '%' : '$'} Off
                                     </span>
                                 </Link>
                             ))}

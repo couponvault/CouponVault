@@ -17,29 +17,41 @@ function slugify(text: string) {
 
 function parseDiscount(title: string, offerValue: string) {
     const titleUpper = title.toUpperCase();
+    
+    // Extract currency symbol if present
+    let currency = '';
+    const currencyMatch = title.match(/([$£€₹])/) || offerValue.match(/([$£€₹])/);
+    if (currencyMatch) {
+        currency = currencyMatch[1];
+    }
+
     if (titleUpper.includes('%') || (offerValue && offerValue.includes('%'))) {
         return {
             type: 'percentage',
-            value: parseInt(offerValue.replace(/[^0-9]/g, '')) || parseInt(title.match(/(\d+)%/)?.[1] || '10')
+            value: parseInt(offerValue.replace(/[^0-9]/g, '')) || parseInt(title.match(/(\d+)%/)?.[1] || '10'),
+            currency: ''
         };
     }
-    if (titleUpper.includes('$') || titleUpper.includes('RS') || titleUpper.includes('₹') || (offerValue && offerValue.match(/[$₹]/))) {
+    if (titleUpper.includes('$') || titleUpper.includes('RS') || titleUpper.includes('₹') || titleUpper.includes('£') || titleUpper.includes('€') || (offerValue && offerValue.match(/[$£€₹]/))) {
+        // Default to ₹ if 'RS' is found but no symbol
+        if (!currency && titleUpper.includes('RS')) currency = '₹';
         return {
             type: 'fixed',
-            value: parseInt(offerValue.replace(/[^0-9]/g, '')) || parseInt(title.match(/[$₹](\d+)/)?.[1] || '50')
+            value: parseInt(offerValue.replace(/[^0-9]/g, '')) || parseInt(title.match(/[$£€₹](\d+)/)?.[1] || title.match(/(\d+)/)?.[1] || '50'),
+            currency: currency || '$'
         };
     }
     if (titleUpper.includes('SHIPPING')) {
-        return { type: 'freeShipping', value: 0 };
+        return { type: 'freeShipping', value: 0, currency: '' };
     }
     if (titleUpper.includes('BOGO') || titleUpper.includes('BUY 1 GET 1')) {
-        return { type: 'bogo', value: 0 };
+        return { type: 'bogo', value: 0, currency: '' };
     }
     const fallbackValue = parseInt(offerValue.replace(/[^0-9]/g, ''));
     if (!isNaN(fallbackValue) && fallbackValue > 0) {
-        return { type: 'percentage', value: fallbackValue };
+        return { type: 'percentage', value: fallbackValue, currency: '' };
     }
-    return { type: 'deal', value: 0 };
+    return { type: 'deal', value: 0, currency: '' };
 }
 
 export async function GET(request: Request) {
@@ -170,6 +182,7 @@ export async function GET(request: Request) {
                     platformName: platform.name,
                     discountType: parsedDiscount.type,
                     discountValue: parsedDiscount.value,
+                    currency: parsedDiscount.currency,
                     isActive: true,
                     isClaimed: false,
                     isExpired: false,

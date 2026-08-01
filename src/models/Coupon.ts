@@ -8,6 +8,7 @@ export interface ICoupon extends Document {
     // Discount details
     discountType: 'percentage' | 'fixed' | 'freeShipping' | 'bogo';
     discountValue: number;
+    currency?: string;
     minPurchase?: number;
     maxDiscount?: number;
 
@@ -53,6 +54,7 @@ const CouponSchema = new Schema<ICoupon>(
             enum: ['percentage', 'fixed', 'freeShipping', 'bogo']
         },
         discountValue: { type: Number, required: true },
+        currency: { type: String },
         minPurchase: { type: Number },
         maxDiscount: { type: Number },
 

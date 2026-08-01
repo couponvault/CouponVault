@@ -266,7 +266,7 @@ export default function HomePage() {
 
                                     {/* Discount */}
                                     <h3 className="text-sm sm:text-xl font-bold text-appleText mb-1 leading-snug group-hover:text-appleBlue transition-colors line-clamp-1">
-                                        {deal.discountType === 'percentage' ? `${deal.discountValue}% OFF` : deal.discountType === 'fixed' ? `₹${deal.discountValue} OFF` : deal.discountType === 'freeShipping' ? 'Free Shipping' : deal.discountType === 'bogo' ? 'Buy 1 Get 1 Free' : 'Special Deal'}
+                                        {deal.discountType === 'percentage' ? `${deal.discountValue}% OFF` : deal.discountType === 'fixed' ? `${deal.currency || '₹'}${deal.discountValue} OFF` : deal.discountType === 'freeShipping' ? 'Free Shipping' : deal.discountType === 'bogo' ? 'Buy 1 Get 1 Free' : 'Special Deal'}
                                     </h3>
                                     
                                     {/* Description */}
@@ -291,7 +291,7 @@ export default function HomePage() {
                                         </div>
                                         <div className="flex items-center justify-between">
                                             <span>Min. Order</span>
-                                            <span className="text-appleText font-medium">{deal.minPurchase > 0 ? `$${deal.minPurchase}` : 'No Minimum'}</span>
+                                            <span className="text-appleText font-medium">{deal.minPurchase > 0 ? `$${deal.minPurchase}` : 'Check Terms'}</span>
                                         </div>
                                     </div>
 

@@ -77,7 +77,7 @@ export default function CouponModal({ isOpen, onClose, coupon, platform }: Coupo
                     {/* Body */}
                     <div className="p-6 text-center">
                         <div className="inline-block px-3 py-1 mb-4 bg-success/10 border border-success/20 text-success rounded-full text-xs font-bold tracking-wide">
-                            {coupon.discountType === 'percentage' ? `${coupon.discountValue}% OFF` : coupon.discountType === 'fixed' ? `₹${coupon.discountValue} OFF` : coupon.discountType === 'freeShipping' ? 'Free Shipping' : coupon.discountType === 'bogo' ? 'Buy 1 Get 1 Free' : 'Special Deal'}
+                            {coupon.discountType === 'percentage' ? `${coupon.discountValue}% OFF` : coupon.discountType === 'fixed' ? `${coupon.currency || '₹'}${coupon.discountValue} OFF` : coupon.discountType === 'freeShipping' ? 'Free Shipping' : coupon.discountType === 'bogo' ? 'Buy 1 Get 1 Free' : 'Special Deal'}
                         </div>
                         
                         <h2 className="text-xl font-bold text-appleText mb-4">
@@ -91,7 +91,7 @@ export default function CouponModal({ isOpen, onClose, coupon, platform }: Coupo
                             </div>
                             <div className="bg-appleCard px-4 py-2 rounded-xl border border-appleBorder/50">
                                 <p className="text-[10px] uppercase tracking-wider text-appleMuted mb-0.5">Min. Order</p>
-                                <span className="font-semibold text-appleText">{coupon.minPurchase > 0 ? `$${coupon.minPurchase}` : 'None'}</span>
+                                <span className="font-semibold text-appleText">{coupon.minPurchase > 0 ? `$${coupon.minPurchase}` : 'Check Terms'}</span>
                             </div>
                         </div>
 

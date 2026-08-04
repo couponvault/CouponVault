@@ -56,6 +56,7 @@ export default function SearchBar() {
     const inputRef = useRef<HTMLInputElement>(null);
     const containerRef = useRef<HTMLDivElement>(null);
     const router = useRouter();
+    const [selectedIndex, setSelectedIndex] = useState(-1);
 
     // Rotating placeholder
     useEffect(() => {
@@ -112,10 +113,38 @@ export default function SearchBar() {
     };
 
     const handleSearchSubmit = (e: React.KeyboardEvent<HTMLInputElement>) => {
-        if (e.key === 'Enter' && query.trim()) {
-            router.push('/platforms?q=' + encodeURIComponent(query.trim()));
+        if (!showDropdown) {
+            if (e.key === 'Enter' && query.trim()) {
+                router.push('/platforms?q=' + encodeURIComponent(query.trim()));
+                setIsFocused(false);
+            }
+            return;
+        }
+
+        if (e.key === 'ArrowDown') {
+            e.preventDefault();
+            setSelectedIndex((prev) => (prev < suggestions.length - 1 ? prev + 1 : prev));
+        } else if (e.key === 'ArrowUp') {
+            e.preventDefault();
+            setSelectedIndex((prev) => (prev > 0 ? prev - 1 : -1));
+        } else if (e.key === 'Enter') {
+            e.preventDefault();
+            if (selectedIndex >= 0 && selectedIndex < suggestions.length) {
+                handleSuggestionClick(suggestions[selectedIndex].label);
+            } else if (query.trim()) {
+                router.push('/platforms?q=' + encodeURIComponent(query.trim()));
+                setIsFocused(false);
+            }
+        } else if (e.key === 'Escape') {
+            setIsFocused(false);
+            setSelectedIndex(-1);
         }
     };
+
+    // Reset selected index when query changes
+    useEffect(() => {
+        setSelectedIndex(-1);
+    }, [query]);
 
     const clearQuery = () => {
         setQuery('');
@@ -198,54 +227,66 @@ export default function SearchBar() {
 
                 {/* Autocomplete Dropdown */}
                 {showDropdown && (
-                    <div className="absolute top-full left-0 right-0 mt-2 bg-white/95 backdrop-blur-md border border-appleBorder rounded-2xl shadow-xl overflow-hidden z-50 animate-in fade-in slide-in-from-top-2 duration-200">
+                    <div className="absolute top-full left-0 right-0 mt-2 bg-white/95 backdrop-blur-md border border-appleBorder rounded-3xl shadow-2xl overflow-hidden z-50 animate-in fade-in slide-in-from-top-2 duration-200">
                         {hasResults ? (
                             <div className="py-2 max-h-80 overflow-y-auto">
                                 {stores.length > 0 && (
                                     <div>
                                         <p className="px-5 py-2 text-[10px] uppercase tracking-widest text-appleMuted font-semibold">Stores</p>
-                                        {stores.map((s) => (
-                                            <button
-                                                key={s.label}
-                                                onClick={() => handleSuggestionClick(s.label)}
-                                                className="w-full text-left px-5 py-3 flex items-center space-x-3 hover:bg-appleCard transition-colors group"
-                                            >
-                                                <span className="text-base group-hover:scale-110 transition-transform duration-200">{s.icon}</span>
-                                                <span className="text-appleText group-hover:text-appleBlue transition-colors text-sm font-medium">{s.label}</span>
-                                            </button>
-                                        ))}
+                                        {stores.map((s) => {
+                                            const globalIndex = suggestions.findIndex(sug => sug.label === s.label);
+                                            const isActive = globalIndex === selectedIndex;
+                                            return (
+                                                <button
+                                                    key={s.label}
+                                                    onClick={() => handleSuggestionClick(s.label)}
+                                                    className={`w-full text-left px-5 py-3 flex items-center space-x-3 transition-colors group ${isActive ? 'bg-appleCard' : 'hover:bg-appleCard'}`}
+                                                >
+                                                    <span className="text-base group-hover:scale-110 transition-transform duration-200">{s.icon}</span>
+                                                    <span className={`text-sm font-medium transition-colors ${isActive ? 'text-appleBlue' : 'text-appleText group-hover:text-appleBlue'}`}>{s.label}</span>
+                                                </button>
+                                            );
+                                        })}
                                     </div>
                                 )}
                                 {coupons.length > 0 && (
                                     <div>
                                         <div className="mx-5 border-t border-appleBorder my-1" />
                                         <p className="px-5 py-2 text-[10px] uppercase tracking-widest text-appleMuted font-semibold">Coupons</p>
-                                        {coupons.map((s) => (
-                                            <button
-                                                key={s.label}
-                                                onClick={() => handleSuggestionClick(s.label)}
-                                                className="w-full text-left px-5 py-3 flex items-center space-x-3 hover:bg-appleCard transition-colors group"
-                                            >
-                                                <span className="text-base group-hover:scale-110 transition-transform duration-200">{s.icon}</span>
-                                                <span className="text-appleText group-hover:text-appleBlue transition-colors text-sm font-medium">{s.label}</span>
-                                            </button>
-                                        ))}
+                                        {coupons.map((s) => {
+                                            const globalIndex = suggestions.findIndex(sug => sug.label === s.label);
+                                            const isActive = globalIndex === selectedIndex;
+                                            return (
+                                                <button
+                                                    key={s.label}
+                                                    onClick={() => handleSuggestionClick(s.label)}
+                                                    className={`w-full text-left px-5 py-3 flex items-center space-x-3 transition-colors group ${isActive ? 'bg-appleCard' : 'hover:bg-appleCard'}`}
+                                                >
+                                                    <span className="text-base group-hover:scale-110 transition-transform duration-200">{s.icon}</span>
+                                                    <span className={`text-sm font-medium transition-colors ${isActive ? 'text-appleBlue' : 'text-appleText group-hover:text-appleBlue'}`}>{s.label}</span>
+                                                </button>
+                                            );
+                                        })}
                                     </div>
                                 )}
                                 {categories.length > 0 && (
                                     <div>
                                         <div className="mx-5 border-t border-appleBorder my-1" />
                                         <p className="px-5 py-2 text-[10px] uppercase tracking-widest text-appleMuted font-semibold">Categories</p>
-                                        {categories.map((s) => (
-                                            <button
-                                                key={s.label}
-                                                onClick={() => handleSuggestionClick(s.label)}
-                                                className="w-full text-left px-5 py-3 flex items-center space-x-3 hover:bg-appleCard transition-colors group"
-                                            >
-                                                <span className="text-base group-hover:scale-110 transition-transform duration-200">{s.icon}</span>
-                                                <span className="text-appleText group-hover:text-appleBlue transition-colors text-sm font-medium">{s.label}</span>
-                                            </button>
-                                        ))}
+                                        {categories.map((s) => {
+                                            const globalIndex = suggestions.findIndex(sug => sug.label === s.label);
+                                            const isActive = globalIndex === selectedIndex;
+                                            return (
+                                                <button
+                                                    key={s.label}
+                                                    onClick={() => handleSuggestionClick(s.label)}
+                                                    className={`w-full text-left px-5 py-3 flex items-center space-x-3 transition-colors group ${isActive ? 'bg-appleCard' : 'hover:bg-appleCard'}`}
+                                                >
+                                                    <span className="text-base group-hover:scale-110 transition-transform duration-200">{s.icon}</span>
+                                                    <span className={`text-sm font-medium transition-colors ${isActive ? 'text-appleBlue' : 'text-appleText group-hover:text-appleBlue'}`}>{s.label}</span>
+                                                </button>
+                                            );
+                                        })}
                                     </div>
                                 )}
                             </div>

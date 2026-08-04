@@ -89,18 +89,18 @@ export default function StoreClientView({ platform, coupons }: { platform: any, 
                                 </div>
                             </div>
 
-                            <div className="flex flex-wrap items-center gap-4 lg:justify-end shrink-0">
-                                <div className="px-5 py-3 bg-appleCard rounded-xl border border-appleBorder/50 flex flex-col shadow-sm min-w-[120px]">
+                            <div className="flex flex-wrap items-stretch gap-4 lg:justify-end shrink-0">
+                                <div className="px-5 py-3 bg-appleCard rounded-xl border border-appleBorder/50 flex flex-col shadow-sm min-w-[120px] h-full">
                                     <span className="text-appleMuted text-xs font-semibold uppercase tracking-wider mb-1">Status</span>
                                     <span className="font-bold text-success flex items-center gap-2">
                                         <div className="w-2 h-2 bg-success rounded-full animate-pulse"></div> Active
                                     </span>
                                 </div>
-                                <div className="px-5 py-3 bg-appleCard rounded-xl border border-appleBorder/50 flex flex-col shadow-sm min-w-[120px]">
+                                <div className="px-5 py-3 bg-appleCard rounded-xl border border-appleBorder/50 flex flex-col shadow-sm min-w-[120px] h-full">
                                     <span className="text-appleMuted text-xs font-semibold uppercase tracking-wider mb-1">Success Rate</span>
                                     <span className="font-bold text-appleBlue text-lg">{successRate}</span>
                                 </div>
-                                <div className="px-5 py-3 bg-appleCard rounded-xl border border-appleBorder/50 flex flex-col shadow-sm min-w-[120px]">
+                                <div className="px-5 py-3 bg-appleCard rounded-xl border border-appleBorder/50 flex flex-col shadow-sm min-w-[120px] h-full">
                                     <span className="text-appleMuted text-xs font-semibold uppercase tracking-wider mb-1">Users Saving</span>
                                     <span className="font-bold text-appleText text-lg">{usersSaving}</span>
                                 </div>

@@ -110,9 +110,9 @@ export default function HomePage() {
                         
                         {/* Left Side Brands */}
                         {[
-                            { name: 'Amazon', logo: 'https://www.google.com/s2/favicons?domain=amazon.com&sz=128', bg: '#fff', text: '#ff9900', t: '15%', l: '8%', dur: 6, del: 0 },
-                            { name: 'Walmart', logo: 'https://www.google.com/s2/favicons?domain=walmart.com&sz=128', bg: '#fff', text: '#0071ce', t: '45%', l: '4%', dur: 7, del: 1.5 },
-                            { name: 'Best Buy', logo: 'https://www.google.com/s2/favicons?domain=bestbuy.com&sz=128', bg: '#0046be', text: '#fff', t: '75%', l: '12%', dur: 5.5, del: 3 },
+                            { name: 'Amazon', logo: 'https://www.google.com/s2/favicons?domain=amazon.com&sz=128', bg: '#fff', text: '#ff9900', t: '15%', l: 'calc(50% - 580px)', dur: 6, del: 0 },
+                            { name: 'Walmart', logo: 'https://www.google.com/s2/favicons?domain=walmart.com&sz=128', bg: '#fff', text: '#0071ce', t: '45%', l: 'calc(50% - 620px)', dur: 7, del: 1.5 },
+                            { name: 'Best Buy', logo: 'https://www.google.com/s2/favicons?domain=bestbuy.com&sz=128', bg: '#0046be', text: '#fff', t: '75%', l: 'calc(50% - 550px)', dur: 5.5, del: 3 },
                         ].map((brand, i) => (
                             <motion.div 
                                 key={`left-${i}`}
@@ -128,9 +128,9 @@ export default function HomePage() {
 
                         {/* Right Side Brands */}
                         {[
-                            { name: 'eBay', logo: 'https://www.google.com/s2/favicons?domain=ebay.com&sz=128', bg: '#fff', text: '#e53238', t: '20%', r: '10%', dur: 6.5, del: 0.5 },
-                            { name: 'Apple', logo: 'https://www.google.com/s2/favicons?domain=apple.com&sz=128', bg: '#000', text: '#fff', t: '50%', r: '5%', dur: 7.5, del: 2 },
-                            { name: 'Target', logo: 'https://www.google.com/s2/favicons?domain=target.com&sz=128', bg: '#cc0000', text: '#fff', t: '80%', r: '14%', dur: 5, del: 1 },
+                            { name: 'eBay', logo: 'https://www.google.com/s2/favicons?domain=ebay.com&sz=128', bg: '#fff', text: '#e53238', t: '20%', r: 'calc(50% - 570px)', dur: 6.5, del: 0.5 },
+                            { name: 'Apple', logo: 'https://www.google.com/s2/favicons?domain=apple.com&sz=128', bg: '#000', text: '#fff', t: '50%', r: 'calc(50% - 630px)', dur: 7.5, del: 2 },
+                            { name: 'Target', logo: 'https://www.google.com/s2/favicons?domain=target.com&sz=128', bg: '#cc0000', text: '#fff', t: '80%', r: 'calc(50% - 540px)', dur: 5, del: 1 },
                         ].map((brand, i) => (
                             <motion.div 
                                 key={`right-${i}`}
@@ -195,7 +195,7 @@ export default function HomePage() {
                 </section>
 
                 {/* Top Featured Stores */}
-                <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+                <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
                     <div className="flex justify-between items-end mb-10">
                         <div>
                             <h2 className="text-3xl md:text-4xl font-extrabold text-appleText mb-3 font-display tracking-tight">Popular Stores</h2>
@@ -248,7 +248,7 @@ export default function HomePage() {
                 </div>
 
                 {/* Featured Deals & Codes */}
-                <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+                <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
                     <div className="flex justify-between items-end mb-10">
                         <div>
                             <h2 className="text-3xl md:text-4xl font-extrabold text-appleText mb-3 font-display tracking-tight">Today's Top Deals</h2>

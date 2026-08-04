@@ -44,22 +44,22 @@ export default function BlogIndex() {
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                             </div>
                             <div className="p-6 md:p-8 flex flex-col flex-grow">
-                                <div className="flex items-center text-xs font-bold uppercase tracking-wider text-appleBlue mb-4 space-x-2">
+                                <div className="flex items-center text-xs font-bold uppercase tracking-wider text-appleBlue mb-4 space-x-2 whitespace-nowrap overflow-hidden">
                                     <span suppressHydrationWarning>{new Date(post.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
                                     <span>•</span>
-                                    <span>{post.readTime}</span>
+                                    <span className="truncate">{post.readTime}</span>
                                 </div>
                                 <h2 className="text-xl md:text-2xl font-extrabold text-appleText mb-3 leading-snug group-hover:text-appleBlue transition-colors line-clamp-2">
                                     {post.title}
                                 </h2>
-                                <p className="text-appleMuted text-base mb-6 line-clamp-3 leading-relaxed">
+                                <p className="text-appleMuted text-base mb-6 line-clamp-3 leading-relaxed flex-1">
                                     {post.excerpt}
                                 </p>
                                 <div className="mt-auto flex items-center pt-5 border-t border-appleBorder/50">
                                     <div className="w-8 h-8 rounded-full bg-blue-50 border border-blue-100 flex items-center justify-center mr-3 shrink-0">
                                         <span className="text-appleBlue text-xs font-extrabold">{post.author.charAt(0)}</span>
                                     </div>
-                                    <span className="text-sm font-semibold text-appleText">{post.author}</span>
+                                    <span className="text-sm font-semibold text-appleText whitespace-nowrap truncate">{post.author}</span>
                                 </div>
                             </div>
                         </Link>

@@ -110,7 +110,7 @@ export default function ContactPage() {
                                             required
                                             value={formData.name}
                                             onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                                            className="w-full pl-12 pr-4 py-3 glass-card rounded-lg focus:ring-2 focus:ring-primary-500 outline-none"
+                                            className="w-full pl-12 pr-4 h-14 glass-card rounded-xl focus:ring-2 focus:ring-appleBlue focus:border-transparent outline-none transition-all"
                                             placeholder="John Doe"
                                         />
                                     </div>
@@ -127,7 +127,7 @@ export default function ContactPage() {
                                             required
                                             value={formData.email}
                                             onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                                            className="w-full pl-12 pr-4 py-3 glass-card rounded-lg focus:ring-2 focus:ring-primary-500 outline-none"
+                                            className="w-full pl-12 pr-4 h-14 glass-card rounded-xl focus:ring-2 focus:ring-appleBlue focus:border-transparent outline-none transition-all"
                                             placeholder="john@example.com"
                                         />
                                     </div>
@@ -142,7 +142,7 @@ export default function ContactPage() {
                                     type="text"
                                     value={formData.subject}
                                     onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                                    className="w-full px-4 py-3 glass-card rounded-lg focus:ring-2 focus:ring-primary-500 outline-none"
+                                    className="w-full px-4 h-14 glass-card rounded-xl focus:ring-2 focus:ring-appleBlue focus:border-transparent outline-none transition-all"
                                     placeholder="How can we help?"
                                 />
                             </div>
@@ -156,7 +156,7 @@ export default function ContactPage() {
                                     rows={6}
                                     value={formData.message}
                                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                                    className="w-full px-4 py-3 glass-card rounded-lg focus:ring-2 focus:ring-primary-500 outline-none resize-none"
+                                    className="w-full px-4 py-4 min-h-[150px] glass-card rounded-xl focus:ring-2 focus:ring-appleBlue focus:border-transparent outline-none resize-none transition-all"
                                     placeholder="Tell us what's on your mind..."
                                 />
                             </div>

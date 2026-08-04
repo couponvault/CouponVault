@@ -41,13 +41,13 @@ export default function Footer() {
                         
                         <div className="pt-4">
                             <h4 className="font-semibold text-appleText text-sm mb-3">Subscribe to Daily Deals</h4>
-                            <form className="flex max-w-sm" onSubmit={(e) => e.preventDefault()}>
+                            <form className="flex flex-col sm:flex-row max-w-sm gap-3 sm:gap-0" onSubmit={(e) => e.preventDefault()}>
                                 <input 
                                     type="email" 
                                     placeholder="Enter your email" 
-                                    className="flex-1 px-4 py-3 bg-appleCard border border-appleBorder rounded-l-xl focus:outline-none focus:ring-2 focus:ring-appleBlue/20 text-sm transition-all"
+                                    className="flex-1 px-4 py-3 bg-appleCard border border-appleBorder rounded-xl sm:rounded-r-none focus:outline-none focus:ring-2 focus:ring-appleBlue focus:border-transparent text-sm transition-all"
                                 />
-                                <button type="submit" className="px-6 py-3 bg-appleText text-white text-sm font-semibold rounded-r-xl hover:bg-appleBlue transition-colors">
+                                <button type="submit" className="px-6 py-3 bg-appleText text-white text-sm font-semibold rounded-xl sm:rounded-l-none hover:bg-appleBlue transition-colors shrink-0">
                                     Subscribe
                                 </button>
                             </form>

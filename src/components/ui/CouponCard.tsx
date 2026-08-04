@@ -74,7 +74,7 @@ export default function CouponCard({ coupon, onOpenModal }: CouponCardProps) {
             <div className="absolute inset-0 bg-gradient-to-br from-transparent to-appleBlue/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10" />
 
             {/* Header: Logo + Name + Active Badge */}
-            <div className="flex items-start justify-between mb-4 mt-1">
+            <div className="flex-none flex items-start justify-between mb-4 mt-1">
                 <div className="flex items-center space-x-3 min-w-0">
                     <div
                         className="w-10 h-10 sm:w-12 sm:h-12 rounded-[1rem] flex items-center justify-center font-bold text-sm sm:text-base shadow-sm border border-appleBorder/40 overflow-hidden shrink-0 group-hover:shadow-md transition-all"
@@ -92,35 +92,39 @@ export default function CouponCard({ coupon, onOpenModal }: CouponCardProps) {
                         </div>
                     </div>
                 </div>
-                <span className="px-2.5 py-1 bg-green-50 border border-green-200 rounded-full text-[10px] sm:text-xs font-bold text-green-700 shrink-0 shadow-sm">
+                <span className="px-2.5 py-1 bg-green-50 border border-green-200 rounded-full text-[10px] sm:text-xs font-bold text-green-700 shrink-0 shadow-sm mt-1">
                     ● Active
                 </span>
             </div>
 
-            {/* Title / Description */}
-            <h3 className="text-base sm:text-lg font-extrabold text-appleText mb-2 leading-snug line-clamp-2" dangerouslySetInnerHTML={{ __html: coupon.title || (coupon.discountType === 'percentage' ? `${coupon.discountValue}% OFF` : coupon.discountType === 'fixed' ? `${coupon.currency || '₹'}${coupon.discountValue} OFF` : coupon.discountType === 'freeShipping' ? 'Free Shipping' : coupon.discountType === 'bogo' ? 'Buy 1 Get 1 Free' : 'Special Deal') }} />
-            
-            <p className="text-xs sm:text-sm text-appleMuted mb-4 line-clamp-2 leading-relaxed" dangerouslySetInnerHTML={{ __html: coupon.description || 'Apply this verified code at checkout' }} />
+            {/* Inner Flexible Content Area */}
+            <div className="flex-1 flex flex-col">
+                {/* Title / Description */}
+                <h3 className="text-base sm:text-lg font-extrabold text-appleText mb-2 leading-snug line-clamp-2 min-h-[2.75rem]" dangerouslySetInnerHTML={{ __html: coupon.title || (coupon.discountType === 'percentage' ? `${coupon.discountValue}% OFF` : coupon.discountType === 'fixed' ? `${coupon.currency || '₹'}${coupon.discountValue} OFF` : coupon.discountType === 'freeShipping' ? 'Free Shipping' : coupon.discountType === 'bogo' ? 'Buy 1 Get 1 Free' : 'Special Deal') }} />
+                
+                <p className="text-xs sm:text-sm text-appleMuted mb-4 line-clamp-2 leading-relaxed flex-1" dangerouslySetInnerHTML={{ __html: coupon.description || 'Apply this verified code at checkout' }} />
 
-            {/* Meta Info (hidden on very small screens) */}
-            <div className="hidden sm:flex flex-col space-y-2 mb-5 p-3 bg-appleCard/50 rounded-xl text-xs text-appleMuted border border-appleBorder/50">
-                <div className="flex items-center justify-between">
-                    <span>Category</span>
-                    <span className="text-appleText capitalize font-medium">{coupon.platform.category || 'Sitewide'}</span>
-                </div>
-                {coupon.minPurchase !== undefined && coupon.minPurchase > 0 && (
+                {/* Meta Info (hidden on very small screens) */}
+                <div className="hidden sm:flex flex-col space-y-2 mb-4 p-3 bg-appleCard/50 rounded-xl text-xs text-appleMuted border border-appleBorder/50 flex-none">
                     <div className="flex items-center justify-between">
-                        <span>Min. Order</span>
-                        <span className="text-appleText font-medium">{coupon.currency || '$'}{coupon.minPurchase}</span>
+                        <span>Category</span>
+                        <span className="text-appleText capitalize font-medium">{coupon.platform.category || 'Sitewide'}</span>
                     </div>
-                )}
+                    {coupon.minPurchase !== undefined && coupon.minPurchase > 0 && (
+                        <div className="flex items-center justify-between">
+                            <span>Min. Order</span>
+                            <span className="text-appleText font-medium">{coupon.currency || '$'}{coupon.minPurchase}</span>
+                        </div>
+                    )}
+                </div>
+
+                <div className="flex items-center text-[11px] sm:text-xs text-appleMuted mb-4 font-medium flex-none">
+                    <span className="px-2 py-1 bg-appleCard rounded-md">
+                        Expires: {new Date(coupon.expiresAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+                    </span>
+                </div>
             </div>
 
-            <div className="flex items-center text-[11px] sm:text-xs text-appleMuted mb-4 font-medium">
-                <span className="px-2 py-1 bg-appleCard rounded-md">
-                    Expires: {new Date(coupon.expiresAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
-                </span>
-            </div>
 
             {/* Get Code Button */}
             <button

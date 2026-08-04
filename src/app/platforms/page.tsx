@@ -12,6 +12,7 @@ export default function PlatformsPage() {
     const router = useRouter();
     const [platforms, setPlatforms] = useState<any[]>([]);
     const [loading, setLoading] = useState(true);
+    const [error, setError] = useState<string | null>(null);
     const [searchQuery, setSearchQuery] = useState('');
     const [selectedCategory, setSelectedCategory] = useState('all');
 
@@ -45,10 +46,10 @@ export default function PlatformsPage() {
             if (data.success) {
                 setPlatforms(data.platforms);
             } else {
-                toast.error('Failed to load platforms');
+                setError('Failed to load platforms');
             }
-        } catch (error) {
-            toast.error('Error loading platforms');
+        } catch (err) {
+            setError('Error loading platforms. Please try again.');
         } finally {
             setLoading(false);
         }
@@ -84,13 +85,32 @@ export default function PlatformsPage() {
                     {/* Search & Filter Bar */}
                     <div className="max-w-3xl mx-auto mb-10 flex flex-col md:flex-row gap-4">
                         <div className="relative flex-1 group">
-                            <FiSearch className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-appleMuted group-focus-within:text-appleBlue transition-colors" />
+                            {loading ? (
+                                <div className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 border-2 border-appleMuted/30 border-t-appleBlue rounded-full animate-spin" />
+                            ) : (
+                                <FiSearch className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-appleMuted group-focus-within:text-appleBlue transition-colors duration-300" />
+                            )}
                             <input
                                 type="text"
-                                placeholder="Search for your favorite store..."
+                                placeholder="Looking for a specific store or brand?"
                                 value={searchQuery}
                                 onChange={(e) => setSearchQuery(e.target.value)}
-                                className="w-full bg-white border border-appleBorder text-appleText pl-12 pr-4 py-4 rounded-2xl outline-none focus:border-appleBlue/50 focus:ring-4 focus:ring-appleBlue/10 transition-all shadow-sm hover:shadow-md placeholder-appleMuted"
+                                onKeyDown={(e) => {
+                                    if (e.key === 'Enter') {
+                                        if (!searchQuery.trim()) {
+                                            toast.error('Please enter a valid search term');
+                                            return;
+                                        }
+                                        if (filteredPlatforms.length === 1) {
+                                            router.push(`/platforms/${filteredPlatforms[0].slug}`);
+                                        } else if (filteredPlatforms.length === 0) {
+                                            toast.error('No stores found matching your search');
+                                        } else {
+                                            e.currentTarget.blur();
+                                        }
+                                    }
+                                }}
+                                className="w-full bg-white border border-appleBorder text-appleText pl-12 pr-4 py-4 rounded-2xl outline-none focus:border-appleBlue focus:ring-[3px] focus:ring-appleBlue/20 transition-all duration-300 shadow-sm focus:shadow-md hover:border-appleBorder/80 placeholder-appleMuted focus:-translate-y-0.5"
                             />
                         </div>
                     </div>
@@ -119,12 +139,29 @@ export default function PlatformsPage() {
                         </div>
                     </div>
 
-                    {/* Platforms Grid */}
                     {loading ? (
                         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6">
                             {[...Array(18)].map((_, i) => (
-                                <div key={i} className="h-56 rounded-3xl bg-appleCard border border-appleBorder animate-pulse"></div>
+                                <div key={i} className="flex flex-col items-center bg-white border border-appleBorder/60 rounded-2xl p-5 sm:p-6 isolate h-full animate-pulse">
+                                    <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-[1.25rem] bg-appleCard mb-5" />
+                                    <div className="h-4 bg-appleCard w-3/4 rounded mb-2" />
+                                    <div className="h-6 bg-appleCard w-1/2 rounded-full" />
+                                </div>
                             ))}
+                        </div>
+                    ) : error ? (
+                        <div className="text-center py-20 bg-red-50 rounded-[2rem] border border-red-100 shadow-sm max-w-2xl mx-auto">
+                            <div className="w-20 h-20 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-6 text-4xl">
+                                ⚠️
+                            </div>
+                            <h3 className="text-2xl font-bold text-red-800 mb-3">Oops! Something went wrong</h3>
+                            <p className="text-red-600/80 text-base mb-6">{error}</p>
+                            <button 
+                                onClick={fetchPlatforms}
+                                className="px-8 py-3 bg-red-600 text-white font-semibold rounded-xl hover:bg-red-700 transition-colors shadow-sm hover:shadow-md hover:-translate-y-0.5"
+                            >
+                                Try Again
+                            </button>
                         </div>
                     ) : filteredPlatforms.length > 0 ? (
                         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 sm:gap-6">

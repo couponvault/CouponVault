@@ -15,14 +15,23 @@ interface CouponModalProps {
 
 export default function CouponModal({ isOpen, onClose, coupon, platform }: CouponModalProps) {
     const [copied, setCopied] = useState(false);
+    const [isProcessing, setIsProcessing] = useState(false);
 
     if (!isOpen || !coupon || !platform) return null;
 
-    const handleCopy = () => {
-        navigator.clipboard.writeText(coupon.code);
-        setCopied(true);
-        toast.success('Code copied to clipboard!');
-        setTimeout(() => setCopied(false), 2000);
+    const handleCopy = async () => {
+        if (isProcessing) return;
+        setIsProcessing(true);
+        try {
+            await navigator.clipboard.writeText(coupon.code);
+            setCopied(true);
+            toast.success('Code copied to clipboard!');
+            setTimeout(() => setCopied(false), 2000);
+        } catch (error) {
+            toast.error('Failed to copy');
+        } finally {
+            setIsProcessing(false);
+        }
     };
 
     const handleRedirect = () => {
@@ -68,7 +77,8 @@ export default function CouponModal({ isOpen, onClose, coupon, platform }: Coupo
                         </div>
                         <button 
                             onClick={onClose}
-                            className="p-2 text-appleMuted hover:text-appleText bg-appleCard hover:bg-gray-200 rounded-full transition-colors"
+                            aria-label="Close modal"
+                            className="p-2 text-appleMuted hover:text-appleText bg-appleCard hover:bg-gray-200 rounded-full transition-colors focus-visible:ring-2 focus-visible:ring-appleBlue outline-none"
                         >
                             <FiX size={20} />
                         </button>
@@ -98,11 +108,14 @@ export default function CouponModal({ isOpen, onClose, coupon, platform }: Coupo
                                             {coupon.code}
                                         </span>
                                         <button 
+                                            disabled={isProcessing}
                                             onClick={handleCopy}
-                                            className={`p-3 rounded-lg flex items-center justify-center transition-all ${copied ? 'bg-success text-white' : 'bg-appleCard border border-appleBorder text-appleText hover:bg-appleBlue hover:text-white hover:border-appleBlue shadow-sm group-hover:shadow-md'}`}
-                                            title="Copy Code"
+                                            aria-label="Copy code"
+                                            className="w-12 h-12 flex items-center justify-center bg-appleBlue text-white rounded-xl shadow-sm hover:shadow-md hover:bg-blue-600 transition-all disabled:opacity-70 disabled:cursor-not-allowed focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-appleBlue outline-none"
                                         >
-                                            {copied ? <FiCheck className="w-5 h-5" /> : <FiCopy className="w-5 h-5" />}
+                                            {isProcessing ? (
+                                                <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                                            ) : copied ? <FiCheck className="w-6 h-6" /> : <FiCopy className="w-6 h-6" />}
                                         </button>
                                     </div>
                                     {copied && (

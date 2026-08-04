@@ -82,7 +82,7 @@ export default function Navbar() {
 
                     {/* Desktop Actions */}
                     <div className="hidden md:flex items-center space-x-4">
-                        <Link href="/platforms" className="p-2 text-appleMuted hover:text-appleBlue hover:bg-appleCard rounded-full transition-all">
+                        <Link href="/platforms" aria-label="Search" className="p-2 text-appleMuted hover:text-appleBlue hover:bg-appleCard rounded-full transition-all focus-visible:ring-2 focus-visible:ring-appleBlue outline-none">
                             <FiSearch className="w-5 h-5" />
                         </Link>
                         <Link href="/about" className="px-5 py-2.5 bg-appleText hover:bg-black text-white text-sm font-semibold rounded-full transition-all shadow-sm hover:shadow-md hover:-translate-y-0.5">
@@ -123,7 +123,8 @@ export default function Navbar() {
                                 <span className="font-display font-bold tracking-wider uppercase text-lg">Menu</span>
                                 <button
                                     onClick={() => setIsOpen(false)}
-                                    className="p-2 rounded-full bg-appleCard text-appleText hover:bg-appleBorder transition-colors"
+                                    aria-label="Close Menu"
+                                    className="p-2 rounded-full bg-appleCard text-appleText hover:bg-appleBorder transition-colors focus-visible:ring-2 focus-visible:ring-appleBlue outline-none"
                                 >
                                     <FiX className="w-5 h-5" />
                                 </button>

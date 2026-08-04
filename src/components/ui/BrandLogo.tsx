@@ -79,7 +79,6 @@ export default function BrandLogo({ name, logo, slug, className = "w-full h-full
         if (sourceIndex < sources.length - 1) {
             setSourceIndex(prev => prev + 1);
         } else {
-            // All sources failed, force letter fallback
             setSourceIndex(sources.length);
         }
     };
@@ -87,13 +86,13 @@ export default function BrandLogo({ name, logo, slug, className = "w-full h-full
     // If we still have sources to try, show image
     if (sourceIndex < sources.length) {
         return (
-            <div className={`relative ${className.replace(/w-\w+ h-\w+/, 'w-full h-full')}`} style={{ minHeight: '100%', minWidth: '100%' }}>
+            <div className={`relative flex items-center justify-center ${className.replace(/w-\w+ h-\w+/, 'w-full h-full')} bg-appleCard/30 overflow-hidden`} style={{ minHeight: '100%', minWidth: '100%' }}>
                 <Image
                     src={sources[sourceIndex]}
                     alt={name}
                     fill
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    className="object-contain p-1"
+                    className="object-contain p-2"
                     onError={handleError}
                     unoptimized={sources[sourceIndex].includes('.ico')} // skip optimization for ICO files
                 />
@@ -101,11 +100,11 @@ export default function BrandLogo({ name, logo, slug, className = "w-full h-full
         );
     }
 
-    // All sources exhausted — show letter initial
+    // All sources exhausted — show fallback icon
     return (
-        <span className="font-bold flex items-center justify-center w-full h-full uppercase">
-            {name.charAt(0)}
-        </span>
+        <div className="flex flex-col items-center justify-center w-full h-full bg-appleCard/50 text-appleMuted/40">
+            <svg stroke="currentColor" fill="none" strokeWidth="2" viewBox="0 0 24 24" strokeLinecap="round" strokeLinejoin="round" className="w-1/2 h-1/2" xmlns="http://www.w3.org/2000/svg"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+        </div>
     );
 }
 

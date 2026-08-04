@@ -15,32 +15,38 @@ export default function RandomCouponPage() {
     const [error, setError] = useState<string | null>(null);
 
     const fetchRandomCoupon = async () => {
+        if (loading) return;
         try {
             setLoading(true);
             setError(null);
 
             const response = await fetch('/api/coupons/random');
-            const data = await response.json();
+            
+            let data;
+            try {
+                data = await response.json();
+            } catch (e) {
+                throw new Error('No coupon available right now. Please try again later.');
+            }
 
             if (response.status === 429) {
-                setError(data.error);
-                toast.error(data.error);
+                const msg = data?.error || 'Daily limit reached. Come back tomorrow for more verified coupons.';
+                setError(msg);
                 return;
             }
 
             if (!response.ok) {
-                throw new Error(data.error || 'Failed to fetch coupon');
+                throw new Error(data?.error || 'No coupon available right now. Please try again later.');
             }
 
-            if (data.success) {
+            if (data?.success) {
                 setCoupon(data.coupon);
                 setRemaining(data.remaining);
                 await navigator.clipboard.writeText(data.coupon.code);
                 toast.success('🎉 Code copied to clipboard!');
             }
-        } catch (error: any) {
-            setError(error.message);
-            toast.error(error.message || 'Failed to fetch coupon');
+        } catch (err: any) {
+            setError(err.message || 'No coupon available right now. Please try again later.');
         } finally {
             setLoading(false);
         }
@@ -85,7 +91,7 @@ export default function RandomCouponPage() {
                             <button
                                 onClick={fetchRandomCoupon}
                                 disabled={loading}
-                                className="group relative inline-flex items-center justify-center px-10 py-5 bg-gradient-to-r from-appleBlue to-blue-600 text-white font-extrabold text-xl rounded-[2rem] hover:from-blue-600 hover:to-blue-700 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed shadow-premium hover:shadow-premium-hover transform hover:-translate-y-1 active:scale-95 overflow-hidden isolate"
+                                className="group relative w-full sm:w-auto inline-flex items-center justify-center px-6 sm:px-10 py-4 sm:py-5 bg-gradient-to-r from-appleBlue to-blue-600 text-white font-extrabold text-lg sm:text-xl rounded-[2rem] hover:from-blue-600 hover:to-blue-700 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed shadow-premium hover:shadow-premium-hover transform hover:-translate-y-1 active:scale-95 overflow-hidden isolate"
                             >
                                 <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out -z-10" />
                                 {loading ? (
@@ -111,7 +117,9 @@ export default function RandomCouponPage() {
                                     <FiAlertCircle className="w-5 h-5 text-red-600" />
                                 </div>
                                 <div>
-                                    <h3 className="font-bold text-red-800 text-lg mb-1">Limit Reached</h3>
+                                    <h3 className="font-bold text-red-800 text-lg mb-1">
+                                        {error.toLowerCase().includes('limit') ? 'Limit Reached' : 'Oops!'}
+                                    </h3>
                                     <p className="text-red-600/80 text-sm leading-relaxed">{error}</p>
                                 </div>
                             </div>

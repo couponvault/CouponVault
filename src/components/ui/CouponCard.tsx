@@ -31,8 +31,11 @@ interface CouponCardProps {
 
 export default function CouponCard({ coupon, onOpenModal }: CouponCardProps) {
     const [copied, setCopied] = useState(false);
+    const [isProcessing, setIsProcessing] = useState(false);
 
     const handleCopy = async () => {
+        if (isProcessing) return;
+        setIsProcessing(true);
         try {
             await navigator.clipboard.writeText(coupon.code);
             setCopied(true);
@@ -40,6 +43,8 @@ export default function CouponCard({ coupon, onOpenModal }: CouponCardProps) {
             setTimeout(() => setCopied(false), 2000);
         } catch (error) {
             toast.error('Failed to copy code');
+        } finally {
+            setIsProcessing(false);
         }
     };
 
@@ -60,7 +65,7 @@ export default function CouponCard({ coupon, onOpenModal }: CouponCardProps) {
 
     return (
         <div 
-            className="group relative bg-white border border-appleBorder/60 rounded-2xl p-4 sm:p-5 flex flex-col transition-all duration-300 hover:shadow-premium-hover hover:-translate-y-1.5 cursor-pointer overflow-hidden isolate"
+            className="group relative bg-white border border-appleBorder/60 rounded-2xl p-4 sm:p-5 flex flex-col h-full transition-all duration-300 hover:shadow-premium-hover hover:-translate-y-1 cursor-pointer overflow-hidden isolate"
         >
             {/* Top color bar indicator */}
             <div className="absolute top-0 left-0 w-full h-1.5" style={{ backgroundColor: coupon.platform.backgroundColor || '#007AFF' }} />
@@ -119,20 +124,29 @@ export default function CouponCard({ coupon, onOpenModal }: CouponCardProps) {
 
             {/* Get Code Button */}
             <button
-                onClick={(e) => {
+                onClick={async (e) => {
                     e.preventDefault();
                     e.stopPropagation();
+                    if (isProcessing) return;
+                    
                     if (onOpenModal) {
                         onOpenModal(coupon);
                     } else {
-                        handleCopy();
+                        await handleCopy();
                     }
                 }}
-                className={`mt-auto w-full py-3 sm:py-3.5 font-bold text-sm rounded-xl text-white shadow-md hover:shadow-lg transition-all duration-300 transform active:scale-[0.98] ${coupon.code.startsWith('DEAL-') ? 'bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600' : 'bg-gradient-to-r from-appleBlue to-blue-500 hover:from-blue-600 hover:to-blue-600'}`}
+                disabled={isProcessing}
+                className={`mt-auto w-full py-3 sm:py-3.5 font-bold text-sm rounded-xl text-white shadow-sm hover:shadow-md transition-all duration-300 transform active:scale-[0.98] disabled:opacity-70 disabled:cursor-not-allowed ${coupon.code.startsWith('DEAL-') ? 'bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600' : 'bg-gradient-to-r from-appleBlue to-blue-500 hover:from-blue-600 hover:to-blue-600'}`}
             >
                 <div className="flex items-center justify-center space-x-2">
-                    <span>{coupon.code.startsWith('DEAL-') ? 'Get Deal' : 'Show Coupon Code'}</span>
-                    {!coupon.code.startsWith('DEAL-') && <FiCopy className="w-4 h-4 opacity-80" />}
+                    {isProcessing ? (
+                        <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                    ) : (
+                        <>
+                            <span>{coupon.code.startsWith('DEAL-') ? 'Get Deal' : 'Show Coupon Code'}</span>
+                            {!coupon.code.startsWith('DEAL-') && <FiCopy className="w-4 h-4 opacity-80" />}
+                        </>
+                    )}
                 </div>
             </button>
         </div>

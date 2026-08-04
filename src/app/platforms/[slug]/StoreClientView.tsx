@@ -15,11 +15,25 @@ export default function StoreClientView({ platform, coupons }: { platform: any, 
 
     if (!platform) {
         return (
-            <div className="min-h-screen flex flex-col">
+            <div className="min-h-screen flex flex-col bg-appleBg">
                 <Navbar />
                 <div className="flex-1 flex flex-col items-center justify-center p-4">
-                    <h1 className="text-2xl font-bold mb-4">Platform Not Found</h1>
-                    <Link href="/platforms" className="text-primary-500 hover:underline">Return to Platforms</Link>
+                    <div className="text-center py-20 bg-white rounded-[2rem] border border-appleBorder shadow-sm max-w-2xl mx-auto w-full px-6">
+                        <div className="w-20 h-20 bg-appleCard rounded-full flex items-center justify-center mx-auto mb-6 text-4xl">
+                            🔍
+                        </div>
+                        <h3 className="text-2xl font-bold text-appleText mb-3">Store Not Found</h3>
+                        <p className="text-appleMuted text-base mb-8">
+                            We couldn't find the store you're looking for. It may have been removed or the link is incorrect.
+                        </p>
+                        <Link 
+                            href="/platforms" 
+                            className="inline-flex items-center px-8 py-3 bg-appleBlue text-white font-semibold rounded-xl hover:bg-blue-600 transition-colors shadow-sm hover:shadow-md hover:-translate-y-0.5"
+                        >
+                            <FiArrowLeft className="mr-2 w-5 h-5" />
+                            Return to All Stores
+                        </Link>
+                    </div>
                 </div>
                 <Footer />
             </div>

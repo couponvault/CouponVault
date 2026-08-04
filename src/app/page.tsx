@@ -101,7 +101,7 @@ export default function HomePage() {
 
             <main className="flex-1 pt-12">
                 {/* Unified Premium Hero Section */}
-                <section className="relative w-full overflow-hidden text-center py-20 lg:py-32 px-4">
+                <section className="relative w-full overflow-hidden text-center py-16 lg:py-24 px-4">
                     {/* Floating Brand Logos (Premium Glassmorphism) */}
                     <div className="hidden lg:block absolute inset-0 pointer-events-none opacity-80">
                         {/* Stronger background glows to blend them */}
@@ -207,8 +207,14 @@ export default function HomePage() {
                     </div>
 
                     {loading ? (
-                        <div className="flex items-center justify-center py-20">
-                            <div className="w-10 h-10 border-4 border-appleBlue/20 border-t-appleBlue rounded-full animate-spin" />
+                        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-6">
+                            {[...Array(6)].map((_, i) => (
+                                <div key={i} className="flex flex-col items-center bg-white border border-appleBorder/60 rounded-2xl p-6 isolate h-full animate-pulse">
+                                    <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-[1.25rem] bg-appleCard mb-5" />
+                                    <div className="h-4 bg-appleCard w-3/4 rounded mb-2" />
+                                    <div className="h-6 bg-appleCard w-1/2 rounded-full" />
+                                </div>
+                            ))}
                         </div>
                     ) : (
                         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-6">
@@ -250,8 +256,22 @@ export default function HomePage() {
                         </div>
                     </div>
                     {loading ? (
-                        <div className="flex items-center justify-center py-20">
-                            <div className="w-10 h-10 border-4 border-appleBlue/20 border-t-appleBlue rounded-full animate-spin" />
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                            {[...Array(8)].map((_, i) => (
+                                <div key={i} className="bg-white border border-appleBorder/60 rounded-2xl p-4 sm:p-5 flex flex-col h-full animate-pulse">
+                                    <div className="flex items-start mb-4 mt-1">
+                                        <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-[1rem] bg-appleCard shrink-0 mr-3" />
+                                        <div className="flex-1">
+                                            <div className="h-4 bg-appleCard w-1/2 rounded mb-2" />
+                                            <div className="h-3 bg-appleCard w-1/3 rounded" />
+                                        </div>
+                                    </div>
+                                    <div className="h-5 bg-appleCard w-3/4 rounded mb-2" />
+                                    <div className="h-4 bg-appleCard w-full rounded mb-1" />
+                                    <div className="h-4 bg-appleCard w-2/3 rounded mb-4" />
+                                    <div className="mt-auto w-full h-12 bg-appleCard rounded-xl" />
+                                </div>
+                            ))}
                         </div>
                     ) : (
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
@@ -344,7 +364,7 @@ export default function HomePage() {
                 </section>
 
                 {/* Why Choose CouponVault */}
-                <section className="bg-gradient-to-b from-blue-50/50 to-white py-24 px-4 relative overflow-hidden">
+                <section className="bg-gradient-to-b from-blue-50/50 to-white py-16 px-4 relative overflow-hidden">
                     <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-blue-400/10 rounded-full blur-[100px] pointer-events-none" />
                     
                     <div className="max-w-7xl mx-auto relative z-10">
@@ -372,7 +392,7 @@ export default function HomePage() {
                 </section>
 
                 {/* SEO Text Section for Google Rank */}
-                <section className="bg-white py-20 px-4 border-t border-appleBorder/50">
+                <section className="py-16 px-4 bg-white/50 backdrop-blur-xl border-t border-appleBorder/50">
                     <div className="max-w-4xl mx-auto">
                         <div className="prose prose-sm md:prose-base prose-p:text-appleMuted prose-headings:text-appleText prose-a:text-appleBlue max-w-none text-center">
                             <h2 className="text-2xl font-bold mb-6 font-display">Find The Best Verified Coupons & Promo Codes for Amazon, Walmart, Target & More</h2>

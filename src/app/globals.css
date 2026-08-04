@@ -43,9 +43,21 @@
     @apply bg-white/70 backdrop-blur-xl border border-white shadow-sm;
   }
 
+  .glass-panel {
+    @apply bg-white/90 backdrop-blur-2xl border border-white shadow-[0_8px_30px_rgba(0,0,0,0.04)] rounded-2xl;
+  }
+
   /* Gradient text */
   .gradient-text {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-appleBlue to-purple-500;
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-appleBlue to-blue-400;
+  }
+
+  .shadow-premium {
+    @apply shadow-[0_2px_10px_rgba(0,0,0,0.02),0_10px_30px_rgba(0,0,0,0.06)];
+  }
+
+  .shadow-premium-hover {
+    @apply shadow-[0_10px_40px_rgba(0,0,0,0.08),0_20px_50px_rgba(0,122,255,0.05)];
   }
 
   /* Coupon card - soft apple shadows */

@@ -14,6 +14,7 @@ interface CouponCardProps {
             logo?: string;
             backgroundColor: string;
             textColor: string;
+            category?: string;
         };
         discountType: string;
         discountValue: number;
@@ -59,65 +60,80 @@ export default function CouponCard({ coupon, onOpenModal }: CouponCardProps) {
 
     return (
         <div 
-            className="coupon-card bg-white border-b border-l border-r border-appleBorder p-3 sm:p-5 flex flex-col group border-t-4"
-            style={{ borderTopColor: coupon.platform.backgroundColor || '#007AFF' }}
+            className="group relative bg-white border border-appleBorder/60 rounded-2xl p-4 sm:p-5 flex flex-col transition-all duration-300 hover:shadow-premium-hover hover:-translate-y-1.5 cursor-pointer overflow-hidden isolate"
         >
+            {/* Top color bar indicator */}
+            <div className="absolute top-0 left-0 w-full h-1.5" style={{ backgroundColor: coupon.platform.backgroundColor || '#007AFF' }} />
+            
+            {/* Background glow on hover */}
+            <div className="absolute inset-0 bg-gradient-to-br from-transparent to-appleBlue/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10" />
+
             {/* Header: Logo + Name + Active Badge */}
-            <div className="flex items-center justify-between mb-2 sm:mb-4">
-                <div className="flex items-center space-x-2 sm:space-x-3 min-w-0">
+            <div className="flex items-start justify-between mb-4 mt-1">
+                <div className="flex items-center space-x-3 min-w-0">
                     <div
-                        className="w-7 h-7 sm:w-10 sm:h-10 rounded-full flex items-center justify-center font-bold text-xs sm:text-sm shadow-sm border border-appleBorder overflow-hidden shrink-0"
+                        className="w-10 h-10 sm:w-12 sm:h-12 rounded-[1rem] flex items-center justify-center font-bold text-sm sm:text-base shadow-sm border border-appleBorder/40 overflow-hidden shrink-0 group-hover:shadow-md transition-all"
                         style={{ backgroundColor: coupon.platform.backgroundColor, color: coupon.platform.textColor }}
                     >
                         <BrandLogo name={coupon.platform.name} logo={coupon.platform.logo} slug={coupon.platform.slug} />
                     </div>
-                    <span className="font-bold text-appleText text-xs sm:text-sm tracking-wider truncate">
-                        {coupon.platform.name}
-                    </span>
+                    <div className="flex flex-col min-w-0">
+                        <span className="font-bold text-appleText text-sm sm:text-base tracking-wide truncate group-hover:text-appleBlue transition-colors">
+                            {coupon.platform.name}
+                        </span>
+                        <div className="flex items-center space-x-1 mt-0.5">
+                            <FiCheck className="text-success w-3 h-3" />
+                            <span className="text-success font-semibold text-[10px] uppercase tracking-wider">Verified Working</span>
+                        </div>
+                    </div>
                 </div>
-                <span className="px-1.5 py-0.5 sm:px-3 sm:py-1 bg-success/10 border border-success/20 rounded-full text-[9px] sm:text-[11px] font-bold text-success shrink-0">
-                    Active
+                <span className="px-2.5 py-1 bg-green-50 border border-green-200 rounded-full text-[10px] sm:text-xs font-bold text-green-700 shrink-0 shadow-sm">
+                    ● Active
                 </span>
             </div>
 
             {/* Title / Description */}
-            <h3 className="text-sm sm:text-lg font-bold text-appleText mb-1 leading-snug group-hover:text-appleBlue transition-colors line-clamp-1" dangerouslySetInnerHTML={{ __html: coupon.title || (coupon.discountType === 'percentage' ? `${coupon.discountValue}% OFF` : coupon.discountType === 'fixed' ? `${coupon.currency || '₹'}${coupon.discountValue} OFF` : coupon.discountType === 'freeShipping' ? 'Free Shipping' : coupon.discountType === 'bogo' ? 'Buy 1 Get 1 Free' : 'Special Deal') }} />
+            <h3 className="text-base sm:text-lg font-extrabold text-appleText mb-2 leading-snug line-clamp-2" dangerouslySetInnerHTML={{ __html: coupon.title || (coupon.discountType === 'percentage' ? `${coupon.discountValue}% OFF` : coupon.discountType === 'fixed' ? `${coupon.currency || '₹'}${coupon.discountValue} OFF` : coupon.discountType === 'freeShipping' ? 'Free Shipping' : coupon.discountType === 'bogo' ? 'Buy 1 Get 1 Free' : 'Special Deal') }} />
             
-            <p className="text-xs sm:text-xs text-appleMuted mb-2 sm:mb-3 line-clamp-2" dangerouslySetInnerHTML={{ __html: coupon.description || 'Apply this verified code at checkout' }} />
+            <p className="text-xs sm:text-sm text-appleMuted mb-4 line-clamp-2 leading-relaxed" dangerouslySetInnerHTML={{ __html: coupon.description || 'Apply this verified code at checkout' }} />
 
-            {/* Verified + Expiry */}
-            <div className="flex items-center space-x-1.5 text-xs mb-1 sm:mb-1">
-                <FiCheck className="text-appleBlue w-3 h-3 sm:w-3.5 sm:h-3.5" />
-                <span className="text-appleBlue font-medium text-[10px] sm:text-xs">Verified</span>
-            </div>
-
-            <div className="flex items-center text-[10px] sm:text-xs text-appleMuted mb-2 sm:mb-4">
-                <span>Exp: {new Date(coupon.expiresAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}</span>
-            </div>
-
-            {/* Rating */}
-            <div className="hidden sm:flex items-center justify-between mt-auto mb-4 text-xs text-appleMuted border-t border-appleBorder/50 pt-3">
-                <span>User Rating</span>
-                <div className="flex items-center space-x-1">
-                    <span className="font-bold text-appleText">
-                        {(4.5 + (coupon.code.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0) % 6) / 10).toFixed(1)}
-                    </span>
-                    <FiStar className="text-warning w-3.5 h-3.5 fill-current" />
+            {/* Meta Info (hidden on very small screens) */}
+            <div className="hidden sm:flex flex-col space-y-2 mb-5 p-3 bg-appleCard/50 rounded-xl text-xs text-appleMuted border border-appleBorder/50">
+                <div className="flex items-center justify-between">
+                    <span>Category</span>
+                    <span className="text-appleText capitalize font-medium">{coupon.platform.category || 'Sitewide'}</span>
                 </div>
+                {coupon.minPurchase !== undefined && coupon.minPurchase > 0 && (
+                    <div className="flex items-center justify-between">
+                        <span>Min. Order</span>
+                        <span className="text-appleText font-medium">{coupon.currency || '$'}{coupon.minPurchase}</span>
+                    </div>
+                )}
+            </div>
+
+            <div className="flex items-center text-[11px] sm:text-xs text-appleMuted mb-4 font-medium">
+                <span className="px-2 py-1 bg-appleCard rounded-md">
+                    Expires: {new Date(coupon.expiresAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+                </span>
             </div>
 
             {/* Get Code Button */}
             <button
-                onClick={() => {
+                onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
                     if (onOpenModal) {
                         onOpenModal(coupon);
                     } else {
                         handleCopy();
                     }
                 }}
-                className={`btn-glow w-full py-2 sm:py-2.5 font-semibold text-xs sm:text-sm rounded-lg sm:rounded-xl text-white mt-auto ${coupon.code.startsWith('DEAL-') ? 'bg-orange-500 hover:bg-orange-600' : 'bg-appleBlue hover:bg-blue-600'}`}
+                className={`mt-auto w-full py-3 sm:py-3.5 font-bold text-sm rounded-xl text-white shadow-md hover:shadow-lg transition-all duration-300 transform active:scale-[0.98] ${coupon.code.startsWith('DEAL-') ? 'bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600' : 'bg-gradient-to-r from-appleBlue to-blue-500 hover:from-blue-600 hover:to-blue-600'}`}
             >
-                {coupon.code.startsWith('DEAL-') ? 'Get Deal' : 'Get Code'}
+                <div className="flex items-center justify-center space-x-2">
+                    <span>{coupon.code.startsWith('DEAL-') ? 'Get Deal' : 'Show Coupon Code'}</span>
+                    {!coupon.code.startsWith('DEAL-') && <FiCopy className="w-4 h-4 opacity-80" />}
+                </div>
             </button>
         </div>
     );

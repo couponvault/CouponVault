@@ -60,17 +60,17 @@ export default function FAQPage() {
     ];
 
     return (
-        <div className="min-h-screen flex flex-col">
+        <div className="min-h-screen flex flex-col bg-appleBg">
             <Navbar />
 
-            <main className="flex-1 py-12 px-4 sm:px-6 lg:px-8">
+            <main className="flex-1 py-16 px-4 sm:px-6 lg:px-8">
                 <div className="max-w-4xl mx-auto">
-                    <div className="text-center mb-12">
-                        <h1 className="text-4xl md:text-5xl font-bold font-display mb-4">
+                    <div className="text-center mb-16">
+                        <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-appleText mb-6 font-display tracking-tight">
                             Frequently Asked <span className="gradient-text">Questions</span>
                         </h1>
-                        <p className="text-xl text-gray-600 dark:text-gray-300">
-                            Everything you need to know about CouponVault
+                        <p className="text-lg md:text-xl text-appleMuted max-w-2xl mx-auto leading-relaxed">
+                            Everything you need to know about CouponVault, our verification process, and how you can save more.
                         </p>
                     </div>
 
@@ -78,22 +78,20 @@ export default function FAQPage() {
                         {faqs.map((faq, index) => (
                             <div
                                 key={index}
-                                className="glass-card rounded-xl overflow-hidden transition-all duration-300"
+                                className="bg-white border border-appleBorder/60 rounded-2xl overflow-hidden shadow-sm hover:shadow-premium transition-all duration-300"
                             >
                                 <button
                                     onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                                    className="w-full px-6 py-4 flex items-center justify-between text-left hover:bg-gray-50 dark:hover:bg-dark-800 transition-colors"
+                                    className="w-full px-6 md:px-8 py-5 flex items-center justify-between text-left hover:bg-appleCard/50 transition-colors focus:outline-none"
                                 >
-                                    <span className="font-semibold text-lg">{faq.question}</span>
-                                    {openIndex === index ? (
-                                        <FiChevronUp className="w-5 h-5 text-primary-500 flex-shrink-0 ml-4" />
-                                    ) : (
-                                        <FiChevronDown className="w-5 h-5 text-gray-400 flex-shrink-0 ml-4" />
-                                    )}
+                                    <span className="font-bold text-appleText text-lg pr-4">{faq.question}</span>
+                                    <div className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-all duration-300 ${openIndex === index ? 'bg-appleBlue text-white rotate-180' : 'bg-appleCard text-appleMuted'}`}>
+                                        <FiChevronDown className="w-5 h-5" />
+                                    </div>
                                 </button>
 
                                 {openIndex === index && (
-                                    <div className="px-6 pb-4 text-gray-600 dark:text-gray-400 leading-relaxed animate-slide-down">
+                                    <div className="px-6 md:px-8 pb-6 text-appleMuted leading-relaxed animate-in slide-in-from-top-2 fade-in duration-300 border-t border-appleBorder/30 pt-4">
                                         {faq.answer}
                                     </div>
                                 )}
@@ -101,14 +99,15 @@ export default function FAQPage() {
                         ))}
                     </div>
 
-                    <div className="mt-12 glass-card p-8 rounded-2xl text-center">
-                        <h2 className="text-2xl font-bold mb-4">Still have questions?</h2>
-                        <p className="text-gray-600 dark:text-gray-400 mb-6">
-                            Can't find the answer you're looking for? Our support team is here to help.
+                    <div className="mt-16 bg-gradient-to-br from-blue-50 to-white border border-blue-100 p-10 md:p-12 rounded-[2rem] text-center shadow-premium relative overflow-hidden isolate">
+                        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-appleBlue to-blue-500" />
+                        <h2 className="text-2xl md:text-3xl font-extrabold text-appleText mb-4 font-display">Still have questions?</h2>
+                        <p className="text-appleMuted text-lg mb-8 max-w-xl mx-auto">
+                            Can't find the answer you're looking for? Our dedicated support team is here to help you get the most out of CouponVault.
                         </p>
                         <a
                             href="/contact"
-                            className="inline-block px-8 py-3 bg-appleBlue text-white font-semibold rounded-lg hover:shadow-glow transition-all duration-300"
+                            className="inline-flex items-center px-8 py-4 bg-appleBlue text-white font-bold text-lg rounded-xl hover:bg-blue-600 transition-all duration-300 shadow-md hover:shadow-lg hover:-translate-y-1 active:scale-95"
                         >
                             Contact Support
                         </a>

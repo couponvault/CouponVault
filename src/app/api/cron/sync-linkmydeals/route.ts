@@ -40,18 +40,25 @@ function parseDiscount(title: string, offerValue: string) {
     }
 
     if (titleUpper.includes('%') || (offerValue && offerValue.includes('%'))) {
+        let percentVal = parseInt(offerValue.match(/(\d+)%/)?.[1] || title.match(/(\d+)%/)?.[1] || '');
+        if (isNaN(percentVal) || percentVal > 100) {
+            percentVal = 10; // safe fallback
+        }
         return {
             type: 'percentage',
-            value: parseInt(offerValue.replace(/[^0-9]/g, '')) || parseInt(title.match(/(\d+)%/)?.[1] || '10'),
+            value: percentVal,
             currency: ''
         };
     }
     if (titleUpper.includes('$') || titleUpper.includes('RS') || titleUpper.includes('₹') || titleUpper.includes('£') || titleUpper.includes('€') || (offerValue && offerValue.match(/[$£€₹]/))) {
-        // Default to ₹ if 'RS' is found but no symbol
-        if (!currency && titleUpper.includes('RS')) currency = '₹';
+        // Default to $ if 'RS' is found but no symbol, as user wants foreign brands
+        if (!currency && titleUpper.includes('RS')) currency = '$';
+        
+        let fixedVal = parseInt(offerValue.match(/[$£€₹](\d+)/)?.[1] || title.match(/[$£€₹](\d+)/)?.[1] || offerValue.match(/(\d+)/)?.[1] || title.match(/(\d+)/)?.[1] || '50');
+        
         return {
             type: 'fixed',
-            value: parseInt(offerValue.replace(/[^0-9]/g, '')) || parseInt(title.match(/[$£€₹](\d+)/)?.[1] || title.match(/(\d+)/)?.[1] || '50'),
+            value: fixedVal,
             currency: currency || '$'
         };
     }
@@ -61,10 +68,20 @@ function parseDiscount(title: string, offerValue: string) {
     if (titleUpper.includes('BOGO') || titleUpper.includes('BUY 1 GET 1')) {
         return { type: 'bogo', value: 0, currency: '' };
     }
-    const fallbackValue = parseInt(offerValue.replace(/[^0-9]/g, ''));
-    if (!isNaN(fallbackValue) && fallbackValue > 0) {
-        return { type: 'percentage', value: fallbackValue, currency: '' };
+    
+    // Fallback: If it's a number <= 100, assume percentage. If > 100, assume fixed.
+    const fallbackMatch = offerValue.match(/(\d+)/) || title.match(/(\d+)/);
+    if (fallbackMatch) {
+        const fallbackValue = parseInt(fallbackMatch[1]);
+        if (!isNaN(fallbackValue) && fallbackValue > 0) {
+            if (fallbackValue <= 100) {
+                return { type: 'percentage', value: fallbackValue, currency: '' };
+            } else {
+                return { type: 'fixed', value: fallbackValue, currency: '$' };
+            }
+        }
     }
+    
     return { type: 'deal', value: 0, currency: '' };
 }
 

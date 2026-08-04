@@ -51,27 +51,27 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
     };
 
     return (
-        <main className="min-h-screen bg-gray-50 py-12">
+        <main className="min-h-screen bg-appleBg py-16">
             {/* Inject JSON-LD */}
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
             />
 
-            <div className="max-w-6xl mx-auto px-4">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <Link 
                     href="/blog"
                     className="inline-flex items-center text-appleMuted hover:text-appleBlue mb-8 transition-colors font-medium"
                 >
-                    <FiArrowLeft className="mr-2" />
-                    Back to all articles
+                    <FiArrowLeft className="mr-2 w-5 h-5" />
+                    Back to all guides
                 </Link>
 
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
                     {/* Main Content */}
-                    <div className="lg:col-span-2">
-                        <article className="bg-white rounded-3xl overflow-hidden shadow-sm border border-appleBorder">
-                            <div className="w-full h-64 md:h-[400px] relative">
+                    <div className="lg:col-span-8">
+                        <article className="bg-white rounded-[2rem] overflow-hidden shadow-sm border border-appleBorder/60">
+                            <div className="w-full h-64 md:h-[450px] relative bg-appleCard">
                                 <Image 
                                     src={post.image} 
                                     alt={post.title}
@@ -82,31 +82,36 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
                                 />
                             </div>
                             
-                            <div className="p-8 md:p-12">
-                                <h1 className="text-3xl md:text-5xl font-bold text-appleText mb-6 leading-tight" style={{ fontFamily: 'Outfit' }}>
+                            <div className="p-8 md:p-12 lg:p-16">
+                                <h1 className="text-3xl md:text-5xl lg:text-6xl font-extrabold text-appleText mb-8 leading-tight font-display tracking-tight">
                                     {post.title}
                                 </h1>
 
-                                <div className="flex flex-wrap items-center gap-4 text-sm text-appleMuted mb-10 pb-8 border-b border-appleBorder">
+                                <div className="flex flex-wrap items-center gap-6 text-sm text-appleMuted mb-12 pb-8 border-b border-appleBorder/50">
                                     <div className="flex items-center">
-                                        <div className="w-8 h-8 rounded-full bg-appleBlue/10 flex items-center justify-center mr-3">
-                                            <FiUser className="text-appleBlue" />
+                                        <div className="w-10 h-10 rounded-full bg-blue-50 border border-blue-100 flex items-center justify-center mr-4">
+                                            <span className="text-appleBlue font-extrabold">{post.author.charAt(0)}</span>
                                         </div>
-                                        <span className="font-medium text-appleText">{post.author}</span>
+                                        <div className="flex flex-col">
+                                            <span className="text-[10px] font-bold uppercase tracking-wider text-appleMuted">Written by</span>
+                                            <span className="font-bold text-appleText">{post.author}</span>
+                                        </div>
                                     </div>
-                                    <div className="flex items-center">
-                                        <FiCalendar className="mr-2" />
-                                        <span suppressHydrationWarning>{new Date(post.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</span>
+                                    <div className="w-px h-8 bg-appleBorder/50 hidden sm:block"></div>
+                                    <div className="flex flex-col">
+                                        <span className="text-[10px] font-bold uppercase tracking-wider text-appleMuted">Published</span>
+                                        <span suppressHydrationWarning className="font-semibold text-appleText flex items-center"><FiCalendar className="mr-2 text-appleBlue" /> {new Date(post.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</span>
                                     </div>
-                                    <div className="flex items-center">
-                                        <FiClock className="mr-2" />
-                                        <span>{post.readTime}</span>
+                                    <div className="w-px h-8 bg-appleBorder/50 hidden sm:block"></div>
+                                    <div className="flex flex-col">
+                                        <span className="text-[10px] font-bold uppercase tracking-wider text-appleMuted">Read Time</span>
+                                        <span className="font-semibold text-appleText flex items-center"><FiClock className="mr-2 text-appleBlue" /> {post.readTime}</span>
                                     </div>
                                 </div>
 
                                 {/* Article Content */}
                                 <div 
-                                    className="prose prose-lg max-w-none prose-headings:font-bold prose-headings:text-appleText prose-p:text-gray-700 prose-a:text-appleBlue hover:prose-a:text-blue-700"
+                                    className="prose prose-lg md:prose-xl max-w-none prose-headings:font-extrabold prose-headings:text-appleText prose-headings:font-display prose-p:text-appleMuted prose-p:leading-relaxed prose-a:text-appleBlue hover:prose-a:text-blue-700 prose-img:rounded-2xl"
                                     dangerouslySetInnerHTML={{ __html: post.content }}
                                 />
                             </div>
@@ -114,31 +119,31 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
                     </div>
 
                     {/* Sidebar */}
-                    <aside className="lg:col-span-1">
-                        <div className="sticky top-24">
-                            <h3 className="text-xl font-bold text-appleText mb-6 font-display">More Shopping Guides</h3>
-                            <div className="space-y-6">
+                    <aside className="lg:col-span-4">
+                        <div className="sticky top-28">
+                            <h3 className="text-2xl font-extrabold text-appleText mb-6 font-display tracking-tight">More Shopping Guides</h3>
+                            <div className="space-y-5">
                                 {blogPosts.filter(p => p.id !== post.id).slice(0, 4).map((relatedPost) => (
                                     <Link 
                                         key={relatedPost.id} 
                                         href={`/blog/${relatedPost.slug}`}
-                                        className="group block"
+                                        className="group block bg-white p-3 rounded-2xl border border-appleBorder/50 hover:border-appleBlue/30 hover:shadow-premium-hover transition-all duration-300"
                                     >
                                         <div className="flex space-x-4">
-                                            <div className="relative w-24 h-24 flex-shrink-0 rounded-xl overflow-hidden bg-gray-100">
+                                            <div className="relative w-24 h-24 flex-shrink-0 rounded-[1rem] overflow-hidden bg-appleCard">
                                                 <Image 
                                                     src={relatedPost.image} 
                                                     alt={relatedPost.title}
                                                     fill
                                                     sizes="96px"
-                                                    className="object-cover group-hover:scale-105 transition-transform duration-300"
+                                                    className="object-cover group-hover:scale-110 transition-transform duration-500"
                                                 />
                                             </div>
-                                            <div>
-                                                <h4 className="font-bold text-appleText leading-tight group-hover:text-appleBlue transition-colors line-clamp-2 mb-2">
+                                            <div className="flex flex-col justify-center py-1 pr-2">
+                                                <h4 className="font-bold text-appleText leading-snug group-hover:text-appleBlue transition-colors line-clamp-2 mb-2">
                                                     {relatedPost.title}
                                                 </h4>
-                                                <span suppressHydrationWarning className="text-xs text-appleMuted">{new Date(relatedPost.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}</span>
+                                                <span suppressHydrationWarning className="text-[11px] font-semibold uppercase tracking-wider text-appleMuted">{new Date(relatedPost.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}</span>
                                             </div>
                                         </div>
                                     </Link>

@@ -81,8 +81,8 @@ export async function generateCouponForPlatform(
         isClaimed: false,
         isExpired: false,
         usedCount: 0,
-        description: `Get ${discountValue}${config.discountType === 'percentage' ? '%' : '₹'} off on ${platform.name}`,
-        terms: `Valid until ${expiresAt.toDateString()}. ${config.minPurchase ? `Minimum purchase: ₹${config.minPurchase}` : ''}`
+        description: `Get ${discountValue}${config.discountType === 'percentage' ? '%' : '$'} off on ${platform.name}`,
+        terms: `Valid until ${expiresAt.toDateString()}. ${config.minPurchase ? `Minimum purchase: $${config.minPurchase}` : ''}`
     });
 
     // Update platform stats

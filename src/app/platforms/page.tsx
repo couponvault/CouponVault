@@ -7,6 +7,7 @@ import Footer from '@/components/Footer';
 import PlatformCard from '@/components/ui/PlatformCard';
 import { FiSearch } from 'react-icons/fi';
 import toast from 'react-hot-toast';
+import NativeAd from '@/components/ui/NativeAd';
 
 export default function PlatformsPage() {
     const router = useRouter();
@@ -137,6 +138,10 @@ export default function PlatformsPage() {
                         <div className="text-appleMuted text-sm font-medium bg-appleCard px-4 py-1.5 rounded-full">
                             {filteredPlatforms.length} {filteredPlatforms.length === 1 ? 'Store' : 'Stores'}
                         </div>
+                    </div>
+
+                    <div className="mb-10">
+                        <NativeAd />
                     </div>
 
                     {loading ? (

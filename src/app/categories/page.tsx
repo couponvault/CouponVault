@@ -4,7 +4,7 @@ import Link from 'next/link';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { FiMonitor, FiShoppingBag, FiCoffee, FiMap, FiSmartphone, FiVideo } from 'react-icons/fi';
-import AdBanner from '@/components/ui/AdBanner';
+import NativeAd from '@/components/ui/NativeAd';
 
 export default function CategoriesPage() {
     const categories = [
@@ -32,6 +32,10 @@ export default function CategoriesPage() {
                         </p>
                     </div>
 
+                    <div className="mb-10">
+                        <NativeAd />
+                    </div>
+
                     {/* Categories Grid */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
                         {categories.map((cat, i) => (
@@ -51,7 +55,9 @@ export default function CategoriesPage() {
                         ))}
                     </div>
 
-                    <AdBanner slotId="150c3903e11298ce18dfe86139a7f4e0" format="square" />
+                    <div className="mt-6">
+                        <NativeAd />
+                    </div>
                 </div>
             </main>
 

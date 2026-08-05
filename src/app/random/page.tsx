@@ -6,7 +6,7 @@ import Footer from '@/components/Footer';
 import CouponCard from '@/components/ui/CouponCard';
 import { FiGift, FiRefreshCw, FiAlertCircle } from 'react-icons/fi';
 import toast from 'react-hot-toast';
-import AdBanner from '@/components/ui/AdBanner';
+import NativeAd from '@/components/ui/NativeAd';
 
 export default function RandomCouponPage() {
     const [coupon, setCoupon] = useState<any>(null);
@@ -164,7 +164,9 @@ export default function RandomCouponPage() {
                         </div>
                     </div>
 
-                    <AdBanner slotId="150c3903e11298ce18dfe86139a7f4e0" format="square" className="my-10" />
+                    <div className="my-10">
+                        <NativeAd />
+                    </div>
 
                     {/* Daily Limit Notice */}
                     <div className="p-4 bg-appleCard border border-appleBorder rounded-xl shadow-sm">

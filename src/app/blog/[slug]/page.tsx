@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
 import { FiArrowLeft, FiClock, FiUser, FiCalendar } from 'react-icons/fi';
+import NativeAd from '@/components/ui/NativeAd';
 
 export function generateStaticParams() {
     return blogPosts.map((post) => ({
@@ -150,13 +151,15 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
                                 ))}
                             </div>
                             
-                            <div className="mt-10 p-6 bg-blue-50 rounded-2xl border border-blue-100">
+                            <div className="mt-10 p-6 bg-blue-50 rounded-2xl border border-blue-100 mb-8">
                                 <h3 className="font-bold text-appleText mb-2">Want more savings?</h3>
                                 <p className="text-sm text-gray-600 mb-4">Browse our database of over 10,000 verified discount codes for top retailers.</p>
                                 <Link href="/platforms" className="block w-full py-3 bg-appleBlue text-white text-center rounded-xl font-medium hover:bg-blue-600 transition-colors">
                                     Browse Stores
                                 </Link>
                             </div>
+
+                            <NativeAd />
                         </div>
                     </aside>
                 </div>

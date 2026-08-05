@@ -1,6 +1,7 @@
 import { blogPosts } from '@/data/blogPosts';
 import Link from 'next/link';
 import { FiArrowLeft } from 'react-icons/fi';
+import NativeAd from '@/components/ui/NativeAd';
 
 export const metadata = {
     title: 'Shopping Guides & Tips | CouponVault Blog',
@@ -26,6 +27,10 @@ export default function BlogIndex() {
                     <p className="text-lg md:text-xl text-appleMuted max-w-2xl mx-auto leading-relaxed">
                         Expert advice, money-saving hacks, and inside strategies from the CouponVault Editorial Team.
                     </p>
+                </div>
+
+                <div className="mb-12">
+                    <NativeAd />
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8">

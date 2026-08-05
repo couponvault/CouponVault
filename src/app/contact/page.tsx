@@ -69,13 +69,19 @@ export default function ContactPage() {
                                     <FiMail className="w-6 h-6 text-white" />
                                 </div>
                                 <div>
-                                    <h3 className="font-semibold">Email Us</h3>
+                                    <h3 className="font-semibold">Email & Office</h3>
                                     <p className="text-sm text-gray-500 dark:text-gray-400">couponvault.support@gmail.com</p>
                                 </div>
                             </div>
-                            <p className="text-gray-600 dark:text-gray-400 text-sm">
-                                Send us an email for general inquiries or support questions
+                            <p className="text-gray-600 dark:text-gray-400 text-sm mb-2">
+                                Send us an email for general inquiries or support questions.
                             </p>
+                            <div className="text-xs text-gray-500 dark:text-gray-400 border-t border-gray-100 pt-3">
+                                <strong>Headquarters:</strong><br/>
+                                CouponVault Media Group<br/>
+                                120 Retail Parkway, Suite 400<br/>
+                                Austin, TX 78701
+                            </div>
                         </div>
 
                         <div className="glass-card p-6 rounded-xl">

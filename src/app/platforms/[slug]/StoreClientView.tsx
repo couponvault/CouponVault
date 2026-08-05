@@ -8,6 +8,7 @@ import { FiArrowLeft, FiTag, FiCheck } from 'react-icons/fi';
 import Link from 'next/link';
 import CouponModal from '@/components/CouponModal';
 import BrandLogo from '@/components/ui/BrandLogo';
+import StoreEditorialGuide from '@/components/StoreEditorialGuide';
 
 export default function StoreClientView({ platform, coupons }: { platform: any, coupons: any[] }) {
     const [selectedCoupon, setSelectedCoupon] = useState<any>(null);
@@ -140,6 +141,8 @@ export default function StoreClientView({ platform, coupons }: { platform: any, 
                             </div>
                         )}
                     </div>
+                    
+                    <StoreEditorialGuide platform={platform} />
                 </div>
                 <CouponModal 
                     isOpen={isModalOpen}

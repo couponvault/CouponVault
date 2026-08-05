@@ -5,9 +5,10 @@ export default function JSONLD() {
             {
                 "@type": "Organization",
                 "name": "CouponVault",
+                "alternateName": "Coupon Vault",
                 "url": "https://couponvault.in",
                 "logo": "https://couponvault.in/logo.png",
-                "description": "Premium verified coupon codes for top e-commerce platforms like Amazon, Walmart, Target, and more.",
+                "description": "CouponVault is a leading premium coupon website providing verified discount codes, promo codes, and deals for top e-commerce platforms like Amazon, Walmart, and Target.",
                 "sameAs": [
                     "https://twitter.com/couponvault",
                     "https://facebook.com/couponvault"

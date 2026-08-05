@@ -10,12 +10,16 @@ export default function FAQPage() {
 
     const faqs = [
         {
+            question: 'How does CouponVault make money?',
+            answer: 'Transparency is our core value. We partner with leading affiliate networks (such as Skimlinks, ShareASale, and Impact). When you click on a coupon link and make a purchase at a retailer\'s website, we may earn a small commission at no extra cost to you. This keeps our service free and pays our editorial team to manually verify deals.',
+        },
+        {
             question: 'How does CouponVault work?',
-            answer: 'CouponVault automatically generates verified coupon codes for various platforms. Simply click "Get Random Coupon" or browse platforms to receive an instant, working coupon code. Our system ensures all codes are valid and ready to use.',
+            answer: 'CouponVault automatically generates and curates verified coupon codes for various platforms. Our editorial team manually tests codes, and our algorithms track their success rates. Simply click "Get Code" or browse platforms to receive a working coupon code.',
         },
         {
             question: 'Are the coupons really free?',
-            answer: 'Yes! All coupons on CouponVault are completely free. We don\'t charge users for accessing or using coupon codes. You can claim up to 10 coupons per day at no cost.',
+            answer: 'Yes! All coupons on CouponVault are completely free. We don\'t charge users for accessing or using coupon codes. Our revenue comes entirely from retailer commissions.',
         },
         {
             question: 'Why is there a daily limit on coupons?',

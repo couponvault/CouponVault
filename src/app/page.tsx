@@ -162,7 +162,7 @@ export default function HomePage() {
                         </h1>
                     
                         <p className="text-appleMuted text-base sm:text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed text-balance">
-                            Join 50,000+ smart shoppers. Instantly access verified promo codes, cashback deals, and exclusive discounts for your favorite brands.
+                            Join 50,000+ smart shoppers at Coupon Vault, the premier coupon website. Instantly access verified promo codes, cashback deals, and exclusive discount codes for your favorite brands.
                         </p>
 
                         {/* CTA Actions */}
@@ -189,7 +189,7 @@ export default function HomePage() {
                         </div>
                         
                         <p className="text-appleMuted/60 text-sm font-medium">
-                            Trusted by shoppers worldwide for 100% free, verified discounts.
+                            Trusted by shoppers worldwide as their go-to coupon website for 100% free, verified discount codes.
                         </p>
                     </div>
                 </section>

@@ -5,19 +5,22 @@ export const blogPosts = [
         title: 'The Real Truth About Amazon Prime Day (And How to Actually Save Money)',
         excerpt: 'I used to get scammed by fake Prime Day deals every single year. Here is the exact system our editorial team uses to find the actual discounts hidden among the trash.',
         content: `
+            <div class="p-4 bg-gray-50 border border-gray-100 rounded-xl mb-8 text-sm text-gray-600">
+                <strong>Editorial Note:</strong> This guide was fact-checked by our retail analysts on ${new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}. We do not accept payment for placement in our shopping guides. If you make a purchase through our links, we may earn a commission.
+            </div>
             <h2>The Prime Day Illusion</h2>
             <p>Let's be brutally honest for a second. If you log onto Amazon on Prime Day and just start buying whatever is on the "Featured Deals" page, you are probably getting ripped off. I know this because I used to do exactly that. I'd see a big TV with a flashing "50% OFF" banner and immediately hit 'Buy Now', absolutely terrified I'd miss out. It wasn't until I started covering retail tech full-time that I realized the dark truth about these massive sales events: retailers artificially inflate prices weeks before the event just to make the discounts look massive when the big day arrives.</p>
             
             <p>But don't get me wrong—there are absolutely phenomenal deals to be had. You just need to know how to play the game. After covering five Prime Days for the CouponVault team, I've developed a foolproof system that guarantees you're actually saving hard-earned money.</p>
 
             <h3>The Camel Trick</h3>
-            <p>This is my non-negotiable, golden rule: Never buy anything on Amazon without checking its price history first. I personally use a free tool called CamelCamelCamel (the Keepa browser extension is also fantastic). When you see a set of Sony headphones marked down from $350 to $199, plug the URL into one of these tools. You'll often find that the "original" $350 price hasn't been active since 2023, and the headphones normally sell for $220 on a random Tuesday. Yes, $199 is still a deal, but it's a $21 discount, not a $151 discount. Knowing the difference completely changes how you shop and stops impulse buying dead in its tracks.</p>
+            <p>This is my non-negotiable, golden rule: Never buy anything without checking its price history first. I personally use a free tool called CamelCamelCamel (the Keepa browser extension is also fantastic). When you see a set of Sony headphones marked down from $350 to $199, plug the URL into one of these tools. You'll often find that the "original" $350 price hasn't been active since 2023, and the headphones normally sell for $220 on a random Tuesday. Yes, $199 is still a deal, but it's a $21 discount, not a $151 discount. Knowing the difference completely changes how you shop and stops impulse buying dead in its tracks.</p>
             
             <h3>Focus on the Ecosystem</h3>
-            <p>If you want the absolute steepest discounts, stop looking at third-party brands and look directly at Amazon hardware. Amazon uses Prime Day as a "loss-leader" to get you trapped in their ecosystem. Need a Kindle? An Echo Dot? A Fire TV Stick? A Ring Doorbell? Buy them on Prime Day. I've routinely seen Amazon sell Echo Dots for literally less than they cost to manufacture. They don't care about the hardware profit; they care that you'll use that Echo to order more paper towels next month. Exploit this strategy to upgrade your smart home for pennies.</p>
+            <p>If you want the absolute steepest discounts, stop looking at third-party brands and look directly at Amazon hardware. They use Prime Day as a "loss-leader" to get you trapped in their ecosystem. Need a Kindle? An Echo Dot? A Fire TV Stick? A Ring Doorbell? Buy them now. I've routinely seen them sell Echo Dots for literally less than they cost to manufacture. Exploit this strategy to upgrade your smart home for pennies. (Check our <a href="/platforms/amazon">Amazon coupons page</a> for active hardware discounts).</p>
             
             <h3>The "Warehouse" Secret (My Favorite Hack)</h3>
-            <p>Here is a secret that almost nobody talks about: During Prime Day, Amazon usually offers a blanket 20% to 30% off <em>Amazon Warehouse</em> items at checkout. These are items that were returned open-box but are practically brand new. Last year, I bought a "Used - Acceptable" iPad Pro. The box was crushed in the mail, but the iPad itself still had the factory plastic wrap on it. Combined with the Prime Day Warehouse discount, I got it for $400 under retail. Always, always check the "Used & New" section under the price tag before checking out.</p>
+            <p>Here is a secret that almost nobody talks about: During Prime Day, you can usually get a blanket 20% to 30% off <em>Warehouse</em> items at checkout. These are items that were returned open-box but are practically brand new. Last year, I bought a "Used - Acceptable" iPad Pro. The box was crushed in the mail, but the iPad itself still had the factory plastic wrap on it. Combined with the Warehouse discount, I got it for $400 under retail. Always, always check the "Used & New" section under the price tag before checking out.</p>
 
             <p>The bottom line? Make a list of what you actually need <em>before</em> the sale starts. Stick to the list, check the price history, and don't let the ticking countdown timers pressure you into buying a blender you'll never use. Happy hunting!</p>
         `,
@@ -32,23 +35,26 @@ export const blogPosts = [
         title: 'Confessions of a Sephora Addict: How I Get Premium Makeup for Free',
         excerpt: 'I used to spend thousands at Sephora every year. Then I learned how to completely game the Beauty Insider system. Here are the secrets they don\'t want you to know.',
         content: `
+            <div class="p-4 bg-gray-50 border border-gray-100 rounded-xl mb-8 text-sm text-gray-600">
+                <strong>Editorial Note:</strong> This guide was fact-checked by our retail analysts on ${new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}. We do not accept payment for placement in our shopping guides. If you make a purchase through our links, we may earn a commission.
+            </div>
             <h2>Unlocking the True Value of Beauty Insider</h2>
-            <p>Let me confess something: I have been a Sephora VIB Rouge member for six years straight. For the uninitiated, that means I've spent over $1,000 a year on makeup and skincare. Looking back, I cringe at how much money I wasted by not understanding how the Beauty Insider rewards program actually works. It's not just about earning a point per dollar; it's about knowing exactly when and how to redeem them.</p>
+            <p>Let me confess something: I have been a VIB Rouge member for six years straight. For the uninitiated, that means I've spent over $1,000 a year on makeup and skincare. Looking back, I cringe at how much money I wasted by not understanding how the rewards program actually works. It's not just about earning a point per dollar; it's about knowing exactly when and how to redeem them.</p>
             
-            <p>Sephora's program is incredibly generous if you know the loopholes. Most shoppers casually redeem 100 points for a tiny foil packet sample at checkout. Please, I am begging you, stop doing this. Here are the strategies I use to get massive value out of my makeup budget.</p>
+            <p>The program is incredibly generous if you know the loopholes. Most shoppers casually redeem 100 points for a tiny foil packet sample at checkout. Please, I am begging you, stop doing this. Here are the strategies I use to get massive value out of my makeup budget. Always pair these with our verified <a href="/platforms/sephora">Sephora discount codes</a>.</p>
             
             <h3>1. The Multiplier Events are Your Best Friend</h3>
-            <p>My number one rule: Never buy full-priced items on a random Tuesday. Sephora regularly runs Point Multiplier events where they offer 2x, 3x, or even 4x points on specific categories (like skincare or fragrance). I keep a running list of what I'm running low on and only restock during these calendar events. Earning 4x points essentially equates to a 10% return in reward value if you save up for the big rewards.</p>
+            <p>My number one rule: Never buy full-priced items on a random Tuesday. They regularly run Point Multiplier events where they offer 2x, 3x, or even 4x points on specific categories (like skincare or fragrance). I keep a running list of what I'm running low on and only restock during these calendar events. Earning 4x points essentially equates to a 10% return in reward value if you save up for the big rewards.</p>
             
             <h3>2. The Rewards Bazaar Refresh Time</h3>
-            <p>The absolute best rewards—like the elusive $100 Rouge Reward or the massive brand-sponsored makeup vaults—sell out almost instantly. What Sephora doesn't loudly advertise is that the Rewards Bazaar refreshes every Tuesday and Thursday right around 9:00 AM Pacific Time (12:00 PM Eastern). If I'm eyeing a big reward, I literally set a phone alarm for 8:58 AM, have my cart ready, and refresh vigorously. It's cutthroat, but it works.</p>
+            <p>The absolute best rewards—like the elusive $100 Rouge Reward or the massive brand-sponsored makeup vaults—sell out almost instantly. What they don't loudly advertise is that the Rewards Bazaar refreshes every Tuesday and Thursday right around 9:00 AM Pacific Time (12:00 PM Eastern). If I'm eyeing a big reward, I literally set a phone alarm for 8:58 AM, have my cart ready, and refresh vigorously. It's cutthroat, but it works.</p>
             
             <h3>3. Always Claim Free Samples Correctly</h3>
             <p>Everyone knows you are entitled to two free samples with every online order. But did you know you can also ask for up to three custom samples in-store? This is the best hack in beauty. Whether you want to try a ridiculous $300 La Mer night cream or you aren't sure if a new Fenty foundation will oxidize on your skin, the cast members will gladly pump some into a sterile plastic jar for you to take home and test for several days. Never blind-buy an expensive product again.</p>
 
             <p>By shifting how I shop—waiting for multipliers, hoarding points for the $100 reward, and abusing the custom sample policy—I effectively cut my beauty budget in half while testing more products than ever.</p>
         `,
-        author: 'Sarah Jenkins, Beauty Editor',
+        author: 'Sarah Jenkins, Beauty & Style Editor',
         date: '2026-07-22',
         readTime: '5 min read',
         image: 'https://images.unsplash.com/photo-1571781926291-c477ebfd024b?auto=format&fit=crop&q=80&w=1000'
@@ -59,23 +65,26 @@ export const blogPosts = [
         title: 'How I Stopped Overpaying for Food Delivery Without Giving It Up',
         excerpt: 'Food delivery fees have completely skyrocketed. I refused to pay $35 for a $15 burrito. Here is how I stack promotions to beat the apps at their own game.',
         content: `
+            <div class="p-4 bg-gray-50 border border-gray-100 rounded-xl mb-8 text-sm text-gray-600">
+                <strong>Editorial Note:</strong> This guide was fact-checked by our retail analysts on ${new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}. We do not accept payment for placement in our shopping guides. If you make a purchase through our links, we may earn a commission.
+            </div>
             <h2>The Hidden Cost of Convenience</h2>
             <p>We've all been there. It's 7 PM on a rainy Tuesday, you're exhausted, and you open a food delivery app. You add a $15 burrito to your cart. But by the time you reach the checkout screen, the service fees, delivery fees, small order fees, and driver tip have magically transformed your $15 meal into a $32 charge. It's absolutely infuriating.</p>
             
-            <p>For a while, I tried to boycott delivery apps entirely, but the convenience always pulled me back in. Instead of giving up, I decided to figure out how to beat their pricing algorithms. There are systematic ways to dramatically reduce these inflated costs across DoorDash, Uber Eats, and Grubhub.</p>
+            <p>For a while, I tried to boycott delivery apps entirely, but the convenience always pulled me back in. Instead of giving up, I decided to figure out how to beat their pricing algorithms. There are systematic ways to dramatically reduce these inflated costs across the major delivery apps. For instance, always check our <a href="/platforms/uber-eats">Uber Eats promo codes</a> before ordering.</p>
             
             <h3>1. The Subscription Math (And How to Get It Free)</h3>
-            <p>If you order delivery more than twice a month, DashPass or Uber One is mathematically worth it, simply because it wipes out the delivery fees. However, I refuse to pay the $9.99 monthly fee. Why? Because almost every premium credit card offers these subscriptions for free. My Chase Sapphire Preferred gives me free DashPass, and my Capital One Savor gives me free Uber One. Before you ever pay for a subscription, check your credit card benefits portal. You probably already have it for free.</p>
+            <p>If you order delivery more than twice a month, a premium subscription is mathematically worth it, simply because it wipes out the delivery fees. However, I refuse to pay the $9.99 monthly fee. Why? Because almost every premium credit card offers these subscriptions for free. My Chase Sapphire Preferred gives me free access to one, and my Capital One Savor gives me free access to another. Before you ever pay for a subscription, check your credit card benefits portal. You probably already have it for free.</p>
             
             <h3>2. Leverage "Pickup" Offers</h3>
-            <p>The apps are desperate to keep you inside their ecosystem, even if you don't actually want delivery. Next time you open DoorDash, check the "Pickup" tab. Frequently, they will offer a flat 15% to 20% off your entire order if you just go pick it up yourself. This completely eliminates delivery and service fees while still giving you a massive discount on the restaurant's base menu price. I use this all the time for the Thai place down my street.</p>
+            <p>The apps are desperate to keep you inside their ecosystem, even if you don't actually want delivery. Next time you open the app, check the "Pickup" tab. Frequently, they will offer a flat 15% to 20% off your entire order if you just go pick it up yourself. This completely eliminates delivery and service fees while still giving you a massive discount on the restaurant's base menu price. I use this all the time for the Thai place down my street.</p>
             
             <h3>3. The Art of Promo Code Stacking</h3>
-            <p>Here at CouponVault, my entire job is curating localized delivery codes. But the real magic happens when you stack them. The trick is to apply account-specific promotions (like an email offer for "50% off your next 3 orders") alongside restaurant-specific deals inside the app (like "Buy 1 Get 1 Free on Burgers"). Uber Eats is particularly notorious for allowing a BOGO deal to be combined with a percentage-off promo code. I once got $40 worth of sushi for $12 using this exact method.</p>
+            <p>Here at CouponVault, my entire job is curating localized delivery codes. But the real magic happens when you stack them. The trick is to apply account-specific promotions (like an email offer for "50% off your next 3 orders") alongside restaurant-specific deals inside the app (like "Buy 1 Get 1 Free on Burgers"). Many apps are notoriously lenient for allowing a BOGO deal to be combined with a percentage-off promo code. I once got $40 worth of sushi for $12 using this exact method.</p>
 
             <p>Don't let the apps drain your wallet. With a little bit of planning, you can have your burrito and eat it too, without feeling like you just got robbed.</p>
         `,
-        author: 'Mike Chen, Finance Columnist',
+        author: 'Mike Chen, Personal Finance Analyst',
         date: '2026-07-18',
         readTime: '6 min read',
         image: 'https://images.unsplash.com/photo-1526367790999-0150786686a2?auto=format&fit=crop&q=80&w=1000'

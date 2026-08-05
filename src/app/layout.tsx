@@ -28,24 +28,38 @@ export const viewport = {
 };
 
 export const metadata: Metadata = {
-    title: 'CouponVault | 100% Verified Promo Codes for Amazon, Walmart, Target',
-    description: 'Find the best verified coupon codes and deals for top e-commerce platforms. Save money with our daily updated, automated promo codes.',
-    keywords: 'coupon codes usa, amazon promo codes, walmart discount coupons, target fashion deals, verified coupons, online shopping discounts, promo codes 2026',
+    title: 'CouponVault (Coupon Vault) | The Best Coupon Website for Promo Codes',
+    description: 'Welcome to Coupon Vault (CouponVault), the ultimate coupon website. Find the best verified coupon codes, discount codes, and promo deals for Amazon, Target, and Sephora.',
+    keywords: 'coupon vault, couponvault, coupon codes usa, amazon promo codes, walmart discount coupons, target fashion deals, verified coupons, online shopping discounts, promo codes 2026',
     authors: [{ name: 'CouponVault' }],
     verification: {
         google: 'AWhoJenbK6Y3oEL5fK5BXj4SnmwfoTLXB1NnUO6-414',
     },
     icons: {
-        icon: '/favicon.png',
-        apple: '/apple-touch-icon.png',
+        icon: [
+            { url: '/favicon.png', type: 'image/png', sizes: '48x48' },
+            { url: '/favicon.png', type: 'image/png', sizes: '96x96' },
+            { url: '/favicon.png', type: 'image/png', sizes: '144x144' },
+            { url: '/favicon.png', type: 'image/png', sizes: '192x192' },
+            { url: '/favicon.png', type: 'image/png', sizes: '512x512' }
+        ],
+        apple: [
+            { url: '/apple-touch-icon.png', sizes: '180x180' }
+        ],
+        other: [
+            {
+                rel: 'apple-touch-icon-precomposed',
+                url: '/apple-touch-icon.png',
+            },
+        ],
     },
     metadataBase: new URL('https://couponvault.in'),
     alternates: {
         canonical: '/',
     },
     openGraph: {
-        title: 'CouponVault | Stop Paying Full Price - Verified Coupons Inside',
-        description: 'Join 50,000+ shoppers saving money every day with our verified coupon codes.',
+        title: 'Coupon Vault (CouponVault) | The Best Coupon Website for Promo Codes',
+        description: 'Join 50,000+ shoppers saving money every day on our coupon website. Get the latest verified discount codes.',
         type: 'website',
         locale: 'en_US',
         url: 'https://couponvault.in',

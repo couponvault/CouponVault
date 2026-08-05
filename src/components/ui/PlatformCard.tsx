@@ -38,7 +38,7 @@ export default function PlatformCard({ platform, onClick }: PlatformCardProps) {
             </h3>
             
             <span className="px-3 py-1.5 bg-success/10 border border-success/20 rounded-full text-xs font-bold text-success whitespace-nowrap shadow-sm">
-                {platform.stats?.activeCount || 0} Offers Available
+                {Math.max(platform.stats?.activeCount || 0, 0)} Offers Available
             </span>
         </div>
     );

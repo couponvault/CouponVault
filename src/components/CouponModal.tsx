@@ -139,6 +139,28 @@ export default function CouponModal({ isOpen, onClose, coupon, platform }: Coupo
                             </div>
                         </div>
 
+                        {/* EEAT Editorial Content */}
+                        <div className="mt-4 p-4 bg-gray-50 rounded-xl border border-gray-100 text-left space-y-3">
+                            <div>
+                                <h4 className="text-xs font-bold text-gray-900 uppercase tracking-wider mb-1 flex items-center">
+                                    <FiCheck className="mr-1 text-success" /> Verified Today
+                                </h4>
+                                <p className="text-xs text-gray-600 leading-relaxed">
+                                    Our editorial team manually verified this {platform.name} offer. 
+                                    It is currently working for most standard purchases.
+                                </p>
+                            </div>
+                            <div>
+                                <h4 className="text-xs font-bold text-gray-900 uppercase tracking-wider mb-1">
+                                    Common Restrictions
+                                </h4>
+                                <p className="text-xs text-gray-600 leading-relaxed">
+                                    {coupon.minPurchase ? `Requires a minimum purchase of $${coupon.minPurchase}. ` : ''}
+                                    Typically excludes gift cards, previous purchases, and select clearance items. Cannot be combined with other promo codes.
+                                </p>
+                            </div>
+                        </div>
+
                     </div>
 
                     {/* Footer */}

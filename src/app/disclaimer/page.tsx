@@ -33,17 +33,23 @@ export default function DisclaimerPage() {
                             Please be also aware that when you leave our website, other sites may have different privacy policies and terms which are beyond our control. Please be sure to check the Privacy Policies of these sites as well as their "Terms of Service" before engaging in any business or uploading any information.
                         </p>
 
-                        <h2>Affiliate & Advertisement Disclaimer</h2>
+                        <h2>Federal Trade Commission (FTC) Affiliate Disclosure</h2>
                         <p>
-                            This website may contain advertisements, sponsored content, paid insertions, affiliate links or other forms of monetization.
+                            In compliance with the FTC guidelines, please assume the following about links and posts on this site: 
+                            Any/all of the links on CouponVault are affiliate links of which we receive a small commission from sales of certain items, but the price is the same for you. As CouponVault has grown, so have costs associated with running and maintaining it, and affiliate links are a way we help offset these costs.
                         </p>
                         <p>
-                            We follow word of mouth marketing standards. We believe in honesty of relationship, opinion and identity. The compensation received may influence the advertising content, topics or posts made in this blog. That content, advertising space or post will be clearly identified as paid or sponsored content.
+                            CouponVault is a participant in various affiliate programs, including but not limited to the Amazon Services LLC Associates Program, Skimlinks, ShareASale, and Impact Radius. These programs are designed to provide a means for sites to earn advertising fees by advertising and linking to partner merchants.
+                        </p>
+                        
+                        <h2>Editorial Independence</h2>
+                        <p>
+                            While we maintain affiliate relationships with many of the merchants listed on this site, our editorial content is not influenced by affiliate partnerships. We do not accept payment for guaranteed placement of deals, nor do we let affiliate commission rates dictate which coupons we verify and publish. Our analysts evaluate promotions based purely on their validity and value to the consumer.
                         </p>
 
-                        <h2>Coupon Accuracy</h2>
+                        <h2>Coupon Accuracy and Merchant Discretion</h2>
                         <p>
-                            CouponVault is a distribution platform. We do not create the coupons ourselves; we aggregate them from various sources and partner platforms. We do not guarantee that any coupon code listed on our site will be accepted by the merchant. Users are encouraged to verify the discount and terms on the merchant's checkout page.
+                            Our dedicated team manually tests and verifies coupon codes daily. However, merchants reserve the right to alter or terminate promotions at any time without notice. Consequently, we cannot guarantee that any specific promotional code will remain active or be accepted at the point of checkout. All transactions are exclusively between the user and the merchant.
                         </p>
 
                         <h2>Consent</h2>

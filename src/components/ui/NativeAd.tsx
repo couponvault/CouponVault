@@ -18,7 +18,7 @@ export default function NativeAd() {
     `;
 
     return (
-        <div className="flex flex-col bg-white border border-appleBorder/60 rounded-2xl p-6 shadow-sm overflow-hidden min-h-[250px] items-center justify-center col-span-1 sm:col-span-2 md:col-span-3 lg:col-span-4 xl:col-span-5 w-full">
+        <div className="flex flex-col bg-white border border-appleBorder/60 rounded-2xl p-6 shadow-sm overflow-hidden min-h-[250px] items-center justify-center col-span-full w-full">
             <span className="text-[10px] text-appleMuted uppercase tracking-widest mb-2 font-semibold">Sponsored</span>
             <iframe
                 title="Advertisement"

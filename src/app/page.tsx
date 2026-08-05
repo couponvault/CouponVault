@@ -15,6 +15,7 @@ import BrandLogo from '@/components/ui/BrandLogo';
 import { FiZap, FiCheck, FiCopy, FiStar, FiArrowRight, FiShield, FiTrendingUp, FiGift, FiGrid, FiBookOpen } from 'react-icons/fi';
 import toast from 'react-hot-toast';
 import AdBanner from '@/components/ui/AdBanner';
+import NativeAd from '@/components/ui/NativeAd';
 import CouponCard from '@/components/ui/CouponCard';
 import { blogPosts } from '@/data/blogPosts';
 
@@ -194,6 +195,10 @@ export default function HomePage() {
                     </div>
                 </section>
 
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+                    <NativeAd />
+                </div>
+
                 {/* Top Featured Stores */}
                 <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
                     <div className="flex justify-between items-end mb-10">
@@ -243,8 +248,8 @@ export default function HomePage() {
                     </div>
                 </section>
 
-                <div className="max-w-6xl mx-auto px-4 py-6">
-                    <AdBanner slotId="150c3903e11298ce18dfe86139a7f4e0" format="square" />
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+                    <NativeAd />
                 </div>
 
                 {/* Featured Deals & Codes */}

@@ -83,12 +83,6 @@ export default function RootLayout({
     return (
         <html lang="en" suppressHydrationWarning>
             <head>
-                <meta name="google-adsense-account" content="ca-pub-7270839550819851" />
-                <script 
-                    async 
-                    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7270839550819851" 
-                    crossOrigin="anonymous"
-                ></script>
             </head>
             <body className={`${inter.variable} ${outfit.variable} font-sans antialiased`}>
                 <JSONLD />

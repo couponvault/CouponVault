@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import React, { useState, Fragment } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import CouponCard from '@/components/ui/CouponCard';
@@ -9,6 +9,7 @@ import Link from 'next/link';
 import CouponModal from '@/components/CouponModal';
 import BrandLogo from '@/components/ui/BrandLogo';
 import StoreEditorialGuide from '@/components/StoreEditorialGuide';
+import NativeAd from '@/components/ui/NativeAd';
 
 export default function StoreClientView({ platform, coupons }: { platform: any, coupons: any[] }) {
     const [selectedCoupon, setSelectedCoupon] = useState<any>(null);
@@ -123,14 +124,19 @@ export default function StoreClientView({ platform, coupons }: { platform: any, 
                         {coupons.length > 0 ? (
                             <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 sm:gap-6">
                                 {coupons.map((coupon, index) => (
-                                    <CouponCard 
-                                        key={index} 
-                                        coupon={coupon} 
-                                        onOpenModal={(c) => {
-                                            setSelectedCoupon(c);
-                                            setIsModalOpen(true);
-                                        }}
-                                    />
+                                    <React.Fragment key={index}>
+                                        <CouponCard 
+                                            coupon={coupon} 
+                                            onOpenModal={(c) => {
+                                                setSelectedCoupon(c);
+                                                setIsModalOpen(true);
+                                            }}
+                                        />
+                                        {/* Insert a Native Ad every 4 coupons (at index 3, 7, 11...) */}
+                                        {(index + 1) % 4 === 0 && (
+                                            <NativeAd />
+                                        )}
+                                    </React.Fragment>
                                 ))}
                             </div>
                         ) : (
